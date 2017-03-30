@@ -1,4 +1,4 @@
-package RequestPrintModel;
+package RequestPrintUser;
 
 public class Register extends javax.swing.JFrame {
 
@@ -34,7 +34,6 @@ public class Register extends javax.swing.JFrame {
         backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(600, 500));
 
         jLabel1.setFont(new java.awt.Font("supermarket", 0, 36)); // NOI18N
         jLabel1.setText("Register");
