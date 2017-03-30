@@ -1,5 +1,12 @@
 package RequestPrintUser;
 
+import RequestPrintDatabase.ConnectionBuilder;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Register extends javax.swing.JFrame {
 
     public Register() {
@@ -15,7 +22,7 @@ public class Register extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        Register = new javax.swing.JLabel();
         surname = new javax.swing.JTextField();
         name = new javax.swing.JTextField();
         Email = new javax.swing.JTextField();
@@ -35,8 +42,17 @@ public class Register extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("supermarket", 0, 36)); // NOI18N
-        jLabel1.setText("Register");
+        Register.setFont(new java.awt.Font("supermarket", 0, 36)); // NOI18N
+        Register.setText("Register");
+        Register.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                RegisterAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         surname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,6 +118,11 @@ public class Register extends javax.swing.JFrame {
         passwordLabel1.setText("Confirm password :");
 
         submitButton.setText("Submit");
+        submitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitButtonActionPerformed(evt);
+            }
+        });
 
         backButton.setText("Back");
 
@@ -113,7 +134,7 @@ public class Register extends javax.swing.JFrame {
                 .addContainerGap(77, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(Register)
                         .addGap(243, 243, 243))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -150,7 +171,7 @@ public class Register extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Register, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(namelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -220,6 +241,20 @@ public class Register extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CreatePasswordActionPerformed
 
+    private void RegisterAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_RegisterAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RegisterAncestorAdded
+
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+        Connection con = ConnectionBuilder.getConnection();
+        try {
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM UserProfile VALUE(?, ?, ?, ?, ?, ?, ?, ?)");
+        } catch (SQLException ex) {
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Please check your internet connection");
+        }
+    }//GEN-LAST:event_submitButtonActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -255,9 +290,9 @@ public class Register extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CreatePassword;
     private javax.swing.JTextField Email;
+    private javax.swing.JLabel Register;
     private javax.swing.JButton backButton;
     private javax.swing.JLabel emailLabel;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField name;
     private javax.swing.JLabel namelabel;
     private javax.swing.JTextField password;
