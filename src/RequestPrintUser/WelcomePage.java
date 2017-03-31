@@ -40,13 +40,13 @@ public class WelcomePage extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         Username = new javax.swing.JLabel();
         UsernameField = new javax.swing.JTextField();
-        PasswordField = new javax.swing.JTextField();
         Password = new javax.swing.JLabel();
         Login = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         Register = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         ShopLogin = new javax.swing.JButton();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
         jLabel1.setText("jLabel1");
 
@@ -67,7 +67,6 @@ public class WelcomePage extends javax.swing.JFrame {
             }
         });
         getContentPane().add(UsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 240, -1));
-        getContentPane().add(PasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 240, -1));
 
         Password.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Password.setText("Password");
@@ -100,6 +99,14 @@ public class WelcomePage extends javax.swing.JFrame {
         });
         getContentPane().add(ShopLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, -1, -1));
 
+        jPasswordField1.setText("jPasswordField1");
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 240, 20));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -121,6 +128,10 @@ public class WelcomePage extends javax.swing.JFrame {
             Logger.getLogger(WelcomePage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_LoginActionPerformed
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,7 +171,6 @@ public class WelcomePage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Login;
     private javax.swing.JLabel Password;
-    private javax.swing.JTextField PasswordField;
     private javax.swing.JButton Register;
     private javax.swing.JButton ShopLogin;
     private javax.swing.JLabel Username;
@@ -169,5 +179,6 @@ public class WelcomePage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPasswordField jPasswordField1;
     // End of variables declaration//GEN-END:variables
 }
