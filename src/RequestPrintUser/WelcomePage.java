@@ -47,15 +47,18 @@ public class WelcomePage extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         ShopLogin = new javax.swing.JButton();
         jPasswordField1 = new javax.swing.JPasswordField();
+        jLabel3 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(450, 350));
+        setPreferredSize(new java.awt.Dimension(450, 350));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Welcome to RequestPrint Project");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, -1));
 
         Username.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Username.setText("Username");
@@ -82,14 +85,14 @@ public class WelcomePage extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Don't have an account? ");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, -1, -1));
 
         Register.setText("Register");
-        getContentPane().add(Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, -1, -1));
+        getContentPane().add(Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("For owner's shop.");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 150, 20));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 150, 20));
 
         ShopLogin.setText("Shop Login");
         ShopLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -97,15 +100,17 @@ public class WelcomePage extends javax.swing.JFrame {
                 ShopLoginActionPerformed(evt);
             }
         });
-        getContentPane().add(ShopLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, -1, -1));
+        getContentPane().add(ShopLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, -1, -1));
 
-        jPasswordField1.setText("jPasswordField1");
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordField1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 240, 20));
+        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 240, 30));
+
+        jLabel3.setText("beta 1");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -177,6 +182,7 @@ public class WelcomePage extends javax.swing.JFrame {
     private javax.swing.JTextField UsernameField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPasswordField jPasswordField1;
