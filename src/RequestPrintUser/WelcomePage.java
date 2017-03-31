@@ -5,11 +5,20 @@
  */
 package RequestPrintUser;
 
+import RequestPrintDatabase.ConnectionBuilder;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Game
  */
 public class WelcomePage extends javax.swing.JFrame {
+    
+    private boolean checkcorrection = false;
 
     /**
      * Creates new form WelcomePage
@@ -29,13 +38,15 @@ public class WelcomePage extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        Username = new javax.swing.JLabel();
+        UsernameField = new javax.swing.JTextField();
+        PasswordField = new javax.swing.JTextField();
+        Password = new javax.swing.JLabel();
+        Login = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        Register = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        ShopLogin = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -46,38 +57,70 @@ public class WelcomePage extends javax.swing.JFrame {
         jLabel2.setText("Welcome to RequestPrint Project");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Username");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
+        Username.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Username.setText("Username");
+        getContentPane().add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        UsernameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                UsernameFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 240, -1));
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 240, -1));
+        getContentPane().add(UsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 240, -1));
+        getContentPane().add(PasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 240, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Password");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
+        Password.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Password.setText("Password");
+        getContentPane().add(Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
 
-        jButton1.setText("Login");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, -1, -1));
+        Login.setText("Login");
+        Login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoginActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Don't have an account? ");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, -1, -1));
 
-        jButton2.setText("Register");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, -1, -1));
+        Register.setText("Register");
+        getContentPane().add(Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setText("For owner's shop.");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 150, 20));
+
+        ShopLogin.setText("Shop Login");
+        ShopLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShopLoginActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ShopLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void UsernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_UsernameFieldActionPerformed
+
+    private void ShopLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShopLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ShopLoginActionPerformed
+
+    private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
+        // TODO add your handling code here:
+        Connection con = ConnectionBuilder.getConnection();
+        try {
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM UserProfile VALUE(USERNAME , USERPASSWORD)");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(WelcomePage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_LoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -115,14 +158,16 @@ public class WelcomePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton Login;
+    private javax.swing.JLabel Password;
+    private javax.swing.JTextField PasswordField;
+    private javax.swing.JButton Register;
+    private javax.swing.JButton ShopLogin;
+    private javax.swing.JLabel Username;
+    private javax.swing.JTextField UsernameField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
 }
