@@ -1,4 +1,4 @@
-package RequestPrintModel;
+package RequestPrintShop;
 
 public class Shop {
     private long shopId;

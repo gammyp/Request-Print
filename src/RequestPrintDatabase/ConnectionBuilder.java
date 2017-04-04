@@ -8,11 +8,11 @@ public class ConnectionBuilder {
     public static Connection getConnection() {
         Connection con = null;
         try {
-            String host = "jdbc:mysql://localhost:3306/RequestPrint";
-            String userName = "RequestPrint";
-            String userPass = "requestprint";
+            String host = "jdbc:mysql://korrow.sit.kmutt.ac.th:3306/mydb?zeroDateTimeBehavior=convertToNull";
+            String userName = "mooza";
+            String userPass = "123456789";
 
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
+            Class.forName("com.mysql.jdbc.Driver");
             System.out.println("Driver loaded");
 
             con = DriverManager.getConnection(host, userName, userPass);
