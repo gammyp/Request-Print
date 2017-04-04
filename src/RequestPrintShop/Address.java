@@ -1,4 +1,4 @@
-package RequestPrintModel;
+package RequestPrintShop;
 
 public class Address {
     private String houseNum;
