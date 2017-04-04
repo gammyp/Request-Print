@@ -63,6 +63,7 @@ public class Register extends javax.swing.JFrame {
         passwordCheck = new javax.swing.JLabel();
         emailCheck = new javax.swing.JLabel();
         userNameCheck = new javax.swing.JLabel();
+        errorPassText = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
 
@@ -173,6 +174,12 @@ public class Register extends javax.swing.JFrame {
         password.setText("Password :");
         getContentPane().add(password);
         password.setBounds(110, 330, 90, 40);
+
+        passwordField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                passwordFieldFocusLost(evt);
+            }
+        });
         getContentPane().add(passwordField);
         passwordField.setBounds(230, 340, 230, 22);
 
@@ -181,6 +188,12 @@ public class Register extends javax.swing.JFrame {
         confirmPass.setText("Confirm Password :");
         getContentPane().add(confirmPass);
         confirmPass.setBounds(60, 370, 140, 40);
+
+        confirmField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                confirmFieldFocusLost(evt);
+            }
+        });
         getContentPane().add(confirmField);
         confirmField.setBounds(230, 380, 230, 22);
 
@@ -238,6 +251,10 @@ public class Register extends javax.swing.JFrame {
         });
         getContentPane().add(userNameCheck);
         userNameCheck.setBounds(470, 300, 20, 20);
+
+        errorPassText.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(errorPassText);
+        errorPassText.setBounds(470, 340, 120, 20);
 
         setSize(new java.awt.Dimension(618, 547));
         setLocationRelativeTo(null);
@@ -345,6 +362,30 @@ public class Register extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_emailFieldFocusLost
 
+    private void confirmFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_confirmFieldFocusLost
+        Image trueIcon = new ImageIcon(this.getClass().getResource("../icon/correct.png")).getImage();
+        Image wrongIcon = new ImageIcon(this.getClass().getResource("../icon/wrong.png")).getImage();
+        if (passwordField.getText().length() <= 5 || passwordField.getText().length() > 45) {
+            passwordCheck.setIcon(new ImageIcon(wrongIcon.getScaledInstance(passwordCheck.getWidth(), passwordCheck.getHeight(), 0)));
+        } else {
+            if (confirmField.getText().equals(passwordField.getText())) {
+                passwordCheck.setIcon(new ImageIcon(trueIcon.getScaledInstance(passwordCheck.getWidth(), passwordCheck.getHeight(), 0)));
+            } else {
+                passwordCheck.setIcon(new ImageIcon(wrongIcon.getScaledInstance(passwordCheck.getWidth(), passwordCheck.getHeight(), 0)));
+            }
+        }
+    }//GEN-LAST:event_confirmFieldFocusLost
+
+    private void passwordFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFieldFocusLost
+        if (passwordField.getText().length() <= 5) {
+            errorPassText.setText("Password weak");
+        } else if (passwordField.getText().length() < 10) {
+            errorPassText.setText("Password medium");
+        } else if (passwordField.getText().length() <= 45) {
+            errorPassText.setText("Password Strong");
+        }
+    }//GEN-LAST:event_passwordFieldFocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -389,6 +430,7 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JLabel email;
     private javax.swing.JLabel emailCheck;
     private javax.swing.JTextField emailField;
+    private javax.swing.JLabel errorPassText;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel name;
