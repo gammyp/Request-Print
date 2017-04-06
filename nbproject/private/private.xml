@@ -3,9 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/Document/Requset-Print/src/RequestPrintUser/StoreLogin.java</file>
             <file>file:/D:/Document/Requset-Print/src/RequestPrintUser/WelcomePage.java</file>
             <file>file:/D:/Document/Requset-Print/src/RequestPrintUser/Register.java</file>
+=======
+            <file>file:/D:/KMUTT/Work%202_59/INT%20105%20Computer%20Programming%20II/Request%20Print%20Project/RequestPrint/src/RequestPrintDatabase/ConnectionBuilder.java</file>
+            <file>file:/D:/KMUTT/Work%202_59/INT%20105%20Computer%20Programming%20II/Request%20Print%20Project/RequestPrint/src/RequestPrintShop/RegisterShop.java</file>
+>>>>>>> 09f8d20b2b22355b033bcea4e572f02083d07110
         </group>
     </open-files>
 </project-private>
