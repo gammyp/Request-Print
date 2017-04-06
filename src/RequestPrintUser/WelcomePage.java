@@ -8,9 +8,11 @@ package RequestPrintUser;
 import RequestPrintDatabase.ConnectionBuilder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -46,8 +48,9 @@ public class WelcomePage extends javax.swing.JFrame {
         Register = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         ShopLogin = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        PasswordField = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
+        LoginFailedStatus = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
@@ -61,18 +64,18 @@ public class WelcomePage extends javax.swing.JFrame {
 
         Username.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Username.setText("Username");
-        getContentPane().add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
+        getContentPane().add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
 
         UsernameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UsernameFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(UsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 240, -1));
+        getContentPane().add(UsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 240, -1));
 
         Password.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Password.setText("Password");
-        getContentPane().add(Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
+        getContentPane().add(Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
         Login.setText("Login");
         Login.addActionListener(new java.awt.event.ActionListener() {
@@ -101,15 +104,19 @@ public class WelcomePage extends javax.swing.JFrame {
         });
         getContentPane().add(ShopLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, -1, -1));
 
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        PasswordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                PasswordFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 240, 30));
+        getContentPane().add(PasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 240, -1));
 
         jLabel3.setText("beta 1");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, -1));
+
+        LoginFailedStatus.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        LoginFailedStatus.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(LoginFailedStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 240, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -124,18 +131,33 @@ public class WelcomePage extends javax.swing.JFrame {
 
     private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
         // TODO add your handling code here:
-        Connection con = ConnectionBuilder.getConnection();
         try {
-            PreparedStatement pstm = con.prepareStatement("SELECT * FROM UserProfile VALUE(USERNAME , USERPASSWORD)");
+            if(!"".equals(UsernameField.getText()) & !"".equals(PasswordField.getText())) {
+                Connection con = ConnectionBuilder.getConnection();
+                PreparedStatement pstm = con.prepareStatement("SELECT * FROM UserProfile WHERE username=? and password=?");
+                pstm.setString(1, UsernameField.getText());
+                pstm.setString(2, PasswordField.getText());
+                ResultSet rs = pstm.executeQuery();
+                if (rs.next()) {
+                    JOptionPane.showMessageDialog(null, "Sucessful");
+                }
+                else {
+                    LoginFailedStatus.setText("");
+                    LoginFailedStatus.setText("Invalid username or password");
+                }
+            }
+            else {
+                LoginFailedStatus.setText("Please enter your username and password!");
+            }
             
         } catch (SQLException ex) {
             Logger.getLogger(WelcomePage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_LoginActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_PasswordFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,7 +196,9 @@ public class WelcomePage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Login;
+    private javax.swing.JLabel LoginFailedStatus;
     private javax.swing.JLabel Password;
+    private javax.swing.JPasswordField PasswordField;
     private javax.swing.JButton Register;
     private javax.swing.JButton ShopLogin;
     private javax.swing.JLabel Username;
@@ -184,6 +208,5 @@ public class WelcomePage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPasswordField jPasswordField1;
     // End of variables declaration//GEN-END:variables
 }

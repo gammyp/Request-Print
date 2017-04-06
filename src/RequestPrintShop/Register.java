@@ -92,7 +92,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
         getContentPane().add(nameField);
-        nameField.setBounds(230, 60, 230, 22);
+        nameField.setBounds(230, 60, 230, 20);
 
         surnameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,7 +100,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
         getContentPane().add(surnameField);
-        surnameField.setBounds(230, 100, 230, 22);
+        surnameField.setBounds(230, 100, 230, 20);
 
         address.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         address.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -114,7 +114,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
         getContentPane().add(addressField);
-        addressField.setBounds(230, 140, 230, 22);
+        addressField.setBounds(230, 140, 230, 20);
 
         email.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         email.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -133,7 +133,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
         getContentPane().add(emailField);
-        emailField.setBounds(230, 180, 230, 22);
+        emailField.setBounds(230, 180, 230, 20);
 
         name.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         name.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -153,7 +153,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
         getContentPane().add(telField);
-        telField.setBounds(230, 220, 230, 22);
+        telField.setBounds(230, 220, 230, 20);
 
         shopName.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         shopName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -167,7 +167,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
         getContentPane().add(shopNameField);
-        shopNameField.setBounds(230, 260, 230, 22);
+        shopNameField.setBounds(230, 260, 230, 20);
 
         password.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         password.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -181,7 +181,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
         getContentPane().add(passwordField);
-        passwordField.setBounds(230, 340, 230, 22);
+        passwordField.setBounds(230, 340, 230, 20);
 
         confirmPass.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         confirmPass.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -195,7 +195,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
         getContentPane().add(confirmField);
-        confirmField.setBounds(230, 380, 230, 22);
+        confirmField.setBounds(230, 380, 230, 20);
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -232,7 +232,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
         getContentPane().add(userNameField);
-        userNameField.setBounds(230, 300, 230, 22);
+        userNameField.setBounds(230, 300, 230, 20);
         getContentPane().add(passwordCheck);
         passwordCheck.setBounds(470, 380, 20, 20);
 
