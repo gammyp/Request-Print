@@ -28,34 +28,108 @@ public class ManageListBook extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Sign out");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 470, 160, 22);
+        jLabel1.setBounds(610, 10, 100, 30);
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel1.setLayout(null);
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Bookname", "Price"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(210, 70, 480, 420);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Home");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 110, 160, 30);
+        jLabel2.setText("Manage Book");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(10, 40, 190, 30);
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 160, 500);
+        jLabel3.setText("ชื่อหนังสือ");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(20, 90, 60, 30);
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(30, 110, 160, 20);
 
-        setSize(new java.awt.Dimension(618, 547));
+        jLabel4.setText("ปีที่พิมพ์");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(20, 290, 60, 30);
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(30, 310, 160, 20);
+
+        jLabel5.setText("ชื่อผู้แต่ง");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(20, 240, 60, 30);
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(30, 260, 160, 20);
+
+        jLabel9.setText("ราคาสั่งพิมพ์");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(20, 340, 70, 30);
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(30, 360, 160, 20);
+
+        jLabel11.setText("ประเภทหนังสือ");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(20, 140, 80, 30);
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(30, 160, 160, 20);
+
+        jLabel13.setText("ภาษา");
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(20, 190, 80, 30);
+        getContentPane().add(jLabel14);
+        jLabel14.setBounds(30, 210, 160, 20);
+
+        jButton1.setText("Add book");
+        getContentPane().add(jButton1);
+        jButton1.setBounds(100, 460, 90, 30);
+
+        jButton2.setText("Back");
+        getContentPane().add(jButton2);
+        jButton2.setBounds(20, 460, 59, 30);
+
+        setSize(new java.awt.Dimension(722, 554));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -95,8 +169,23 @@ public class ManageListBook extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
