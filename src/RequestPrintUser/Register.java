@@ -1,13 +1,19 @@
 package RequestPrintUser;
 
 import RequestPrintDatabase.ConnectionBuilder;
+import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class Register extends javax.swing.JFrame {
+
+    boolean checkall = true;
 
     public Register() {
         initComponents();
@@ -39,8 +45,12 @@ public class Register extends javax.swing.JFrame {
         passwordLabel1 = new javax.swing.JLabel();
         submitButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
+        checkUsername = new javax.swing.JLabel();
+        checkPassword = new javax.swing.JLabel();
+        error = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(null);
 
         Register.setFont(new java.awt.Font("supermarket", 0, 36)); // NOI18N
@@ -55,7 +65,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Register);
-        Register.setBounds(253, 13, 104, 43);
+        Register.setBounds(253, 13, 141, 43);
 
         surname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,10 +168,22 @@ public class Register extends javax.swing.JFrame {
         submitButton.setBounds(325, 451, 100, 36);
 
         backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(backButton);
         backButton.setBounds(184, 451, 100, 36);
+        getContentPane().add(checkUsername);
+        checkUsername.setBounds(500, 300, 80, 30);
+        getContentPane().add(checkPassword);
+        checkPassword.setBounds(500, 410, 90, 20);
+        getContentPane().add(error);
+        error.setBounds(500, 350, 90, 30);
 
-        pack();
+        setSize(new java.awt.Dimension(600, 522));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void surnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_surnameActionPerformed
@@ -197,14 +219,103 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_RegisterAncestorAdded
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-        Connection con = ConnectionBuilder.getConnection();
+
         try {
-            PreparedStatement pstm = con.prepareStatement("SELECT * FROM UserProfile VALUE(?, ?, ?, ?, ?, ?, ?, ?)");
+            System.out.println(name.getText());
+
+            if (name.getText() != "" && surname.getText() != "" && userName.getText() != ""
+                    && password.getText() != "" && Email.getText() != "" && phone.getText() != "") {
+                if (checkall) {
+                    //   JOptionPane.showConfirmDialog(null, "Do you confirm?", "Message", JOptionPane.YES_NO_OPTION);
+                    int confirm = JOptionPane.showOptionDialog(this, "Are You confirm?", "CONFIRM", JOptionPane.YES_NO_OPTION,
+                            JOptionPane.QUESTION_MESSAGE, null, null, null);
+                    if (confirm == JOptionPane.YES_OPTION) {
+                        Connection con = ConnectionBuilder.getConnection();
+                        String sql = "INSERT INTO UserProfile(id,username,password,name,surname,address,phone,email) VALUES (null,?,?,?,?,null,?,?)";
+                        PreparedStatement pstm = con.prepareStatement(sql);
+                        pstm.setString(3, name.getText());
+                        pstm.setString(4, surname.getText());
+                        pstm.setString(6, Email.getText());
+                        pstm.setString(5, phone.getText());
+                        pstm.setString(1, userName.getText());
+                        pstm.setString(2, password.getText());
+                        pstm.executeUpdate();
+                        JOptionPane.showMessageDialog(null, "Registered Successfully.");
+                        name.setText("");
+                        surname.setText("");
+                        Email.setText("");
+                        phone.setText("");
+                        userName.setText("");
+                        password.setText("");
+                        checkPassword.setIcon(null);
+                        checkUsername.setIcon(null);
+                    }
+                }
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Please check your internet connection");
         }
     }//GEN-LAST:event_submitButtonActionPerformed
+
+    private void UsernameFocusLost(java.awt.event.FocusEvent evt) throws SQLException {
+        // TODO add your handling code here:
+        Connection con = ConnectionBuilder.getConnection();
+        Image trueIcon = new ImageIcon(this.getClass().getResource("icon/check.png")).getImage();
+        Image falseIcon = new ImageIcon(this.getClass().getResource("icon/uncheck.png")).getImage();
+
+        try {
+            PreparedStatement pstm = con.prepareStatement("SELECT USERNAME FROM userProfile WHERE USERNAME = ? ");
+            pstm.setString(1, userName.getText());
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+                checkall = false;
+                checkUsername.setIcon(new ImageIcon(falseIcon.getScaledInstance(checkUsername.getWidth(), checkUsername.getHeight(), 0)));
+            } else {
+                checkall = true;
+                checkUsername.setIcon(new ImageIcon(trueIcon.getScaledInstance(checkUsername.getWidth(), checkUsername.getHeight(), 0)));
+
+            }
+
+//        checkUsername.hide();
+        } catch (SQLException ex) {
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void PassFocusLost(java.awt.event.FocusEvent evt) {
+        // TODO add your handling code here:
+        if (password.getText().length() < 6 || password.getText().length() > 45) {
+            error.setText("** Password 6-45 charecter ");
+            checkall = false;
+        } else {
+            error.setText("");
+            checkall = true;
+        }
+
+    }
+
+    private void RePassFocusLost(java.awt.event.FocusEvent evt) {
+        // TODO add your handling code here:
+        Image trueIcon = new ImageIcon(this.getClass().getResource("icon/check.png")).getImage();
+        Image falseIcon = new ImageIcon(this.getClass().getResource("icon/uncheck.png")).getImage();
+
+        if (CreatePassword.getText().length() < 6 || CreatePassword.getText().length() > 12) {
+            checkall = false;
+        } else {
+            if (password.getText().equals(CreatePassword.getText())) {
+                checkall = true;
+                checkPassword.setIcon(new ImageIcon(trueIcon.getScaledInstance(checkPassword.getWidth(), checkPassword.getHeight(), 0)));
+            } else {
+                checkall = false;
+                checkPassword.setIcon(new ImageIcon(falseIcon.getScaledInstance(checkPassword.getWidth(), checkPassword.getHeight(), 0)));
+            }
+
+        }
+    }
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backButtonActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -243,7 +354,10 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JTextField Email;
     private javax.swing.JLabel Register;
     private javax.swing.JButton backButton;
+    private javax.swing.JLabel checkPassword;
+    private javax.swing.JLabel checkUsername;
     private javax.swing.JLabel emailLabel;
+    private javax.swing.JLabel error;
     private javax.swing.JTextField name;
     private javax.swing.JLabel namelabel;
     private javax.swing.JTextField password;
