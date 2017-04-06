@@ -261,10 +261,9 @@ public class RegisterShop extends javax.swing.JFrame {
         Connection con = ConnectionBuilder.getConnection();
         try {
             if ((passField.getText().length() > 5) & (userNameField.getText().length() > 0) & (emailField.getText().indexOf("@") > 0)) {
-                System.out.println("Test");
                 if (passField.getText().equals(confirmField.getText())) {
-                    System.out.println(passField.getText());
-                    PreparedStatement pstm = con.prepareStatement("SELECT * FROM SHOPPROFILE VALUES (?,?,?,?,?,?,?,?)");
+                    PreparedStatement pstm = con.prepareStatement("INSERT INTO ShopProfile (username, password, shopName, ownerName, "
+                            + "ownerSurname, address, phone, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
                     pstm.setString(1, userNameField.getText());
                     pstm.setString(2, passField.getText());
                     pstm.setString(3, shopNameField.getText());
@@ -273,6 +272,7 @@ public class RegisterShop extends javax.swing.JFrame {
                     pstm.setString(6, addressField.getText());
                     pstm.setString(7, telephoneField.getText());
                     pstm.setString(8, emailField.getText());
+                    pstm.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Register Successful.");
                     userNameField.setText("");
                     passField.setText("");
@@ -282,6 +282,11 @@ public class RegisterShop extends javax.swing.JFrame {
                     addressField.setText("");
                     telephoneField.setText("");
                     emailField.setText("");
+                    confirmField.setText("");
+                    errorPassText.setText(null);
+                    emailCheck.setIcon(null);
+                    passwordCheck.setIcon(null);
+                    userNameCheck.setIcon(null);
                 }
             }
         } catch (SQLException ex) {
