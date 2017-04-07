@@ -109,7 +109,11 @@ public class WelcomePage extends javax.swing.JFrame {
                 PasswordFieldActionPerformed(evt);
             }
         });
+<<<<<<< HEAD
+        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 240, 20));
+=======
         getContentPane().add(PasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 240, -1));
+>>>>>>> 86b3e0232234f9539d8895954dd78fe252449f8d
 
         jLabel3.setText("beta 1");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, -1));

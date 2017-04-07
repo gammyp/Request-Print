@@ -2,7 +2,22 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/Document/Requset-Print/src/RequestPrintUser/UserProfile.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/D:/Document/gitRepo/src/RequestPrintDatabase/ConnectionBuilder.java</file>
+            <file>file:/D:/Document/gitRepo/src/RequestPrintUser/Register.java</file>
+            <file>file:/D:/Document/gitRepo/src/RequestPrintUser/WelcomePage.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/D:/Document/Requset-Print/src/RequestPrintUser/UserProfile.java</file>
+=======
+            <file>file:/Users/jirayupeach/Desktop/untitled%20folder%202/Request-Print/src/RequestPrintDatabase/ConnectionBuilder.java</file>
+            <file>file:/Users/jirayupeach/Desktop/untitled%20folder%202/Request-Print/src/RequestPrintUser/Register.java</file>
+>>>>>>> ba1306b795020024dddb12933f2cac8680dd264d
+>>>>>>> 86b3e0232234f9539d8895954dd78fe252449f8d
+>>>>>>> 2c42910cbb66fc51b6c21fef862193d6225702ff
         </group>
     </open-files>
 </project-private>
