@@ -325,10 +325,10 @@ public class RegisterShop extends javax.swing.JFrame {
     }//GEN-LAST:event_emailFieldFocusLost
 
     private void userNameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userNameFieldFocusLost
-        Connection con = ConnectionBuilder.getConnection();
-        Image trueIcon = new ImageIcon(this.getClass().getResource("../icon/correct.png")).getImage();
-        Image wrongIcon = new ImageIcon(this.getClass().getResource("../icon/wrong.png")).getImage();
-        try {
+         try {
+            Connection con = ConnectionBuilder.getConnection();
+            Image trueIcon = new ImageIcon(this.getClass().getResource("../icon/correct.png")).getImage();
+            Image wrongIcon = new ImageIcon(this.getClass().getResource("../icon/wrong.png")).getImage();
             PreparedStatement pstm = con.prepareStatement("SELECT username FROM ShopProfile WHERE username = ?");
             pstm.setString(1, userNameField.getText());
             ResultSet rs = pstm.executeQuery();
@@ -350,8 +350,8 @@ public class RegisterShop extends javax.swing.JFrame {
     }//GEN-LAST:event_userNameFieldFocusLost
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-        Connection con = ConnectionBuilder.getConnection();
         try {
+            Connection con = ConnectionBuilder.getConnection();
             if ((passField.getText().length() > 5) & (userNameField.getText().length() > 0) & (emailField.getText().indexOf("@") > 0)) {
                 if (passField.getText().equals(confirmField.getText())) {
                     PreparedStatement pstm = con.prepareStatement("INSERT INTO ShopProfile (username, password, shopName, ownerName, "
