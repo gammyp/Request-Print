@@ -14,13 +14,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author Game
  */
 public class WelcomePage extends javax.swing.JFrame {
-    
-    private boolean checkcorrection = false;
 
     /**
      * Creates new form WelcomePage
@@ -40,42 +39,33 @@ public class WelcomePage extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        Username = new javax.swing.JLabel();
-        UsernameField = new javax.swing.JTextField();
-        Password = new javax.swing.JLabel();
-        Login = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        Register = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        ShopLogin = new javax.swing.JButton();
-        PasswordField = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
-        LoginFailedStatus = new javax.swing.JLabel();
-
-        jLabel1.setText("jLabel1");
+        UsernameField = new javax.swing.JTextField();
+        PasswordField = new javax.swing.JPasswordField();
+        Login = new javax.swing.JButton();
+        Register = new javax.swing.JButton();
+        StoreLogin = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        LoginFailedStutus = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(450, 350));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Welcome to RequestPrint Project");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Welcome to Request Print project");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 270, -1));
 
-        Username.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Username.setText("Username");
-        getContentPane().add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setText("Username");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
-        UsernameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UsernameFieldActionPerformed(evt);
-            }
-        });
-        getContentPane().add(UsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 240, -1));
-
-        Password.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Password.setText("Password");
-        getContentPane().add(Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setText("Password");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        getContentPane().add(UsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 270, -1));
+        getContentPane().add(PasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 270, -1));
 
         Login.setText("Login");
         Login.addActionListener(new java.awt.event.ActionListener() {
@@ -83,60 +73,38 @@ public class WelcomePage extends javax.swing.JFrame {
                 LoginActionPerformed(evt);
             }
         });
-        getContentPane().add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Don't have an account? ");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, -1, -1));
+        getContentPane().add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 80, -1));
 
         Register.setText("Register");
-        getContentPane().add(Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("For owner's shop.");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 150, 20));
-
-        ShopLogin.setText("Shop Login");
-        ShopLogin.addActionListener(new java.awt.event.ActionListener() {
+        Register.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ShopLoginActionPerformed(evt);
+                RegisterActionPerformed(evt);
             }
         });
-        getContentPane().add(ShopLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, -1, -1));
+        getContentPane().add(Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 80, -1));
 
-        PasswordField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PasswordFieldActionPerformed(evt);
-            }
-        });
-<<<<<<< HEAD
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 240, 20));
-=======
-        getContentPane().add(PasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 240, -1));
->>>>>>> 86b3e0232234f9539d8895954dd78fe252449f8d
+        StoreLogin.setText("Login");
+        getContentPane().add(StoreLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 80, -1));
 
-        jLabel3.setText("beta 1");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, -1));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setText("Don't have an account?");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
 
-        LoginFailedStatus.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        LoginFailedStatus.setForeground(new java.awt.Color(255, 0, 0));
-        getContentPane().add(LoginFailedStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 240, 20));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setText("For store login.");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
+
+        jLabel6.setText("beta 1");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, -1, -1));
+        getContentPane().add(LoginFailedStutus, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 270, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void UsernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameFieldActionPerformed
+    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_UsernameFieldActionPerformed
-
-    private void ShopLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShopLoginActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ShopLoginActionPerformed
-
-    private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
-        // TODO add your handling code here:
-        try {
-            if(!"".equals(UsernameField.getText()) & !"".equals(PasswordField.getText())) {
+        if (!"".equals(UsernameField.getText()) & !"".equals(PasswordField.getText())) {
+            try {
                 Connection con = ConnectionBuilder.getConnection();
                 PreparedStatement pstm = con.prepareStatement("SELECT * FROM UserProfile WHERE username=? and password=?");
                 pstm.setString(1, UsernameField.getText());
@@ -146,22 +114,21 @@ public class WelcomePage extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Sucessful");
                 }
                 else {
-                    LoginFailedStatus.setText("");
-                    LoginFailedStatus.setText("Invalid username or password");
+                   LoginFailedStutus.setText("");
+                   LoginFailedStutus.setText("Invalid username or password");
                 }
+            } catch (SQLException ex) {
+                Logger.getLogger(WelcomePage.class.getName()).log(Level.SEVERE, null, ex);
             }
-            else {
-                LoginFailedStatus.setText("Please enter your username and password!");
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(WelcomePage.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_LoginActionPerformed
+        else {
+            LoginFailedStutus.setText("Please enter your username and password!");
+        }
+    }//GEN-LAST:event_RegisterActionPerformed
 
-    private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed
+    private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_PasswordFieldActionPerformed
+    }//GEN-LAST:event_LoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,25 +158,22 @@ public class WelcomePage extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new WelcomePage().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new WelcomePage().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Login;
-    private javax.swing.JLabel LoginFailedStatus;
-    private javax.swing.JLabel Password;
+    private javax.swing.JLabel LoginFailedStutus;
     private javax.swing.JPasswordField PasswordField;
     private javax.swing.JButton Register;
-    private javax.swing.JButton ShopLogin;
-    private javax.swing.JLabel Username;
+    private javax.swing.JButton StoreLogin;
     private javax.swing.JTextField UsernameField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
