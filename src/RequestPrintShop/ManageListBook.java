@@ -27,34 +27,34 @@ public class ManageListBook extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
+        signOut = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        manageTable = new javax.swing.JTable();
+        manageBookTitlw = new javax.swing.JLabel();
+        bookName = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        showBookName = new javax.swing.JLabel();
+        date = new javax.swing.JLabel();
+        productID = new javax.swing.JLabel();
+        showProductID = new javax.swing.JLabel();
+        showDate = new javax.swing.JLabel();
+        detail = new javax.swing.JLabel();
+        showDetail = new javax.swing.JLabel();
+        price = new javax.swing.JLabel();
+        showPrice = new javax.swing.JLabel();
+        addButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jLabel3.setText("Sign out");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(600, 10, 50, 20);
+        signOut.setText("Sign out");
+        getContentPane().add(signOut);
+        signOut.setBounds(600, 10, 50, 20);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        manageTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -80,58 +80,58 @@ public class ManageListBook extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(manageTable);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(190, 50, 452, 402);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Manage Books");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 40, 190, 30);
+        manageBookTitlw.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        manageBookTitlw.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        manageBookTitlw.setText("Manage Books");
+        getContentPane().add(manageBookTitlw);
+        manageBookTitlw.setBounds(0, 40, 190, 30);
 
-        jLabel2.setText("Name");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(10, 140, 40, 16);
+        bookName.setText("Name");
+        getContentPane().add(bookName);
+        bookName.setBounds(10, 140, 40, 16);
         getContentPane().add(jLabel4);
         jLabel4.setBounds(20, 110, 160, 0);
         getContentPane().add(jLabel6);
         jLabel6.setBounds(20, 110, 160, 0);
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(20, 160, 150, 20);
+        getContentPane().add(showBookName);
+        showBookName.setBounds(20, 160, 150, 20);
 
-        jLabel8.setText("Date");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(10, 190, 50, 16);
+        date.setText("Date");
+        getContentPane().add(date);
+        date.setBounds(10, 190, 50, 16);
 
-        jLabel9.setText("Product ID");
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(10, 90, 60, 16);
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(20, 110, 150, 20);
-        getContentPane().add(jLabel11);
-        jLabel11.setBounds(20, 210, 150, 20);
+        productID.setText("Product ID");
+        getContentPane().add(productID);
+        productID.setBounds(10, 90, 60, 16);
+        getContentPane().add(showProductID);
+        showProductID.setBounds(20, 110, 150, 20);
+        getContentPane().add(showDate);
+        showDate.setBounds(20, 210, 150, 20);
 
-        jLabel12.setText("Detail");
-        getContentPane().add(jLabel12);
-        jLabel12.setBounds(10, 240, 70, 16);
-        getContentPane().add(jLabel13);
-        jLabel13.setBounds(20, 260, 150, 80);
+        detail.setText("Detail");
+        getContentPane().add(detail);
+        detail.setBounds(10, 240, 70, 16);
+        getContentPane().add(showDetail);
+        showDetail.setBounds(20, 260, 150, 80);
 
-        jLabel14.setText("Price of print");
-        getContentPane().add(jLabel14);
-        jLabel14.setBounds(10, 350, 80, 16);
-        getContentPane().add(jLabel15);
-        jLabel15.setBounds(20, 370, 150, 20);
+        price.setText("Price of print");
+        getContentPane().add(price);
+        price.setBounds(10, 350, 80, 16);
+        getContentPane().add(showPrice);
+        showPrice.setBounds(20, 370, 150, 20);
 
-        jButton1.setText("Add");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(100, 420, 70, 30);
+        addButton.setText("Add");
+        getContentPane().add(addButton);
+        addButton.setBounds(100, 420, 70, 30);
 
-        jButton2.setText("Back");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(20, 420, 70, 30);
+        backButton.setText("Back");
+        getContentPane().add(backButton);
+        backButton.setBounds(20, 420, 70, 30);
 
         setSize(new java.awt.Dimension(687, 524));
         setLocationRelativeTo(null);
@@ -173,23 +173,23 @@ public class ManageListBook extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton addButton;
+    private javax.swing.JButton backButton;
+    private javax.swing.JLabel bookName;
+    private javax.swing.JLabel date;
+    private javax.swing.JLabel detail;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel manageBookTitlw;
+    private javax.swing.JTable manageTable;
+    private javax.swing.JLabel price;
+    private javax.swing.JLabel productID;
+    private javax.swing.JLabel showBookName;
+    private javax.swing.JLabel showDate;
+    private javax.swing.JLabel showDetail;
+    private javax.swing.JLabel showPrice;
+    private javax.swing.JLabel showProductID;
+    private javax.swing.JLabel signOut;
     // End of variables declaration//GEN-END:variables
 }
