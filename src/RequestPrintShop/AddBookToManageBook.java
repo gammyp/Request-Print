@@ -5,6 +5,12 @@
  */
 package RequestPrintShop;
 
+import RequestPrintDatabase.ConnectionBuilder;
+import java.awt.*;
+import java.sql.*;
+import java.util.logging.*;
+import javax.swing.*;
+
 /**
  *
  * @author Lenovo
@@ -46,6 +52,8 @@ public class AddBookToManageBook extends javax.swing.JFrame {
         addByField = new javax.swing.JTextField();
         backButton = new javax.swing.JButton();
         submitButton = new javax.swing.JButton();
+        addByCheck = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
 
@@ -111,20 +119,76 @@ public class AddBookToManageBook extends javax.swing.JFrame {
         addBy.setBounds(50, 280, 90, 30);
 
         addByField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        addByField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                addByFieldFocusLost(evt);
+            }
+        });
         getContentPane().add(addByField);
         addByField.setBounds(150, 280, 220, 30);
 
         backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(backButton);
-        backButton.setBounds(130, 330, 59, 30);
+        backButton.setBounds(130, 340, 70, 30);
 
         submitButton.setText("Submit");
+        submitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(submitButton);
-        submitButton.setBounds(240, 330, 73, 30);
+        submitButton.setBounds(240, 340, 73, 30);
+        getContentPane().add(addByCheck);
+        addByCheck.setBounds(380, 280, 30, 30);
+
+        jLabel3.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(50, 316, 360, 20);
 
         setSize(new java.awt.Dimension(466, 429));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addByFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_addByFieldFocusLost
+        Connection con = null;
+        Image trueIcon = new ImageIcon(this.getClass().getResource("../icon/correct.png")).getImage();
+        Image wrongIcon = new ImageIcon(this.getClass().getResource("../icon/wrong.png")).getImage();
+        try {
+            con = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = con.prepareStatement("SELECT shopName FROM ShopProfile WHERE shopID = ?");
+
+            if (addByField.getText().equals("")) {
+                addByCheck.setIcon(new ImageIcon(trueIcon.getScaledInstance(addByCheck.getWidth(), addByCheck.getHeight(), 0)));
+                addByField.setBackground(null);
+            } else {
+                addByCheck.setIcon(new ImageIcon(wrongIcon.getScaledInstance(addByCheck.getWidth(), addByCheck.getHeight(), 0)));
+                addByField.setBackground(Color.PINK);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AddBookToManageBook.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_addByFieldFocusLost
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_backButtonActionPerformed
+
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+        Connection con = null;
+        try {
+            con = ConnectionBuilder.getConnection();
+        } catch (SQLException ex) {
+            Logger.getLogger(AddBookToManageBook.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_submitButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,6 +231,7 @@ public class AddBookToManageBook extends javax.swing.JFrame {
     private javax.swing.JButton Submit;
     private javax.swing.JLabel addBookTitle;
     private javax.swing.JLabel addBy;
+    private javax.swing.JLabel addByCheck;
     private javax.swing.JTextField addByField;
     private javax.swing.JButton backButton;
     private javax.swing.JLabel bookName;
@@ -175,6 +240,7 @@ public class AddBookToManageBook extends javax.swing.JFrame {
     private javax.swing.JSpinner dateSpinner;
     private javax.swing.JLabel detail;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel setPrice;
