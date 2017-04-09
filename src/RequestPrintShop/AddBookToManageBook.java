@@ -5,12 +5,19 @@
  */
 package RequestPrintShop;
 
+import RequestPrintLogin.StoreLogin;
+import RequestPrintDatabase.ConnectionBuilder;
+import java.awt.*;
+import java.sql.*;
+import java.util.logging.*;
+import javax.swing.*;
+
 /**
  *
  * @author Lenovo
  */
 public class AddBookToManageBook extends javax.swing.JFrame {
-
+    private StoreLogin shopID; 
     /**
      * Creates new form AddBookToManageBook
      */
@@ -33,25 +40,25 @@ public class AddBookToManageBook extends javax.swing.JFrame {
         addBookTitle = new javax.swing.JLabel();
         bookName = new javax.swing.JLabel();
         date = new javax.swing.JLabel();
-        MonthSpinner = new javax.swing.JSpinner();
-        yearSpinner = new javax.swing.JSpinner();
+        monthSpinner = new javax.swing.JSpinner();
         dateSpinner = new javax.swing.JSpinner();
         detail = new javax.swing.JLabel();
         bookNameField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        DetailField = new javax.swing.JTextPane();
+        detailField = new javax.swing.JTextPane();
         setPrice = new javax.swing.JLabel();
         setPriceField = new javax.swing.JTextField();
-        addBy = new javax.swing.JLabel();
-        addByField = new javax.swing.JTextField();
         backButton = new javax.swing.JButton();
         submitButton = new javax.swing.JButton();
+        errorText = new javax.swing.JLabel();
+        yearSpinner = new javax.swing.JSpinner();
 
         jLabel2.setText("jLabel2");
 
         Submit.setText("Submit");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAutoRequestFocus(false);
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -72,10 +79,12 @@ public class AddBookToManageBook extends javax.swing.JFrame {
         date.setText("Date :");
         getContentPane().add(date);
         date.setBounds(90, 90, 50, 30);
-        getContentPane().add(MonthSpinner);
-        MonthSpinner.setBounds(200, 90, 100, 30);
-        getContentPane().add(yearSpinner);
-        yearSpinner.setBounds(300, 90, 70, 30);
+
+        monthSpinner.setModel(new javax.swing.SpinnerListModel(new String[] {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"}));
+        getContentPane().add(monthSpinner);
+        monthSpinner.setBounds(200, 90, 100, 30);
+
+        dateSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
         getContentPane().add(dateSpinner);
         dateSpinner.setBounds(150, 90, 50, 30);
 
@@ -86,10 +95,15 @@ public class AddBookToManageBook extends javax.swing.JFrame {
         detail.setBounds(50, 130, 90, 30);
 
         bookNameField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        bookNameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookNameFieldActionPerformed(evt);
+            }
+        });
         getContentPane().add(bookNameField);
         bookNameField.setBounds(150, 50, 220, 30);
 
-        jScrollPane1.setViewportView(DetailField);
+        jScrollPane1.setViewportView(detailField);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(150, 130, 220, 100);
@@ -104,27 +118,78 @@ public class AddBookToManageBook extends javax.swing.JFrame {
         getContentPane().add(setPriceField);
         setPriceField.setBounds(150, 240, 220, 30);
 
-        addBy.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        addBy.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        addBy.setText("Add by :");
-        getContentPane().add(addBy);
-        addBy.setBounds(50, 280, 90, 30);
-
-        addByField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(addByField);
-        addByField.setBounds(150, 280, 220, 30);
-
         backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(backButton);
-        backButton.setBounds(130, 330, 59, 30);
+        backButton.setBounds(130, 300, 70, 30);
 
         submitButton.setText("Submit");
+        submitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(submitButton);
-        submitButton.setBounds(240, 330, 73, 30);
+        submitButton.setBounds(240, 300, 73, 30);
 
-        setSize(new java.awt.Dimension(466, 429));
+        errorText.setForeground(new java.awt.Color(255, 0, 0));
+        errorText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(errorText);
+        errorText.setBounds(50, 280, 360, 20);
+
+        yearSpinner.setModel(new javax.swing.SpinnerNumberModel(1900, 1900, 2500, 1));
+        yearSpinner.setEditor(new javax.swing.JSpinner.NumberEditor(yearSpinner, "0000"));
+        getContentPane().add(yearSpinner);
+        yearSpinner.setBounds(300, 90, 70, 30);
+
+        setSize(new java.awt.Dimension(466, 402));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_backButtonActionPerformed
+
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+        Connection con = null;
+        try {
+            con = ConnectionBuilder.getConnection();
+            PreparedStatement pstmSelect = con.prepareStatement("SELECT * FORM Product WHERE productName = ? AND ShopProfile_shopID = ?");
+            pstmSelect.setString(1, bookNameField.getText());
+            pstmSelect.setString(2, "");
+            ResultSet rs = pstmSelect.executeQuery();
+            if (rs.next()) {
+                errorText.setText("* Note * This book already existed.");
+                bookNameField.setBackground(Color.PINK);
+            } else {
+                
+                PreparedStatement pstmInsert = con.prepareStatement("INSERT * FORM Product (productName, date, detail, price, ShopProfile_shopID)"
+                        + "VALUES (?,?,?,?,?)");
+                pstmInsert.setString(1, bookNameField.getText());
+                pstmInsert.setString(2, dateSpinner.getValue() + " " + monthSpinner.getValue() + " " + yearSpinner.getValue());
+                pstmInsert.setString(3, detailField.getText());
+                pstmInsert.setString(4, setPriceField.getText());
+//                pstmInsert.setString(5, "");
+//                pstmInsert.executeUpdate();
+                bookNameField.setText("");
+                dateSpinner.setValue(1);
+                monthSpinner.setValue("January");
+                yearSpinner.setValue(1900);
+                detailField.setText("");
+                setPriceField.setText("");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AddBookToManageBook.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_submitButtonActionPerformed
+
+    private void bookNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookNameFieldActionPerformed
+        bookNameField.setBackground(null);
+    }//GEN-LAST:event_bookNameFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,21 +227,20 @@ public class AddBookToManageBook extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextPane DetailField;
-    private javax.swing.JSpinner MonthSpinner;
     private javax.swing.JButton Submit;
     private javax.swing.JLabel addBookTitle;
-    private javax.swing.JLabel addBy;
-    private javax.swing.JTextField addByField;
     private javax.swing.JButton backButton;
     private javax.swing.JLabel bookName;
     private javax.swing.JTextField bookNameField;
     private javax.swing.JLabel date;
     private javax.swing.JSpinner dateSpinner;
     private javax.swing.JLabel detail;
+    private javax.swing.JTextPane detailField;
+    private javax.swing.JLabel errorText;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JSpinner monthSpinner;
     private javax.swing.JLabel setPrice;
     private javax.swing.JTextField setPriceField;
     private javax.swing.JButton submitButton;

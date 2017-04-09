@@ -27,102 +27,77 @@ public class UserProfile extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        FileLink = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        Request = new javax.swing.JButton();
-        LogoutButton = new javax.swing.JButton();
-        BrowseFile = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        FileStatus = new javax.swing.JLabel();
-        NumberOfCopies = new javax.swing.JSpinner();
+        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        BookList = new javax.swing.JComboBox<>();
+        jSpinner1 = new javax.swing.JSpinner();
         jLabel9 = new javax.swing.JLabel();
-        StatusCheck = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Welcome");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 330, 30));
+        jButton1.setText("Logout");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 311, -1, -1));
 
-        FileLink.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FileLinkActionPerformed(evt);
-            }
-        });
-        getContentPane().add(FileLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 440, -1));
+        jButton2.setText("Request");
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, -1, -1));
+
+        jButton3.setText("Check status");
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, -1, -1));
+
+        jLabel1.setText("beta 1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, -1, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 410, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Request Print your document.");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
+        jLabel2.setText("Location link");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
 
-        jLabel3.setText("link of your document");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 110, 20));
+        jLabel3.setText("Require cloud service (Google Drive , Onedrive , etc.)");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setText("OR");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel4.setText("Request to print your document");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
-        Request.setText("Request");
-        getContentPane().add(Request, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, -1, -1));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setText("Attach your file");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
-        LogoutButton.setText("Logout");
-        LogoutButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LogoutButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(LogoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
+        jButton4.setText("Choose File");
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 400, 20));
 
-        BrowseFile.setText("Browse");
-        getContentPane().add(BrowseFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, -1, -1));
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setText("OR");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
 
-        jLabel5.setText("beta 1");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, -1, -1));
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setText("Choose book from list.");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 254, 140, 30));
+        getContentPane().add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
 
-        jLabel6.setText("Choose your file.");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, 20));
+        jLabel9.setText("Copies");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
 
-        FileStatus.setText("Your file location here.");
-        getContentPane().add(FileStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 350, 20));
-        getContentPane().add(NumberOfCopies, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, -1, -1));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 390, -1));
 
-        jLabel8.setText("Number of Copies");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, 20));
-
-        BookList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(BookList, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 390, -1));
-
-        jLabel9.setText("Choose from store list");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, 20));
-
-        StatusCheck.setText("Check Status");
-        StatusCheck.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StatusCheckActionPerformed(evt);
-            }
-        });
-        getContentPane().add(StatusCheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, -1, -1));
-
-        pack();
+        setSize(new java.awt.Dimension(600, 407));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void FileLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FileLinkActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_FileLinkActionPerformed
-
-    private void LogoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LogoutButtonActionPerformed
-
-    private void StatusCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StatusCheckActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_StatusCheckActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,21 +135,21 @@ public class UserProfile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> BookList;
-    private javax.swing.JButton BrowseFile;
-    private javax.swing.JTextField FileLink;
-    private javax.swing.JLabel FileStatus;
-    private javax.swing.JButton LogoutButton;
-    private javax.swing.JSpinner NumberOfCopies;
-    private javax.swing.JButton Request;
-    private javax.swing.JButton StatusCheck;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

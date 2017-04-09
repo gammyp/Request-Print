@@ -43,8 +43,9 @@ public class ManageListBook extends javax.swing.JFrame {
         showDetail = new javax.swing.JLabel();
         price = new javax.swing.JLabel();
         showPrice = new javax.swing.JLabel();
-        addButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
+        addButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -83,7 +84,7 @@ public class ManageListBook extends javax.swing.JFrame {
         jScrollPane1.setViewportView(manageTable);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(190, 50, 452, 402);
+        jScrollPane1.setBounds(190, 50, 452, 360);
 
         manageBookTitlw.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         manageBookTitlw.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -125,17 +126,40 @@ public class ManageListBook extends javax.swing.JFrame {
         getContentPane().add(showPrice);
         showPrice.setBounds(20, 370, 150, 20);
 
-        addButton.setText("Add");
-        getContentPane().add(addButton);
-        addButton.setBounds(100, 420, 70, 30);
+        deleteButton.setText("Delete");
+        getContentPane().add(deleteButton);
+        deleteButton.setBounds(400, 430, 70, 30);
 
         backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(backButton);
-        backButton.setBounds(20, 420, 70, 30);
+        backButton.setBounds(580, 430, 70, 30);
+
+        addButton.setText("Add");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(addButton);
+        addButton.setBounds(490, 430, 70, 30);
 
         setSize(new java.awt.Dimension(687, 524));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backButtonActionPerformed
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        AddBookToManageBook add = new AddBookToManageBook();
+        add.setVisible(true);
+    }//GEN-LAST:event_addButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,6 +201,7 @@ public class ManageListBook extends javax.swing.JFrame {
     private javax.swing.JButton backButton;
     private javax.swing.JLabel bookName;
     private javax.swing.JLabel date;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JLabel detail;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;

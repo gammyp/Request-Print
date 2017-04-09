@@ -11,11 +11,11 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-public class Register extends javax.swing.JFrame {
+public class RegisterUser extends javax.swing.JFrame {
 
     boolean checkall = true;
 
-    public Register() {
+    public RegisterUser() {
         initComponents();
     }
 
@@ -65,7 +65,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Register);
-        Register.setBounds(253, 13, 141, 43);
+        Register.setBounds(253, 13, 104, 43);
 
         surname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -253,7 +253,7 @@ public class Register extends javax.swing.JFrame {
                 }
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegisterUser.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_submitButtonActionPerformed
 
@@ -278,7 +278,7 @@ public class Register extends javax.swing.JFrame {
 
 //        checkUsername.hide();
         } catch (SQLException ex) {
-            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegisterUser.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -331,20 +331,21 @@ public class Register extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Register().setVisible(true);
+                new RegisterUser().setVisible(true);
             }
         });
     }
