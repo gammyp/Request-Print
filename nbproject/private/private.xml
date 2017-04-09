@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group/>
+=======
+        <group>
+            <file>file:/D:/KMUTT/Work%202_59/INT%20105%20Computer%20Programming%20II/Request%20Print%20Project/RequestPrint/src/RequestPrintShop/RegisterShop.java</file>
+            <file>file:/D:/KMUTT/Work%202_59/INT%20105%20Computer%20Programming%20II/Request%20Print%20Project/RequestPrint/src/RequestPrintShop/ManageListBook.java</file>
+            <file>file:/D:/KMUTT/Work%202_59/INT%20105%20Computer%20Programming%20II/Request%20Print%20Project/RequestPrint/src/RequestPrintShop/AddBookToManageBook.java</file>
+        </group>
+>>>>>>> f90e7f4fcced972e914f1c09bf97629522f5c7c4
     </open-files>
 </project-private>

@@ -27,37 +27,139 @@ public class ManageListBook extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        signOut = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        manageTable = new javax.swing.JTable();
+        manageBookTitlw = new javax.swing.JLabel();
+        bookName = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        showBookName = new javax.swing.JLabel();
+        date = new javax.swing.JLabel();
+        productID = new javax.swing.JLabel();
+        showProductID = new javax.swing.JLabel();
+        showDate = new javax.swing.JLabel();
+        detail = new javax.swing.JLabel();
+        showDetail = new javax.swing.JLabel();
+        price = new javax.swing.JLabel();
+        showPrice = new javax.swing.JLabel();
+        deleteButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
+        addButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Sign out");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 470, 160, 22);
+        signOut.setText("Sign out");
+        getContentPane().add(signOut);
+        signOut.setBounds(600, 10, 50, 20);
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel1.setLayout(null);
+        manageTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Product ID", "Book name", "Price"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Home");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 110, 160, 30);
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 160, 500);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(manageTable);
 
-        setSize(new java.awt.Dimension(618, 547));
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(190, 50, 452, 360);
+
+        manageBookTitlw.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        manageBookTitlw.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        manageBookTitlw.setText("Manage Books");
+        getContentPane().add(manageBookTitlw);
+        manageBookTitlw.setBounds(0, 40, 190, 30);
+
+        bookName.setText("Name");
+        getContentPane().add(bookName);
+        bookName.setBounds(10, 140, 40, 16);
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(20, 110, 160, 0);
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(20, 110, 160, 0);
+        getContentPane().add(showBookName);
+        showBookName.setBounds(20, 160, 150, 20);
+
+        date.setText("Date");
+        getContentPane().add(date);
+        date.setBounds(10, 190, 50, 16);
+
+        productID.setText("Product ID");
+        getContentPane().add(productID);
+        productID.setBounds(10, 90, 60, 16);
+        getContentPane().add(showProductID);
+        showProductID.setBounds(20, 110, 150, 20);
+        getContentPane().add(showDate);
+        showDate.setBounds(20, 210, 150, 20);
+
+        detail.setText("Detail");
+        getContentPane().add(detail);
+        detail.setBounds(10, 240, 70, 16);
+        getContentPane().add(showDetail);
+        showDetail.setBounds(20, 260, 150, 80);
+
+        price.setText("Price of print");
+        getContentPane().add(price);
+        price.setBounds(10, 350, 80, 16);
+        getContentPane().add(showPrice);
+        showPrice.setBounds(20, 370, 150, 20);
+
+        deleteButton.setText("Delete");
+        getContentPane().add(deleteButton);
+        deleteButton.setBounds(400, 430, 70, 30);
+
+        backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(backButton);
+        backButton.setBounds(580, 430, 70, 30);
+
+        addButton.setText("Add");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(addButton);
+        addButton.setBounds(490, 430, 70, 30);
+
+        setSize(new java.awt.Dimension(687, 524));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backButtonActionPerformed
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        AddBookToManageBook add = new AddBookToManageBook();
+        add.setVisible(true);
+    }//GEN-LAST:event_addButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -95,8 +197,24 @@ public class ManageListBook extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton addButton;
+    private javax.swing.JButton backButton;
+    private javax.swing.JLabel bookName;
+    private javax.swing.JLabel date;
+    private javax.swing.JButton deleteButton;
+    private javax.swing.JLabel detail;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel manageBookTitlw;
+    private javax.swing.JTable manageTable;
+    private javax.swing.JLabel price;
+    private javax.swing.JLabel productID;
+    private javax.swing.JLabel showBookName;
+    private javax.swing.JLabel showDate;
+    private javax.swing.JLabel showDetail;
+    private javax.swing.JLabel showPrice;
+    private javax.swing.JLabel showProductID;
+    private javax.swing.JLabel signOut;
     // End of variables declaration//GEN-END:variables
 }

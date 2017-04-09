@@ -91,27 +91,9 @@ public class RegisterShop extends javax.swing.JFrame {
         getContentPane().add(surname);
         surname.setBounds(120, 100, 80, 30);
 
-<<<<<<< HEAD:src/RequestPrintShop/Register.java
-        nameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameFieldActionPerformed(evt);
-            }
-        });
-        getContentPane().add(nameField);
-        nameField.setBounds(230, 60, 230, 20);
-
-        surnameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                surnameFieldActionPerformed(evt);
-            }
-        });
-        getContentPane().add(surnameField);
-        surnameField.setBounds(230, 100, 230, 20);
-=======
         surnameField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(surnameField);
         surnameField.setBounds(220, 100, 220, 30);
->>>>>>> 09f8d20b2b22355b033bcea4e572f02083d07110:src/RequestPrintShop/RegisterShop.java
 
         address.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         address.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -121,11 +103,7 @@ public class RegisterShop extends javax.swing.JFrame {
 
         addressField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(addressField);
-<<<<<<< HEAD:src/RequestPrintShop/Register.java
-        addressField.setBounds(230, 140, 230, 20);
-=======
         addressField.setBounds(220, 140, 220, 30);
->>>>>>> 09f8d20b2b22355b033bcea4e572f02083d07110:src/RequestPrintShop/RegisterShop.java
 
         email.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         email.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -140,11 +118,7 @@ public class RegisterShop extends javax.swing.JFrame {
             }
         });
         getContentPane().add(emailField);
-<<<<<<< HEAD:src/RequestPrintShop/Register.java
-        emailField.setBounds(230, 180, 230, 20);
-=======
         emailField.setBounds(220, 180, 220, 30);
->>>>>>> 09f8d20b2b22355b033bcea4e572f02083d07110:src/RequestPrintShop/RegisterShop.java
 
         Telephone.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         Telephone.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -152,19 +126,9 @@ public class RegisterShop extends javax.swing.JFrame {
         getContentPane().add(Telephone);
         Telephone.setBounds(100, 220, 100, 30);
 
-<<<<<<< HEAD:src/RequestPrintShop/Register.java
-        telField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                telFieldActionPerformed(evt);
-            }
-        });
-        getContentPane().add(telField);
-        telField.setBounds(230, 220, 230, 20);
-=======
         telephoneField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(telephoneField);
         telephoneField.setBounds(220, 220, 220, 30);
->>>>>>> 09f8d20b2b22355b033bcea4e572f02083d07110:src/RequestPrintShop/RegisterShop.java
 
         shopName.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         shopName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -174,57 +138,7 @@ public class RegisterShop extends javax.swing.JFrame {
 
         shopNameField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(shopNameField);
-<<<<<<< HEAD:src/RequestPrintShop/Register.java
-        shopNameField.setBounds(230, 260, 230, 20);
-
-        password.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        password.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        password.setText("Password :");
-        getContentPane().add(password);
-        password.setBounds(110, 330, 90, 40);
-
-        passwordField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                passwordFieldFocusLost(evt);
-            }
-        });
-        getContentPane().add(passwordField);
-        passwordField.setBounds(230, 340, 230, 20);
-
-        confirmPass.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        confirmPass.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        confirmPass.setText("Confirm Password :");
-        getContentPane().add(confirmPass);
-        confirmPass.setBounds(60, 370, 140, 40);
-
-        confirmField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                confirmFieldFocusLost(evt);
-            }
-        });
-        getContentPane().add(confirmField);
-        confirmField.setBounds(230, 380, 230, 20);
-
-        backButton.setText("Back");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(backButton);
-        backButton.setBounds(170, 430, 100, 40);
-
-        submitButton.setText("Submit");
-        submitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(submitButton);
-        submitButton.setBounds(300, 430, 100, 40);
-=======
         shopNameField.setBounds(220, 260, 220, 30);
->>>>>>> 09f8d20b2b22355b033bcea4e572f02083d07110:src/RequestPrintShop/RegisterShop.java
 
         userName.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         userName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -244,13 +158,7 @@ public class RegisterShop extends javax.swing.JFrame {
             }
         });
         getContentPane().add(userNameField);
-<<<<<<< HEAD:src/RequestPrintShop/Register.java
-        userNameField.setBounds(230, 300, 230, 20);
-        getContentPane().add(passwordCheck);
-        passwordCheck.setBounds(470, 380, 20, 20);
-=======
         userNameField.setBounds(220, 300, 220, 30);
->>>>>>> 09f8d20b2b22355b033bcea4e572f02083d07110:src/RequestPrintShop/RegisterShop.java
 
         password.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         password.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -325,10 +233,10 @@ public class RegisterShop extends javax.swing.JFrame {
     }//GEN-LAST:event_emailFieldFocusLost
 
     private void userNameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userNameFieldFocusLost
-        Connection con = ConnectionBuilder.getConnection();
-        Image trueIcon = new ImageIcon(this.getClass().getResource("../icon/correct.png")).getImage();
-        Image wrongIcon = new ImageIcon(this.getClass().getResource("../icon/wrong.png")).getImage();
-        try {
+         try {
+            Connection con = ConnectionBuilder.getConnection();
+            Image trueIcon = new ImageIcon(this.getClass().getResource("../icon/correct.png")).getImage();
+            Image wrongIcon = new ImageIcon(this.getClass().getResource("../icon/wrong.png")).getImage();
             PreparedStatement pstm = con.prepareStatement("SELECT username FROM ShopProfile WHERE username = ?");
             pstm.setString(1, userNameField.getText());
             ResultSet rs = pstm.executeQuery();
@@ -350,8 +258,8 @@ public class RegisterShop extends javax.swing.JFrame {
     }//GEN-LAST:event_userNameFieldFocusLost
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-        Connection con = ConnectionBuilder.getConnection();
         try {
+            Connection con = ConnectionBuilder.getConnection();
             if ((passField.getText().length() > 5) & (userNameField.getText().length() > 0) & (emailField.getText().indexOf("@") > 0)) {
                 if (passField.getText().equals(confirmField.getText())) {
                     PreparedStatement pstm = con.prepareStatement("INSERT INTO ShopProfile (username, password, shopName, ownerName, "
@@ -442,6 +350,9 @@ public class RegisterShop extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(RegisterShop.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
