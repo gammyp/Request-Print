@@ -5,6 +5,9 @@
  */
 package RequestPrintLogin;
 
+import RequestPrintShop.RegisterShop;
+import RequestPrintUser.RegisterUser;
+
 /**
  *
  * @author Lenovo
@@ -27,23 +30,57 @@ public class SelectRegisUserOrRegisShop extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        questionSelectRegis = new javax.swing.JLabel();
+        shopRegisButton = new javax.swing.JButton();
+        userRegisButton = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        getContentPane().setLayout(null);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        questionSelectRegis.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        questionSelectRegis.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        questionSelectRegis.setText("Do you preferuser register or shop register ?");
+        getContentPane().add(questionSelectRegis);
+        questionSelectRegis.setBounds(0, 20, 450, 41);
 
-        setSize(new java.awt.Dimension(418, 347));
+        shopRegisButton.setText("Shop Register");
+        shopRegisButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                shopRegisButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(shopRegisButton);
+        shopRegisButton.setBounds(250, 70, 120, 30);
+
+        userRegisButton.setText("User Register");
+        userRegisButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userRegisButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(userRegisButton);
+        userRegisButton.setBounds(70, 70, 120, 30);
+
+        setSize(new java.awt.Dimension(464, 173));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void userRegisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userRegisButtonActionPerformed
+        WelcomePage wp = new WelcomePage();
+        RegisterUser regisUser = new RegisterUser();
+        wp.setVisible(false);
+        this.setVisible(false);
+        regisUser.setVisible(true);
+    }//GEN-LAST:event_userRegisButtonActionPerformed
+
+    private void shopRegisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shopRegisButtonActionPerformed
+        WelcomePage wp = new WelcomePage();
+        RegisterShop regisShop = new RegisterShop();
+        wp.setVisible(false);
+        this.setVisible(false);
+        regisShop.setVisible(true);
+    }//GEN-LAST:event_shopRegisButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -81,5 +118,8 @@ public class SelectRegisUserOrRegisShop extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel questionSelectRegis;
+    private javax.swing.JButton shopRegisButton;
+    private javax.swing.JButton userRegisButton;
     // End of variables declaration//GEN-END:variables
 }

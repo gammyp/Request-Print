@@ -6,6 +6,7 @@
 package RequestPrintShop;
 
 import RequestPrintDatabase.ConnectionBuilder;
+import RequestPrintLogin.WelcomePage;
 import java.awt.Color;
 import java.awt.Image;
 import java.sql.Connection;
@@ -182,6 +183,11 @@ public class RegisterShop extends javax.swing.JFrame {
         submitButton.setBounds(320, 440, 100, 40);
 
         backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(backButton);
         backButton.setBounds(170, 440, 100, 40);
         getContentPane().add(passwordCheck);
@@ -324,6 +330,12 @@ public class RegisterShop extends javax.swing.JFrame {
             passField.setBackground(Color.PINK);
         }
     }//GEN-LAST:event_confirmFieldFocusLost
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        WelcomePage wp = new WelcomePage();
+        this.setVisible(false);
+        wp.setVisible(true);
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments

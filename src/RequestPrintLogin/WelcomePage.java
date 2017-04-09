@@ -14,7 +14,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author Game
@@ -42,14 +41,15 @@ public class WelcomePage extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         UsernameField = new javax.swing.JTextField();
         PasswordField = new javax.swing.JPasswordField();
-        Login = new javax.swing.JButton();
-        Register = new javax.swing.JButton();
-        StoreLogin = new javax.swing.JButton();
+        loginButton = new javax.swing.JButton();
+        regisButton = new javax.swing.JButton();
+        storeLoginButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         LoginFailedStutus = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
@@ -68,24 +68,24 @@ public class WelcomePage extends javax.swing.JFrame {
         getContentPane().add(UsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 270, -1));
         getContentPane().add(PasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 270, -1));
 
-        Login.setText("Login");
-        Login.addActionListener(new java.awt.event.ActionListener() {
+        loginButton.setText("Login");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginActionPerformed(evt);
+                loginButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 140, -1));
+        getContentPane().add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 140, -1));
 
-        Register.setText("Register");
-        Register.addActionListener(new java.awt.event.ActionListener() {
+        regisButton.setText("Register");
+        regisButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegisterActionPerformed(evt);
+                regisButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 80, -1));
+        getContentPane().add(regisButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 80, -1));
 
-        StoreLogin.setText("Login");
-        getContentPane().add(StoreLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 80, -1));
+        storeLoginButton.setText("Login");
+        getContentPane().add(storeLoginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 80, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -98,11 +98,16 @@ public class WelcomePage extends javax.swing.JFrame {
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 120, 30));
         getContentPane().add(LoginFailedStutus, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 270, 20));
 
-        pack();
+        setSize(new java.awt.Dimension(418, 320));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
-        // TODO add your handling code here:
+    private void regisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regisButtonActionPerformed
+        SelectRegisUserOrRegisShop selectRegis = new SelectRegisUserOrRegisShop();
+        selectRegis.setVisible(true);
+    }//GEN-LAST:event_regisButtonActionPerformed
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         if (!"".equals(UsernameField.getText()) & !"".equals(PasswordField.getText())) {
             try {
                 Connection con = ConnectionBuilder.getConnection();
@@ -112,23 +117,17 @@ public class WelcomePage extends javax.swing.JFrame {
                 ResultSet rs = pstm.executeQuery();
                 if (rs.next()) {
                     JOptionPane.showMessageDialog(null, "Sucessful");
-                }
-                else {
-                   LoginFailedStutus.setText("");
-                   LoginFailedStutus.setText("Invalid username or password");
+                } else {
+                    LoginFailedStutus.setText("");
+                    LoginFailedStutus.setText("Invalid username or password");
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(WelcomePage.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        else {
+        } else {
             LoginFailedStutus.setText("Please enter your username and password!");
         }
-    }//GEN-LAST:event_RegisterActionPerformed
-
-    private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LoginActionPerformed
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,16 +163,16 @@ public class WelcomePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Login;
     private javax.swing.JLabel LoginFailedStutus;
     private javax.swing.JPasswordField PasswordField;
-    private javax.swing.JButton Register;
-    private javax.swing.JButton StoreLogin;
     private javax.swing.JTextField UsernameField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton loginButton;
+    private javax.swing.JButton regisButton;
+    private javax.swing.JButton storeLoginButton;
     // End of variables declaration//GEN-END:variables
 }
