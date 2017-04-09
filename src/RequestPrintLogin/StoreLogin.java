@@ -36,7 +36,7 @@ public class StoreLogin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        UserLogin = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,10 +80,20 @@ public class StoreLogin extends javax.swing.JFrame {
         jLabel6.setText("For User login.");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 110, 30));
 
-        jButton2.setText("Login");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 80, 30));
+        UserLogin.setText("Login");
+        UserLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                UserLoginMouseClicked(evt);
+            }
+        });
+        getContentPane().add(UserLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 80, 30));
 
         jButton3.setText("Register");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 80, 30));
 
         pack();
@@ -93,6 +103,16 @@ public class StoreLogin extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void UserLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserLoginMouseClicked
+        setVisible(false);
+        UserLogin usr = new UserLogin();
+        usr.setVisible(true);
+    }//GEN-LAST:event_UserLoginMouseClicked
 
     /**
      * @param args the command line arguments
@@ -130,8 +150,8 @@ public class StoreLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton UserLogin;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
