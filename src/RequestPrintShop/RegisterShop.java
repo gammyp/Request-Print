@@ -6,7 +6,7 @@
 package RequestPrintShop;
 
 import RequestPrintDatabase.ConnectionBuilder;
-import RequestPrintLogin.WelcomePage;
+import RequestPrintLogin.UserLogin;
 import java.awt.Color;
 import java.awt.Image;
 import java.sql.Connection;
@@ -332,7 +332,7 @@ public class RegisterShop extends javax.swing.JFrame {
     }//GEN-LAST:event_confirmFieldFocusLost
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        WelcomePage wp = new WelcomePage();
+        UserLogin wp = new UserLogin();
         this.setVisible(false);
         wp.setVisible(true);
     }//GEN-LAST:event_backButtonActionPerformed

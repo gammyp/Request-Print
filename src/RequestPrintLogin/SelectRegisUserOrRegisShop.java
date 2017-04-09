@@ -67,7 +67,7 @@ public class SelectRegisUserOrRegisShop extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void userRegisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userRegisButtonActionPerformed
-        WelcomePage wp = new WelcomePage();
+        UserLogin wp = new UserLogin();
         RegisterUser regisUser = new RegisterUser();
         wp.setVisible(false);
         this.setVisible(false);
@@ -75,7 +75,7 @@ public class SelectRegisUserOrRegisShop extends javax.swing.JFrame {
     }//GEN-LAST:event_userRegisButtonActionPerformed
 
     private void shopRegisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shopRegisButtonActionPerformed
-        WelcomePage wp = new WelcomePage();
+        UserLogin wp = new UserLogin();
         RegisterShop regisShop = new RegisterShop();
         wp.setVisible(false);
         this.setVisible(false);
