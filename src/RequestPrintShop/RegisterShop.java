@@ -183,6 +183,11 @@ public class RegisterShop extends javax.swing.JFrame {
         submitButton.setBounds(320, 440, 100, 40);
 
         backButton.setText("Back");
+        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backButtonMouseClicked(evt);
+            }
+        });
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
@@ -336,6 +341,11 @@ public class RegisterShop extends javax.swing.JFrame {
         this.setVisible(false);
         wp.setVisible(true);
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
+        // TODO add your handling code here:
+        setVisible(false);
+    }//GEN-LAST:event_backButtonMouseClicked
 
     /**
      * @param args the command line arguments
