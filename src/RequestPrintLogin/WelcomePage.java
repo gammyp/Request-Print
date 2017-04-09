@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package RequestPrintUser;
+package RequestPrintLogin;
 
 import RequestPrintDatabase.ConnectionBuilder;
 import java.sql.Connection;
@@ -47,25 +47,26 @@ public class WelcomePage extends javax.swing.JFrame {
         StoreLogin = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         LoginFailedStutus = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Welcome to Request Print project");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 270, -1));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("E - PRINTING");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 400, 30));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Username");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("Username : ");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 80, 20));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Password");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
-        getContentPane().add(UsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 270, -1));
-        getContentPane().add(PasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 270, -1));
+        jLabel3.setText("Password :");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 70, 20));
+        getContentPane().add(UsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 270, -1));
+        getContentPane().add(PasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 270, -1));
 
         Login.setText("Login");
         Login.addActionListener(new java.awt.event.ActionListener() {
@@ -73,7 +74,7 @@ public class WelcomePage extends javax.swing.JFrame {
                 LoginActionPerformed(evt);
             }
         });
-        getContentPane().add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 80, -1));
+        getContentPane().add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 140, -1));
 
         Register.setText("Register");
         Register.addActionListener(new java.awt.event.ActionListener() {
@@ -81,21 +82,20 @@ public class WelcomePage extends javax.swing.JFrame {
                 RegisterActionPerformed(evt);
             }
         });
-        getContentPane().add(Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 80, -1));
+        getContentPane().add(Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 80, -1));
 
         StoreLogin.setText("Login");
-        getContentPane().add(StoreLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 80, -1));
+        getContentPane().add(StoreLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 80, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Don't have an account?");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 150, 30));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("For store login.");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
-
-        jLabel6.setText("beta 1");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 120, 30));
         getContentPane().add(LoginFailedStutus, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 270, 20));
 
         pack();
@@ -175,6 +175,5 @@ public class WelcomePage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
 }
