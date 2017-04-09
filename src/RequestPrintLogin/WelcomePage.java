@@ -36,7 +36,7 @@ public class WelcomePage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        nameProgram = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         UsernameField = new javax.swing.JTextField();
@@ -52,10 +52,10 @@ public class WelcomePage extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("E - PRINTING");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 400, 30));
+        nameProgram.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        nameProgram.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nameProgram.setText("E - PRINTING");
+        getContentPane().add(nameProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 400, 30));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -82,10 +82,10 @@ public class WelcomePage extends javax.swing.JFrame {
                 regisButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(regisButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 80, -1));
+        getContentPane().add(regisButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 80, 30));
 
         storeLoginButton.setText("Login");
-        getContentPane().add(storeLoginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 80, -1));
+        getContentPane().add(storeLoginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 80, 30));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -96,7 +96,7 @@ public class WelcomePage extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("For store login.");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 120, 30));
-        getContentPane().add(LoginFailedStutus, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 270, 20));
+        getContentPane().add(LoginFailedStutus, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 270, 20));
 
         setSize(new java.awt.Dimension(418, 320));
         setLocationRelativeTo(null);
@@ -166,12 +166,12 @@ public class WelcomePage extends javax.swing.JFrame {
     private javax.swing.JLabel LoginFailedStutus;
     private javax.swing.JPasswordField PasswordField;
     private javax.swing.JTextField UsernameField;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JButton loginButton;
+    private javax.swing.JLabel nameProgram;
     private javax.swing.JButton regisButton;
     private javax.swing.JButton storeLoginButton;
     // End of variables declaration//GEN-END:variables
