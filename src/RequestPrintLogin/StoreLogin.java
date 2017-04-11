@@ -5,11 +5,23 @@
  */
 package RequestPrintLogin;
 
+import RequestPrintDatabase.ConnectionBuilder;
+import RequestPrintShop.ShopProfile;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author game_
  */
 public class StoreLogin extends javax.swing.JFrame {
+
+    private int shopId;
 
     /**
      * Creates new form StoreLogin
@@ -27,92 +39,129 @@ public class StoreLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        UserLogin = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        userNameField = new javax.swing.JTextField();
+        userName = new javax.swing.JLabel();
+        password = new javax.swing.JLabel();
+        passwordField = new javax.swing.JPasswordField();
+        loginButton = new javax.swing.JButton();
+        nameProgram = new javax.swing.JLabel();
+        errorText = new javax.swing.JLabel();
+        noAccount = new javax.swing.JLabel();
+        forUserLogin = new javax.swing.JLabel();
+        userLogin = new javax.swing.JButton();
+        regisButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(450, 350));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        userNameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                userNameFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 270, -1));
+        getContentPane().add(userNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 270, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Username : ");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 80, 20));
+        userName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        userName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        userName.setText("Username : ");
+        getContentPane().add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 80, 20));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Password : ");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 270, -1));
+        password.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        password.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        password.setText("Password : ");
+        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+        getContentPane().add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 270, -1));
 
-        jButton1.setText("Login");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 140, -1));
+        loginButton.setText("Login");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 140, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("E - PRINTING");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 400, 30));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 270, 20));
+        nameProgram.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        nameProgram.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nameProgram.setText("E - PRINTING");
+        getContentPane().add(nameProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 400, 30));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel5.setText("Don't have an account?");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 160, 30));
+        errorText.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(errorText, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 270, 20));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel6.setText("For User login.");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 110, 30));
+        noAccount.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        noAccount.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        noAccount.setText("Don't have an account?");
+        getContentPane().add(noAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 160, 30));
 
-        UserLogin.setText("Login");
-        UserLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+        forUserLogin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        forUserLogin.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        forUserLogin.setText("For User login.");
+        getContentPane().add(forUserLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 110, 30));
+
+        userLogin.setText("Login User");
+        userLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                UserLoginMouseClicked(evt);
+                userLoginMouseClicked(evt);
             }
         });
-        getContentPane().add(UserLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 80, 30));
+        getContentPane().add(userLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 100, 30));
 
-        jButton3.setText("Register");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        regisButton.setText("Register");
+        regisButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                regisButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 80, 30));
+        getContentPane().add(regisButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 100, 30));
 
-        pack();
+        setSize(new java.awt.Dimension(418, 320));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void userNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_userNameFieldActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void regisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regisButtonActionPerformed
+        SelectRegisUserOrRegisShop selectRegis = new SelectRegisUserOrRegisShop();
+        selectRegis.setVisible(true);
+    }//GEN-LAST:event_regisButtonActionPerformed
 
-    private void UserLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserLoginMouseClicked
+    private void userLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userLoginMouseClicked
         setVisible(false);
         UserLogin usr = new UserLogin();
         usr.setVisible(true);
-    }//GEN-LAST:event_UserLoginMouseClicked
+    }//GEN-LAST:event_userLoginMouseClicked
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        Connection con = null;
+        if (userNameField.getText().equals("") && passwordField.getText().equals("")) {
+            errorText.setText("Please enter your username and password!");
+        } else {
+            try {
+                con = ConnectionBuilder.getConnection();
+                PreparedStatement pstm = con.prepareStatement("SELECT * FROM ShopProfile WHERE username = ? AND password = ?");
+                pstm.setString(1, userNameField.getText());
+                pstm.setString(2, passwordField.getText());
+                ResultSet rs = pstm.executeQuery();
+                if (rs.next()) {
+                    shopId = Integer.parseInt(rs.getString("shopID"));
+                    JOptionPane.showMessageDialog(null, "Success");
+                    ShopProfile sProf = new ShopProfile();
+                    this.setVisible(false);
+                    sProf.setVisible(true);
+                } else {
+                    userNameField.setText("");
+                    passwordField.setText("");
+                    errorText.setText("Invalid username or password");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(StoreLogin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,16 +199,16 @@ public class StoreLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton UserLogin;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel errorText;
+    private javax.swing.JLabel forUserLogin;
+    private javax.swing.JButton loginButton;
+    private javax.swing.JLabel nameProgram;
+    private javax.swing.JLabel noAccount;
+    private javax.swing.JLabel password;
+    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JButton regisButton;
+    private javax.swing.JButton userLogin;
+    private javax.swing.JLabel userName;
+    private javax.swing.JTextField userNameField;
     // End of variables declaration//GEN-END:variables
 }
