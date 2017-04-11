@@ -156,7 +156,6 @@ public class StoreLogin extends javax.swing.JFrame {
                     ShopProfile sProf = new ShopProfile();
                     this.setVisible(false);
                     sProf.setVisible(true);
-                    System.out.println(getShopId());
                 } else {
                     userNameField.setText("");
                     passwordField.setText("");
