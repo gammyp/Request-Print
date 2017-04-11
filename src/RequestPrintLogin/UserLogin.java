@@ -50,6 +50,7 @@ public class UserLogin extends javax.swing.JFrame {
         LoginFailedStutus = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(400, 273));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -147,7 +148,7 @@ public class UserLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         StoreLogin stl = new StoreLogin();
         stl.setVisible(true);
-        setVisible(false);
+        this.setVisible(false);
     }//GEN-LAST:event_storeLoginButtonActionPerformed
 
     private void regisButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regisButtonMouseClicked
