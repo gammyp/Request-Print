@@ -5,6 +5,15 @@
  */
 package RequestPrintShop;
 
+import RequestPrintDatabase.ConnectionBuilder;
+import RequestPrintLogin.StoreLogin;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Lenovo
@@ -27,23 +36,134 @@ public class ShopProfile extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        name = new javax.swing.JLabel();
+        profileTitle = new javax.swing.JLabel();
+        shopName = new javax.swing.JLabel();
+        address = new javax.swing.JLabel();
+        phone = new javax.swing.JLabel();
+        email = new javax.swing.JLabel();
+        editButton = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        respondPrint = new javax.swing.JLabel();
+        home = new javax.swing.JLabel();
+        profile = new javax.swing.JLabel();
+        manageBook = new javax.swing.JLabel();
+        addressField = new javax.swing.JTextField();
+        nameField = new javax.swing.JTextField();
+        shopNameField = new javax.swing.JTextField();
+        phoneField = new javax.swing.JTextField();
+        emailField = new javax.swing.JTextField();
+
+        jLabel1.setText("jLabel1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        getContentPane().setLayout(null);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        name.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        name.setText("Name");
+        getContentPane().add(name);
+        name.setBounds(250, 70, 60, 30);
 
-        setSize(new java.awt.Dimension(418, 347));
+        profileTitle.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
+        profileTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        profileTitle.setText("Profile");
+        getContentPane().add(profileTitle);
+        profileTitle.setBounds(210, 20, 350, 40);
+
+        shopName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        shopName.setText("Shop name");
+        getContentPane().add(shopName);
+        shopName.setBounds(250, 120, 80, 30);
+
+        address.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        address.setText("Address");
+        getContentPane().add(address);
+        address.setBounds(250, 170, 80, 30);
+
+        phone.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        phone.setText("Phone");
+        getContentPane().add(phone);
+        phone.setBounds(250, 250, 80, 30);
+
+        email.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        email.setText("E-mail");
+        getContentPane().add(email);
+        email.setBounds(250, 300, 80, 30);
+
+        editButton.setText("Edit");
+        getContentPane().add(editButton);
+        editButton.setBounds(480, 370, 53, 30);
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setForeground(new java.awt.Color(204, 204, 204));
+        jPanel1.setLayout(null);
+
+        respondPrint.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        respondPrint.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        respondPrint.setText("Respond Print");
+        jPanel1.add(respondPrint);
+        respondPrint.setBounds(0, 230, 210, 34);
+
+        home.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        home.setText("Home");
+        jPanel1.add(home);
+        home.setBounds(0, 80, 210, 34);
+
+        profile.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        profile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        profile.setText("Profile");
+        profile.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                profileMouseClicked(evt);
+            }
+        });
+        jPanel1.add(profile);
+        profile.setBounds(0, 130, 210, 34);
+
+        manageBook.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        manageBook.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        manageBook.setText("Manage Book");
+        jPanel1.add(manageBook);
+        manageBook.setBounds(0, 180, 210, 34);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 210, 420);
+        getContentPane().add(addressField);
+        addressField.setBounds(260, 200, 270, 50);
+        getContentPane().add(nameField);
+        nameField.setBounds(260, 100, 270, 22);
+        getContentPane().add(shopNameField);
+        shopNameField.setBounds(260, 150, 270, 22);
+        getContentPane().add(phoneField);
+        phoneField.setBounds(260, 280, 270, 22);
+        getContentPane().add(emailField);
+        emailField.setBounds(260, 330, 270, 22);
+
+        setSize(new java.awt.Dimension(576, 463));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void profileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseClicked
+        Connection con = null;
+        try {
+            con = ConnectionBuilder.getConnection();
+            StoreLogin sLogin = new StoreLogin();
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM ShopProfile WHERE shopID = " + sLogin.getShopId());
+            ResultSet rs = pstm.executeQuery();
+            if(rs.next()){
+                nameField.setText(rs.getString("ownerName") + " " + rs.getString("ownerSurname"));
+                shopNameField.setText(rs.getString("shopName"));
+                addressField.setText(rs.getString("address"));
+                phoneField.setText(rs.getString("phone"));
+                emailField.setText(rs.getString("email"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ShopProfile.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_profileMouseClicked
 
     /**
      * @param args the command line arguments
@@ -81,5 +201,23 @@ public class ShopProfile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel address;
+    private javax.swing.JTextField addressField;
+    private javax.swing.JButton editButton;
+    private javax.swing.JLabel email;
+    private javax.swing.JTextField emailField;
+    private javax.swing.JLabel home;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel manageBook;
+    private javax.swing.JLabel name;
+    private javax.swing.JTextField nameField;
+    private javax.swing.JLabel phone;
+    private javax.swing.JTextField phoneField;
+    private javax.swing.JLabel profile;
+    private javax.swing.JLabel profileTitle;
+    private javax.swing.JLabel respondPrint;
+    private javax.swing.JLabel shopName;
+    private javax.swing.JTextField shopNameField;
     // End of variables declaration//GEN-END:variables
 }
