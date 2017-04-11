@@ -127,9 +127,9 @@ public class EditShopProfile extends javax.swing.JFrame {
             con = ConnectionBuilder.getConnection();
             StoreLogin sLogin = new StoreLogin();
             System.out.println(sLogin.getShopId());
-            PreparedStatement pstm = con.prepareStatement("UPDATE ShopProfile SET"
+            PreparedStatement pstm = con.prepareStatement("UPDATE ShopProfile SET "
                     + "ownerName=?, ownerSurname=?, shopName=?, address=?, phone=?, email=?"
-                    + "WHERE shopID = " + sLogin.getShopId());
+                    + " WHERE shopID = " + sLogin.getShopId());
             pstm.setString(1, nameField.getText());
             pstm.setString(2, surnameField.getText());
             pstm.setString(3, shopNameField.getText());
