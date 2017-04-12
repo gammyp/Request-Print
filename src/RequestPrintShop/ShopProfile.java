@@ -7,12 +7,14 @@ package RequestPrintShop;
 
 import RequestPrintDatabase.ConnectionBuilder;
 import RequestPrintLogin.StoreLogin;
+import com.sun.prism.paint.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 
 /**
  *
@@ -20,6 +22,10 @@ import java.util.logging.Logger;
  */
 public class ShopProfile extends javax.swing.JFrame {
 
+    public JLabel getProfile() {
+        return profile;
+    }
+    
     /**
      * Creates new form ShopProfile
      */
@@ -47,8 +53,9 @@ public class ShopProfile extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         respondPrint = new javax.swing.JLabel();
         home = new javax.swing.JLabel();
-        profile = new javax.swing.JLabel();
         manageBook = new javax.swing.JLabel();
+        bgMenu = new javax.swing.JPanel();
+        profile = new javax.swing.JLabel();
         addressField = new javax.swing.JTextField();
         nameField = new javax.swing.JTextField();
         shopNameField = new javax.swing.JTextField();
@@ -59,6 +66,11 @@ public class ShopProfile extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         name.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -115,24 +127,24 @@ public class ShopProfile extends javax.swing.JFrame {
         home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         home.setText("Home");
         jPanel1.add(home);
-        home.setBounds(0, 80, 210, 34);
-
-        profile.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        profile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        profile.setText("Profile");
-        profile.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                profileMouseClicked(evt);
-            }
-        });
-        jPanel1.add(profile);
-        profile.setBounds(0, 130, 210, 34);
+        home.setBounds(0, 80, 210, 30);
 
         manageBook.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         manageBook.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         manageBook.setText("Manage Book");
         jPanel1.add(manageBook);
         manageBook.setBounds(0, 180, 210, 34);
+
+        bgMenu.setBackground(new java.awt.Color(204, 204, 204));
+
+        profile.setBackground(new java.awt.Color(153, 153, 153));
+        profile.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        profile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        profile.setText("Profile");
+        bgMenu.add(profile);
+
+        jPanel1.add(bgMenu);
+        bgMenu.setBounds(0, 130, 210, 30);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 210, 420);
@@ -151,7 +163,15 @@ public class ShopProfile extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void profileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseClicked
+    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
+        EditShopProfile editSProf = new EditShopProfile();
+        editSProf.setVisible(true);
+    }//GEN-LAST:event_editButtonActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        profile.setForeground(java.awt.Color.WHITE);
+        profile.setBackground(java.awt.Color.DARK_GRAY);
+        bgMenu.setBackground(java.awt.Color.DARK_GRAY);
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
@@ -173,12 +193,7 @@ public class ShopProfile extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(ShopProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_profileMouseClicked
-
-    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
-        EditShopProfile editSProf = new EditShopProfile();
-        editSProf.setVisible(true);
-    }//GEN-LAST:event_editButtonActionPerformed
+    }//GEN-LAST:event_formComponentShown
 
     /**
      * @param args the command line arguments
@@ -206,7 +221,7 @@ public class ShopProfile extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ShopProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -218,6 +233,7 @@ public class ShopProfile extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel address;
     private javax.swing.JTextField addressField;
+    private javax.swing.JPanel bgMenu;
     private javax.swing.JButton editButton;
     private javax.swing.JLabel email;
     private javax.swing.JTextField emailField;

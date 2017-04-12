@@ -52,6 +52,7 @@ public class AddBookToManageBook extends javax.swing.JFrame {
         submitButton = new javax.swing.JButton();
         errorText = new javax.swing.JLabel();
         yearSpinner = new javax.swing.JSpinner();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         jLabel2.setText("jLabel2");
 
@@ -146,6 +147,10 @@ public class AddBookToManageBook extends javax.swing.JFrame {
         getContentPane().add(yearSpinner);
         yearSpinner.setBounds(300, 90, 70, 30);
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
+        getContentPane().add(jComboBox1);
+        jComboBox1.setBounds(200, 90, 90, 22);
+
         setSize(new java.awt.Dimension(466, 402));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -158,22 +163,22 @@ public class AddBookToManageBook extends javax.swing.JFrame {
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
+            StoreLogin sLogin = new StoreLogin();
             PreparedStatement pstmSelect = con.prepareStatement("SELECT * FORM Product WHERE productName = ? AND ShopProfile_shopID = ?");
             pstmSelect.setString(1, bookNameField.getText());
-            pstmSelect.setString(2, "");
+            pstmSelect.setString(2, sLogin.getShopId() + "");
             ResultSet rs = pstmSelect.executeQuery();
             if (rs.next()) {
                 errorText.setText("* Note * This book already existed.");
                 bookNameField.setBackground(Color.PINK);
             } else {
-                
                 PreparedStatement pstmInsert = con.prepareStatement("INSERT * FORM Product (productName, date, detail, price, ShopProfile_shopID)"
                         + "VALUES (?,?,?,?,?)");
                 pstmInsert.setString(1, bookNameField.getText());
                 pstmInsert.setString(2, dateSpinner.getValue() + " " + monthSpinner.getValue() + " " + yearSpinner.getValue());
                 pstmInsert.setString(3, detailField.getText());
                 pstmInsert.setString(4, setPriceField.getText());
-//                pstmInsert.setString(5, "");
+                pstmInsert.setString(5, sLogin.getShopId() + "");
 //                pstmInsert.executeUpdate();
                 bookNameField.setText("");
                 dateSpinner.setValue(1);
@@ -237,6 +242,7 @@ public class AddBookToManageBook extends javax.swing.JFrame {
     private javax.swing.JLabel detail;
     private javax.swing.JTextPane detailField;
     private javax.swing.JLabel errorText;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;

@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -136,6 +137,7 @@ public class EditShopProfile extends javax.swing.JFrame {
             pstm.setString(4, addressField.getText());
             pstm.setString(5, phoneField.getText());
             pstm.setString(6, emailField.getText());
+            JOptionPane.showMessageDialog(null, "Save Successful");
             pstm.executeUpdate();
             this.setVisible(false);
         } catch (SQLException ex) {
