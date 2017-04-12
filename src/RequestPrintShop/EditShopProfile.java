@@ -116,9 +116,9 @@ public class EditShopProfile extends javax.swing.JFrame {
             }
         });
         getContentPane().add(saveButton);
-        saveButton.setBounds(190, 310, 79, 25);
+        saveButton.setBounds(190, 310, 79, 29);
 
-        setSize(new java.awt.Dimension(470, 399));
+        setSize(new java.awt.Dimension(468, 399));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
