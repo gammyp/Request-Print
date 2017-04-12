@@ -21,6 +21,12 @@ import RequestPrintUser.UserRequest;
  */
 public class UserLogin extends javax.swing.JFrame {
 
+    private static int userId;
+
+    public static int getUserId() {
+        return userId;
+    }
+    
     /**
      * Creates new form WelcomePage
      */
@@ -128,6 +134,7 @@ public class UserLogin extends javax.swing.JFrame {
                 pstm.setString(2, PasswordField.getText());
                 ResultSet rs = pstm.executeQuery();
                 if (rs.next()) {
+                    userId = Integer.parseInt(rs.getString("userID"));
                     UserRequest usp = new UserRequest();
                     JOptionPane.showMessageDialog(null, "Sucessful");
                     setVisible(false);
