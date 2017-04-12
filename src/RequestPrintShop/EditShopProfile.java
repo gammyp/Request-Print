@@ -137,8 +137,8 @@ public class EditShopProfile extends javax.swing.JFrame {
             pstm.setString(4, addressField.getText());
             pstm.setString(5, phoneField.getText());
             pstm.setString(6, emailField.getText());
-            JOptionPane.showMessageDialog(null, "Save Successful");
             pstm.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Save Successful");
             this.setVisible(false);
         } catch (SQLException ex) {
             Logger.getLogger(EditShopProfile.class.getName()).log(Level.SEVERE, null, ex);

@@ -5,11 +5,25 @@
  */
 package RequestPrintShop;
 
+import RequestPrintDatabase.ConnectionBuilder;
+import RequestPrintLogin.StoreLogin;
+import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Lenovo
  */
 public class ManageListBook extends javax.swing.JFrame {
+
+    DefaultTableModel model;
 
     /**
      * Creates new form ManageListBook
@@ -27,18 +41,16 @@ public class ManageListBook extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        signOut = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         manageTable = new javax.swing.JTable();
-        manageBookTitlw = new javax.swing.JLabel();
+        manageBookTitle = new javax.swing.JLabel();
         bookName = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        showBookName = new javax.swing.JLabel();
         date = new javax.swing.JLabel();
         productID = new javax.swing.JLabel();
         showProductID = new javax.swing.JLabel();
-        showDate = new javax.swing.JLabel();
+        respondPrint = new javax.swing.JLabel();
         detail = new javax.swing.JLabel();
         showDetail = new javax.swing.JLabel();
         price = new javax.swing.JLabel();
@@ -46,14 +58,28 @@ public class ManageListBook extends javax.swing.JFrame {
         deleteButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
         addButton = new javax.swing.JButton();
+        home = new javax.swing.JLabel();
+        profile = new javax.swing.JLabel();
+        showDate = new javax.swing.JLabel();
+        signOut = new javax.swing.JLabel();
+        manageBook = new javax.swing.JLabel();
+        bgMenu = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        showBookName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(null);
-
-        signOut.setText("Sign out");
-        getContentPane().add(signOut);
-        signOut.setBounds(600, 10, 50, 20);
 
         manageTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -84,71 +110,115 @@ public class ManageListBook extends javax.swing.JFrame {
         jScrollPane1.setViewportView(manageTable);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(190, 50, 452, 360);
+        jScrollPane1.setBounds(390, 50, 452, 360);
 
-        manageBookTitlw.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        manageBookTitlw.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        manageBookTitlw.setText("Manage Books");
-        getContentPane().add(manageBookTitlw);
-        manageBookTitlw.setBounds(0, 40, 190, 30);
+        manageBookTitle.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        manageBookTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        manageBookTitle.setText("Manage Books");
+        getContentPane().add(manageBookTitle);
+        manageBookTitle.setBounds(190, 40, 200, 30);
 
         bookName.setText("Name");
         getContentPane().add(bookName);
-        bookName.setBounds(10, 140, 40, 16);
+        bookName.setBounds(210, 140, 40, 16);
         getContentPane().add(jLabel4);
         jLabel4.setBounds(20, 110, 160, 0);
         getContentPane().add(jLabel6);
         jLabel6.setBounds(20, 110, 160, 0);
-        getContentPane().add(showBookName);
-        showBookName.setBounds(20, 160, 150, 20);
 
         date.setText("Date");
         getContentPane().add(date);
-        date.setBounds(10, 190, 50, 16);
+        date.setBounds(210, 190, 50, 16);
 
         productID.setText("Product ID");
         getContentPane().add(productID);
-        productID.setBounds(10, 90, 60, 16);
+        productID.setBounds(210, 90, 60, 16);
         getContentPane().add(showProductID);
-        showProductID.setBounds(20, 110, 150, 20);
-        getContentPane().add(showDate);
-        showDate.setBounds(20, 210, 150, 20);
+        showProductID.setBounds(220, 110, 150, 20);
+
+        respondPrint.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        respondPrint.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        respondPrint.setText("Respond Print");
+        respondPrint.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(respondPrint);
+        respondPrint.setBounds(0, 250, 190, 30);
 
         detail.setText("Detail");
         getContentPane().add(detail);
-        detail.setBounds(10, 240, 70, 16);
+        detail.setBounds(210, 240, 70, 16);
         getContentPane().add(showDetail);
-        showDetail.setBounds(20, 260, 150, 80);
+        showDetail.setBounds(220, 260, 150, 80);
 
         price.setText("Price of print");
         getContentPane().add(price);
-        price.setBounds(10, 350, 80, 16);
+        price.setBounds(210, 350, 80, 16);
         getContentPane().add(showPrice);
-        showPrice.setBounds(20, 370, 150, 20);
+        showPrice.setBounds(220, 370, 150, 20);
 
         deleteButton.setText("Delete");
+        deleteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(deleteButton);
-        deleteButton.setBounds(400, 430, 70, 30);
+        deleteButton.setBounds(600, 430, 70, 30);
 
         backButton.setText("Back");
+        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
             }
         });
         getContentPane().add(backButton);
-        backButton.setBounds(580, 430, 70, 30);
+        backButton.setBounds(780, 430, 70, 30);
 
         addButton.setText("Add");
+        addButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addButtonActionPerformed(evt);
             }
         });
         getContentPane().add(addButton);
-        addButton.setBounds(490, 430, 70, 30);
+        addButton.setBounds(690, 430, 70, 30);
 
-        setSize(new java.awt.Dimension(687, 524));
+        home.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        home.setText("Home");
+        home.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(home);
+        home.setBounds(0, 100, 190, 30);
+
+        profile.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        profile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        profile.setText("Profile");
+        profile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(profile);
+        profile.setBounds(0, 150, 190, 30);
+        getContentPane().add(showDate);
+        showDate.setBounds(220, 210, 150, 20);
+
+        signOut.setText("Sign out");
+        signOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(signOut);
+        signOut.setBounds(7, 450, 50, 20);
+
+        manageBook.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        manageBook.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        manageBook.setText("Manage Book");
+        manageBook.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(manageBook);
+        manageBook.setBounds(0, 200, 190, 30);
+
+        bgMenu.setBackground(new java.awt.Color(204, 204, 204));
+        getContentPane().add(bgMenu);
+        bgMenu.setBounds(0, 200, 190, 30);
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 190, 480);
+        getContentPane().add(showBookName);
+        showBookName.setBounds(220, 160, 150, 20);
+
+        setSize(new java.awt.Dimension(879, 524));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -160,6 +230,33 @@ public class ManageListBook extends javax.swing.JFrame {
         AddBookToManageBook add = new AddBookToManageBook();
         add.setVisible(true);
     }//GEN-LAST:event_addButtonActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        model = (DefaultTableModel) manageTable.getModel();
+        model.setRowCount(0);
+        Connection con = null;
+        try {
+            con = ConnectionBuilder.getConnection();
+            StoreLogin sLogin = new StoreLogin();
+            PreparedStatement pstm = con.prepareStatement("SELECT productID, productName, price FROM Product WHERE ShopProfile_shopID = " + sLogin.getShopId());
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                Vector v = new Vector();
+                v.add(rs.getInt("productID"));
+                v.add(rs.getString("productName"));
+                v.add(rs.getInt("price"));
+                model.addRow(v);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageListBook.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_formWindowActivated
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        manageBook.setForeground(Color.WHITE);
+        manageBook.setBackground(Color.DARK_GRAY);
+        bgMenu.setBackground(Color.DARK_GRAY);
+    }//GEN-LAST:event_formComponentShown
 
     /**
      * @param args the command line arguments
@@ -199,17 +296,23 @@ public class ManageListBook extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JButton backButton;
+    private javax.swing.JPanel bgMenu;
     private javax.swing.JLabel bookName;
     private javax.swing.JLabel date;
     private javax.swing.JButton deleteButton;
     private javax.swing.JLabel detail;
+    private javax.swing.JLabel home;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel manageBookTitlw;
+    private javax.swing.JLabel manageBook;
+    private javax.swing.JLabel manageBookTitle;
     private javax.swing.JTable manageTable;
     private javax.swing.JLabel price;
     private javax.swing.JLabel productID;
+    private javax.swing.JLabel profile;
+    private javax.swing.JLabel respondPrint;
     private javax.swing.JLabel showBookName;
     private javax.swing.JLabel showDate;
     private javax.swing.JLabel showDetail;

@@ -25,7 +25,7 @@ public class ShopProfile extends javax.swing.JFrame {
     public JLabel getProfile() {
         return profile;
     }
-    
+
     /**
      * Creates new form ShopProfile
      */
@@ -56,6 +56,7 @@ public class ShopProfile extends javax.swing.JFrame {
         manageBook = new javax.swing.JLabel();
         bgMenu = new javax.swing.JPanel();
         profile = new javax.swing.JLabel();
+        signOut = new javax.swing.JLabel();
         addressField = new javax.swing.JTextField();
         nameField = new javax.swing.JTextField();
         shopNameField = new javax.swing.JTextField();
@@ -69,6 +70,11 @@ public class ShopProfile extends javax.swing.JFrame {
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
             }
         });
         getContentPane().setLayout(null);
@@ -120,22 +126,31 @@ public class ShopProfile extends javax.swing.JFrame {
         respondPrint.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         respondPrint.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         respondPrint.setText("Respond Print");
+        respondPrint.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(respondPrint);
-        respondPrint.setBounds(0, 230, 210, 34);
+        respondPrint.setBounds(0, 250, 190, 30);
 
         home.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         home.setText("Home");
+        home.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(home);
-        home.setBounds(0, 80, 210, 30);
+        home.setBounds(0, 100, 190, 30);
 
         manageBook.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         manageBook.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         manageBook.setText("Manage Book");
+        manageBook.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        manageBook.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                manageBookMouseClicked(evt);
+            }
+        });
         jPanel1.add(manageBook);
-        manageBook.setBounds(0, 180, 210, 34);
+        manageBook.setBounds(0, 200, 190, 30);
 
         bgMenu.setBackground(new java.awt.Color(204, 204, 204));
+        bgMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         profile.setBackground(new java.awt.Color(153, 153, 153));
         profile.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -144,10 +159,15 @@ public class ShopProfile extends javax.swing.JFrame {
         bgMenu.add(profile);
 
         jPanel1.add(bgMenu);
-        bgMenu.setBounds(0, 130, 210, 30);
+        bgMenu.setBounds(0, 150, 190, 30);
+
+        signOut.setText("Sign out");
+        signOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(signOut);
+        signOut.setBounds(10, 390, 50, 20);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 210, 420);
+        jPanel1.setBounds(0, 0, 190, 420);
         getContentPane().add(addressField);
         addressField.setBounds(260, 220, 270, 30);
         getContentPane().add(nameField);
@@ -159,7 +179,7 @@ public class ShopProfile extends javax.swing.JFrame {
         getContentPane().add(emailField);
         emailField.setBounds(260, 340, 270, 30);
 
-        setSize(new java.awt.Dimension(576, 463));
+        setSize(new java.awt.Dimension(576, 462));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -172,13 +192,16 @@ public class ShopProfile extends javax.swing.JFrame {
         profile.setForeground(java.awt.Color.WHITE);
         profile.setBackground(java.awt.Color.DARK_GRAY);
         bgMenu.setBackground(java.awt.Color.DARK_GRAY);
+    }//GEN-LAST:event_formComponentShown
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
             StoreLogin sLogin = new StoreLogin();
             PreparedStatement pstm = con.prepareStatement("SELECT * FROM ShopProfile WHERE shopID = " + sLogin.getShopId());
             ResultSet rs = pstm.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 nameField.setEditable(false);
                 nameField.setText(rs.getString("ownerName") + " " + rs.getString("ownerSurname"));
                 shopNameField.setEditable(false);
@@ -193,7 +216,13 @@ public class ShopProfile extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(ShopProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_formComponentShown
+    }//GEN-LAST:event_formWindowActivated
+
+    private void manageBookMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageBookMouseClicked
+        ManageListBook mlb = new ManageListBook();
+        this.setVisible(false);
+        mlb.setVisible(true);
+    }//GEN-LAST:event_manageBookMouseClicked
 
     /**
      * @param args the command line arguments
@@ -221,7 +250,7 @@ public class ShopProfile extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ShopProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -250,5 +279,6 @@ public class ShopProfile extends javax.swing.JFrame {
     private javax.swing.JLabel respondPrint;
     private javax.swing.JLabel shopName;
     private javax.swing.JTextField shopNameField;
+    private javax.swing.JLabel signOut;
     // End of variables declaration//GEN-END:variables
 }
