@@ -191,6 +191,11 @@ public class ManageListBook extends javax.swing.JFrame {
         profile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         profile.setText("Profile");
         profile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        profile.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                profileMouseClicked(evt);
+            }
+        });
         getContentPane().add(profile);
         profile.setBounds(0, 150, 190, 30);
         getContentPane().add(showDate);
@@ -257,6 +262,12 @@ public class ManageListBook extends javax.swing.JFrame {
         manageBook.setBackground(Color.DARK_GRAY);
         bgMenu.setBackground(Color.DARK_GRAY);
     }//GEN-LAST:event_formComponentShown
+
+    private void profileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseClicked
+        ShopProfile sProf = new ShopProfile();
+        this.setVisible(false);
+        sProf.setVisible(true);
+    }//GEN-LAST:event_profileMouseClicked
 
     /**
      * @param args the command line arguments

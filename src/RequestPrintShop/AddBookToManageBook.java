@@ -179,7 +179,7 @@ public class AddBookToManageBook extends javax.swing.JFrame {
                 pstmInsert.setString(3, detailField.getText());
                 pstmInsert.setString(4, setPriceField.getText());
                 pstmInsert.setString(5, sLogin.getShopId() + "");
-//                pstmInsert.executeUpdate();
+                pstmInsert.executeUpdate();
                 bookNameField.setText("");
                 dateSpinner.setValue(1);
                 monthSpinner.setValue("January");
