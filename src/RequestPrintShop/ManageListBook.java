@@ -56,7 +56,6 @@ public class ManageListBook extends javax.swing.JFrame {
         price = new javax.swing.JLabel();
         showPrice = new javax.swing.JLabel();
         deleteButton = new javax.swing.JButton();
-        backButton = new javax.swing.JButton();
         addButton = new javax.swing.JButton();
         home = new javax.swing.JLabel();
         profile = new javax.swing.JLabel();
@@ -107,6 +106,11 @@ public class ManageListBook extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        manageTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                manageTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(manageTable);
 
         getContentPane().add(jScrollPane1);
@@ -147,28 +151,23 @@ public class ManageListBook extends javax.swing.JFrame {
         getContentPane().add(detail);
         detail.setBounds(210, 240, 70, 16);
         getContentPane().add(showDetail);
-        showDetail.setBounds(220, 260, 150, 80);
+        showDetail.setBounds(220, 260, 150, 20);
 
         price.setText("Price of print");
         getContentPane().add(price);
-        price.setBounds(210, 350, 80, 16);
+        price.setBounds(210, 290, 80, 16);
         getContentPane().add(showPrice);
-        showPrice.setBounds(220, 370, 150, 20);
+        showPrice.setBounds(220, 310, 150, 20);
 
         deleteButton.setText("Delete");
         deleteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(deleteButton);
-        deleteButton.setBounds(600, 430, 70, 30);
-
-        backButton.setText("Back");
-        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        backButton.addActionListener(new java.awt.event.ActionListener() {
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
+                deleteButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(backButton);
-        backButton.setBounds(780, 430, 70, 30);
+        getContentPane().add(deleteButton);
+        deleteButton.setBounds(680, 430, 70, 30);
 
         addButton.setText("Add");
         addButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -178,7 +177,7 @@ public class ManageListBook extends javax.swing.JFrame {
             }
         });
         getContentPane().add(addButton);
-        addButton.setBounds(690, 430, 70, 30);
+        addButton.setBounds(770, 430, 70, 30);
 
         home.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -227,10 +226,6 @@ public class ManageListBook extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_backButtonActionPerformed
-
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         AddBookToManageBook add = new AddBookToManageBook();
         add.setVisible(true);
@@ -269,6 +264,28 @@ public class ManageListBook extends javax.swing.JFrame {
         sProf.setVisible(true);
     }//GEN-LAST:event_profileMouseClicked
 
+    private void manageTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageTableMouseClicked
+//        Connection con = null;
+//        try {
+//            con = ConnectionBuilder.getConnection();
+//            PreparedStatement pstm = con.prepareStatement("INSERT * FROM Product WHERE productID = ?");
+//            
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ManageListBook.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    }//GEN-LAST:event_manageTableMouseClicked
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        Connection con = null;
+        try {
+            con = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = con.prepareStatement("INSERT * FROM Product WHERE ProductID = ?");
+//            pstm.setInt(1, productID.get);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageListBook.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -306,7 +323,6 @@ public class ManageListBook extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
-    private javax.swing.JButton backButton;
     private javax.swing.JPanel bgMenu;
     private javax.swing.JLabel bookName;
     private javax.swing.JLabel date;
