@@ -6,9 +6,16 @@
 package RequestPrintShop;
 
 
+import RequestPrintDatabase.ConnectionBuilder;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -21,9 +28,20 @@ public class Test {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         StringTokenizer stk = new StringTokenizer(sdf.format(date), "-");
         
-        AddBookToManageBook addbook = new AddBookToManageBook();
-        System.out.println(""+addbook.monthSpinner.getValue());
-        System.out.println(addbook.getMonth());
+        ManageListBook book = new ManageListBook();
+        book.setVisible(true);
+        try {
+            Connection con = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = con.prepareStatement("INSERT * FROM Product WHERE productID = ?");
+            pstm.setInt(1, Integer.parseInt(book.showProductID.getText()));
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+                book.showDate.setText(rs.getDate("date")+"");
+                book.showDetail.setText(rs.getString("detail"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageListBook.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

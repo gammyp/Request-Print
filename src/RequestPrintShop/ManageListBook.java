@@ -12,9 +12,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -265,22 +267,36 @@ public class ManageListBook extends javax.swing.JFrame {
     }//GEN-LAST:event_profileMouseClicked
 
     private void manageTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageTableMouseClicked
-//        Connection con = null;
-//        try {
-//            con = ConnectionBuilder.getConnection();
-//            PreparedStatement pstm = con.prepareStatement("INSERT * FROM Product WHERE productID = ?");
-//            
-//        } catch (SQLException ex) {
-//            Logger.getLogger(ManageListBook.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        Connection con = null;
+        showProductID.setText((manageTable.getValueAt(manageTable.getSelectedRow(), 0)) + "");
+        showBookName.setText((manageTable.getValueAt(manageTable.getSelectedRow(), 1)) + "");
+        showPrice.setText((manageTable.getValueAt(manageTable.getSelectedRow(), 2)) + "");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            con = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = con.prepareStatement("INSERT date,detail FROM Product WHERE productID = ?");
+            pstm.setInt(1, Integer.parseInt(showProductID.getText()));
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+                showDate.setText(sdf.format(rs.getDate("date")));
+                showDetail.setText(rs.getString("detail"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageListBook.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_manageTableMouseClicked
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        int row = manageTable.getSelectedRow();
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = con.prepareStatement("INSERT * FROM Product WHERE ProductID = ?");
-//            pstm.setInt(1, productID.get);
+            PreparedStatement pstm = con.prepareStatement("DELETE * FROM Product WHERE ProductID = ?");
+//            pstm.setInt(1, );
+            int ans = JOptionPane.showConfirmDialog(null, "Delete", "Confirm", JOptionPane.WARNING_MESSAGE);
+            if (ans == 0) {
+                pstm.executeUpdate();
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ManageListBook.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -341,10 +357,10 @@ public class ManageListBook extends javax.swing.JFrame {
     private javax.swing.JLabel profile;
     private javax.swing.JLabel respondPrint;
     private javax.swing.JLabel showBookName;
-    private javax.swing.JLabel showDate;
-    private javax.swing.JLabel showDetail;
+    public javax.swing.JLabel showDate;
+    public javax.swing.JLabel showDetail;
     private javax.swing.JLabel showPrice;
-    private javax.swing.JLabel showProductID;
+    public javax.swing.JLabel showProductID;
     private javax.swing.JLabel signOut;
     // End of variables declaration//GEN-END:variables
 }
