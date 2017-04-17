@@ -32,12 +32,13 @@ public class Test {
         book.setVisible(true);
         try {
             Connection con = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = con.prepareStatement("INSERT * FROM Product WHERE productID = ?");
-            pstm.setInt(1, Integer.parseInt(book.showProductID.getText()));
+            PreparedStatement pstm = con.prepareStatement("SELECT date,detail FROM Product WHERE productID = ?");
+            pstm.setInt(1, 1);
             ResultSet rs = pstm.executeQuery();
             if (rs.next()) {
+                System.out.println(rs.getDate("date").toString());
                 book.showDate.setText(rs.getDate("date")+"");
-                book.showDetail.setText(rs.getString("detail"));
+//                book.showDetail.setText(rs.getString("detail"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(ManageListBook.class.getName()).log(Level.SEVERE, null, ex);

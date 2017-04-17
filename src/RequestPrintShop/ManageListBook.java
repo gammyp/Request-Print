@@ -54,7 +54,6 @@ public class ManageListBook extends javax.swing.JFrame {
         showProductID = new javax.swing.JLabel();
         respondPrint = new javax.swing.JLabel();
         detail = new javax.swing.JLabel();
-        showDetail = new javax.swing.JLabel();
         price = new javax.swing.JLabel();
         showPrice = new javax.swing.JLabel();
         deleteButton = new javax.swing.JButton();
@@ -67,6 +66,8 @@ public class ManageListBook extends javax.swing.JFrame {
         bgMenu = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         showBookName = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        showDetail = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -152,14 +153,12 @@ public class ManageListBook extends javax.swing.JFrame {
         detail.setText("Detail");
         getContentPane().add(detail);
         detail.setBounds(210, 240, 70, 16);
-        getContentPane().add(showDetail);
-        showDetail.setBounds(220, 260, 150, 20);
 
         price.setText("Price of print");
         getContentPane().add(price);
-        price.setBounds(210, 290, 80, 16);
+        price.setBounds(210, 350, 80, 16);
         getContentPane().add(showPrice);
-        showPrice.setBounds(220, 310, 150, 20);
+        showPrice.setBounds(220, 370, 150, 20);
 
         deleteButton.setText("Delete");
         deleteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -224,6 +223,15 @@ public class ManageListBook extends javax.swing.JFrame {
         getContentPane().add(showBookName);
         showBookName.setBounds(220, 160, 150, 20);
 
+        showDetail.setBackground(null);
+        showDetail.setEditable(false);
+        showDetail.setBackground(new java.awt.Color(240, 240, 240));
+        showDetail.setBorder(null);
+        jScrollPane2.setViewportView(showDetail);
+
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(220, 260, 150, 80);
+
         setSize(new java.awt.Dimension(879, 524));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -274,12 +282,24 @@ public class ManageListBook extends javax.swing.JFrame {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try {
             con = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = con.prepareStatement("INSERT date,detail FROM Product WHERE productID = ?");
+            PreparedStatement pstm = con.prepareStatement("SELECT date,detail FROM Product WHERE productID = ?");
             pstm.setInt(1, Integer.parseInt(showProductID.getText()));
             ResultSet rs = pstm.executeQuery();
             if (rs.next()) {
-                showDate.setText(sdf.format(rs.getDate("date")));
-                showDetail.setText(rs.getString("detail"));
+                if (rs.getDate("date") == null) {
+                    showDate.setText("<Unknown>");
+                    if (rs.getString("detail") == null) {
+                        showDetail.setText("<Unknown>");
+                    } else {
+                        showDetail.setText(rs.getString("detail"));
+                    }
+                } else if (rs.getString("detail") == null) {
+                    showDetail.setText("<Unknown>");
+                    showDate.setText(rs.getDate("date").toString());
+                } else {
+                    showDate.setText(rs.getDate("date").toString());
+                    showDetail.setText(rs.getString("detail"));
+                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(ManageListBook.class.getName()).log(Level.SEVERE, null, ex);
@@ -291,8 +311,8 @@ public class ManageListBook extends javax.swing.JFrame {
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = con.prepareStatement("DELETE * FROM Product WHERE ProductID = ?");
-//            pstm.setInt(1, );
+            PreparedStatement pstm = con.prepareStatement("DELETE FROM Product WHERE ProductID = ?");
+            pstm.setInt(1, Integer.parseInt(showProductID.getText()));
             int ans = JOptionPane.showConfirmDialog(null, "Delete", "Confirm", JOptionPane.WARNING_MESSAGE);
             if (ans == 0) {
                 pstm.executeUpdate();
@@ -349,6 +369,7 @@ public class ManageListBook extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel manageBook;
     private javax.swing.JLabel manageBookTitle;
     private javax.swing.JTable manageTable;
@@ -358,7 +379,7 @@ public class ManageListBook extends javax.swing.JFrame {
     private javax.swing.JLabel respondPrint;
     private javax.swing.JLabel showBookName;
     public javax.swing.JLabel showDate;
-    public javax.swing.JLabel showDetail;
+    private javax.swing.JTextPane showDetail;
     private javax.swing.JLabel showPrice;
     public javax.swing.JLabel showProductID;
     private javax.swing.JLabel signOut;

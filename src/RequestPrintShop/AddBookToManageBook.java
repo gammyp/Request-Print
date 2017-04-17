@@ -90,7 +90,7 @@ public class AddBookToManageBook extends javax.swing.JFrame {
 
         Submit.setText("Submit");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAutoRequestFocus(false);
         setResizable(false);
         getContentPane().setLayout(null);
@@ -207,7 +207,7 @@ public class AddBookToManageBook extends javax.swing.JFrame {
                 PreparedStatement pstmInsert = con.prepareStatement("INSERT INTO Product (productName, date, detail, price, ShopProfile_shopID)"
                         + " VALUES (?,?,?,?,?)");
                 pstmInsert.setString(1, bookNameField.getText());
-                pstmInsert.setDate(2, new Date((Integer.parseInt(yearSpinner.getValue()+"")-1900), getMonth()+1 ,Integer.parseInt(dateSpinner.getValue()+"")));
+                pstmInsert.setDate(2, new Date((Integer.parseInt(yearSpinner.getValue()+"")-1900), getMonth() ,Integer.parseInt(dateSpinner.getValue()+"")));
                 pstmInsert.setString(3, detailField.getText());
                 pstmInsert.setString(4, setPriceField.getText());
                 pstmInsert.setInt(5, sLogin.getShopId());
