@@ -153,11 +153,6 @@ public class RegisterShop extends javax.swing.JFrame {
                 userNameFieldFocusLost(evt);
             }
         });
-        userNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userNameFieldActionPerformed(evt);
-            }
-        });
         getContentPane().add(userNameField);
         userNameField.setBounds(220, 300, 220, 30);
 
@@ -226,10 +221,6 @@ public class RegisterShop extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(618, 547));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void userNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userNameFieldActionPerformed
 
     private void emailFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailFieldFocusLost
         Image trueIcon = new ImageIcon(this.getClass().getResource("../icon/correct.png")).getImage();

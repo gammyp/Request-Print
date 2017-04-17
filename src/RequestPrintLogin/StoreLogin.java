@@ -59,12 +59,6 @@ public class StoreLogin extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(450, 350));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        userNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userNameFieldActionPerformed(evt);
-            }
-        });
         getContentPane().add(userNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 270, -1));
 
         userName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -123,10 +117,6 @@ public class StoreLogin extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(418, 320));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void userNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userNameFieldActionPerformed
 
     private void regisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regisButtonActionPerformed
         SelectRegisUserOrRegisShop selectRegis = new SelectRegisUserOrRegisShop();

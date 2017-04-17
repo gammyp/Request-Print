@@ -80,7 +80,6 @@ public class AddBookToManageBook extends javax.swing.JFrame {
         detailField = new javax.swing.JTextPane();
         setPrice = new javax.swing.JLabel();
         setPriceField = new javax.swing.JTextField();
-        backButton = new javax.swing.JButton();
         submitButton = new javax.swing.JButton();
         errorText = new javax.swing.JLabel();
         yearSpinner = new javax.swing.JSpinner();
@@ -99,33 +98,33 @@ public class AddBookToManageBook extends javax.swing.JFrame {
         addBookTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         addBookTitle.setText("Add book");
         getContentPane().add(addBookTitle);
-        addBookTitle.setBounds(0, 10, 450, 31);
+        addBookTitle.setBounds(0, 10, 440, 31);
 
         bookName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         bookName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         bookName.setText("Book name :");
         getContentPane().add(bookName);
-        bookName.setBounds(50, 50, 90, 30);
+        bookName.setBounds(40, 50, 90, 30);
 
         date.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         date.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         date.setText("Date :");
         getContentPane().add(date);
-        date.setBounds(90, 90, 50, 30);
+        date.setBounds(80, 90, 50, 30);
 
         monthSpinner.setModel(new javax.swing.SpinnerListModel(new String[] {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"}));
         getContentPane().add(monthSpinner);
-        monthSpinner.setBounds(200, 90, 100, 30);
+        monthSpinner.setBounds(190, 90, 100, 30);
 
         dateSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
         getContentPane().add(dateSpinner);
-        dateSpinner.setBounds(150, 90, 50, 30);
+        dateSpinner.setBounds(140, 90, 50, 30);
 
         detail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         detail.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         detail.setText("Detail :");
         getContentPane().add(detail);
-        detail.setBounds(50, 130, 90, 30);
+        detail.setBounds(40, 130, 90, 30);
 
         bookNameField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         bookNameField.addActionListener(new java.awt.event.ActionListener() {
@@ -134,31 +133,22 @@ public class AddBookToManageBook extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bookNameField);
-        bookNameField.setBounds(150, 50, 220, 30);
+        bookNameField.setBounds(140, 50, 220, 30);
 
         jScrollPane1.setViewportView(detailField);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(150, 130, 220, 100);
+        jScrollPane1.setBounds(140, 130, 220, 100);
 
         setPrice.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         setPrice.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         setPrice.setText("Set price :");
         getContentPane().add(setPrice);
-        setPrice.setBounds(50, 240, 90, 30);
+        setPrice.setBounds(40, 240, 90, 30);
 
         setPriceField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(setPriceField);
-        setPriceField.setBounds(150, 240, 220, 30);
-
-        backButton.setText("Back");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(backButton);
-        backButton.setBounds(130, 300, 70, 30);
+        setPriceField.setBounds(140, 240, 220, 30);
 
         submitButton.setText("Submit");
         submitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -167,29 +157,25 @@ public class AddBookToManageBook extends javax.swing.JFrame {
             }
         });
         getContentPane().add(submitButton);
-        submitButton.setBounds(240, 300, 73, 30);
+        submitButton.setBounds(160, 300, 100, 30);
 
         errorText.setForeground(new java.awt.Color(255, 0, 0));
         errorText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(errorText);
-        errorText.setBounds(50, 280, 360, 20);
+        errorText.setBounds(40, 270, 360, 20);
 
         yearSpinner.setModel(new javax.swing.SpinnerNumberModel(1900, 1900, 2500, 1));
         yearSpinner.setEditor(new javax.swing.JSpinner.NumberEditor(yearSpinner, "0000"));
         getContentPane().add(yearSpinner);
-        yearSpinner.setBounds(300, 90, 70, 30);
+        yearSpinner.setBounds(290, 90, 70, 30);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(200, 90, 90, 22);
+        jComboBox1.setBounds(190, 90, 90, 22);
 
-        setSize(new java.awt.Dimension(466, 402));
+        setSize(new java.awt.Dimension(451, 399));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        this.setVisible(false);
-    }//GEN-LAST:event_backButtonActionPerformed
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         Connection con = null;
@@ -268,7 +254,6 @@ public class AddBookToManageBook extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Submit;
     private javax.swing.JLabel addBookTitle;
-    private javax.swing.JButton backButton;
     private javax.swing.JLabel bookName;
     private javax.swing.JTextField bookNameField;
     private javax.swing.JLabel date;

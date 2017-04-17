@@ -248,7 +248,8 @@ public class ManageListBook extends javax.swing.JFrame {
         try {
             con = ConnectionBuilder.getConnection();
             StoreLogin sLogin = new StoreLogin();
-            PreparedStatement pstm = con.prepareStatement("SELECT productID, productName, price FROM Product WHERE ShopProfile_shopID = " + sLogin.getShopId());
+            PreparedStatement pstm = con.prepareStatement("SELECT productID, productName, price FROM Product WHERE "
+                    + "ShopProfile_shopID = " + sLogin.getShopId());
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
                 Vector v = new Vector();
