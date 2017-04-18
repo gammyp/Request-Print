@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import RequestPrintUser.UserRequest;
+import RequestPrintUser.*;
 
 /**
  *
@@ -54,6 +54,7 @@ public class UserLogin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         LoginFailedStutus = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(400, 273));
@@ -62,7 +63,7 @@ public class UserLogin extends javax.swing.JFrame {
 
         nameProgram.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         nameProgram.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nameProgram.setText("E - PRINTING");
+        nameProgram.setText("Welcome to RequestPrint Project");
         getContentPane().add(nameProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 400, 30));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -115,6 +116,9 @@ public class UserLogin extends javax.swing.JFrame {
         jLabel5.setText("For store login.");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 120, 30));
         getContentPane().add(LoginFailedStutus, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 270, 20));
+
+        jLabel1.setText("beta 1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, -1, -1));
 
         setSize(new java.awt.Dimension(418, 320));
         setLocationRelativeTo(null);
@@ -200,6 +204,7 @@ public class UserLogin extends javax.swing.JFrame {
     private javax.swing.JLabel LoginFailedStutus;
     private javax.swing.JPasswordField PasswordField;
     private javax.swing.JTextField UsernameField;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -54,9 +54,10 @@ public class StoreLogin extends javax.swing.JFrame {
         forUserLogin = new javax.swing.JLabel();
         userLogin = new javax.swing.JButton();
         regisButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(450, 350));
+        setMinimumSize(new java.awt.Dimension(400, 274));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(userNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 270, -1));
@@ -114,7 +115,10 @@ public class StoreLogin extends javax.swing.JFrame {
         });
         getContentPane().add(regisButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 100, 30));
 
-        setSize(new java.awt.Dimension(418, 320));
+        jLabel1.setText("beta 1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, -1, -1));
+
+        setSize(new java.awt.Dimension(416, 313));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -195,6 +199,7 @@ public class StoreLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel errorText;
     private javax.swing.JLabel forUserLogin;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton loginButton;
     private javax.swing.JLabel nameProgram;
     private javax.swing.JLabel noAccount;
