@@ -52,7 +52,7 @@ public class EditShopProfile extends javax.swing.JFrame {
         emailField = new javax.swing.JTextField();
         saveButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -116,7 +116,7 @@ public class EditShopProfile extends javax.swing.JFrame {
             }
         });
         getContentPane().add(saveButton);
-        saveButton.setBounds(190, 310, 79, 29);
+        saveButton.setBounds(190, 310, 79, 25);
 
         setSize(new java.awt.Dimension(468, 399));
         setLocationRelativeTo(null);

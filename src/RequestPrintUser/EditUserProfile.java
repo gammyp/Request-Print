@@ -69,18 +69,6 @@ public class EditUserProfile extends javax.swing.JFrame {
             }
         });
 
-        nameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameFieldActionPerformed(evt);
-            }
-        });
-
-        emailField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailFieldActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -138,14 +126,6 @@ public class EditUserProfile extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nameFieldActionPerformed
-
-    private void emailFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_emailFieldActionPerformed
-
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         try {
             Connection con = ConnectionBuilder.getConnection();
@@ -165,7 +145,6 @@ public class EditUserProfile extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_saveButtonActionPerformed
     private void formComponentShown(java.awt.event.ComponentEvent evt) {
-
         try {
             Connection con = ConnectionBuilder.getConnection();
             UserLogin uLogin = new UserLogin();
@@ -176,7 +155,6 @@ public class EditUserProfile extends javax.swing.JFrame {
                 surnameField.setText(rs.getString("surname"));
                 emailField.setText(rs.getString("email"));
                 phoneField.setText(rs.getString("phone"));
-
             }
         } catch (SQLException ex) {
             Logger.getLogger(EditUserProfile.class.getName()).log(Level.SEVERE, null, ex);

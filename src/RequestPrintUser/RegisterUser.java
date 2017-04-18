@@ -187,7 +187,7 @@ public class RegisterUser extends javax.swing.JFrame {
         getContentPane().add(error);
         error.setBounds(500, 350, 90, 30);
 
-        setSize(new java.awt.Dimension(600, 522));
+        setSize(new java.awt.Dimension(600, 546));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
