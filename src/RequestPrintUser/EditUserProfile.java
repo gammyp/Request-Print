@@ -147,12 +147,14 @@ public class EditUserProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_emailFieldActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        Connection con = null;
         try {
-            Connection con = ConnectionBuilder.getConnection();
+            con = ConnectionBuilder.getConnection();
             UserLogin uLogin = new UserLogin();
             System.out.println(uLogin.getUserId());
-            PreparedStatement pstm = con.prepareStatement("UPDATE UserProfile SET" + "name=?,surname=?,"
-                    + "email=? ,phone=?" + "WHERE id=" + uLogin.getUserId());
+            PreparedStatement pstm = con.prepareStatement("UPDATE UserProfile SET"
+                    + "name=?, surname=?, email=? ,phone=?" 
+                    + "WHERE id = " + uLogin.getUserId());
             pstm.setString(1, nameField.getText());
             pstm.setString(2, surnameField.getText());
             pstm.setString(3, phoneField.getText());
@@ -165,9 +167,9 @@ public class EditUserProfile extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_saveButtonActionPerformed
     private void formComponentShown(java.awt.event.ComponentEvent evt) {
-
+        Connection con = null;
         try {
-            Connection con = ConnectionBuilder.getConnection();
+            con = ConnectionBuilder.getConnection();
             UserLogin uLogin = new UserLogin();
             PreparedStatement pstm = con.prepareStatement("SELECT * FROM UserProfile WHERE id = " + uLogin.getUserId());
             ResultSet rs = pstm.executeQuery();
