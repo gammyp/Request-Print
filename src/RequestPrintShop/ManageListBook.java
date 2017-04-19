@@ -203,6 +203,11 @@ public class ManageListBook extends javax.swing.JFrame {
 
         signOut.setText("Sign out");
         signOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        signOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                signOutMouseClicked(evt);
+            }
+        });
         getContentPane().add(signOut);
         signOut.setBounds(7, 450, 50, 20);
 
@@ -322,6 +327,12 @@ public class ManageListBook extends javax.swing.JFrame {
             Logger.getLogger(ManageListBook.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void signOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signOutMouseClicked
+        StoreLogin sLogin = new StoreLogin();
+        this.setVisible(false);
+        sLogin.setVisible(true);
+    }//GEN-LAST:event_signOutMouseClicked
 
     /**
      * @param args the command line arguments

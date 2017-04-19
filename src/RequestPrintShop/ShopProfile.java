@@ -163,6 +163,11 @@ public class ShopProfile extends javax.swing.JFrame {
 
         signOut.setText("Sign out");
         signOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        signOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                signOutMouseClicked(evt);
+            }
+        });
         jPanel1.add(signOut);
         signOut.setBounds(10, 390, 50, 20);
 
@@ -223,6 +228,12 @@ public class ShopProfile extends javax.swing.JFrame {
         this.setVisible(false);
         mlb.setVisible(true);
     }//GEN-LAST:event_manageBookMouseClicked
+
+    private void signOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signOutMouseClicked
+        StoreLogin sLogin = new StoreLogin();
+        this.setVisible(false);
+        sLogin.setVisible(true);
+    }//GEN-LAST:event_signOutMouseClicked
 
     /**
      * @param args the command line arguments
