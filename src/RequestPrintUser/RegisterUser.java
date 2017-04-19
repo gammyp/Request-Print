@@ -53,7 +53,7 @@ public class RegisterUser extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        Register.setFont(new java.awt.Font("supermarket", 0, 36)); // NOI18N
+        Register.setFont(new java.awt.Font("supermarket", 0, 24)); // NOI18N
         Register.setText("Register");
         Register.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
@@ -65,7 +65,7 @@ public class RegisterUser extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Register);
-        Register.setBounds(253, 13, 104, 43);
+        Register.setBounds(253, 13, 94, 43);
 
         surname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
