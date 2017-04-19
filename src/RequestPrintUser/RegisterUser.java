@@ -53,10 +53,20 @@ public class RegisterUser extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        Register.setFont(new java.awt.Font("supermarket", 0, 36)); // NOI18N
+        Register.setFont(new java.awt.Font("supermarket", 0, 24)); // NOI18N
         Register.setText("Register");
         getContentPane().add(Register);
+<<<<<<< HEAD
+        Register.setBounds(253, 13, 94, 43);
+
+        surname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                surnameActionPerformed(evt);
+            }
+        });
+=======
         Register.setBounds(253, 13, 104, 43);
+>>>>>>> master
         getContentPane().add(surname);
         surname.setBounds(262, 135, 228, 33);
         getContentPane().add(name);

@@ -5,15 +5,18 @@
  */
 package RequestPrintUser;
 
-/**
- *
- * @author game_
- */
+import RequestPrintDatabase.ConnectionBuilder;
+import RequestPrintLogin.UserLogin;
+import RequestPrintShop.EditShopProfile;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Userprofile extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Userprofile
-     */
     public Userprofile() {
         initComponents();
     }
@@ -27,25 +30,114 @@ public class Userprofile extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        Name = new javax.swing.JLabel();
+        Surname = new javax.swing.JLabel();
+        Email = new javax.swing.JLabel();
+        Phone = new javax.swing.JLabel();
+        NameLabel = new javax.swing.JLabel();
+        SurnameLabel = new javax.swing.JLabel();
+        EmailLabel = new javax.swing.JLabel();
+        PhoneLabel = new javax.swing.JLabel();
+        Edit = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel1.setText("Profile");
+
+        Name.setText("Name : ");
+
+        Surname.setText("Surname : ");
+
+        Email.setText("Email : ");
+
+        Phone.setText("Telephone : ");
+
+        Edit.setText("Edit");
+
+        jButton2.setText("Next >");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(160, 160, 160)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Phone)
+                            .addComponent(Name)
+                            .addComponent(Surname)
+                            .addComponent(Email)
+                            .addComponent(Edit))
+                        .addGap(73, 73, 73)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2)
+                            .addComponent(NameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(SurnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PhoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(NameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Surname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(SurnameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Email, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(EmailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Phone)
+                    .addComponent(PhoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Edit)
+                    .addComponent(jButton2))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        EditUserProfile editUProf = new EditUserProfile();
+        editUProf.setVisible(true);
+    }                                    
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {
+        Connection con = null;
+        try {
+            con = ConnectionBuilder.getConnection();
+            UserLogin uLogin = new UserLogin();
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM ShopProfile WHERE shopID = " + uLogin.getUserId());
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+                NameLabel.setText(rs.getString("Name"));
+                SurnameLabel.setText(rs.getString("Surname"));
+                EmailLabel.setText(rs.getString("Email"));
+                PhoneLabel.setText(rs.getString("Phone"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Userprofile.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -79,5 +171,16 @@ public class Userprofile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Edit;
+    private javax.swing.JLabel Email;
+    private javax.swing.JLabel EmailLabel;
+    private javax.swing.JLabel Name;
+    private javax.swing.JLabel NameLabel;
+    private javax.swing.JLabel Phone;
+    private javax.swing.JLabel PhoneLabel;
+    private javax.swing.JLabel Surname;
+    private javax.swing.JLabel SurnameLabel;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
