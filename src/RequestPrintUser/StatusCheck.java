@@ -39,6 +39,7 @@ public class StatusCheck extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         StatusTable = new javax.swing.JTable();
         RefreshButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -95,6 +96,9 @@ public class StatusCheck extends javax.swing.JFrame {
             }
         });
         getContentPane().add(RefreshButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 530, -1, -1));
+
+        jLabel2.setText("beta 1");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, -1, -1));
 
         setSize(new java.awt.Dimension(630, 643));
         setLocationRelativeTo(null);
@@ -168,6 +172,7 @@ public class StatusCheck extends javax.swing.JFrame {
     private javax.swing.JButton RefreshButton;
     private javax.swing.JTable StatusTable;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

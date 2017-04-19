@@ -48,6 +48,7 @@ public class RegisterUser extends javax.swing.JFrame {
         checkUsername = new javax.swing.JLabel();
         checkPassword = new javax.swing.JLabel();
         error = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -56,7 +57,7 @@ public class RegisterUser extends javax.swing.JFrame {
         Register.setFont(new java.awt.Font("supermarket", 0, 24)); // NOI18N
         Register.setText("Register");
         getContentPane().add(Register);
-        Register.setBounds(253, 13, 73, 43);
+        Register.setBounds(253, 13, 89, 43);
         getContentPane().add(surname);
         surname.setBounds(262, 135, 228, 33);
         getContentPane().add(name);
@@ -130,6 +131,10 @@ public class RegisterUser extends javax.swing.JFrame {
         checkPassword.setBounds(500, 410, 90, 20);
         getContentPane().add(error);
         error.setBounds(500, 350, 90, 30);
+
+        jLabel1.setText("beta 1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(520, 10, 44, 20);
 
         setSize(new java.awt.Dimension(600, 546));
         setLocationRelativeTo(null);
@@ -279,6 +284,7 @@ public class RegisterUser extends javax.swing.JFrame {
     private javax.swing.JLabel checkUsername;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel error;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField name;
     private javax.swing.JLabel namelabel;
     private javax.swing.JTextField password;
