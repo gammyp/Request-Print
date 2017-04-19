@@ -91,15 +91,15 @@ public class UserLogin extends javax.swing.JFrame {
                 regisButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(regisButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 80, 30));
+        getContentPane().add(regisButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 100, 30));
 
-        storeLoginButton.setText("Login");
+        storeLoginButton.setText("Store Login");
         storeLoginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 storeLoginButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(storeLoginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 80, 30));
+        getContentPane().add(storeLoginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 100, 30));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);

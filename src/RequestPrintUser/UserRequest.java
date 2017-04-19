@@ -19,7 +19,6 @@ import java.util.logging.Logger;
 public class UserRequest extends javax.swing.JFrame {
     
     private String request = "";
-
     /**
      * Creates new form UserProfile
      */
@@ -67,7 +66,7 @@ public class UserRequest extends javax.swing.JFrame {
                 LogoutMouseClicked(evt);
             }
         });
-        getContentPane().add(Logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, -1, -1));
+        getContentPane().add(Logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, -1, -1));
 
         Request.setText("Request");
         Request.addActionListener(new java.awt.event.ActionListener() {
@@ -75,7 +74,7 @@ public class UserRequest extends javax.swing.JFrame {
                 RequestActionPerformed(evt);
             }
         });
-        getContentPane().add(Request, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 510, -1, -1));
+        getContentPane().add(Request, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 520, -1, -1));
 
         CheckStatus.setText("Check status");
         CheckStatus.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -83,59 +82,69 @@ public class UserRequest extends javax.swing.JFrame {
                 CheckStatusMouseClicked(evt);
             }
         });
-        getContentPane().add(CheckStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 510, -1, -1));
+        getContentPane().add(CheckStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, -1, -1));
 
         jLabel1.setText("beta 1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, -1, -1));
-        getContentPane().add(DocumentLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 410, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, -1, -1));
+        getContentPane().add(DocumentLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 410, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Location link");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, -1, -1));
 
         jLabel3.setText("Require cloud service (Google Drive , Onedrive , etc.)");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel4.setText("Request to print your document");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Attach your file");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, -1, -1));
 
         ChooseFile.setText("Choose File");
-        getContentPane().add(ChooseFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, -1, -1));
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 400, 20));
+        ChooseFile.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ChooseFileMouseClicked(evt);
+            }
+        });
+        getContentPane().add(ChooseFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 400, 20));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("OR");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Choose book from list.");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 254, 140, 30));
-        getContentPane().add(CopiesofDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 140, 30));
+        getContentPane().add(CopiesofDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, -1, -1));
 
         jLabel9.setText("Copies");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
 
         BookList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(BookList, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 390, -1));
+        getContentPane().add(BookList, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 390, -1));
 
         ProfileButton.setText("Profile");
-        getContentPane().add(ProfileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 510, -1, -1));
+        ProfileButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ProfileButtonMouseClicked(evt);
+            }
+        });
+        getContentPane().add(ProfileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 520, -1, -1));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 520, 170));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 520, 170));
 
         jLabel10.setText("Message to shop.");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, -1, -1));
 
-        setSize(new java.awt.Dimension(600, 616));
+        setSize(new java.awt.Dimension(778, 616));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -160,6 +169,17 @@ public class UserRequest extends javax.swing.JFrame {
         setVisible(false);
         stch.setVisible(true);
     }//GEN-LAST:event_CheckStatusMouseClicked
+
+    private void ChooseFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ChooseFileMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ChooseFileMouseClicked
+
+    private void ProfileButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProfileButtonMouseClicked
+        // TODO add your handling code here:
+        Userprofile usrp = new Userprofile();
+        setVisible(false);
+        usrp.setVisible(true);
+    }//GEN-LAST:event_ProfileButtonMouseClicked
 
     /**
      * @param args the command line arguments
