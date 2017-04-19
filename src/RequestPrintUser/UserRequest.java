@@ -52,6 +52,7 @@ public class UserRequest extends javax.swing.JFrame {
         CopiesofDocument = new javax.swing.JSpinner();
         jLabel9 = new javax.swing.JLabel();
         BookList = new javax.swing.JComboBox<>();
+        ProfileButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -79,7 +80,7 @@ public class UserRequest extends javax.swing.JFrame {
                 CheckStatusMouseClicked(evt);
             }
         });
-        getContentPane().add(CheckStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, -1, -1));
+        getContentPane().add(CheckStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, -1, -1));
 
         jLabel1.setText("beta 1");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, -1, -1));
@@ -118,6 +119,9 @@ public class UserRequest extends javax.swing.JFrame {
 
         BookList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(BookList, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 390, -1));
+
+        ProfileButton.setText("Profile");
+        getContentPane().add(ProfileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, -1, -1));
 
         setSize(new java.awt.Dimension(600, 407));
         setLocationRelativeTo(null);
@@ -188,6 +192,7 @@ public class UserRequest extends javax.swing.JFrame {
     private javax.swing.JSpinner CopiesofDocument;
     private javax.swing.JTextField DocumentLink;
     private javax.swing.JButton Logout;
+    private javax.swing.JButton ProfileButton;
     private javax.swing.JButton Request;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
