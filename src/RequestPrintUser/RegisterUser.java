@@ -56,17 +56,7 @@ public class RegisterUser extends javax.swing.JFrame {
         Register.setFont(new java.awt.Font("supermarket", 0, 24)); // NOI18N
         Register.setText("Register");
         getContentPane().add(Register);
-<<<<<<< HEAD
-        Register.setBounds(253, 13, 94, 43);
-
-        surname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                surnameActionPerformed(evt);
-            }
-        });
-=======
-        Register.setBounds(253, 13, 104, 43);
->>>>>>> master
+        Register.setBounds(253, 13, 73, 43);
         getContentPane().add(surname);
         surname.setBounds(262, 135, 228, 33);
         getContentPane().add(name);
@@ -263,6 +253,12 @@ public class RegisterUser extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(RegisterUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

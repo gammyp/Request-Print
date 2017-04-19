@@ -147,12 +147,9 @@ public class EditUserProfile extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_saveButtonActionPerformed
     private void formComponentShown(java.awt.event.ComponentEvent evt) {
-<<<<<<< HEAD
-        Connection con = null;
-=======
->>>>>>> master
+
         try {
-            con = ConnectionBuilder.getConnection();
+            Connection con = ConnectionBuilder.getConnection();
             UserLogin uLogin = new UserLogin();
             PreparedStatement pstm = con.prepareStatement("SELECT * FROM UserProfile WHERE id = " + uLogin.getUserId());
             ResultSet rs = pstm.executeQuery();
