@@ -50,6 +50,11 @@ public class StatusCheck extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BackButton.setText("Back");
+        BackButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BackButtonMouseClicked(evt);
+            }
+        });
         getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 530, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -115,6 +120,13 @@ public class StatusCheck extends javax.swing.JFrame {
             Logger.getLogger(StatusCheck.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formWindowActivated
+
+    private void BackButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseClicked
+        // TODO add your handling code here:
+        UserRequest userR = new UserRequest();
+        setVisible(false);
+        userR.setVisible(true);
+    }//GEN-LAST:event_BackButtonMouseClicked
 
     /**
      * @param args the command line arguments

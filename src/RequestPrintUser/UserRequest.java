@@ -74,6 +74,11 @@ public class UserRequest extends javax.swing.JFrame {
         getContentPane().add(Request, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, -1, -1));
 
         CheckStatus.setText("Check status");
+        CheckStatus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CheckStatusMouseClicked(evt);
+            }
+        });
         getContentPane().add(CheckStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, -1, -1));
 
         jLabel1.setText("beta 1");
@@ -85,7 +90,7 @@ public class UserRequest extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
         jLabel3.setText("Require cloud service (Google Drive , Onedrive , etc.)");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel4.setText("Request to print your document");
@@ -93,10 +98,10 @@ public class UserRequest extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Attach your file");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
         ChooseFile.setText("Choose File");
-        getContentPane().add(ChooseFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, -1));
+        getContentPane().add(ChooseFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, -1, -1));
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 400, 20));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -132,6 +137,13 @@ public class UserRequest extends javax.swing.JFrame {
             Logger.getLogger(UserRequest.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_RequestActionPerformed
+
+    private void CheckStatusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckStatusMouseClicked
+        // TODO add your handling code here:
+        StatusCheck stch = new StatusCheck();
+        setVisible(false);
+        stch.setVisible(true);
+    }//GEN-LAST:event_CheckStatusMouseClicked
 
     /**
      * @param args the command line arguments

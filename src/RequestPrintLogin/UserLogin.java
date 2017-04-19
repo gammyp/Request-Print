@@ -133,7 +133,7 @@ public class UserLogin extends javax.swing.JFrame {
                 pstm.setString(2, PasswordField.getText());
                 ResultSet rs = pstm.executeQuery();
                 if (rs.next()) {
-                    userId = Integer.parseInt(rs.getString("userID"));
+                    userId = Integer.parseInt(rs.getString("id"));
                     UserRequest usp = new UserRequest();
                     JOptionPane.showMessageDialog(null, "Sucessful");
                     setVisible(false);
