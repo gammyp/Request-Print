@@ -128,16 +128,10 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="nameField">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nameFieldActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="surnameField">
     </Component>
     <Component class="javax.swing.JTextField" name="emailField">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="emailFieldActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="phoneField">
     </Component>

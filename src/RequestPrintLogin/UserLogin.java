@@ -86,11 +86,6 @@ public class UserLogin extends javax.swing.JFrame {
         getContentPane().add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 140, -1));
 
         regisButton.setText("Register");
-        regisButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                regisButtonMouseClicked(evt);
-            }
-        });
         regisButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 regisButtonActionPerformed(evt);
@@ -156,15 +151,10 @@ public class UserLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void storeLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_storeLoginButtonActionPerformed
-        // TODO add your handling code here:
         StoreLogin stl = new StoreLogin();
         stl.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_storeLoginButtonActionPerformed
-
-    private void regisButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regisButtonMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_regisButtonMouseClicked
 
     /**
      * @param args the command line arguments
