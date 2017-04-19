@@ -53,6 +53,9 @@ public class UserRequest extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         BookList = new javax.swing.JComboBox<>();
         ProfileButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -64,7 +67,7 @@ public class UserRequest extends javax.swing.JFrame {
                 LogoutMouseClicked(evt);
             }
         });
-        getContentPane().add(Logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 311, -1, -1));
+        getContentPane().add(Logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, -1, -1));
 
         Request.setText("Request");
         Request.addActionListener(new java.awt.event.ActionListener() {
@@ -72,7 +75,7 @@ public class UserRequest extends javax.swing.JFrame {
                 RequestActionPerformed(evt);
             }
         });
-        getContentPane().add(Request, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, -1, -1));
+        getContentPane().add(Request, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 510, -1, -1));
 
         CheckStatus.setText("Check status");
         CheckStatus.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -80,7 +83,7 @@ public class UserRequest extends javax.swing.JFrame {
                 CheckStatusMouseClicked(evt);
             }
         });
-        getContentPane().add(CheckStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, -1, -1));
+        getContentPane().add(CheckStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 510, -1, -1));
 
         jLabel1.setText("beta 1");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, -1, -1));
@@ -121,9 +124,18 @@ public class UserRequest extends javax.swing.JFrame {
         getContentPane().add(BookList, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 390, -1));
 
         ProfileButton.setText("Profile");
-        getContentPane().add(ProfileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, -1, -1));
+        getContentPane().add(ProfileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 510, -1, -1));
 
-        setSize(new java.awt.Dimension(600, 407));
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 520, 170));
+
+        jLabel10.setText("Message to shop.");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
+
+        setSize(new java.awt.Dimension(600, 616));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -195,6 +207,7 @@ public class UserRequest extends javax.swing.JFrame {
     private javax.swing.JButton ProfileButton;
     private javax.swing.JButton Request;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -203,5 +216,7 @@ public class UserRequest extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
