@@ -109,6 +109,8 @@ public class StatusCheck extends javax.swing.JFrame {
             // TODO add your handling code here:
             Connection con = ConnectionBuilder.getConnection();
             PreparedStatement pstm = con.prepareStatement(fetch);
+            con.close();
+            pstm.close();
             
         } catch (SQLException ex) {
             Logger.getLogger(StatusCheck.class.getName()).log(Level.SEVERE, null, ex);
@@ -120,6 +122,8 @@ public class StatusCheck extends javax.swing.JFrame {
         try {
             Connection con = ConnectionBuilder.getConnection();
             PreparedStatement pstm = con.prepareStatement(fetch);
+            con.close();
+            pstm.close();
         } catch (SQLException ex) {
             Logger.getLogger(StatusCheck.class.getName()).log(Level.SEVERE, null, ex);
         }

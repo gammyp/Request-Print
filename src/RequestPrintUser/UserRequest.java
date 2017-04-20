@@ -35,38 +35,43 @@ public class UserRequest extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Logout = new javax.swing.JButton();
+        LogoutButton = new javax.swing.JButton();
         Request = new javax.swing.JButton();
         CheckStatus = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         DocumentLink = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        LocationLink = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        RequestHaed = new javax.swing.JLabel();
+        AttachFile = new javax.swing.JLabel();
         ChooseFile = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        CopiesofDocument = new javax.swing.JSpinner();
-        jLabel9 = new javax.swing.JLabel();
+        ChooseBookLabel = new javax.swing.JLabel();
+        NumberofCopies = new javax.swing.JSpinner();
+        Copies = new javax.swing.JLabel();
         BookList = new javax.swing.JComboBox<>();
         ProfileButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jLabel10 = new javax.swing.JLabel();
+        MessageLabel = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        YourRequest = new javax.swing.JLabel();
+        YourProfile = new javax.swing.JLabel();
+        DocumnetStatus = new javax.swing.JLabel();
+        Logout = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Logout.setText("Logout");
-        Logout.addMouseListener(new java.awt.event.MouseAdapter() {
+        LogoutButton.setText("Logout");
+        LogoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                LogoutMouseClicked(evt);
+                LogoutButtonMouseClicked(evt);
             }
         });
-        getContentPane().add(Logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, -1, -1));
+        getContentPane().add(LogoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, -1, -1));
 
         Request.setText("Request");
         Request.addActionListener(new java.awt.event.ActionListener() {
@@ -88,20 +93,20 @@ public class UserRequest extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, -1, -1));
         getContentPane().add(DocumentLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 410, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Location link");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, -1, -1));
+        LocationLink.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        LocationLink.setText("Location link");
+        getContentPane().add(LocationLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, -1, -1));
 
         jLabel3.setText("Require cloud service (Google Drive , Onedrive , etc.)");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel4.setText("Request to print your document");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, -1, -1));
+        RequestHaed.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        RequestHaed.setText("Request to print your document");
+        getContentPane().add(RequestHaed, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel5.setText("Attach your file");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, -1, -1));
+        AttachFile.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        AttachFile.setText("Attach your file");
+        getContentPane().add(AttachFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, -1, -1));
 
         ChooseFile.setText("Choose File");
         ChooseFile.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -116,13 +121,13 @@ public class UserRequest extends javax.swing.JFrame {
         jLabel7.setText("OR");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setText("Choose book from list.");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 140, 30));
-        getContentPane().add(CopiesofDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, -1, -1));
+        ChooseBookLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ChooseBookLabel.setText("Choose book from list.");
+        getContentPane().add(ChooseBookLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 140, 30));
+        getContentPane().add(NumberofCopies, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, -1, -1));
 
-        jLabel9.setText("Copies");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
+        Copies.setText("Copies");
+        getContentPane().add(Copies, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
 
         BookList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(BookList, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 390, -1));
@@ -141,23 +146,72 @@ public class UserRequest extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 520, 170));
 
-        jLabel10.setText("Message to shop.");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, -1, -1));
+        MessageLabel.setText("Message to shop.");
+        getContentPane().add(MessageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, -1, -1));
 
-        setSize(new java.awt.Dimension(778, 616));
+        YourRequest.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        YourRequest.setText("Your Request");
+
+        YourProfile.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        YourProfile.setText("Your Profile");
+
+        DocumnetStatus.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        DocumnetStatus.setText("Check Status");
+
+        Logout.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        Logout.setText("Logout");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(YourRequest, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(YourProfile)
+                            .addComponent(DocumnetStatus)
+                            .addComponent(Logout))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addComponent(YourRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64)
+                .addComponent(YourProfile)
+                .addGap(67, 67, 67)
+                .addComponent(DocumnetStatus)
+                .addGap(83, 83, 83)
+                .addComponent(Logout)
+                .addContainerGap(147, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 570));
+
+        setSize(new java.awt.Dimension(778, 591));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void LogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutMouseClicked
+    private void LogoutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutButtonMouseClicked
         // TODO add your handling code here:
         System.exit(0);
-    }//GEN-LAST:event_LogoutMouseClicked
+    }//GEN-LAST:event_LogoutButtonMouseClicked
 
     private void RequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RequestActionPerformed
         // TODO add your handling code here:
+        SelectShop selc = new SelectShop();
         try {
             Connection con = ConnectionBuilder.getConnection();
             PreparedStatement pstm = con.prepareStatement(request);
+            setVisible(false);
+            selc.setVisible(true);
+            con.close();
+            pstm.close();
         } catch (SQLException ex) {
             Logger.getLogger(UserRequest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -218,24 +272,29 @@ public class UserRequest extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AttachFile;
     private javax.swing.JComboBox<String> BookList;
     private javax.swing.JButton CheckStatus;
+    private javax.swing.JLabel ChooseBookLabel;
     private javax.swing.JButton ChooseFile;
-    private javax.swing.JSpinner CopiesofDocument;
+    private javax.swing.JLabel Copies;
     private javax.swing.JTextField DocumentLink;
-    private javax.swing.JButton Logout;
+    private javax.swing.JLabel DocumnetStatus;
+    private javax.swing.JLabel LocationLink;
+    private javax.swing.JLabel Logout;
+    private javax.swing.JButton LogoutButton;
+    private javax.swing.JLabel MessageLabel;
+    private javax.swing.JSpinner NumberofCopies;
     private javax.swing.JButton ProfileButton;
     private javax.swing.JButton Request;
+    private javax.swing.JLabel RequestHaed;
+    private javax.swing.JLabel YourProfile;
+    private javax.swing.JLabel YourRequest;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables

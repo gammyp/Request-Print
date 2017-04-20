@@ -128,7 +128,7 @@ public class Userprofile extends javax.swing.JFrame {
         EditUserProfile editUProf = new EditUserProfile();
         editUProf.setVisible(true);
     }                                    
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {
+    private void formWindowActivated(java.awt.event.WindowEvent evt) throws SQLException {
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
@@ -141,6 +141,8 @@ public class Userprofile extends javax.swing.JFrame {
                 EmailLabel.setText(rs.getString("Email"));
                 PhoneLabel.setText(rs.getString("Phone"));
             }
+            con.close();
+            pstm.close();
         } catch (SQLException ex) {
             Logger.getLogger(Userprofile.class.getName()).log(Level.SEVERE, null, ex);
         }

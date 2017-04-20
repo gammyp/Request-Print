@@ -142,6 +142,8 @@ public class UserLogin extends javax.swing.JFrame {
                     LoginFailedStutus.setText("");
                     LoginFailedStutus.setText("Invalid username or password");
                 }
+                con.close();
+                pstm.close();
             } catch (SQLException ex) {
                 Logger.getLogger(UserLogin.class.getName()).log(Level.SEVERE, null, ex);
             }

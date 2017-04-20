@@ -171,6 +171,8 @@ public class RegisterUser extends javax.swing.JFrame {
                         password.setText("");
                         checkPassword.setIcon(null);
                         checkUsername.setIcon(null);
+                        con.close();
+                        pstm.close();
                     }
                 }
             }
@@ -196,6 +198,8 @@ public class RegisterUser extends javax.swing.JFrame {
                 checkUsername.setIcon(new ImageIcon(trueIcon.getScaledInstance(checkUsername.getWidth(), checkUsername.getHeight(), 0)));
 
             }
+        con.close();
+        pstm.close();
 
 //        checkUsername.hide();
         } catch (SQLException ex) {
