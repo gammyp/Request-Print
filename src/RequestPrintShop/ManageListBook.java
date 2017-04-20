@@ -147,6 +147,11 @@ public class ManageListBook extends javax.swing.JFrame {
         respondPrint.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         respondPrint.setText("Respond Print");
         respondPrint.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        respondPrint.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                respondPrintMouseClicked(evt);
+            }
+        });
         getContentPane().add(respondPrint);
         respondPrint.setBounds(0, 250, 190, 30);
 
@@ -333,6 +338,12 @@ public class ManageListBook extends javax.swing.JFrame {
         this.setVisible(false);
         sLogin.setVisible(true);
     }//GEN-LAST:event_signOutMouseClicked
+
+    private void respondPrintMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_respondPrintMouseClicked
+        ResponPrint rp = new ResponPrint();
+        this.setVisible(false);
+        rp.setVisible(true);
+    }//GEN-LAST:event_respondPrintMouseClicked
 
     /**
      * @param args the command line arguments
