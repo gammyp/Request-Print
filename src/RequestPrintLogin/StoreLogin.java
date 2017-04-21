@@ -54,17 +54,12 @@ public class StoreLogin extends javax.swing.JFrame {
         forUserLogin = new javax.swing.JLabel();
         userLogin = new javax.swing.JButton();
         regisButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(450, 350));
+        setMinimumSize(new java.awt.Dimension(400, 274));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        userNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userNameFieldActionPerformed(evt);
-            }
-        });
         getContentPane().add(userNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 270, -1));
 
         userName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -120,13 +115,12 @@ public class StoreLogin extends javax.swing.JFrame {
         });
         getContentPane().add(regisButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 100, 30));
 
-        setSize(new java.awt.Dimension(418, 320));
+        jLabel1.setText("beta 1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, -1, -1));
+
+        setSize(new java.awt.Dimension(416, 313));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void userNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userNameFieldActionPerformed
 
     private void regisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regisButtonActionPerformed
         SelectRegisUserOrRegisShop selectRegis = new SelectRegisUserOrRegisShop();
@@ -161,6 +155,8 @@ public class StoreLogin extends javax.swing.JFrame {
                     passwordField.setText("");
                     errorText.setText("Invalid username or password");
                 }
+                con.close();
+                pstm.close();
             } catch (SQLException ex) {
                 Logger.getLogger(StoreLogin.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -205,6 +201,7 @@ public class StoreLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel errorText;
     private javax.swing.JLabel forUserLogin;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton loginButton;
     private javax.swing.JLabel nameProgram;
     private javax.swing.JLabel noAccount;

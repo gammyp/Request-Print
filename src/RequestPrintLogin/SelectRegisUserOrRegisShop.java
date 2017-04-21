@@ -34,13 +34,13 @@ public class SelectRegisUserOrRegisShop extends javax.swing.JFrame {
         shopRegisButton = new javax.swing.JButton();
         userRegisButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(null);
 
-        questionSelectRegis.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        questionSelectRegis.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         questionSelectRegis.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        questionSelectRegis.setText("Do you preferuser register or shop register ?");
+        questionSelectRegis.setText("Do you preferuser register user or shop register ?");
         getContentPane().add(questionSelectRegis);
         questionSelectRegis.setBounds(0, 20, 450, 41);
 

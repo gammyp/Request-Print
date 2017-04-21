@@ -48,78 +48,28 @@ public class RegisterUser extends javax.swing.JFrame {
         checkUsername = new javax.swing.JLabel();
         checkPassword = new javax.swing.JLabel();
         error = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(null);
 
-        Register.setFont(new java.awt.Font("supermarket", 0, 36)); // NOI18N
+        Register.setFont(new java.awt.Font("supermarket", 0, 24)); // NOI18N
         Register.setText("Register");
-        Register.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                RegisterAncestorAdded(evt);
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
         getContentPane().add(Register);
-        Register.setBounds(253, 13, 104, 43);
-
-        surname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                surnameActionPerformed(evt);
-            }
-        });
+        Register.setBounds(253, 13, 89, 43);
         getContentPane().add(surname);
         surname.setBounds(262, 135, 228, 33);
-
-        name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameActionPerformed(evt);
-            }
-        });
         getContentPane().add(name);
         name.setBounds(262, 84, 228, 33);
-
-        Email.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EmailActionPerformed(evt);
-            }
-        });
         getContentPane().add(Email);
         Email.setBounds(262, 188, 228, 33);
-
-        phone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                phoneActionPerformed(evt);
-            }
-        });
         getContentPane().add(phone);
         phone.setBounds(262, 241, 228, 33);
-
-        userName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userNameActionPerformed(evt);
-            }
-        });
         getContentPane().add(userName);
         userName.setBounds(262, 294, 228, 33);
-
-        password.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordActionPerformed(evt);
-            }
-        });
         getContentPane().add(password);
         password.setBounds(262, 347, 228, 33);
-
-        CreatePassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CreatePasswordActionPerformed(evt);
-            }
-        });
         getContentPane().add(CreatePassword);
         CreatePassword.setBounds(262, 400, 228, 33);
 
@@ -168,11 +118,6 @@ public class RegisterUser extends javax.swing.JFrame {
         submitButton.setBounds(325, 451, 100, 36);
 
         backButton.setText("Back");
-        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                backButtonMouseClicked(evt);
-            }
-        });
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
@@ -187,41 +132,13 @@ public class RegisterUser extends javax.swing.JFrame {
         getContentPane().add(error);
         error.setBounds(500, 350, 90, 30);
 
-        setSize(new java.awt.Dimension(600, 522));
+        jLabel1.setText("beta 1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(520, 10, 44, 20);
+
+        setSize(new java.awt.Dimension(600, 546));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void surnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_surnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_surnameActionPerformed
-
-    private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nameActionPerformed
-
-    private void EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EmailActionPerformed
-
-    private void phoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_phoneActionPerformed
-
-    private void userNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userNameActionPerformed
-
-    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordActionPerformed
-
-    private void CreatePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreatePasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CreatePasswordActionPerformed
-
-    private void RegisterAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_RegisterAncestorAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RegisterAncestorAdded
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
 
@@ -254,6 +171,8 @@ public class RegisterUser extends javax.swing.JFrame {
                         password.setText("");
                         checkPassword.setIcon(null);
                         checkUsername.setIcon(null);
+                        con.close();
+                        pstm.close();
                     }
                 }
             }
@@ -263,7 +182,6 @@ public class RegisterUser extends javax.swing.JFrame {
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void UsernameFocusLost(java.awt.event.FocusEvent evt) throws SQLException {
-        // TODO add your handling code here:
         Connection con = ConnectionBuilder.getConnection();
         Image trueIcon = new ImageIcon(this.getClass().getResource("icon/check.png")).getImage();
         Image falseIcon = new ImageIcon(this.getClass().getResource("icon/uncheck.png")).getImage();
@@ -280,6 +198,8 @@ public class RegisterUser extends javax.swing.JFrame {
                 checkUsername.setIcon(new ImageIcon(trueIcon.getScaledInstance(checkUsername.getWidth(), checkUsername.getHeight(), 0)));
 
             }
+        con.close();
+        pstm.close();
 
 //        checkUsername.hide();
         } catch (SQLException ex) {
@@ -288,7 +208,6 @@ public class RegisterUser extends javax.swing.JFrame {
     }
 
     private void PassFocusLost(java.awt.event.FocusEvent evt) {
-        // TODO add your handling code here:
         if (password.getText().length() < 6 || password.getText().length() > 45) {
             error.setText("** Password 6-45 charecter ");
             checkall = false;
@@ -300,7 +219,6 @@ public class RegisterUser extends javax.swing.JFrame {
     }
 
     private void RePassFocusLost(java.awt.event.FocusEvent evt) {
-        // TODO add your handling code here:
         Image trueIcon = new ImageIcon(this.getClass().getResource("icon/check.png")).getImage();
         Image falseIcon = new ImageIcon(this.getClass().getResource("icon/uncheck.png")).getImage();
 
@@ -319,13 +237,8 @@ public class RegisterUser extends javax.swing.JFrame {
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_backButtonActionPerformed
-
-    private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
-        // TODO add your handling code here:
         setVisible(false);
-    }//GEN-LAST:event_backButtonMouseClicked
+    }//GEN-LAST:event_backButtonActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -351,6 +264,12 @@ public class RegisterUser extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -369,6 +288,7 @@ public class RegisterUser extends javax.swing.JFrame {
     private javax.swing.JLabel checkUsername;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel error;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField name;
     private javax.swing.JLabel namelabel;
     private javax.swing.JTextField password;

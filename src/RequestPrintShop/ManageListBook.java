@@ -12,9 +12,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -52,11 +54,9 @@ public class ManageListBook extends javax.swing.JFrame {
         showProductID = new javax.swing.JLabel();
         respondPrint = new javax.swing.JLabel();
         detail = new javax.swing.JLabel();
-        showDetail = new javax.swing.JLabel();
         price = new javax.swing.JLabel();
         showPrice = new javax.swing.JLabel();
         deleteButton = new javax.swing.JButton();
-        backButton = new javax.swing.JButton();
         addButton = new javax.swing.JButton();
         home = new javax.swing.JLabel();
         profile = new javax.swing.JLabel();
@@ -66,6 +66,8 @@ public class ManageListBook extends javax.swing.JFrame {
         bgMenu = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         showBookName = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        showDetail = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -107,6 +109,11 @@ public class ManageListBook extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        manageTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                manageTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(manageTable);
 
         getContentPane().add(jScrollPane1);
@@ -140,14 +147,17 @@ public class ManageListBook extends javax.swing.JFrame {
         respondPrint.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         respondPrint.setText("Respond Print");
         respondPrint.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        respondPrint.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                respondPrintMouseClicked(evt);
+            }
+        });
         getContentPane().add(respondPrint);
         respondPrint.setBounds(0, 250, 190, 30);
 
         detail.setText("Detail");
         getContentPane().add(detail);
         detail.setBounds(210, 240, 70, 16);
-        getContentPane().add(showDetail);
-        showDetail.setBounds(220, 260, 150, 80);
 
         price.setText("Price of print");
         getContentPane().add(price);
@@ -157,18 +167,13 @@ public class ManageListBook extends javax.swing.JFrame {
 
         deleteButton.setText("Delete");
         deleteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(deleteButton);
-        deleteButton.setBounds(600, 430, 70, 30);
-
-        backButton.setText("Back");
-        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        backButton.addActionListener(new java.awt.event.ActionListener() {
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
+                deleteButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(backButton);
-        backButton.setBounds(780, 430, 70, 30);
+        getContentPane().add(deleteButton);
+        deleteButton.setBounds(680, 430, 70, 30);
 
         addButton.setText("Add");
         addButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -178,7 +183,7 @@ public class ManageListBook extends javax.swing.JFrame {
             }
         });
         getContentPane().add(addButton);
-        addButton.setBounds(690, 430, 70, 30);
+        addButton.setBounds(770, 430, 70, 30);
 
         home.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -203,6 +208,11 @@ public class ManageListBook extends javax.swing.JFrame {
 
         signOut.setText("Sign out");
         signOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        signOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                signOutMouseClicked(evt);
+            }
+        });
         getContentPane().add(signOut);
         signOut.setBounds(7, 450, 50, 20);
 
@@ -223,13 +233,18 @@ public class ManageListBook extends javax.swing.JFrame {
         getContentPane().add(showBookName);
         showBookName.setBounds(220, 160, 150, 20);
 
+        showDetail.setBackground(null);
+        showDetail.setEditable(false);
+        showDetail.setBackground(new java.awt.Color(240, 240, 240));
+        showDetail.setBorder(null);
+        jScrollPane2.setViewportView(showDetail);
+
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(220, 260, 150, 80);
+
         setSize(new java.awt.Dimension(879, 524));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_backButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         AddBookToManageBook add = new AddBookToManageBook();
@@ -243,7 +258,8 @@ public class ManageListBook extends javax.swing.JFrame {
         try {
             con = ConnectionBuilder.getConnection();
             StoreLogin sLogin = new StoreLogin();
-            PreparedStatement pstm = con.prepareStatement("SELECT productID, productName, price FROM Product WHERE ShopProfile_shopID = " + sLogin.getShopId());
+            PreparedStatement pstm = con.prepareStatement("SELECT productID, productName, price FROM Product WHERE "
+                    + "ShopProfile_shopID = " + sLogin.getShopId());
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
                 Vector v = new Vector();
@@ -268,6 +284,66 @@ public class ManageListBook extends javax.swing.JFrame {
         this.setVisible(false);
         sProf.setVisible(true);
     }//GEN-LAST:event_profileMouseClicked
+
+    private void manageTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageTableMouseClicked
+        Connection con = null;
+        showProductID.setText((manageTable.getValueAt(manageTable.getSelectedRow(), 0)) + "");
+        showBookName.setText((manageTable.getValueAt(manageTable.getSelectedRow(), 1)) + "");
+        showPrice.setText((manageTable.getValueAt(manageTable.getSelectedRow(), 2)) + "");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            con = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = con.prepareStatement("SELECT date,detail FROM Product WHERE productID = ?");
+            pstm.setInt(1, Integer.parseInt(showProductID.getText()));
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+                if (rs.getDate("date") == null) {
+                    showDate.setText("<Unknown>");
+                    if (rs.getString("detail") == null) {
+                        showDetail.setText("<Unknown>");
+                    } else {
+                        showDetail.setText(rs.getString("detail"));
+                    }
+                } else if (rs.getString("detail") == null) {
+                    showDetail.setText("<Unknown>");
+                    showDate.setText(rs.getDate("date").toString());
+                } else {
+                    showDate.setText(rs.getDate("date").toString());
+                    showDetail.setText(rs.getString("detail"));
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageListBook.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_manageTableMouseClicked
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        int row = manageTable.getSelectedRow();
+        Connection con = null;
+        try {
+            con = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = con.prepareStatement("DELETE FROM Product WHERE ProductID = ?");
+            pstm.setInt(1, Integer.parseInt(showProductID.getText()));
+            int ans = JOptionPane.showConfirmDialog(null, "Delete", "Confirm", JOptionPane.WARNING_MESSAGE);
+            if (ans == 0) {
+                pstm.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageListBook.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void signOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signOutMouseClicked
+        StoreLogin sLogin = new StoreLogin();
+        this.setVisible(false);
+        sLogin.setVisible(true);
+    }//GEN-LAST:event_signOutMouseClicked
+
+    private void respondPrintMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_respondPrintMouseClicked
+        ResponPrint rp = new ResponPrint();
+        this.setVisible(false);
+        rp.setVisible(true);
+    }//GEN-LAST:event_respondPrintMouseClicked
 
     /**
      * @param args the command line arguments
@@ -306,7 +382,6 @@ public class ManageListBook extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
-    private javax.swing.JButton backButton;
     private javax.swing.JPanel bgMenu;
     private javax.swing.JLabel bookName;
     private javax.swing.JLabel date;
@@ -317,6 +392,7 @@ public class ManageListBook extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel manageBook;
     private javax.swing.JLabel manageBookTitle;
     private javax.swing.JTable manageTable;
@@ -325,10 +401,10 @@ public class ManageListBook extends javax.swing.JFrame {
     private javax.swing.JLabel profile;
     private javax.swing.JLabel respondPrint;
     private javax.swing.JLabel showBookName;
-    private javax.swing.JLabel showDate;
-    private javax.swing.JLabel showDetail;
+    public javax.swing.JLabel showDate;
+    private javax.swing.JTextPane showDetail;
     private javax.swing.JLabel showPrice;
-    private javax.swing.JLabel showProductID;
+    public javax.swing.JLabel showProductID;
     private javax.swing.JLabel signOut;
     // End of variables declaration//GEN-END:variables
 }

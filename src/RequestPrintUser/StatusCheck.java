@@ -4,13 +4,20 @@
  * and open the template in the editor.
  */
 package RequestPrintUser;
+import RequestPrintDatabase.ConnectionBuilder;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author game_
  */
 public class StatusCheck extends javax.swing.JFrame {
-
+    
+    private String fetch = "";
     /**
      * Creates new form StatusCheck
      */
@@ -31,13 +38,25 @@ public class StatusCheck extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         StatusTable = new javax.swing.JTable();
+        RefreshButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BackButton.setText("Back");
-        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 530, -1, -1));
+        BackButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BackButtonMouseClicked(evt);
+            }
+        });
+        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 530, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Check your document status ");
@@ -70,9 +89,52 @@ public class StatusCheck extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
 
-        setSize(new java.awt.Dimension(632, 604));
+        RefreshButton.setText("Refresh");
+        RefreshButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RefreshButtonMouseClicked(evt);
+            }
+        });
+        getContentPane().add(RefreshButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 530, -1, -1));
+
+        jLabel2.setText("beta 1");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, -1, -1));
+
+        setSize(new java.awt.Dimension(630, 643));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void RefreshButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RefreshButtonMouseClicked
+        try {
+            // TODO add your handling code here:
+            Connection con = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = con.prepareStatement(fetch);
+            con.close();
+            pstm.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(StatusCheck.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_RefreshButtonMouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        try {
+            Connection con = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = con.prepareStatement(fetch);
+            con.close();
+            pstm.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(StatusCheck.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_formWindowActivated
+
+    private void BackButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseClicked
+        // TODO add your handling code here:
+        UserRequest userR = new UserRequest();
+        setVisible(false);
+        userR.setVisible(true);
+    }//GEN-LAST:event_BackButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -111,8 +173,10 @@ public class StatusCheck extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
+    private javax.swing.JButton RefreshButton;
     private javax.swing.JTable StatusTable;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

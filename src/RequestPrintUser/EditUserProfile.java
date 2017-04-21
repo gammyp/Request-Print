@@ -47,6 +47,7 @@ public class EditUserProfile extends javax.swing.JFrame {
         surnameField = new javax.swing.JTextField();
         emailField = new javax.swing.JTextField();
         phoneField = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(470, 300));
@@ -69,17 +70,7 @@ public class EditUserProfile extends javax.swing.JFrame {
             }
         });
 
-        nameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameFieldActionPerformed(evt);
-            }
-        });
-
-        emailField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailFieldActionPerformed(evt);
-            }
-        });
+        jLabel5.setText("beta 1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,32 +79,41 @@ public class EditUserProfile extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(phone))
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(surnameField, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(200, 200, 200)
-                        .addComponent(saveButton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 160, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(161, 161, 161))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2)
+                                    .addComponent(phone))
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(surnameField, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(200, 200, 200)
+                                .addComponent(saveButton)))
+                        .addGap(0, 3, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(95, 95, 95)
+                        .addComponent(jLabel5)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel5)))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -138,21 +138,15 @@ public class EditUserProfile extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nameFieldActionPerformed
-
-    private void emailFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_emailFieldActionPerformed
-
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        Connection con = null;
         try {
-            Connection con = ConnectionBuilder.getConnection();
+            con = ConnectionBuilder.getConnection();
             UserLogin uLogin = new UserLogin();
             System.out.println(uLogin.getUserId());
-            PreparedStatement pstm = con.prepareStatement("UPDATE UserProfile SET" + "name=?,surname=?,"
-                    + "email=? ,phone=?" + "WHERE id=" + uLogin.getUserId());
+            PreparedStatement pstm = con.prepareStatement("UPDATE UserProfile SET"
+                    + "name=?, surname=?, email=? ,phone=?" 
+                    + "WHERE id = " + uLogin.getUserId());
             pstm.setString(1, nameField.getText());
             pstm.setString(2, surnameField.getText());
             pstm.setString(3, phoneField.getText());
@@ -176,7 +170,6 @@ public class EditUserProfile extends javax.swing.JFrame {
                 surnameField.setText(rs.getString("surname"));
                 emailField.setText(rs.getString("email"));
                 phoneField.setText(rs.getString("phone"));
-
             }
         } catch (SQLException ex) {
             Logger.getLogger(EditUserProfile.class.getName()).log(Level.SEVERE, null, ex);
@@ -224,6 +217,7 @@ public class EditUserProfile extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField nameField;
     private javax.swing.JLabel phone;
     private javax.swing.JTextField phoneField;

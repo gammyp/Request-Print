@@ -5,12 +5,20 @@
  */
 package RequestPrintUser;
 
+import RequestPrintDatabase.ConnectionBuilder;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Game
  */
 public class UserRequest extends javax.swing.JFrame {
-
+    
+    private String request = "";
     /**
      * Creates new form UserProfile
      */
@@ -27,77 +35,205 @@ public class UserRequest extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        LogoutButton = new javax.swing.JButton();
+        Request = new javax.swing.JButton();
+        CheckStatus = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        DocumentLink = new javax.swing.JTextField();
+        LocationLink = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        RequestHaed = new javax.swing.JLabel();
+        AttachFile = new javax.swing.JLabel();
+        ChooseFile = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jLabel9 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        ChooseBookLabel = new javax.swing.JLabel();
+        NumberofCopies = new javax.swing.JSpinner();
+        Copies = new javax.swing.JLabel();
+        BookList = new javax.swing.JComboBox<>();
+        ProfileButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        MessageLabel = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        YourRequest = new javax.swing.JLabel();
+        YourProfile = new javax.swing.JLabel();
+        DocumnetStatus = new javax.swing.JLabel();
+        Logout = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Logout");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 311, -1, -1));
+        LogoutButton.setText("Logout");
+        LogoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LogoutButtonMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LogoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, -1, -1));
 
-        jButton2.setText("Request");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, -1, -1));
+        Request.setText("Request");
+        Request.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RequestActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Request, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 520, -1, -1));
 
-        jButton3.setText("Check status");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, -1, -1));
+        CheckStatus.setText("Check status");
+        CheckStatus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CheckStatusMouseClicked(evt);
+            }
+        });
+        getContentPane().add(CheckStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, -1, -1));
 
         jLabel1.setText("beta 1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, -1, -1));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 410, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, -1, -1));
+        getContentPane().add(DocumentLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 410, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Location link");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+        LocationLink.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        LocationLink.setText("Location link");
+        getContentPane().add(LocationLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, -1, -1));
 
         jLabel3.setText("Require cloud service (Google Drive , Onedrive , etc.)");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel4.setText("Request to print your document");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+        RequestHaed.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        RequestHaed.setText("Request to print your document");
+        getContentPane().add(RequestHaed, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel5.setText("Attach your file");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
+        AttachFile.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        AttachFile.setText("Attach your file");
+        getContentPane().add(AttachFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, -1, -1));
 
-        jButton4.setText("Choose File");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, -1, -1));
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 400, 20));
+        ChooseFile.setText("Choose File");
+        ChooseFile.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ChooseFileMouseClicked(evt);
+            }
+        });
+        getContentPane().add(ChooseFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 400, 20));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("OR");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setText("Choose book from list.");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 254, 140, 30));
-        getContentPane().add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
+        ChooseBookLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ChooseBookLabel.setText("Choose book from list.");
+        getContentPane().add(ChooseBookLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 140, 30));
+        getContentPane().add(NumberofCopies, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, -1, -1));
 
-        jLabel9.setText("Copies");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
+        Copies.setText("Copies");
+        getContentPane().add(Copies, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 390, -1));
+        BookList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(BookList, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 390, -1));
 
-        setSize(new java.awt.Dimension(600, 407));
+        ProfileButton.setText("Profile");
+        ProfileButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ProfileButtonMouseClicked(evt);
+            }
+        });
+        getContentPane().add(ProfileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 520, -1, -1));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 520, 170));
+
+        MessageLabel.setText("Message to shop.");
+        getContentPane().add(MessageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, -1, -1));
+
+        YourRequest.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        YourRequest.setText("Your Request");
+
+        YourProfile.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        YourProfile.setText("Your Profile");
+
+        DocumnetStatus.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        DocumnetStatus.setText("Check Status");
+
+        Logout.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        Logout.setText("Logout");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(YourRequest, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(YourProfile)
+                            .addComponent(DocumnetStatus)
+                            .addComponent(Logout))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addComponent(YourRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64)
+                .addComponent(YourProfile)
+                .addGap(67, 67, 67)
+                .addComponent(DocumnetStatus)
+                .addGap(83, 83, 83)
+                .addComponent(Logout)
+                .addContainerGap(147, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 570));
+
+        setSize(new java.awt.Dimension(778, 591));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void LogoutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutButtonMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_LogoutButtonMouseClicked
+
+    private void RequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RequestActionPerformed
+        // TODO add your handling code here:
+        SelectShop selc = new SelectShop();
+        try {
+            Connection con = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = con.prepareStatement(request);
+            setVisible(false);
+            selc.setVisible(true);
+            con.close();
+            pstm.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserRequest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_RequestActionPerformed
+
+    private void CheckStatusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckStatusMouseClicked
+        // TODO add your handling code here:
+        StatusCheck stch = new StatusCheck();
+        setVisible(false);
+        stch.setVisible(true);
+    }//GEN-LAST:event_CheckStatusMouseClicked
+
+    private void ChooseFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ChooseFileMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ChooseFileMouseClicked
+
+    private void ProfileButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProfileButtonMouseClicked
+        // TODO add your handling code here:
+        Userprofile usrp = new Userprofile();
+        setVisible(false);
+        usrp.setVisible(true);
+    }//GEN-LAST:event_ProfileButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -136,21 +272,30 @@ public class UserRequest extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel AttachFile;
+    private javax.swing.JComboBox<String> BookList;
+    private javax.swing.JButton CheckStatus;
+    private javax.swing.JLabel ChooseBookLabel;
+    private javax.swing.JButton ChooseFile;
+    private javax.swing.JLabel Copies;
+    private javax.swing.JTextField DocumentLink;
+    private javax.swing.JLabel DocumnetStatus;
+    private javax.swing.JLabel LocationLink;
+    private javax.swing.JLabel Logout;
+    private javax.swing.JButton LogoutButton;
+    private javax.swing.JLabel MessageLabel;
+    private javax.swing.JSpinner NumberofCopies;
+    private javax.swing.JButton ProfileButton;
+    private javax.swing.JButton Request;
+    private javax.swing.JLabel RequestHaed;
+    private javax.swing.JLabel YourProfile;
+    private javax.swing.JLabel YourRequest;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
