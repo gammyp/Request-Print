@@ -5,11 +5,25 @@
  */
 package RequestPrintShop;
 
+import RequestPrintDatabase.ConnectionBuilder;
+import RequestPrintLogin.StoreLogin;
+import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Lenovo
  */
 public class ResponPrint extends javax.swing.JFrame {
+
+    DefaultTableModel model;
 
     /**
      * Creates new form ResponPrint
@@ -28,60 +42,81 @@ public class ResponPrint extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        home = new javax.swing.JLabel();
+        profile = new javax.swing.JLabel();
+        signOut = new javax.swing.JLabel();
         bgMenu = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        respondPrint = new javax.swing.JLabel();
+        manageBook = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        orderTable = new javax.swing.JTable();
+        responnPrintTitle = new javax.swing.JLabel();
+        customerName = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        custNameField = new javax.swing.JLabel();
+        telephone = new javax.swing.JLabel();
+        telephoneField = new javax.swing.JLabel();
+        order = new javax.swing.JLabel();
+        email = new javax.swing.JLabel();
+        emailField = new javax.swing.JLabel();
+        description = new javax.swing.JLabel();
+        status = new javax.swing.JLabel();
+        statusField = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        descriptionField = new javax.swing.JTextPane();
+        changeStatusButton = new javax.swing.JButton();
+        price = new javax.swing.JLabel();
+        priceField = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        orderField = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Respond Print");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(0, 250, 190, 30);
+        home.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        home.setText("Home");
+        home.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(home);
+        home.setBounds(0, 100, 190, 30);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Home");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 100, 190, 30);
+        profile.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        profile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        profile.setText("Profile");
+        profile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        profile.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                profileMouseClicked(evt);
+            }
+        });
+        jPanel1.add(profile);
+        profile.setBounds(0, 150, 190, 30);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Profile");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(0, 150, 190, 30);
-
-        jLabel5.setText("Sign out");
-        jPanel1.add(jLabel5);
-        jLabel5.setBounds(10, 450, 50, 16);
+        signOut.setText("Sign out");
+        signOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(signOut);
+        signOut.setBounds(10, 450, 50, 16);
 
         bgMenu.setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Manage Book");
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
-            }
-        });
+        respondPrint.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        respondPrint.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        respondPrint.setText("Respond Print");
+        respondPrint.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout bgMenuLayout = new javax.swing.GroupLayout(bgMenu);
         bgMenu.setLayout(bgMenuLayout);
@@ -89,22 +124,34 @@ public class ResponPrint extends javax.swing.JFrame {
             bgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgMenuLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(respondPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         bgMenuLayout.setVerticalGroup(
             bgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgMenuLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(respondPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel1.add(bgMenu);
-        bgMenu.setBounds(0, 200, 190, 30);
+        bgMenu.setBounds(0, 250, 190, 30);
+
+        manageBook.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        manageBook.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        manageBook.setText("Manage Book");
+        manageBook.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        manageBook.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                manageBookMouseClicked(evt);
+            }
+        });
+        jPanel1.add(manageBook);
+        manageBook.setBounds(0, 200, 190, 30);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 190, 480);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        orderTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -112,48 +159,141 @@ public class ResponPrint extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "OrderID", "Customer Name", "Date", "Statis"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, true, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(orderTable);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(210, 70, 380, 380);
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Respond Print");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(190, 15, 630, 40);
+        responnPrintTitle.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        responnPrintTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        responnPrintTitle.setText("Respond Print");
+        getContentPane().add(responnPrintTitle);
+        responnPrintTitle.setBounds(190, 15, 630, 40);
 
-        jLabel7.setText("Customer name");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(600, 70, 110, 20);
+        customerName.setText("Customer name");
+        getContentPane().add(customerName);
+        customerName.setBounds(600, 70, 110, 20);
         getContentPane().add(jLabel8);
         jLabel8.setBounds(610, 100, 190, 0);
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(610, 90, 190, 20);
+        getContentPane().add(custNameField);
+        custNameField.setBounds(610, 90, 190, 20);
 
-        jLabel10.setText("Order");
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(600, 120, 110, 20);
-        getContentPane().add(jLabel11);
-        jLabel11.setBounds(610, 140, 190, 20);
+        telephone.setText("Telephone");
+        getContentPane().add(telephone);
+        telephone.setBounds(600, 120, 110, 20);
+        getContentPane().add(telephoneField);
+        telephoneField.setBounds(610, 140, 190, 20);
 
-        setSize(new java.awt.Dimension(833, 520));
+        order.setText("Order");
+        getContentPane().add(order);
+        order.setBounds(600, 220, 110, 20);
+
+        email.setText("Email");
+        getContentPane().add(email);
+        email.setBounds(600, 170, 110, 20);
+        getContentPane().add(emailField);
+        emailField.setBounds(610, 190, 190, 20);
+
+        description.setText("Description");
+        getContentPane().add(description);
+        description.setBounds(600, 270, 110, 20);
+
+        status.setText("Order status");
+        getContentPane().add(status);
+        status.setBounds(600, 420, 110, 20);
+        getContentPane().add(statusField);
+        statusField.setBounds(610, 440, 120, 20);
+
+        jScrollPane2.setViewportView(descriptionField);
+
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(610, 290, 190, 70);
+
+        changeStatusButton.setText("change");
+        changeStatusButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(changeStatusButton);
+        changeStatusButton.setBounds(730, 440, 73, 25);
+
+        price.setText("Price");
+        getContentPane().add(price);
+        price.setBounds(600, 370, 110, 20);
+        getContentPane().add(priceField);
+        priceField.setBounds(610, 390, 190, 20);
+
+        jScrollPane3.setViewportView(orderField);
+
+        getContentPane().add(jScrollPane3);
+        jScrollPane3.setBounds(610, 240, 190, 24);
+
+        setSize(new java.awt.Dimension(833, 526));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+    private void manageBookMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageBookMouseClicked
         ManageListBook mlb = new ManageListBook();
         this.setVisible(false);
         mlb.setVisible(true);
-    }//GEN-LAST:event_jLabel4MouseClicked
+    }//GEN-LAST:event_manageBookMouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        model = (DefaultTableModel) orderTable.getModel();
+        model.setRowCount(0);
+        Connection con = null;
+        try {
+            con = ConnectionBuilder.getConnection();
+            StoreLogin sLogin = new StoreLogin();
+            PreparedStatement pstmOrder = con.prepareStatement("SELECT * FORM Order WHERE ShopProfile_shopID = " + sLogin.getShopId());
+            ResultSet rsOrder = pstmOrder.executeQuery();
+            PreparedStatement pstmUser = con.prepareStatement("SELECT * FORM UserProfile WHERE id = " + rsOrder.getInt("UserProfile_id"));
+            ResultSet rsUser = pstmUser.executeQuery();
+            while (rsOrder.next()) {
+                Vector v = new Vector();
+                v.add(rsOrder.getInt("orderID"));
+                v.add(rsUser.getString("name") + " " + rsUser.getString("surname"));
+                v.add(rsOrder.getDate("datetime"));
+                v.add(rsOrder.getString("status"));
+                model.addRow(v);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ResponPrint.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_formWindowActivated
+
+    private void profileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseClicked
+        ShopProfile sProf = new ShopProfile();
+        this.setVisible(false);
+        sProf.setVisible(true);
+    }//GEN-LAST:event_profileMouseClicked
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        bgMenu.setBackground(Color.DARK_GRAY);
+        respondPrint.setBackground(Color.DARK_GRAY);
+        respondPrint.setForeground(Color.WHITE);
+    }//GEN-LAST:event_formComponentShown
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]){  /* Set thbgMenuook and feel */
+    public static void main(String args[]) {
+        /* Set thbgMenuook and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -186,19 +326,32 @@ public class ResponPrint extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bgMenu;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JButton changeStatusButton;
+    private javax.swing.JLabel custNameField;
+    private javax.swing.JLabel customerName;
+    private javax.swing.JLabel description;
+    private javax.swing.JTextPane descriptionField;
+    private javax.swing.JLabel email;
+    private javax.swing.JLabel emailField;
+    private javax.swing.JLabel home;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel manageBook;
+    private javax.swing.JLabel order;
+    private javax.swing.JTextPane orderField;
+    private javax.swing.JTable orderTable;
+    private javax.swing.JLabel price;
+    private javax.swing.JLabel priceField;
+    private javax.swing.JLabel profile;
+    private javax.swing.JLabel respondPrint;
+    private javax.swing.JLabel responnPrintTitle;
+    private javax.swing.JLabel signOut;
+    private javax.swing.JLabel status;
+    private javax.swing.JLabel statusField;
+    private javax.swing.JLabel telephone;
+    private javax.swing.JLabel telephoneField;
     // End of variables declaration//GEN-END:variables
 }
