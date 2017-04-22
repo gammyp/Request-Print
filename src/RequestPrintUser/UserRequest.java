@@ -19,6 +19,11 @@ import java.util.logging.Logger;
 public class UserRequest extends javax.swing.JFrame {
     
     private String request = "";
+    private String Username;
+    
+    public void setUsername(String Username) {
+        this.Username = Username;
+    }
     /**
      * Creates new form UserProfile
      */
@@ -60,9 +65,15 @@ public class UserRequest extends javax.swing.JFrame {
         YourProfile = new javax.swing.JLabel();
         DocumnetStatus = new javax.swing.JLabel();
         Logout = new javax.swing.JLabel();
+        Headder = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LogoutButton.setText("Logout");
@@ -89,7 +100,7 @@ public class UserRequest extends javax.swing.JFrame {
         });
         getContentPane().add(CheckStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, -1, -1));
 
-        jLabel1.setText("beta 1");
+        jLabel1.setText("beta 2");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, -1, -1));
         getContentPane().add(DocumentLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 410, -1));
 
@@ -102,7 +113,7 @@ public class UserRequest extends javax.swing.JFrame {
 
         RequestHaed.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         RequestHaed.setText("Request to print your document");
-        getContentPane().add(RequestHaed, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, -1, -1));
+        getContentPane().add(RequestHaed, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, -1, -1));
 
         AttachFile.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         AttachFile.setText("Attach your file");
@@ -193,6 +204,9 @@ public class UserRequest extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 570));
 
+        Headder.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        getContentPane().add(Headder, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 500, 30));
+
         setSize(new java.awt.Dimension(778, 591));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -234,6 +248,11 @@ public class UserRequest extends javax.swing.JFrame {
         setVisible(false);
         usrp.setVisible(true);
     }//GEN-LAST:event_ProfileButtonMouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+            Headder.setText("Welcome , "+Username);
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -280,6 +299,7 @@ public class UserRequest extends javax.swing.JFrame {
     private javax.swing.JLabel Copies;
     private javax.swing.JTextField DocumentLink;
     private javax.swing.JLabel DocumnetStatus;
+    private javax.swing.JLabel Headder;
     private javax.swing.JLabel LocationLink;
     private javax.swing.JLabel Logout;
     private javax.swing.JButton LogoutButton;

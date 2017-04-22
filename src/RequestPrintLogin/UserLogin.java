@@ -138,6 +138,7 @@ public class UserLogin extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Sucessful");
                     setVisible(false);
                     usp.setVisible(true);
+                    usp.setUsername(UsernameField.getText());
                 } else {
                     LoginFailedStutus.setText("");
                     LoginFailedStutus.setText("Invalid username or password");
