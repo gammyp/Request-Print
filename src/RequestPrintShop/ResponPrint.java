@@ -65,10 +65,12 @@ public class ResponPrint extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         descriptionField = new javax.swing.JTextPane();
         changeStatusButton = new javax.swing.JButton();
+        productAmount = new javax.swing.JLabel();
+        productAmountField = new javax.swing.JLabel();
+        typeOrder = new javax.swing.JLabel();
         price = new javax.swing.JLabel();
         priceField = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        orderField = new javax.swing.JTextPane();
+        orderField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -109,7 +111,7 @@ public class ResponPrint extends javax.swing.JFrame {
         signOut.setText("Sign out");
         signOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(signOut);
-        signOut.setBounds(10, 450, 50, 16);
+        signOut.setBounds(10, 500, 50, 16);
 
         bgMenu.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -149,7 +151,7 @@ public class ResponPrint extends javax.swing.JFrame {
         manageBook.setBounds(0, 200, 190, 30);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 190, 480);
+        jPanel1.setBounds(0, 0, 190, 520);
 
         orderTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -177,10 +179,15 @@ public class ResponPrint extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        orderTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                orderTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(orderTable);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(210, 70, 380, 380);
+        jScrollPane1.setBounds(200, 70, 380, 440);
 
         responnPrintTitle.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         responnPrintTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -204,7 +211,7 @@ public class ResponPrint extends javax.swing.JFrame {
 
         order.setText("Order");
         getContentPane().add(order);
-        order.setBounds(600, 220, 110, 20);
+        order.setBounds(600, 220, 40, 20);
 
         email.setText("Email");
         getContentPane().add(email);
@@ -218,9 +225,9 @@ public class ResponPrint extends javax.swing.JFrame {
 
         status.setText("Order status");
         getContentPane().add(status);
-        status.setBounds(600, 420, 110, 20);
+        status.setBounds(600, 470, 110, 20);
         getContentPane().add(statusField);
-        statusField.setBounds(610, 440, 120, 20);
+        statusField.setBounds(610, 490, 120, 20);
 
         jScrollPane2.setViewportView(descriptionField);
 
@@ -230,20 +237,27 @@ public class ResponPrint extends javax.swing.JFrame {
         changeStatusButton.setText("change");
         changeStatusButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(changeStatusButton);
-        changeStatusButton.setBounds(730, 440, 73, 25);
+        changeStatusButton.setBounds(730, 490, 73, 25);
+
+        productAmount.setText("Product Amount");
+        getContentPane().add(productAmount);
+        productAmount.setBounds(600, 370, 110, 20);
+        getContentPane().add(productAmountField);
+        productAmountField.setBounds(610, 390, 190, 20);
+
+        typeOrder.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(typeOrder);
+        typeOrder.setBounds(640, 220, 90, 20);
 
         price.setText("Price");
         getContentPane().add(price);
-        price.setBounds(600, 370, 110, 20);
+        price.setBounds(600, 420, 110, 20);
         getContentPane().add(priceField);
-        priceField.setBounds(610, 390, 190, 20);
+        priceField.setBounds(610, 440, 190, 20);
+        getContentPane().add(orderField);
+        orderField.setBounds(610, 240, 190, 22);
 
-        jScrollPane3.setViewportView(orderField);
-
-        getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(610, 240, 190, 24);
-
-        setSize(new java.awt.Dimension(833, 526));
+        setSize(new java.awt.Dimension(836, 566));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -260,9 +274,11 @@ public class ResponPrint extends javax.swing.JFrame {
         try {
             con = ConnectionBuilder.getConnection();
             StoreLogin sLogin = new StoreLogin();
-            PreparedStatement pstmOrder = con.prepareStatement("SELECT * FORM Order WHERE ShopProfile_shopID = " + sLogin.getShopId());
+            PreparedStatement pstmOrder = con.prepareStatement("SELECT * FROM Order WHERE "
+                    + "ShopProfile_shopID = " + sLogin.getShopId());
             ResultSet rsOrder = pstmOrder.executeQuery();
-            PreparedStatement pstmUser = con.prepareStatement("SELECT * FORM UserProfile WHERE id = " + rsOrder.getInt("UserProfile_id"));
+            PreparedStatement pstmUser = con.prepareStatement("SELECT * FROM UserProfile WHERE "
+                    + "id = " + rsOrder.getInt("UserProfile_id"));
             ResultSet rsUser = pstmUser.executeQuery();
             while (rsOrder.next()) {
                 Vector v = new Vector();
@@ -288,6 +304,52 @@ public class ResponPrint extends javax.swing.JFrame {
         respondPrint.setBackground(Color.DARK_GRAY);
         respondPrint.setForeground(Color.WHITE);
     }//GEN-LAST:event_formComponentShown
+
+    private void orderTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderTableMouseClicked
+        Connection con = null;
+        try {
+            con = ConnectionBuilder.getConnection();
+            StoreLogin sLogin = new StoreLogin();
+            //executeQuery Order Table
+            PreparedStatement pstmOrder = con.prepareStatement("SELECT * FROM Order WHERE "
+                    + "ShopProfile_shopID = " + sLogin.getShopId());
+            ResultSet rsOrder = pstmOrder.executeQuery();
+
+            //executeQuery UserProfile Table
+            PreparedStatement pstmUser = con.prepareStatement("SELECT * FROM UserProfile WHERE "
+                    + "id = " + rsOrder.getInt("UserProfile_id"));
+            ResultSet rsUser = pstmUser.executeQuery();
+
+            //executeQuery SheetOrder Table
+            PreparedStatement pstmSheetOrder = con.prepareStatement("SELECT * FROM SheetOrder WHERE "
+                    + "Order_orderID = " + rsOrder.getInt("orderID"));
+            ResultSet rsSheetOrder = pstmSheetOrder.executeQuery();
+
+            //executeQuery Product Table
+            PreparedStatement pstmProduct = con.prepareStatement("SELECT * FORM Product WHERE "
+                    + "productID = " + rsSheetOrder.getInt("Product_productID"));
+            ResultSet rsProduct = pstmProduct.executeQuery();
+
+            custNameField.setText(orderTable.getValueAt(orderTable.getSelectedRow(), 0) + "");
+            statusField.setText(orderTable.getValueAt(orderTable.getSelectedRow(), 3) + "");
+            telephoneField.setText(rsUser.getString("phone"));
+            emailField.setText(rsUser.getString("email"));
+            orderField.setEditable(false);
+            if (rsOrder.getString("url").equals(null)) {
+                typeOrder.setText("* Book *");
+                orderField.setText(rsProduct.getString("productName"));
+            } else {
+                typeOrder.setText("* URL *");
+                orderField.setText(rsOrder.getString("url"));
+            }
+            descriptionField.setText(rsOrder.getString("description"));
+            descriptionField.setEditable(false);
+            productAmountField.setText(rsSheetOrder.getInt("productAmount") + "");
+            priceField.setText(rsOrder.getDouble("priceOrder") + "");
+        } catch (SQLException ex) {
+            Logger.getLogger(ResponPrint.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_orderTableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -338,13 +400,14 @@ public class ResponPrint extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel manageBook;
     private javax.swing.JLabel order;
-    private javax.swing.JTextPane orderField;
+    private javax.swing.JTextField orderField;
     private javax.swing.JTable orderTable;
     private javax.swing.JLabel price;
     private javax.swing.JLabel priceField;
+    private javax.swing.JLabel productAmount;
+    private javax.swing.JLabel productAmountField;
     private javax.swing.JLabel profile;
     private javax.swing.JLabel respondPrint;
     private javax.swing.JLabel responnPrintTitle;
@@ -353,5 +416,6 @@ public class ResponPrint extends javax.swing.JFrame {
     private javax.swing.JLabel statusField;
     private javax.swing.JLabel telephone;
     private javax.swing.JLabel telephoneField;
+    private javax.swing.JLabel typeOrder;
     // End of variables declaration//GEN-END:variables
 }
