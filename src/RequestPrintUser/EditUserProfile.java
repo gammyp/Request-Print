@@ -140,19 +140,22 @@ public class EditUserProfile extends javax.swing.JFrame {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         Connection con = null;
+        UserRequest usr = new UserRequest();
         try {
             con = ConnectionBuilder.getConnection();
             UserLogin uLogin = new UserLogin();
             System.out.println(uLogin.getUserId());
-            PreparedStatement pstm = con.prepareStatement("UPDATE UserProfile SET"
-                    + "name=?, surname=?, email=? ,phone=?" 
-                    + "WHERE id = " + uLogin.getUserId());
+            PreparedStatement pstm = con.prepareStatement("UPDATE ShopProfile SET "
+                    + "name=?, surname=?, email=?, phone=?"
+                    + " WHERE id = " + uLogin.getUserId());
+            
             pstm.setString(1, nameField.getText());
             pstm.setString(2, surnameField.getText());
             pstm.setString(3, phoneField.getText());
             pstm.setString(4, emailField.getText());
             JOptionPane.showMessageDialog(null, "Save Successful");
             pstm.executeUpdate();
+            usr.setVisible(true);
             this.setVisible(false);
         } catch (SQLException ex) {
             Logger.getLogger(EditUserProfile.class.getName()).log(Level.SEVERE, null, ex);

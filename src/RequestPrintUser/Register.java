@@ -197,7 +197,12 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_RegisterAncestorAdded
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-        Connection con = ConnectionBuilder.getConnection();
+        Connection con = null;
+        try {
+            con = ConnectionBuilder.getConnection();
+        } catch (SQLException ex) {
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+        }
         try {
             PreparedStatement pstm = con.prepareStatement("SELECT * FROM UserProfile VALUE(?, ?, ?, ?, ?, ?, ?, ?)");
         } catch (SQLException ex) {

@@ -40,7 +40,7 @@ public class Userprofile extends javax.swing.JFrame {
         EmailLabel = new javax.swing.JLabel();
         PhoneLabel = new javax.swing.JLabel();
         Edit = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Next = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,8 +57,18 @@ public class Userprofile extends javax.swing.JFrame {
         Phone.setText("Telephone : ");
 
         Edit.setText("Edit");
+        Edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Next >");
+        Next.setText("Next >");
+        Next.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NextActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("beta 1");
 
@@ -83,7 +93,7 @@ public class Userprofile extends javax.swing.JFrame {
                             .addComponent(Edit))
                         .addGap(73, 73, 73)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
+                            .addComponent(Next)
                             .addComponent(NameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(SurnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(EmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -117,17 +127,25 @@ public class Userprofile extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Edit)
-                    .addComponent(jButton2))
+                    .addComponent(Next))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void NextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextActionPerformed
+        UserRequest usr = new UserRequest();
+        usr.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_NextActionPerformed
+
+    private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
         EditUserProfile editUProf = new EditUserProfile();
         editUProf.setVisible(true);
-    }                                    
+        this.setVisible(false);
+    }//GEN-LAST:event_EditActionPerformed
+
     private void formWindowActivated(java.awt.event.WindowEvent evt) throws SQLException {
         Connection con = null;
         try {
@@ -186,11 +204,11 @@ public class Userprofile extends javax.swing.JFrame {
     private javax.swing.JLabel EmailLabel;
     private javax.swing.JLabel Name;
     private javax.swing.JLabel NameLabel;
+    private javax.swing.JButton Next;
     private javax.swing.JLabel Phone;
     private javax.swing.JLabel PhoneLabel;
     private javax.swing.JLabel Surname;
     private javax.swing.JLabel SurnameLabel;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
