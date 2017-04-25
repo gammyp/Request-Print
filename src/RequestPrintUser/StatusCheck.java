@@ -17,7 +17,8 @@ import java.util.logging.Logger;
  */
 public class StatusCheck extends javax.swing.JFrame {
     
-    private String fetch = "";
+    private String Username;
+    private String fetch = "SELECT * FROM SHEETORDER WHERE"+Username;
     /**
      * Creates new form StatusCheck
      */
@@ -67,9 +68,16 @@ public class StatusCheck extends javax.swing.JFrame {
                 "Document ", "Status"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -91,7 +99,7 @@ public class StatusCheck extends javax.swing.JFrame {
         });
         getContentPane().add(RefreshButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 530, -1, -1));
 
-        setSize(new java.awt.Dimension(630, 643));
+        setSize(new java.awt.Dimension(630, 607));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
