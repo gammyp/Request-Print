@@ -237,7 +237,7 @@ public class ResponPrint extends javax.swing.JFrame {
         changeStatusButton.setText("change");
         changeStatusButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(changeStatusButton);
-        changeStatusButton.setBounds(730, 490, 73, 25);
+        changeStatusButton.setBounds(730, 490, 89, 29);
 
         productAmount.setText("Product Amount");
         getContentPane().add(productAmount);
@@ -254,8 +254,14 @@ public class ResponPrint extends javax.swing.JFrame {
         price.setBounds(600, 420, 110, 20);
         getContentPane().add(priceField);
         priceField.setBounds(610, 440, 190, 20);
+
+        orderField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderFieldActionPerformed(evt);
+            }
+        });
         getContentPane().add(orderField);
-        orderField.setBounds(610, 240, 190, 22);
+        orderField.setBounds(610, 240, 190, 26);
 
         setSize(new java.awt.Dimension(836, 566));
         setLocationRelativeTo(null);
@@ -326,7 +332,7 @@ public class ResponPrint extends javax.swing.JFrame {
             ResultSet rsSheetOrder = pstmSheetOrder.executeQuery();
 
             //executeQuery Product Table
-            PreparedStatement pstmProduct = con.prepareStatement("SELECT * FORM Product WHERE "
+            PreparedStatement pstmProduct = con.prepareStatement("SELECT * FROM Product WHERE "
                     + "productID = " + rsSheetOrder.getInt("Product_productID"));
             ResultSet rsProduct = pstmProduct.executeQuery();
 
@@ -350,6 +356,10 @@ public class ResponPrint extends javax.swing.JFrame {
             Logger.getLogger(ResponPrint.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_orderTableMouseClicked
+
+    private void orderFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_orderFieldActionPerformed
 
     /**
      * @param args the command line arguments

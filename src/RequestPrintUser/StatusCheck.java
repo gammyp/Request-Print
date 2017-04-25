@@ -5,8 +5,10 @@
  */
 package RequestPrintUser;
 import RequestPrintDatabase.ConnectionBuilder;
+import RequestPrintLogin.UserLogin;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,6 +47,8 @@ public class StatusCheck extends javax.swing.JFrame {
 
         BackButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Status = new javax.swing.JTable();
         RefreshButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -68,6 +72,33 @@ public class StatusCheck extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Check your document status ");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
+
+        Status.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Document ", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(Status);
+        if (Status.getColumnModel().getColumnCount() > 0) {
+            Status.getColumnModel().getColumn(0).setResizable(false);
+            Status.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
 
         RefreshButton.setText("Refresh");
         RefreshButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -109,6 +140,22 @@ public class StatusCheck extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowActivated
 
+    private void StatusTableActivated(java.awt.event.WindowEvent evt) {
+        Connection con = null;
+        try {
+            con = ConnectionBuilder.getConnection();
+            UserLogin uLogin = new UserLogin();
+            PreparedStatement pstmOrder = con.prepareStatement("SELECT orderName FROM Orders WHERE id="+ uLogin.getUserId());
+            ResultSet rsOrder = pstmOrder.executeQuery();
+            
+            PreparedStatement pstmStatus = con.prepareStatement("SELECT status FROM Orders WHERE id="+ uLogin.getUserId());
+            ResultSet rsStatus = pstmStatus.executeQuery();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(StatusCheck.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     private void BackButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseClicked
         // TODO add your handling code here:
         UserRequest userR = new UserRequest();
@@ -154,7 +201,9 @@ public class StatusCheck extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
     private javax.swing.JButton RefreshButton;
+    private javax.swing.JTable Status;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
