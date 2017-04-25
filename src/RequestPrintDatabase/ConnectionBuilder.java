@@ -14,10 +14,10 @@ public class ConnectionBuilder {
             String userPass = "123456789";
 
             Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("Driver loaded");
+            //System.out.println("Driver loaded");
 
             con = DriverManager.getConnection(host, userName, userPass);
-            System.out.println("Conncetion Created");
+            //System.out.println("Conncetion Created");
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ConnectionBuilder.class.getName()).log(Level.SEVERE, null, ex);

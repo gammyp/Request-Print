@@ -155,6 +155,8 @@ public class StoreLogin extends javax.swing.JFrame {
                     passwordField.setText("");
                     errorText.setText("Invalid username or password");
                 }
+                con.close();
+                pstm.close();
             } catch (SQLException ex) {
                 Logger.getLogger(StoreLogin.class.getName()).log(Level.SEVERE, null, ex);
             }

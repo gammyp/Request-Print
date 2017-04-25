@@ -200,6 +200,10 @@ public class Register extends javax.swing.JFrame {
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
+        } catch (SQLException ex) {
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
             PreparedStatement pstm = con.prepareStatement("SELECT * FROM UserProfile VALUE(?, ?, ?, ?, ?, ?, ?, ?)");
         } catch (SQLException ex) {
             Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);

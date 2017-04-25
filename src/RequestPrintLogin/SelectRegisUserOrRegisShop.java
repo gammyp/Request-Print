@@ -67,17 +67,21 @@ public class SelectRegisUserOrRegisShop extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void userRegisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userRegisButtonActionPerformed
-        UserLogin wp = new UserLogin();
+        UserLogin uLogin = new UserLogin();
+        StoreLogin sLogin = new StoreLogin();
         RegisterUser regisUser = new RegisterUser();
-        wp.setVisible(false);
+        uLogin.setVisible(false);
+        sLogin.setVisible(false);
         this.setVisible(false);
         regisUser.setVisible(true);
     }//GEN-LAST:event_userRegisButtonActionPerformed
 
     private void shopRegisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shopRegisButtonActionPerformed
-        UserLogin wp = new UserLogin();
+        UserLogin uLogin = new UserLogin();
+        StoreLogin sLogin = new StoreLogin();
         RegisterShop regisShop = new RegisterShop();
-        wp.setVisible(false);
+        uLogin.setVisible(false);
+        sLogin.setVisible(false);
         this.setVisible(false);
         regisShop.setVisible(true);
     }//GEN-LAST:event_shopRegisButtonActionPerformed

@@ -86,25 +86,20 @@ public class UserLogin extends javax.swing.JFrame {
         getContentPane().add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 140, -1));
 
         regisButton.setText("Register");
-        regisButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                regisButtonMouseClicked(evt);
-            }
-        });
         regisButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 regisButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(regisButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 80, 30));
+        getContentPane().add(regisButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 100, 30));
 
-        storeLoginButton.setText("Login");
+        storeLoginButton.setText("Store Login");
         storeLoginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 storeLoginButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(storeLoginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 80, 30));
+        getContentPane().add(storeLoginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 100, 30));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -138,15 +133,18 @@ public class UserLogin extends javax.swing.JFrame {
                 pstm.setString(2, PasswordField.getText());
                 ResultSet rs = pstm.executeQuery();
                 if (rs.next()) {
-                    userId = Integer.parseInt(rs.getString("userID"));
+                    userId = Integer.parseInt(rs.getString("id"));
                     UserRequest usp = new UserRequest();
                     JOptionPane.showMessageDialog(null, "Sucessful");
                     setVisible(false);
                     usp.setVisible(true);
+                    usp.setUsername(UsernameField.getText());
                 } else {
                     LoginFailedStutus.setText("");
                     LoginFailedStutus.setText("Invalid username or password");
                 }
+                con.close();
+                pstm.close();
             } catch (SQLException ex) {
                 Logger.getLogger(UserLogin.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -156,15 +154,10 @@ public class UserLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void storeLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_storeLoginButtonActionPerformed
-        // TODO add your handling code here:
         StoreLogin stl = new StoreLogin();
         stl.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_storeLoginButtonActionPerformed
-
-    private void regisButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regisButtonMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_regisButtonMouseClicked
 
     /**
      * @param args the command line arguments
