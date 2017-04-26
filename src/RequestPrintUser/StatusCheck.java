@@ -47,6 +47,8 @@ public class StatusCheck extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         RefreshButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TableStatus = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -63,7 +65,7 @@ public class StatusCheck extends javax.swing.JFrame {
                 BackButtonMouseClicked(evt);
             }
         });
-        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 530, -1, -1));
+        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 550, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Check your document status ");
@@ -75,10 +77,29 @@ public class StatusCheck extends javax.swing.JFrame {
                 RefreshButtonMouseClicked(evt);
             }
         });
-        getContentPane().add(RefreshButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 530, -1, -1));
+        getContentPane().add(RefreshButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 550, -1, -1));
 
         jLabel2.setText("beta 1");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, -1, -1));
+
+        TableStatus.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Document Name", "Status"
+            }
+        ));
+        jScrollPane1.setViewportView(TableStatus);
+        if (TableStatus.getColumnModel().getColumnCount() > 0) {
+            TableStatus.getColumnModel().getColumn(0).setResizable(false);
+            TableStatus.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 550, 460));
 
         setSize(new java.awt.Dimension(630, 643));
         setLocationRelativeTo(null);
@@ -154,7 +175,9 @@ public class StatusCheck extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
     private javax.swing.JButton RefreshButton;
+    private javax.swing.JTable TableStatus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
