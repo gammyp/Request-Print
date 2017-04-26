@@ -17,8 +17,10 @@ import java.util.logging.Logger;
  */
 public class StatusCheck extends javax.swing.JFrame {
     
-    private String fetch = "";
     private String Username;
+    private String fetch = "SELECT * FROM SHEETORDER WHERE"+Username;
+    private String fetch1 = "";
+    private String Username1;
     
     public String getUsername() {
         return Username;
@@ -71,6 +73,40 @@ public class StatusCheck extends javax.swing.JFrame {
         jLabel1.setText("Check your document status ");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
 
+        StatusTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Document ", "Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(StatusTable);
+        if (StatusTable.getColumnModel().getColumnCount() > 0) {
+            StatusTable.getColumnModel().getColumn(0).setResizable(false);
+            StatusTable.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
+
         RefreshButton.setText("Refresh");
         RefreshButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -78,6 +114,8 @@ public class StatusCheck extends javax.swing.JFrame {
             }
         });
         getContentPane().add(RefreshButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 550, -1, -1));
+
+        setSize(new java.awt.Dimension(630, 607));
 
         jLabel2.setText("beta 1");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, -1, -1));
