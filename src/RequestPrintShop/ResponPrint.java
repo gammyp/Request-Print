@@ -7,6 +7,7 @@ package RequestPrintShop;
 
 import RequestPrintDatabase.ConnectionBuilder;
 import RequestPrintLogin.StoreLogin;
+import RequestPrintLogin.UserLogin;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,6 +16,7 @@ import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -110,6 +112,11 @@ public class ResponPrint extends javax.swing.JFrame {
 
         signOut.setText("Sign out");
         signOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        signOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                signOutMouseClicked(evt);
+            }
+        });
         jPanel1.add(signOut);
         signOut.setBounds(10, 500, 50, 16);
 
@@ -168,7 +175,7 @@ public class ResponPrint extends javax.swing.JFrame {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -274,7 +281,7 @@ public class ResponPrint extends javax.swing.JFrame {
         try {
             con = ConnectionBuilder.getConnection();
             StoreLogin sLogin = new StoreLogin();
-            PreparedStatement pstmOrder = con.prepareStatement("SELECT * FROM Orders WHERE "
+            PreparedStatement pstmOrder = con.prepareStatement("SELECT * FROM mydb.Order WHERE "
                     + "ShopProfile_shopID = " + sLogin.getShopId());
             ResultSet rsOrder = pstmOrder.executeQuery();
             rsOrder.next();
@@ -304,6 +311,11 @@ public class ResponPrint extends javax.swing.JFrame {
         bgMenu.setBackground(Color.DARK_GRAY);
         respondPrint.setBackground(Color.DARK_GRAY);
         respondPrint.setForeground(Color.WHITE);
+        orderTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        orderTable.getColumnModel().getColumn(0).setPreferredWidth(60);
+        orderTable.getColumnModel().getColumn(1).setPreferredWidth(160);
+        orderTable.getColumnModel().getColumn(2).setPreferredWidth(79);
+        orderTable.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
     }//GEN-LAST:event_formComponentShown
 
     private void orderTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderTableMouseClicked
@@ -312,7 +324,7 @@ public class ResponPrint extends javax.swing.JFrame {
             con = ConnectionBuilder.getConnection();
             StoreLogin sLogin = new StoreLogin();
             //executeQuery Order Table
-            PreparedStatement pstmOrder = con.prepareStatement("SELECT * FROM Orders WHERE "
+            PreparedStatement pstmOrder = con.prepareStatement("SELECT * FROM mydb.Order WHERE "
                     + "ShopProfile_shopID = " + sLogin.getShopId());
             ResultSet rsOrder = pstmOrder.executeQuery();
             rsOrder.next();
@@ -340,21 +352,33 @@ public class ResponPrint extends javax.swing.JFrame {
             telephoneField.setText(rsUser.getString("phone"));
             emailField.setText(rsUser.getString("email"));
             orderField.setEditable(false);
-            if (rsOrder.getString("url").equals(null)) {
+            //check Order
+            if (rsOrder.getString("url") == null) {
                 typeOrder.setText("* Book *");
                 orderField.setText(rsProduct.getString("productName"));
             } else {
                 typeOrder.setText("* URL *");
                 orderField.setText(rsOrder.getString("url"));
             }
-            descriptionField.setText(rsOrder.getString("description"));
-            descriptionField.setEditable(false);
+            //check description
+            if (rsOrder.getString("description") == null) {
+                descriptionField.setText("<null>");
+            } else {
+                descriptionField.setText(rsOrder.getString("description"));
+            }
+            descriptionField.setEditable(false); //don't edit text in descripton Field
             productAmountField.setText(rsSheetOrder.getInt("productAmount") + "");
             priceField.setText(rsOrder.getDouble("priceOrder") + "");
         } catch (SQLException ex) {
             Logger.getLogger(ResponPrint.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_orderTableMouseClicked
+
+    private void signOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signOutMouseClicked
+        UserLogin uLogin = new UserLogin();
+        this.setVisible(false);
+        uLogin.setVisible(true);
+    }//GEN-LAST:event_signOutMouseClicked
 
     /**
      * @param args the command line arguments

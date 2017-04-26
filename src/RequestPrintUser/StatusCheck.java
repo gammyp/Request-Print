@@ -19,8 +19,8 @@ public class StatusCheck extends javax.swing.JFrame {
     
     private String Username;
     private String fetch = "SELECT * FROM SHEETORDER WHERE"+Username;
-    private String fetch = "";
-    private String Username;
+    private String fetch1 = "";
+    private String Username1;
     
     public String getUsername() {
         return Username;
