@@ -1,6 +1,8 @@
 package RequestPrintUser;
 
 import RequestPrintDatabase.ConnectionBuilder;
+import RequestPrintLogin.StoreLogin;
+import RequestPrintLogin.UserLogin;
 import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -52,12 +54,17 @@ public class RegisterUser extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         Register.setFont(new java.awt.Font("supermarket", 0, 24)); // NOI18N
         Register.setText("Register");
         getContentPane().add(Register);
-        Register.setBounds(253, 13, 89, 43);
+        Register.setBounds(253, 13, 73, 43);
         getContentPane().add(surname);
         surname.setBounds(262, 135, 228, 33);
         getContentPane().add(name);
@@ -134,7 +141,7 @@ public class RegisterUser extends javax.swing.JFrame {
 
         jLabel1.setText("beta 1");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(520, 10, 44, 20);
+        jLabel1.setBounds(520, 10, 36, 16);
 
         setSize(new java.awt.Dimension(600, 546));
         setLocationRelativeTo(null);
@@ -198,8 +205,8 @@ public class RegisterUser extends javax.swing.JFrame {
                 checkUsername.setIcon(new ImageIcon(trueIcon.getScaledInstance(checkUsername.getWidth(), checkUsername.getHeight(), 0)));
 
             }
-        con.close();
-        pstm.close();
+            con.close();
+            pstm.close();
 
 //        checkUsername.hide();
         } catch (SQLException ex) {
@@ -224,21 +231,25 @@ public class RegisterUser extends javax.swing.JFrame {
 
         if (CreatePassword.getText().length() < 6 || CreatePassword.getText().length() > 12) {
             checkall = false;
+        } else if (password.getText().equals(CreatePassword.getText())) {
+            checkall = true;
+            checkPassword.setIcon(new ImageIcon(trueIcon.getScaledInstance(checkPassword.getWidth(), checkPassword.getHeight(), 0)));
         } else {
-            if (password.getText().equals(CreatePassword.getText())) {
-                checkall = true;
-                checkPassword.setIcon(new ImageIcon(trueIcon.getScaledInstance(checkPassword.getWidth(), checkPassword.getHeight(), 0)));
-            } else {
-                checkall = false;
-                checkPassword.setIcon(new ImageIcon(falseIcon.getScaledInstance(checkPassword.getWidth(), checkPassword.getHeight(), 0)));
-            }
-
+            checkall = false;
+            checkPassword.setIcon(new ImageIcon(falseIcon.getScaledInstance(checkPassword.getWidth(), checkPassword.getHeight(), 0)));
         }
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        StoreLogin sLogin = new StoreLogin();
+        UserLogin uLogin = new UserLogin();
+        uLogin.setVisible(false);
+        sLogin.setVisible(false);
+    }//GEN-LAST:event_formWindowActivated
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

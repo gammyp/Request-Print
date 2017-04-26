@@ -293,7 +293,11 @@ public class ResponPrint extends javax.swing.JFrame {
                 v.add(rsOrder.getInt("orderID"));
                 v.add(rsUser.getString("name") + " " + rsUser.getString("surname"));
                 v.add(rsOrder.getDate("datetime"));
-                v.add(rsOrder.getString("status"));
+                if(rsOrder.getString("status").equals("Product can be picked")){
+                    v.add("Wait for receipt");
+                } else {
+                    v.add(rsOrder.getString("status"));
+                }
                 model.addRow(v);
             }
         } catch (SQLException ex) {

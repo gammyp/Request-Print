@@ -68,20 +68,20 @@ public class SelectRegisUserOrRegisShop extends javax.swing.JFrame {
 
     private void userRegisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userRegisButtonActionPerformed
         UserLogin uLogin = new UserLogin();
-        StoreLogin sLogin = new StoreLogin();
-        RegisterUser regisUser = new RegisterUser();
         uLogin.setVisible(false);
+        StoreLogin sLogin = new StoreLogin();
         sLogin.setVisible(false);
+        RegisterUser regisUser = new RegisterUser();
         this.setVisible(false);
         regisUser.setVisible(true);
     }//GEN-LAST:event_userRegisButtonActionPerformed
 
     private void shopRegisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shopRegisButtonActionPerformed
         UserLogin uLogin = new UserLogin();
-        StoreLogin sLogin = new StoreLogin();
-        RegisterShop regisShop = new RegisterShop();
         uLogin.setVisible(false);
+        StoreLogin sLogin = new StoreLogin();
         sLogin.setVisible(false);
+        RegisterShop regisShop = new RegisterShop();
         this.setVisible(false);
         regisShop.setVisible(true);
     }//GEN-LAST:event_shopRegisButtonActionPerformed

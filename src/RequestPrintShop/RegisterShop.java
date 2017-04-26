@@ -6,6 +6,7 @@
 package RequestPrintShop;
 
 import RequestPrintDatabase.ConnectionBuilder;
+import RequestPrintLogin.StoreLogin;
 import RequestPrintLogin.UserLogin;
 import java.awt.Color;
 import java.awt.Image;
@@ -68,6 +69,11 @@ public class RegisterShop extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         registerTitle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -337,6 +343,13 @@ public class RegisterShop extends javax.swing.JFrame {
         // TODO add your handling code here:
         setVisible(false);
     }//GEN-LAST:event_backButtonMouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        StoreLogin sLogin = new StoreLogin();
+        UserLogin uLogin = new UserLogin();
+        uLogin.setVisible(false);
+        sLogin.setVisible(false);
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
