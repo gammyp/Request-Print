@@ -71,7 +71,6 @@ public class StatusCheck extends javax.swing.JFrame {
         jLabel1.setText("Check your document status ");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
 
-<<<<<<< HEAD
         StatusTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -106,8 +105,6 @@ public class StatusCheck extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
 
-=======
->>>>>>> 2fa152967d93f29e3e93f1fb3f665c423bd82a37
         RefreshButton.setText("Refresh");
         RefreshButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -116,14 +113,12 @@ public class StatusCheck extends javax.swing.JFrame {
         });
         getContentPane().add(RefreshButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 530, -1, -1));
 
-<<<<<<< HEAD
         setSize(new java.awt.Dimension(630, 607));
-=======
+
         jLabel2.setText("beta 1");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, -1, -1));
 
         setSize(new java.awt.Dimension(630, 643));
->>>>>>> 2fa152967d93f29e3e93f1fb3f665c423bd82a37
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
