@@ -17,10 +17,8 @@ import java.util.logging.Logger;
  */
 public class StatusCheck extends javax.swing.JFrame {
     
-<<<<<<< HEAD
     private String Username;
     private String fetch = "SELECT * FROM SHEETORDER WHERE"+Username;
-=======
     private String fetch = "";
     private String Username;
     
@@ -31,7 +29,6 @@ public class StatusCheck extends javax.swing.JFrame {
     public void setUsername(String Username) {
         this.Username = Username;
     }
->>>>>>> 2fa152967d93f29e3e93f1fb3f665c423bd82a37
     /**
      * Creates new form StatusCheck
      */

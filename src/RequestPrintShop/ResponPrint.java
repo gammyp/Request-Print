@@ -274,13 +274,14 @@ public class ResponPrint extends javax.swing.JFrame {
         try {
             con = ConnectionBuilder.getConnection();
             StoreLogin sLogin = new StoreLogin();
-            PreparedStatement pstmOrder = con.prepareStatement("SELECT * FROM Order WHERE "
+            PreparedStatement pstmOrder = con.prepareStatement("SELECT * FROM Orders WHERE "
                     + "ShopProfile_shopID = " + sLogin.getShopId());
             ResultSet rsOrder = pstmOrder.executeQuery();
+            rsOrder.next();
             PreparedStatement pstmUser = con.prepareStatement("SELECT * FROM UserProfile WHERE "
                     + "id = " + rsOrder.getInt("UserProfile_id"));
             ResultSet rsUser = pstmUser.executeQuery();
-            while (rsOrder.next()) {
+            while (rsUser.next()) {
                 Vector v = new Vector();
                 v.add(rsOrder.getInt("orderID"));
                 v.add(rsUser.getString("name") + " " + rsUser.getString("surname"));
@@ -311,24 +312,28 @@ public class ResponPrint extends javax.swing.JFrame {
             con = ConnectionBuilder.getConnection();
             StoreLogin sLogin = new StoreLogin();
             //executeQuery Order Table
-            PreparedStatement pstmOrder = con.prepareStatement("SELECT * FROM Order WHERE "
+            PreparedStatement pstmOrder = con.prepareStatement("SELECT * FROM Orders WHERE "
                     + "ShopProfile_shopID = " + sLogin.getShopId());
             ResultSet rsOrder = pstmOrder.executeQuery();
+            rsOrder.next();
 
             //executeQuery UserProfile Table
             PreparedStatement pstmUser = con.prepareStatement("SELECT * FROM UserProfile WHERE "
                     + "id = " + rsOrder.getInt("UserProfile_id"));
             ResultSet rsUser = pstmUser.executeQuery();
+            rsUser.next();
 
             //executeQuery SheetOrder Table
             PreparedStatement pstmSheetOrder = con.prepareStatement("SELECT * FROM SheetOrder WHERE "
                     + "Order_orderID = " + rsOrder.getInt("orderID"));
             ResultSet rsSheetOrder = pstmSheetOrder.executeQuery();
+            rsSheetOrder.next();
 
             //executeQuery Product Table
-            PreparedStatement pstmProduct = con.prepareStatement("SELECT * FORM Product WHERE "
+            PreparedStatement pstmProduct = con.prepareStatement("SELECT * FROM Product WHERE "
                     + "productID = " + rsSheetOrder.getInt("Product_productID"));
             ResultSet rsProduct = pstmProduct.executeQuery();
+            rsProduct.next();
 
             custNameField.setText(orderTable.getValueAt(orderTable.getSelectedRow(), 0) + "");
             statusField.setText(orderTable.getValueAt(orderTable.getSelectedRow(), 3) + "");
@@ -383,6 +388,7 @@ public class ResponPrint extends javax.swing.JFrame {
             public void run() {
                 new ResponPrint().setVisible(true);
             }
+
         });
     }
 

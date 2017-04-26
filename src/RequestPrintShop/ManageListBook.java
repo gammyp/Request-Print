@@ -255,6 +255,7 @@ public class ManageListBook extends javax.swing.JFrame {
         model = (DefaultTableModel) manageTable.getModel();
         model.setRowCount(0);
         Connection con = null;
+        
         try {
             con = ConnectionBuilder.getConnection();
             StoreLogin sLogin = new StoreLogin();
