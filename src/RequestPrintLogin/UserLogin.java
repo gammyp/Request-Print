@@ -112,7 +112,7 @@ public class UserLogin extends javax.swing.JFrame {
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 120, 30));
         getContentPane().add(LoginFailedStutus, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 270, 20));
 
-        jLabel1.setText("beta 1");
+        jLabel1.setText("beta 2");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, -1, -1));
 
         setSize(new java.awt.Dimension(418, 320));
