@@ -13,7 +13,14 @@ import RequestPrintUser.RegisterUser;
  * @author Lenovo
  */
 public class SelectRegisUserOrRegisShop extends javax.swing.JFrame {
-
+    public StoreLogin controlStoreLogin;
+    public UserLogin controlUserLogin;
+    public void linkToStoreLogin(StoreLogin control){
+        controlStoreLogin = control;
+    }
+    public void linkToUserLogin(UserLogin control){
+        controlUserLogin = control;
+    }
     /**
      * Creates new form SelectRegisUserOrRegisShop
      */
@@ -67,20 +74,16 @@ public class SelectRegisUserOrRegisShop extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void userRegisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userRegisButtonActionPerformed
-        UserLogin uLogin = new UserLogin();
-        uLogin.setVisible(false);
-        StoreLogin sLogin = new StoreLogin();
-        sLogin.setVisible(false);
+        controlUserLogin.setVisible(false);
+        controlStoreLogin.setVisible(false);
         RegisterUser regisUser = new RegisterUser();
         this.setVisible(false);
         regisUser.setVisible(true);
     }//GEN-LAST:event_userRegisButtonActionPerformed
 
     private void shopRegisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shopRegisButtonActionPerformed
-        UserLogin uLogin = new UserLogin();
-        uLogin.setVisible(false);
-        StoreLogin sLogin = new StoreLogin();
-        sLogin.setVisible(false);
+        controlUserLogin.setVisible(false);
+        controlStoreLogin.setVisible(false);
         RegisterShop regisShop = new RegisterShop();
         this.setVisible(false);
         regisShop.setVisible(true);

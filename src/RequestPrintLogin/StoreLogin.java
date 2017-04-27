@@ -121,6 +121,7 @@ public class StoreLogin extends javax.swing.JFrame {
     private void regisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regisButtonActionPerformed
         SelectRegisUserOrRegisShop selectRegis = new SelectRegisUserOrRegisShop();
         selectRegis.setVisible(true);
+        selectRegis.linkToStoreLogin(this);
     }//GEN-LAST:event_regisButtonActionPerformed
 
     private void userLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userLoginMouseClicked
