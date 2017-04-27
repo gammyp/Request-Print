@@ -139,6 +139,11 @@ public class ShopProfile extends javax.swing.JFrame {
         home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         home.setText("Home");
         home.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        home.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                homeMouseClicked(evt);
+            }
+        });
         jPanel1.add(home);
         home.setBounds(0, 100, 190, 30);
 
@@ -245,6 +250,12 @@ public class ShopProfile extends javax.swing.JFrame {
         this.setVisible(false);
         rp.setVisible(true);
     }//GEN-LAST:event_respondPrintMouseClicked
+
+    private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
+        Home home = new Home();
+        this.setVisible(false);
+        home.setVisible(true);
+    }//GEN-LAST:event_homeMouseClicked
 
     /**
      * @param args the command line arguments

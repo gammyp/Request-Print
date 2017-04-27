@@ -100,6 +100,11 @@ public class ResponPrint extends javax.swing.JFrame {
         home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         home.setText("Home");
         home.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        home.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                homeMouseClicked(evt);
+            }
+        });
         jPanel1.add(home);
         home.setBounds(0, 100, 190, 30);
 
@@ -401,6 +406,12 @@ public class ResponPrint extends javax.swing.JFrame {
         ChangeStatus change = new ChangeStatus();
         change.setVisible(true);
     }//GEN-LAST:event_changeStatusButtonActionPerformed
+
+    private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
+        Home home = new Home();
+        this.setVisible(false);
+        home.setVisible(true);
+    }//GEN-LAST:event_homeMouseClicked
 
     /**
      * @param args the command line arguments

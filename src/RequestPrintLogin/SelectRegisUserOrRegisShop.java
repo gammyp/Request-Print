@@ -47,7 +47,7 @@ public class SelectRegisUserOrRegisShop extends javax.swing.JFrame {
 
         questionSelectRegis.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         questionSelectRegis.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        questionSelectRegis.setText("Do you preferuser register user or shop register ?");
+        questionSelectRegis.setText("Do you prefer register user or shop ?");
         getContentPane().add(questionSelectRegis);
         questionSelectRegis.setBounds(0, 20, 450, 41);
 
