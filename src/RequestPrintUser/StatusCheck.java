@@ -14,7 +14,7 @@ public class StatusCheck extends javax.swing.JFrame {
     /**
      * Creates new form StatusCheck
      */
-    private String fetch = "";
+    private String SelectUser = "SELECT * FROM ";
     public StatusCheck() {
         initComponents();
     }
