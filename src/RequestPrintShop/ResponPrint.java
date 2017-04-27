@@ -25,10 +25,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ResponPrint extends javax.swing.JFrame {
 
-    private int orderId;
+    private static int orderId;
     DefaultTableModel model;
 
-    public int getOrderId() {
+    public static int getOrderId() {
         return orderId;
     }
 

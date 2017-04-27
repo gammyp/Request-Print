@@ -123,6 +123,7 @@ public class ChangeStatus extends javax.swing.JFrame {
                 System.out.println("done update value function working !");
             }
             pstm.executeUpdate();
+            System.out.println("Executed update");
             this.setVisible(false);
         } catch (SQLException ex) {
             Logger.getLogger(ChangeStatus.class.getName()).log(Level.SEVERE, null, ex);
@@ -133,24 +134,26 @@ public class ChangeStatus extends javax.swing.JFrame {
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
+            System.out.println("Conbuilder");
             ResponPrint respond = new ResponPrint();
             PreparedStatement pstm = con.prepareStatement("SELECT `status` FROM mydb.Order WHERE orderID = " + respond.getOrderId());
             ResultSet rs = pstm.executeQuery();
+            System.out.println(rs);
             if (rs.next()) {
                 if (rs.getString("status").equals("Pending Responding")) {
-                    pendingResponding.isSelected();
+                    pendingResponding.setSelected(true);
                     System.out.println("pending responding window activate function is working !");
                 } else if (rs.getString("status").equals("Pending Payment")) {
-                    pendingPayment.isSelected();
+                    pendingPayment.setSelected(true);
                     System.out.println("pending payment window activate function is working !");
                 } else if (rs.getString("status").equals("Process")) {
-                    process.isSelected();
+                    process.setSelected(true);
                     System.out.println("process window activate function is working !");
                 } else if (rs.getString("status").equals("Product can be picked")) {
-                    waitForReceipt.isSelected();
+                    waitForReceipt.setSelected(true);
                     System.out.println("wait for recipt window activate function is working !");
                 } else if (rs.getString("status").equals("Done")) {
-                    done.isSelected();
+                    done.setSelected(true);
                     System.out.println("done window activate function is working !");
                 }
             }
