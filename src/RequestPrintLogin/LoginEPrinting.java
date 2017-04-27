@@ -50,8 +50,8 @@ public class LoginEPrinting extends javax.swing.JFrame {
     private void initComponents() {
 
         leftPanel = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        concept = new javax.swing.JLabel();
+        ePrinting = new javax.swing.JLabel();
         rightPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -73,18 +73,18 @@ public class LoginEPrinting extends javax.swing.JFrame {
         leftPanel.setBackground(new java.awt.Color(51, 51, 51));
         leftPanel.setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Cloud Light", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Easy Print with E - Printing");
-        leftPanel.add(jLabel2);
-        jLabel2.setBounds(140, 295, 230, 20);
+        concept.setFont(new java.awt.Font("Cloud Light", 0, 14)); // NOI18N
+        concept.setForeground(new java.awt.Color(255, 255, 255));
+        concept.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        concept.setText("Easy Print with E - Printing");
+        leftPanel.add(concept);
+        concept.setBounds(140, 295, 230, 20);
 
-        jLabel1.setFont(new java.awt.Font("Moon", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("E - Printing");
-        leftPanel.add(jLabel1);
-        jLabel1.setBounds(140, 240, 240, 80);
+        ePrinting.setFont(new java.awt.Font("Moon", 1, 36)); // NOI18N
+        ePrinting.setForeground(new java.awt.Color(255, 255, 255));
+        ePrinting.setText("E - Printing");
+        leftPanel.add(ePrinting);
+        ePrinting.setBounds(140, 240, 240, 80);
 
         getContentPane().add(leftPanel);
         leftPanel.setBounds(0, 0, 390, 590);
@@ -253,9 +253,9 @@ public class LoginEPrinting extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel concept;
+    private javax.swing.JLabel ePrinting;
     private javax.swing.JLabel errorText;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel leftPanel;
