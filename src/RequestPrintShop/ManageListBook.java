@@ -6,7 +6,7 @@
 package RequestPrintShop;
 
 import RequestPrintDatabase.ConnectionBuilder;
-import RequestPrintLogin.StoreLogin;
+import RequestPrintLogin.LoginEPrinting;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -189,6 +189,11 @@ public class ManageListBook extends javax.swing.JFrame {
         home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         home.setText("Home");
         home.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        home.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                homeMouseClicked(evt);
+            }
+        });
         getContentPane().add(home);
         home.setBounds(0, 100, 190, 30);
 
@@ -255,11 +260,12 @@ public class ManageListBook extends javax.swing.JFrame {
         model = (DefaultTableModel) manageTable.getModel();
         model.setRowCount(0);
         Connection con = null;
+        
         try {
             con = ConnectionBuilder.getConnection();
-            StoreLogin sLogin = new StoreLogin();
+            LoginEPrinting login = new LoginEPrinting();
             PreparedStatement pstm = con.prepareStatement("SELECT productID, productName, price FROM Product WHERE "
-                    + "ShopProfile_shopID = " + sLogin.getShopId());
+                    + "ShopProfile_shopID = " + login.getShopId());
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
                 Vector v = new Vector();
@@ -334,9 +340,9 @@ public class ManageListBook extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void signOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signOutMouseClicked
-        StoreLogin sLogin = new StoreLogin();
+        LoginEPrinting login = new LoginEPrinting();
         this.setVisible(false);
-        sLogin.setVisible(true);
+        login.setVisible(true);
     }//GEN-LAST:event_signOutMouseClicked
 
     private void respondPrintMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_respondPrintMouseClicked
@@ -344,6 +350,12 @@ public class ManageListBook extends javax.swing.JFrame {
         this.setVisible(false);
         rp.setVisible(true);
     }//GEN-LAST:event_respondPrintMouseClicked
+
+    private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
+        Home home = new Home();
+        this.setVisible(false);
+        home.setVisible(true);
+    }//GEN-LAST:event_homeMouseClicked
 
     /**
      * @param args the command line arguments

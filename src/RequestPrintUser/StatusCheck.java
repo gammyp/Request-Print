@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package RequestPrintUser;
+<<<<<<< HEAD
 import RequestPrintDatabase.ConnectionBuilder;
 import RequestPrintLogin.UserLogin;
 import java.sql.Connection;
@@ -12,26 +13,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+=======
+>>>>>>> master
 
 /**
  *
- * @author game_
+ * @author Game
  */
 public class StatusCheck extends javax.swing.JFrame {
-    
-    private String fetch = "";
-    private String Username;
-    
-    public String getUsername() {
-        return Username;
-    }
-    
-    public void setUsername(String Username) {
-        this.Username = Username;
-    }
+
     /**
      * Creates new form StatusCheck
      */
+    private String SelectUser = "SELECT * FROM ";
     public StatusCheck() {
         initComponents();
     }
@@ -45,34 +39,43 @@ public class StatusCheck extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BackButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+<<<<<<< HEAD
         jScrollPane1 = new javax.swing.JScrollPane();
         Status = new javax.swing.JTable();
         RefreshButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+=======
+>>>>>>> master
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowActivated(java.awt.event.WindowEvent evt) {
-                formWindowActivated(evt);
-            }
-        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BackButton.setText("Back");
-        BackButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BackButtonMouseClicked(evt);
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Document Name", "Status"
             }
-        });
-        getContentPane().add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 530, -1, -1));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Check your document status ");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
+<<<<<<< HEAD
         Status.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -104,42 +107,21 @@ public class StatusCheck extends javax.swing.JFrame {
         RefreshButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 RefreshButtonMouseClicked(evt);
+=======
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+>>>>>>> master
             }
         });
-        getContentPane().add(RefreshButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 530, -1, -1));
-
-        jLabel2.setText("beta 1");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, -1, -1));
-
-        setSize(new java.awt.Dimension(630, 643));
-        setLocationRelativeTo(null);
-    }// </editor-fold>//GEN-END:initComponents
-
-    private void RefreshButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RefreshButtonMouseClicked
-        try {
-            // TODO add your handling code here:
-            Connection con = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = con.prepareStatement(fetch);
-            con.close();
-            pstm.close();
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(StatusCheck.class.getName()).log(Level.SEVERE, null, ex);
+        jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
         }
-    }//GEN-LAST:event_RefreshButtonMouseClicked
 
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        // TODO add your handling code here:
-        try {
-            Connection con = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = con.prepareStatement(fetch);
-            con.close();
-            pstm.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(StatusCheck.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_formWindowActivated
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, -1, -1));
 
+<<<<<<< HEAD
     private void StatusTableActivated(java.awt.event.WindowEvent evt) {
         Connection con = null;
         try {
@@ -162,6 +144,14 @@ public class StatusCheck extends javax.swing.JFrame {
         setVisible(false);
         userR.setVisible(true);
     }//GEN-LAST:event_BackButtonMouseClicked
+=======
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("Check your document status.");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+>>>>>>> master
 
     /**
      * @param args the command line arguments
@@ -199,11 +189,17 @@ public class StatusCheck extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
     private javax.swing.JButton BackButton;
     private javax.swing.JButton RefreshButton;
     private javax.swing.JTable Status;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+=======
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+>>>>>>> master
     // End of variables declaration//GEN-END:variables
 }

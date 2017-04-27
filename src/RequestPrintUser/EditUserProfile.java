@@ -6,7 +6,7 @@
 package RequestPrintUser;
 
 import RequestPrintDatabase.ConnectionBuilder;
-import RequestPrintLogin.UserLogin;
+import RequestPrintLogin.LoginEPrinting;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -143,11 +143,11 @@ public class EditUserProfile extends javax.swing.JFrame {
         UserRequest usr = new UserRequest();
         try {
             con = ConnectionBuilder.getConnection();
-            UserLogin uLogin = new UserLogin();
-            System.out.println(uLogin.getUserId());
+            LoginEPrinting login = new LoginEPrinting();
+            System.out.println(login.getUserId());
             PreparedStatement pstm = con.prepareStatement("UPDATE ShopProfile SET "
                     + "name=?, surname=?, email=?, phone=?"
-                    + " WHERE id = " + uLogin.getUserId());
+                    + " WHERE id = " + login.getUserId());
             
             pstm.setString(1, nameField.getText());
             pstm.setString(2, surnameField.getText());
@@ -165,8 +165,8 @@ public class EditUserProfile extends javax.swing.JFrame {
 
         try {
             Connection con = ConnectionBuilder.getConnection();
-            UserLogin uLogin = new UserLogin();
-            PreparedStatement pstm = con.prepareStatement("SELECT * FROM UserProfile WHERE id = " + uLogin.getUserId());
+            LoginEPrinting login = new LoginEPrinting();
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM UserProfile WHERE id = " + login.getUserId());
             ResultSet rs = pstm.executeQuery();
             if (rs.next()) {
                 nameField.setText(rs.getString("name"));

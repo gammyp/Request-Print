@@ -6,7 +6,7 @@
 package RequestPrintShop;
 
 import RequestPrintDatabase.ConnectionBuilder;
-import RequestPrintLogin.StoreLogin;
+import RequestPrintLogin.LoginEPrinting;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,7 +24,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ResponPrint extends javax.swing.JFrame {
 
+    private static int orderId;
     DefaultTableModel model;
+
+    public static int getOrderId() {
+        return orderId;
+    }
 
     /**
      * Creates new form ResponPrint
@@ -93,6 +99,11 @@ public class ResponPrint extends javax.swing.JFrame {
         home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         home.setText("Home");
         home.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        home.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                homeMouseClicked(evt);
+            }
+        });
         jPanel1.add(home);
         home.setBounds(0, 100, 190, 30);
 
@@ -110,6 +121,11 @@ public class ResponPrint extends javax.swing.JFrame {
 
         signOut.setText("Sign out");
         signOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        signOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                signOutMouseClicked(evt);
+            }
+        });
         jPanel1.add(signOut);
         signOut.setBounds(10, 500, 50, 16);
 
@@ -161,14 +177,14 @@ public class ResponPrint extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "OrderID", "Customer Name", "Date", "Statis"
+                "OrderID", "Customer Name", "Date", "Status"
             }
         ) {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -187,72 +203,82 @@ public class ResponPrint extends javax.swing.JFrame {
         jScrollPane1.setViewportView(orderTable);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(200, 70, 380, 440);
+        jScrollPane1.setBounds(200, 70, 500, 440);
 
         responnPrintTitle.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         responnPrintTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         responnPrintTitle.setText("Respond Print");
         getContentPane().add(responnPrintTitle);
-        responnPrintTitle.setBounds(190, 15, 630, 40);
+        responnPrintTitle.setBounds(190, 15, 750, 40);
 
         customerName.setText("Customer name");
         getContentPane().add(customerName);
-        customerName.setBounds(600, 70, 110, 20);
+        customerName.setBounds(720, 70, 110, 20);
         getContentPane().add(jLabel8);
         jLabel8.setBounds(610, 100, 190, 0);
         getContentPane().add(custNameField);
-        custNameField.setBounds(610, 90, 190, 20);
+        custNameField.setBounds(730, 90, 190, 20);
 
         telephone.setText("Telephone");
         getContentPane().add(telephone);
-        telephone.setBounds(600, 120, 110, 20);
+        telephone.setBounds(720, 120, 110, 20);
         getContentPane().add(telephoneField);
-        telephoneField.setBounds(610, 140, 190, 20);
+        telephoneField.setBounds(730, 140, 190, 20);
 
         order.setText("Order");
         getContentPane().add(order);
-        order.setBounds(600, 220, 40, 20);
+        order.setBounds(720, 220, 40, 20);
 
         email.setText("Email");
         getContentPane().add(email);
-        email.setBounds(600, 170, 110, 20);
+        email.setBounds(720, 170, 110, 20);
         getContentPane().add(emailField);
-        emailField.setBounds(610, 190, 190, 20);
+        emailField.setBounds(730, 190, 190, 20);
 
         description.setText("Description");
         getContentPane().add(description);
-        description.setBounds(600, 270, 110, 20);
+        description.setBounds(720, 270, 110, 20);
 
         status.setText("Order status");
         getContentPane().add(status);
-        status.setBounds(600, 470, 110, 20);
+        status.setBounds(720, 470, 110, 20);
         getContentPane().add(statusField);
-        statusField.setBounds(610, 490, 120, 20);
+        statusField.setBounds(730, 490, 120, 20);
 
         jScrollPane2.setViewportView(descriptionField);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(610, 290, 190, 70);
+        jScrollPane2.setBounds(730, 290, 190, 70);
 
         changeStatusButton.setText("change");
         changeStatusButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        changeStatusButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changeStatusButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(changeStatusButton);
+<<<<<<< HEAD
         changeStatusButton.setBounds(730, 490, 89, 29);
+=======
+        changeStatusButton.setBounds(850, 490, 73, 25);
+>>>>>>> master
 
         productAmount.setText("Product Amount");
         getContentPane().add(productAmount);
-        productAmount.setBounds(600, 370, 110, 20);
+        productAmount.setBounds(720, 370, 110, 20);
         getContentPane().add(productAmountField);
-        productAmountField.setBounds(610, 390, 190, 20);
+        productAmountField.setBounds(730, 390, 190, 20);
 
         typeOrder.setForeground(new java.awt.Color(255, 0, 0));
         getContentPane().add(typeOrder);
-        typeOrder.setBounds(640, 220, 90, 20);
+        typeOrder.setBounds(760, 220, 90, 20);
 
         price.setText("Price");
         getContentPane().add(price);
-        price.setBounds(600, 420, 110, 20);
+        price.setBounds(720, 420, 110, 20);
         getContentPane().add(priceField);
+<<<<<<< HEAD
         priceField.setBounds(610, 440, 190, 20);
 
         orderField.addActionListener(new java.awt.event.ActionListener() {
@@ -262,8 +288,13 @@ public class ResponPrint extends javax.swing.JFrame {
         });
         getContentPane().add(orderField);
         orderField.setBounds(610, 240, 190, 26);
+=======
+        priceField.setBounds(730, 440, 190, 20);
+        getContentPane().add(orderField);
+        orderField.setBounds(730, 240, 190, 30);
+>>>>>>> master
 
-        setSize(new java.awt.Dimension(836, 566));
+        setSize(new java.awt.Dimension(952, 566));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -279,19 +310,24 @@ public class ResponPrint extends javax.swing.JFrame {
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
-            StoreLogin sLogin = new StoreLogin();
-            PreparedStatement pstmOrder = con.prepareStatement("SELECT * FROM Order WHERE "
-                    + "ShopProfile_shopID = " + sLogin.getShopId());
+            LoginEPrinting login = new LoginEPrinting();
+            PreparedStatement pstmOrder = con.prepareStatement("SELECT * FROM mydb.Order WHERE "
+                    + "ShopProfile_shopID = " + login.getShopId());
             ResultSet rsOrder = pstmOrder.executeQuery();
+            rsOrder.next();
             PreparedStatement pstmUser = con.prepareStatement("SELECT * FROM UserProfile WHERE "
                     + "id = " + rsOrder.getInt("UserProfile_id"));
             ResultSet rsUser = pstmUser.executeQuery();
-            while (rsOrder.next()) {
+            while (rsUser.next()) {
                 Vector v = new Vector();
                 v.add(rsOrder.getInt("orderID"));
                 v.add(rsUser.getString("name") + " " + rsUser.getString("surname"));
                 v.add(rsOrder.getDate("datetime"));
-                v.add(rsOrder.getString("status"));
+                if (rsOrder.getString("status").equals("Product can be picked")) {
+                    v.add("Wait for receipt");
+                } else {
+                    v.add(rsOrder.getString("status"));
+                }
                 model.addRow(v);
             }
         } catch (SQLException ex) {
@@ -309,57 +345,94 @@ public class ResponPrint extends javax.swing.JFrame {
         bgMenu.setBackground(Color.DARK_GRAY);
         respondPrint.setBackground(Color.DARK_GRAY);
         respondPrint.setForeground(Color.WHITE);
+        orderTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        orderTable.getColumnModel().getColumn(0).setPreferredWidth(60);
+        orderTable.getColumnModel().getColumn(1).setPreferredWidth(160);
+        orderTable.getColumnModel().getColumn(2).setPreferredWidth(79);
+        orderTable.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
     }//GEN-LAST:event_formComponentShown
 
     private void orderTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderTableMouseClicked
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
-            StoreLogin sLogin = new StoreLogin();
+            LoginEPrinting login = new LoginEPrinting();
             //executeQuery Order Table
-            PreparedStatement pstmOrder = con.prepareStatement("SELECT * FROM Order WHERE "
-                    + "ShopProfile_shopID = " + sLogin.getShopId());
+            PreparedStatement pstmOrder = con.prepareStatement("SELECT * FROM mydb.Order WHERE "
+                    + "ShopProfile_shopID = " + login.getShopId());
             ResultSet rsOrder = pstmOrder.executeQuery();
+            rsOrder.next();
 
             //executeQuery UserProfile Table
             PreparedStatement pstmUser = con.prepareStatement("SELECT * FROM UserProfile WHERE "
                     + "id = " + rsOrder.getInt("UserProfile_id"));
             ResultSet rsUser = pstmUser.executeQuery();
+            rsUser.next();
 
             //executeQuery SheetOrder Table
             PreparedStatement pstmSheetOrder = con.prepareStatement("SELECT * FROM SheetOrder WHERE "
                     + "Order_orderID = " + rsOrder.getInt("orderID"));
             ResultSet rsSheetOrder = pstmSheetOrder.executeQuery();
+            rsSheetOrder.next();
 
             //executeQuery Product Table
             PreparedStatement pstmProduct = con.prepareStatement("SELECT * FROM Product WHERE "
                     + "productID = " + rsSheetOrder.getInt("Product_productID"));
             ResultSet rsProduct = pstmProduct.executeQuery();
+            rsProduct.next();
 
             custNameField.setText(orderTable.getValueAt(orderTable.getSelectedRow(), 0) + "");
             statusField.setText(orderTable.getValueAt(orderTable.getSelectedRow(), 3) + "");
             telephoneField.setText(rsUser.getString("phone"));
             emailField.setText(rsUser.getString("email"));
             orderField.setEditable(false);
-            if (rsOrder.getString("url").equals(null)) {
+            //check Order
+            if (rsOrder.getString("url") == null) {
                 typeOrder.setText("* Book *");
                 orderField.setText(rsProduct.getString("productName"));
             } else {
                 typeOrder.setText("* URL *");
                 orderField.setText(rsOrder.getString("url"));
             }
-            descriptionField.setText(rsOrder.getString("description"));
-            descriptionField.setEditable(false);
+            //check description
+            if (rsOrder.getString("description") == null) {
+                descriptionField.setText("<null>");
+            } else {
+                descriptionField.setText(rsOrder.getString("description"));
+            }
+            descriptionField.setEditable(false); //don't edit text in descripton Field
             productAmountField.setText(rsSheetOrder.getInt("productAmount") + "");
             priceField.setText(rsOrder.getDouble("priceOrder") + "");
+
+            orderId = (int) (orderTable.getValueAt(orderTable.getSelectedRow(), 0));
+            System.out.println("Order id = " + orderId);
         } catch (SQLException ex) {
             Logger.getLogger(ResponPrint.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_orderTableMouseClicked
 
+<<<<<<< HEAD
     private void orderFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_orderFieldActionPerformed
+=======
+    private void signOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signOutMouseClicked
+        LoginEPrinting login = new LoginEPrinting();
+        this.setVisible(false);
+        login.setVisible(true);
+    }//GEN-LAST:event_signOutMouseClicked
+
+    private void changeStatusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeStatusButtonActionPerformed
+        ChangeStatus change = new ChangeStatus();
+        change.setVisible(true);
+    }//GEN-LAST:event_changeStatusButtonActionPerformed
+
+    private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
+        Home home = new Home();
+        this.setVisible(false);
+        home.setVisible(true);
+    }//GEN-LAST:event_homeMouseClicked
+>>>>>>> master
 
     /**
      * @param args the command line arguments
@@ -393,6 +466,7 @@ public class ResponPrint extends javax.swing.JFrame {
             public void run() {
                 new ResponPrint().setVisible(true);
             }
+
         });
     }
 

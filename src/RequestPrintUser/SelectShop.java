@@ -5,12 +5,22 @@
  */
 package RequestPrintUser;
 
+import RequestPrintDatabase.ConnectionBuilder;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JList;
+import java.lang.String;
+
 /**
  *
  * @author Game
  */
 public class SelectShop extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form SelectShop
      */
@@ -29,10 +39,16 @@ public class SelectShop extends javax.swing.JFrame {
 
         CancleButton = new javax.swing.JButton();
         Request = new javax.swing.JButton();
-        ShopName = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ShopList = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         CancleButton.setText("Cancel");
@@ -46,19 +62,26 @@ public class SelectShop extends javax.swing.JFrame {
                 CancleButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(CancleButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
+        getContentPane().add(CancleButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, -1, -1));
 
         Request.setText("Next");
-        getContentPane().add(Request, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, -1, -1));
-
-        ShopName.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(ShopName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 350, -1));
+        getContentPane().add(Request, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Select shop to request.");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 19, -1, -1));
 
+        ShopList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(ShopList);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 330, 150));
+
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void CancleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancleButtonActionPerformed
@@ -71,6 +94,20 @@ public class SelectShop extends javax.swing.JFrame {
         setVisible(false);
         usrreq.setVisible(true);
     }//GEN-LAST:event_CancleButtonMouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        try {
+            // TODO add your handling code here:
+            Connection con = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM ShopProfile WHERE shopName");
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SelectShop.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -110,7 +147,8 @@ public class SelectShop extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CancleButton;
     private javax.swing.JButton Request;
-    private javax.swing.JComboBox<String> ShopName;
+    private javax.swing.JList<String> ShopList;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

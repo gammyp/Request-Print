@@ -6,7 +6,7 @@
 package RequestPrintShop;
 
 import RequestPrintDatabase.ConnectionBuilder;
-import RequestPrintLogin.StoreLogin;
+import RequestPrintLogin.LoginEPrinting;
 import com.sun.prism.paint.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -139,6 +139,11 @@ public class ShopProfile extends javax.swing.JFrame {
         home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         home.setText("Home");
         home.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        home.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                homeMouseClicked(evt);
+            }
+        });
         jPanel1.add(home);
         home.setBounds(0, 100, 190, 30);
 
@@ -208,7 +213,7 @@ public class ShopProfile extends javax.swing.JFrame {
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
-            StoreLogin sLogin = new StoreLogin();
+            LoginEPrinting sLogin = new LoginEPrinting();
             PreparedStatement pstm = con.prepareStatement("SELECT * FROM ShopProfile WHERE shopID = " + sLogin.getShopId());
             ResultSet rs = pstm.executeQuery();
             if (rs.next()) {
@@ -235,7 +240,7 @@ public class ShopProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_manageBookMouseClicked
 
     private void signOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signOutMouseClicked
-        StoreLogin sLogin = new StoreLogin();
+        LoginEPrinting sLogin = new LoginEPrinting();
         this.setVisible(false);
         sLogin.setVisible(true);
     }//GEN-LAST:event_signOutMouseClicked
@@ -245,6 +250,12 @@ public class ShopProfile extends javax.swing.JFrame {
         this.setVisible(false);
         rp.setVisible(true);
     }//GEN-LAST:event_respondPrintMouseClicked
+
+    private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
+        Home home = new Home();
+        this.setVisible(false);
+        home.setVisible(true);
+    }//GEN-LAST:event_homeMouseClicked
 
     /**
      * @param args the command line arguments

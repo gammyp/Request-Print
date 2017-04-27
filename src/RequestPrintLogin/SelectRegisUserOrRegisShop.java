@@ -14,6 +14,12 @@ import RequestPrintUser.RegisterUser;
  */
 public class SelectRegisUserOrRegisShop extends javax.swing.JFrame {
 
+    public LoginEPrinting controlLoginEPrinting;
+
+    public void linkToLoginEPrinting(LoginEPrinting control) {
+        controlLoginEPrinting = control;
+    }
+
     /**
      * Creates new form SelectRegisUserOrRegisShop
      */
@@ -40,7 +46,7 @@ public class SelectRegisUserOrRegisShop extends javax.swing.JFrame {
 
         questionSelectRegis.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         questionSelectRegis.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        questionSelectRegis.setText("Do you preferuser register user or shop register ?");
+        questionSelectRegis.setText("Do you prefer register user or shop ?");
         getContentPane().add(questionSelectRegis);
         questionSelectRegis.setBounds(0, 20, 450, 41);
 
@@ -67,21 +73,15 @@ public class SelectRegisUserOrRegisShop extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void userRegisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userRegisButtonActionPerformed
-        UserLogin uLogin = new UserLogin();
-        StoreLogin sLogin = new StoreLogin();
+        controlLoginEPrinting.setVisible(false);
         RegisterUser regisUser = new RegisterUser();
-        uLogin.setVisible(false);
-        sLogin.setVisible(false);
         this.setVisible(false);
         regisUser.setVisible(true);
     }//GEN-LAST:event_userRegisButtonActionPerformed
 
     private void shopRegisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shopRegisButtonActionPerformed
-        UserLogin uLogin = new UserLogin();
-        StoreLogin sLogin = new StoreLogin();
+        controlLoginEPrinting.setVisible(false);
         RegisterShop regisShop = new RegisterShop();
-        uLogin.setVisible(false);
-        sLogin.setVisible(false);
         this.setVisible(false);
         regisShop.setVisible(true);
     }//GEN-LAST:event_shopRegisButtonActionPerformed

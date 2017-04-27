@@ -5,8 +5,8 @@
  */
 package RequestPrintShop;
 
-import RequestPrintLogin.StoreLogin;
 import RequestPrintDatabase.ConnectionBuilder;
+import RequestPrintLogin.LoginEPrinting;
 import java.awt.*;
 import java.sql.*;
 import java.util.logging.*;
@@ -18,7 +18,7 @@ import javax.swing.*;
  */
 public class AddBookToManageBook extends javax.swing.JFrame {
 
-    private StoreLogin shopID;
+    private LoginEPrinting shopID;
     private int month;
 
     public int getMonth() {
@@ -181,10 +181,10 @@ public class AddBookToManageBook extends javax.swing.JFrame {
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
-            StoreLogin sLogin = new StoreLogin();
+            LoginEPrinting login = new LoginEPrinting();
             PreparedStatement pstmSelect = con.prepareStatement("SELECT * FROM Product WHERE productName = ? AND ShopProfile_shopID = ?");
             pstmSelect.setString(1, bookNameField.getText());
-            pstmSelect.setInt(2, sLogin.getShopId());
+            pstmSelect.setInt(2, login.getShopId());
             ResultSet rs = pstmSelect.executeQuery();
             if (rs.next()) {
                 errorText.setText("* Note * This book already existed.");
@@ -196,7 +196,7 @@ public class AddBookToManageBook extends javax.swing.JFrame {
                 pstmInsert.setDate(2, new Date((Integer.parseInt(yearSpinner.getValue()+"")-1900), getMonth() ,Integer.parseInt(dateSpinner.getValue()+"")));
                 pstmInsert.setString(3, detailField.getText());
                 pstmInsert.setString(4, setPriceField.getText());
-                pstmInsert.setInt(5, sLogin.getShopId());
+                pstmInsert.setInt(5, login.getShopId());
                 pstmInsert.executeUpdate();
                 System.out.println("Insert complete");
                 bookNameField.setText("");
