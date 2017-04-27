@@ -1,8 +1,7 @@
 package RequestPrintUser;
 
 import RequestPrintDatabase.ConnectionBuilder;
-import RequestPrintLogin.StoreLogin;
-import RequestPrintLogin.UserLogin;
+import RequestPrintLogin.LoginEPrinting;
 import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -245,10 +244,8 @@ public class RegisterUser extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        StoreLogin sLogin = new StoreLogin();
-        UserLogin uLogin = new UserLogin();
-        uLogin.setVisible(false);
-        sLogin.setVisible(false);
+        LoginEPrinting login = new LoginEPrinting();
+        login.setVisible(false);
     }//GEN-LAST:event_formWindowActivated
 
     public static void main(String args[]) {

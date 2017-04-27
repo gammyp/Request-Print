@@ -6,7 +6,7 @@
 package RequestPrintShop;
 
 import RequestPrintDatabase.ConnectionBuilder;
-import RequestPrintLogin.StoreLogin;
+import RequestPrintLogin.LoginEPrinting;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -263,9 +263,9 @@ public class ManageListBook extends javax.swing.JFrame {
         
         try {
             con = ConnectionBuilder.getConnection();
-            StoreLogin sLogin = new StoreLogin();
+            LoginEPrinting login = new LoginEPrinting();
             PreparedStatement pstm = con.prepareStatement("SELECT productID, productName, price FROM Product WHERE "
-                    + "ShopProfile_shopID = " + sLogin.getShopId());
+                    + "ShopProfile_shopID = " + login.getShopId());
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
                 Vector v = new Vector();
@@ -340,9 +340,9 @@ public class ManageListBook extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void signOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signOutMouseClicked
-        StoreLogin sLogin = new StoreLogin();
+        LoginEPrinting login = new LoginEPrinting();
         this.setVisible(false);
-        sLogin.setVisible(true);
+        login.setVisible(true);
     }//GEN-LAST:event_signOutMouseClicked
 
     private void respondPrintMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_respondPrintMouseClicked

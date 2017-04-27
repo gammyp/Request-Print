@@ -6,7 +6,7 @@
 package RequestPrintShop;
 
 import RequestPrintDatabase.ConnectionBuilder;
-import RequestPrintLogin.StoreLogin;
+import RequestPrintLogin.LoginEPrinting;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -126,11 +126,11 @@ public class EditShopProfile extends javax.swing.JFrame {
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
-            StoreLogin sLogin = new StoreLogin();
-            System.out.println(sLogin.getShopId());
+            LoginEPrinting login = new LoginEPrinting();
+            System.out.println(login.getShopId());
             PreparedStatement pstm = con.prepareStatement("UPDATE ShopProfile SET "
                     + "ownerName=?, ownerSurname=?, shopName=?, address=?, phone=?, email=?"
-                    + " WHERE shopID = " + sLogin.getShopId());
+                    + " WHERE shopID = " + login.getShopId());
             pstm.setString(1, nameField.getText());
             pstm.setString(2, surnameField.getText());
             pstm.setString(3, shopNameField.getText());
@@ -149,8 +149,8 @@ public class EditShopProfile extends javax.swing.JFrame {
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
-            StoreLogin sLogin = new StoreLogin();
-            PreparedStatement pstm = con.prepareStatement("SELECT * FROM ShopProfile WHERE shopID = " + sLogin.getShopId());
+            LoginEPrinting login = new LoginEPrinting();
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM ShopProfile WHERE shopID = " + login.getShopId());
             ResultSet rs = pstm.executeQuery();
             if (rs.next()) {
                 nameField.setText(rs.getString("ownerName"));

@@ -6,7 +6,7 @@
 package RequestPrintUser;
 
 import RequestPrintDatabase.ConnectionBuilder;
-import RequestPrintLogin.UserLogin;
+import RequestPrintLogin.LoginEPrinting;
 import RequestPrintShop.EditShopProfile;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -150,8 +150,8 @@ public class Userprofile extends javax.swing.JFrame {
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
-            UserLogin uLogin = new UserLogin();
-            PreparedStatement pstm = con.prepareStatement("SELECT * FROM ShopProfile WHERE shopID = " + uLogin.getUserId());
+            LoginEPrinting login = new LoginEPrinting();
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM ShopProfile WHERE shopID = " + login.getUserId());
             ResultSet rs = pstm.executeQuery();
             if (rs.next()) {
                 NameLabel.setText(rs.getString("Name"));

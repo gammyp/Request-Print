@@ -6,8 +6,7 @@
 package RequestPrintShop;
 
 import RequestPrintDatabase.ConnectionBuilder;
-import RequestPrintLogin.StoreLogin;
-import RequestPrintLogin.UserLogin;
+import RequestPrintLogin.LoginEPrinting;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -295,9 +294,9 @@ public class ResponPrint extends javax.swing.JFrame {
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
-            StoreLogin sLogin = new StoreLogin();
+            LoginEPrinting login = new LoginEPrinting();
             PreparedStatement pstmOrder = con.prepareStatement("SELECT * FROM mydb.Order WHERE "
-                    + "ShopProfile_shopID = " + sLogin.getShopId());
+                    + "ShopProfile_shopID = " + login.getShopId());
             ResultSet rsOrder = pstmOrder.executeQuery();
             rsOrder.next();
             PreparedStatement pstmUser = con.prepareStatement("SELECT * FROM UserProfile WHERE "
@@ -341,10 +340,10 @@ public class ResponPrint extends javax.swing.JFrame {
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
-            StoreLogin sLogin = new StoreLogin();
+            LoginEPrinting login = new LoginEPrinting();
             //executeQuery Order Table
             PreparedStatement pstmOrder = con.prepareStatement("SELECT * FROM mydb.Order WHERE "
-                    + "ShopProfile_shopID = " + sLogin.getShopId());
+                    + "ShopProfile_shopID = " + login.getShopId());
             ResultSet rsOrder = pstmOrder.executeQuery();
             rsOrder.next();
 
@@ -397,9 +396,9 @@ public class ResponPrint extends javax.swing.JFrame {
     }//GEN-LAST:event_orderTableMouseClicked
 
     private void signOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signOutMouseClicked
-        UserLogin uLogin = new UserLogin();
+        LoginEPrinting login = new LoginEPrinting();
         this.setVisible(false);
-        uLogin.setVisible(true);
+        login.setVisible(true);
     }//GEN-LAST:event_signOutMouseClicked
 
     private void changeStatusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeStatusButtonActionPerformed

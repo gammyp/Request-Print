@@ -6,8 +6,7 @@
 package RequestPrintShop;
 
 import RequestPrintDatabase.ConnectionBuilder;
-import RequestPrintLogin.StoreLogin;
-import RequestPrintLogin.UserLogin;
+import RequestPrintLogin.LoginEPrinting;
 import java.awt.Color;
 import java.awt.Image;
 import java.sql.Connection;
@@ -349,7 +348,7 @@ public class RegisterShop extends javax.swing.JFrame {
     }//GEN-LAST:event_confirmFieldFocusLost
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        UserLogin wp = new UserLogin();
+        LoginEPrinting wp = new LoginEPrinting();
         this.setVisible(false);
         wp.setVisible(true);
     }//GEN-LAST:event_backButtonActionPerformed
@@ -360,10 +359,8 @@ public class RegisterShop extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        StoreLogin sLogin = new StoreLogin();
-        UserLogin uLogin = new UserLogin();
-        uLogin.setVisible(false);
-        sLogin.setVisible(false);
+        LoginEPrinting login = new LoginEPrinting();
+        login.setVisible(false);
     }//GEN-LAST:event_formWindowActivated
 
     /**
