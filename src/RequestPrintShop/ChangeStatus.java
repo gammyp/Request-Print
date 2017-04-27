@@ -8,6 +8,7 @@ package RequestPrintShop;
 import RequestPrintDatabase.ConnectionBuilder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,8 +19,9 @@ import javax.swing.ButtonGroup;
  * @author Lenovo
  */
 public class ChangeStatus extends javax.swing.JFrame {
-    
+
     private String status;
+
     /**
      * Creates new form ChangeStatus
      */
@@ -36,6 +38,7 @@ public class ChangeStatus extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        changeGroup = new javax.swing.ButtonGroup();
         changeStatusTitle = new javax.swing.JLabel();
         done = new javax.swing.JRadioButton();
         pendingResponding = new javax.swing.JRadioButton();
@@ -59,22 +62,27 @@ public class ChangeStatus extends javax.swing.JFrame {
         getContentPane().add(changeStatusTitle);
         changeStatusTitle.setBounds(0, 10, 360, 25);
 
+        changeGroup.add(done);
         done.setText("Done");
         getContentPane().add(done);
         done.setBounds(20, 110, 81, 25);
 
-        pendingResponding.setText("Pending Respinding");
+        changeGroup.add(pendingResponding);
+        pendingResponding.setText("Pending Responding");
         getContentPane().add(pendingResponding);
         pendingResponding.setBounds(20, 50, 150, 25);
 
+        changeGroup.add(waitForReceipt);
         waitForReceipt.setText("Waiting for receipt");
         getContentPane().add(waitForReceipt);
         waitForReceipt.setBounds(200, 80, 140, 25);
 
+        changeGroup.add(pendingPayment);
         pendingPayment.setText("Pending Payment");
         getContentPane().add(pendingPayment);
         pendingPayment.setBounds(200, 50, 140, 25);
 
+        changeGroup.add(process);
         process.setText("Process");
         getContentPane().add(process);
         process.setBounds(20, 80, 73, 25);
@@ -96,22 +104,59 @@ public class ChangeStatus extends javax.swing.JFrame {
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = con.prepareStatement("UPDATE mydb.Order SET status = " );
+            ResponPrint respond = new ResponPrint();
+            PreparedStatement pstm = con.prepareStatement("UPDATE mydb.Order SET `status` = ? WHERE orderID = " + respond.getOrderId());
+            if (pendingResponding.isSelected()) {
+                pstm.setString(1, pendingResponding.getText());
+                System.out.println("pending responding update value function working !");
+            } else if (pendingPayment.isSelected()) {
+                pstm.setString(1, pendingPayment.getText());
+                System.out.println("pending payment update value function working !");
+            } else if (process.isSelected()) {
+                pstm.setString(1, process.getText());
+                System.out.println("process update value function working !");
+            } else if (waitForReceipt.isSelected()) {
+                pstm.setString(1, "Product can be picked");
+                System.out.println("wait for receipt update value function working !");
+            } else if (done.isSelected()) {
+                pstm.setString(1, done.getText());
+                System.out.println("done update value function working !");
+            }
             pstm.executeUpdate();
+            this.setVisible(false);
         } catch (SQLException ex) {
             Logger.getLogger(ChangeStatus.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        ButtonGroup group = new ButtonGroup();
-        group.add(pendingResponding);
-        group.add(pendingPayment);
-        group.add(process);
-        group.add(waitForReceipt);
-        group.add(done);
-        
-//        if()
+        Connection con = null;
+        try {
+            con = ConnectionBuilder.getConnection();
+            ResponPrint respond = new ResponPrint();
+            PreparedStatement pstm = con.prepareStatement("SELECT `status` FROM mydb.Order WHERE orderID = " + respond.getOrderId());
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+                if (rs.getString("status").equals("Pending Responding")) {
+                    pendingResponding.isSelected();
+                    System.out.println("pending responding window activate function is working !");
+                } else if (rs.getString("status").equals("Pending Payment")) {
+                    pendingPayment.isSelected();
+                    System.out.println("pending payment window activate function is working !");
+                } else if (rs.getString("status").equals("Process")) {
+                    process.isSelected();
+                    System.out.println("process window activate function is working !");
+                } else if (rs.getString("status").equals("Product can be picked")) {
+                    waitForReceipt.isSelected();
+                    System.out.println("wait for recipt window activate function is working !");
+                } else if (rs.getString("status").equals("Done")) {
+                    done.isSelected();
+                    System.out.println("done window activate function is working !");
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ChangeStatus.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_formWindowActivated
 
     /**
@@ -150,6 +195,7 @@ public class ChangeStatus extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup changeGroup;
     private javax.swing.JLabel changeStatusTitle;
     private javax.swing.JRadioButton done;
     private javax.swing.JRadioButton pendingPayment;

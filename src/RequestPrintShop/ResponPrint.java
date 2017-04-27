@@ -25,7 +25,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ResponPrint extends javax.swing.JFrame {
 
+    private int orderId;
     DefaultTableModel model;
+
+    public int getOrderId() {
+        return orderId;
+    }
 
     /**
      * Creates new form ResponPrint
@@ -168,7 +173,7 @@ public class ResponPrint extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "OrderID", "Customer Name", "Date", "Statis"
+                "OrderID", "Customer Name", "Date", "Status"
             }
         ) {
             Class[] types = new Class [] {
@@ -194,77 +199,82 @@ public class ResponPrint extends javax.swing.JFrame {
         jScrollPane1.setViewportView(orderTable);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(200, 70, 380, 440);
+        jScrollPane1.setBounds(200, 70, 500, 440);
 
         responnPrintTitle.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         responnPrintTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         responnPrintTitle.setText("Respond Print");
         getContentPane().add(responnPrintTitle);
-        responnPrintTitle.setBounds(190, 15, 630, 40);
+        responnPrintTitle.setBounds(190, 15, 750, 40);
 
         customerName.setText("Customer name");
         getContentPane().add(customerName);
-        customerName.setBounds(600, 70, 110, 20);
+        customerName.setBounds(720, 70, 110, 20);
         getContentPane().add(jLabel8);
         jLabel8.setBounds(610, 100, 190, 0);
         getContentPane().add(custNameField);
-        custNameField.setBounds(610, 90, 190, 20);
+        custNameField.setBounds(730, 90, 190, 20);
 
         telephone.setText("Telephone");
         getContentPane().add(telephone);
-        telephone.setBounds(600, 120, 110, 20);
+        telephone.setBounds(720, 120, 110, 20);
         getContentPane().add(telephoneField);
-        telephoneField.setBounds(610, 140, 190, 20);
+        telephoneField.setBounds(730, 140, 190, 20);
 
         order.setText("Order");
         getContentPane().add(order);
-        order.setBounds(600, 220, 40, 20);
+        order.setBounds(720, 220, 40, 20);
 
         email.setText("Email");
         getContentPane().add(email);
-        email.setBounds(600, 170, 110, 20);
+        email.setBounds(720, 170, 110, 20);
         getContentPane().add(emailField);
-        emailField.setBounds(610, 190, 190, 20);
+        emailField.setBounds(730, 190, 190, 20);
 
         description.setText("Description");
         getContentPane().add(description);
-        description.setBounds(600, 270, 110, 20);
+        description.setBounds(720, 270, 110, 20);
 
         status.setText("Order status");
         getContentPane().add(status);
-        status.setBounds(600, 470, 110, 20);
+        status.setBounds(720, 470, 110, 20);
         getContentPane().add(statusField);
-        statusField.setBounds(610, 490, 120, 20);
+        statusField.setBounds(730, 490, 120, 20);
 
         jScrollPane2.setViewportView(descriptionField);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(610, 290, 190, 70);
+        jScrollPane2.setBounds(730, 290, 190, 70);
 
         changeStatusButton.setText("change");
         changeStatusButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        changeStatusButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changeStatusButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(changeStatusButton);
-        changeStatusButton.setBounds(730, 490, 73, 25);
+        changeStatusButton.setBounds(850, 490, 73, 25);
 
         productAmount.setText("Product Amount");
         getContentPane().add(productAmount);
-        productAmount.setBounds(600, 370, 110, 20);
+        productAmount.setBounds(720, 370, 110, 20);
         getContentPane().add(productAmountField);
-        productAmountField.setBounds(610, 390, 190, 20);
+        productAmountField.setBounds(730, 390, 190, 20);
 
         typeOrder.setForeground(new java.awt.Color(255, 0, 0));
         getContentPane().add(typeOrder);
-        typeOrder.setBounds(640, 220, 90, 20);
+        typeOrder.setBounds(760, 220, 90, 20);
 
         price.setText("Price");
         getContentPane().add(price);
-        price.setBounds(600, 420, 110, 20);
+        price.setBounds(720, 420, 110, 20);
         getContentPane().add(priceField);
-        priceField.setBounds(610, 440, 190, 20);
+        priceField.setBounds(730, 440, 190, 20);
         getContentPane().add(orderField);
-        orderField.setBounds(610, 240, 190, 22);
+        orderField.setBounds(730, 240, 190, 30);
 
-        setSize(new java.awt.Dimension(836, 566));
+        setSize(new java.awt.Dimension(952, 566));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -293,7 +303,7 @@ public class ResponPrint extends javax.swing.JFrame {
                 v.add(rsOrder.getInt("orderID"));
                 v.add(rsUser.getString("name") + " " + rsUser.getString("surname"));
                 v.add(rsOrder.getDate("datetime"));
-                if(rsOrder.getString("status").equals("Product can be picked")){
+                if (rsOrder.getString("status").equals("Product can be picked")) {
                     v.add("Wait for receipt");
                 } else {
                     v.add(rsOrder.getString("status"));
@@ -373,6 +383,9 @@ public class ResponPrint extends javax.swing.JFrame {
             descriptionField.setEditable(false); //don't edit text in descripton Field
             productAmountField.setText(rsSheetOrder.getInt("productAmount") + "");
             priceField.setText(rsOrder.getDouble("priceOrder") + "");
+
+            orderId = (int) (orderTable.getValueAt(orderTable.getSelectedRow(), 0));
+            System.out.println("Order id = " + orderId);
         } catch (SQLException ex) {
             Logger.getLogger(ResponPrint.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -383,6 +396,11 @@ public class ResponPrint extends javax.swing.JFrame {
         this.setVisible(false);
         uLogin.setVisible(true);
     }//GEN-LAST:event_signOutMouseClicked
+
+    private void changeStatusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeStatusButtonActionPerformed
+        ChangeStatus change = new ChangeStatus();
+        change.setVisible(true);
+    }//GEN-LAST:event_changeStatusButtonActionPerformed
 
     /**
      * @param args the command line arguments
