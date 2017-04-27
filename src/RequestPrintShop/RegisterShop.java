@@ -241,7 +241,7 @@ public class RegisterShop extends javax.swing.JFrame {
     }//GEN-LAST:event_emailFieldFocusLost
 
     private void userNameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userNameFieldFocusLost
-         try {
+        try {
             Connection con = ConnectionBuilder.getConnection();
             Image trueIcon = new ImageIcon(this.getClass().getResource("../icon/correct.png")).getImage();
             Image wrongIcon = new ImageIcon(this.getClass().getResource("../icon/wrong.png")).getImage();
@@ -270,18 +270,32 @@ public class RegisterShop extends javax.swing.JFrame {
             Connection con = ConnectionBuilder.getConnection();
             if ((passField.getText().length() > 5) & (userNameField.getText().length() > 0) & (emailField.getText().indexOf("@") > 0)) {
                 if (passField.getText().equals(confirmField.getText())) {
-                    PreparedStatement pstm = con.prepareStatement("INSERT INTO ShopProfile (username, password, shopName, ownerName, "
+                    PreparedStatement pstmInsertProf = con.prepareStatement("INSERT INTO ShopProfile (username, password, shopName, ownerName, "
                             + "ownerSurname, address, phone, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-                    pstm.setString(1, userNameField.getText());
-                    pstm.setString(2, passField.getText());
-                    pstm.setString(3, shopNameField.getText());
-                    pstm.setString(4, nameField.getText());
-                    pstm.setString(5, surnameField.getText());
-                    pstm.setString(6, addressField.getText());
-                    pstm.setString(7, telephoneField.getText());
-                    pstm.setString(8, emailField.getText());
-                    pstm.executeUpdate();
+                    pstmInsertProf.setString(1, userNameField.getText());
+                    pstmInsertProf.setString(2, passField.getText());
+                    pstmInsertProf.setString(3, shopNameField.getText());
+                    pstmInsertProf.setString(4, nameField.getText());
+                    pstmInsertProf.setString(5, surnameField.getText());
+                    pstmInsertProf.setString(6, addressField.getText());
+                    pstmInsertProf.setString(7, telephoneField.getText());
+                    pstmInsertProf.setString(8, emailField.getText());
+                    pstmInsertProf.executeUpdate();
+                    //add Product link
+                    PreparedStatement pstmSelect = con.prepareStatement("SELECT * FROM ShopProfile WHERE Username = ?");
+                    pstmSelect.setString(1, userNameField.getText());
+                   // System.out.println("test "+userNameField.getText());
+                    ResultSet rsProf = pstmSelect.executeQuery();
+                    if (rsProf.next()) {
+                        int profileID = rsProf.getInt("shopID");
+                        PreparedStatement pstmInsert = con.prepareStatement("INSERT INTO Product (ProductName,TotalOfPrint,ShopProfile_shopID) VALUES (?,?,?)");
+                        pstmInsert.setString(1, "link product shop" + rsProf.getInt("shopID"));
+                        pstmInsert.setInt(2, 0);
+                        pstmInsert.setInt(3, profileID);
+                        pstmInsert.executeUpdate();
+                    }
                     JOptionPane.showMessageDialog(null, "Register Successful.");
+                    //SET FIELD NULL
                     userNameField.setText("");
                     passField.setText("");
                     shopNameField.setText("");
@@ -297,6 +311,7 @@ public class RegisterShop extends javax.swing.JFrame {
                     userNameCheck.setIcon(null);
                 }
             }
+
         } catch (SQLException ex) {
             Logger.getLogger(RegisterShop.class.getName()).log(Level.SEVERE, null, ex);
         }
