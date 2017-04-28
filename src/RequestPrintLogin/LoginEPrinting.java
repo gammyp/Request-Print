@@ -108,7 +108,7 @@ public class LoginEPrinting extends javax.swing.JFrame {
         registerBG.setBackground(new java.awt.Color(204, 255, 255));
         registerBG.setLayout(null);
 
-        register.setFont(new java.awt.Font("Cloud Light", 0, 24)); // NOI18N
+        register.setFont(new java.awt.Font("Cloud Light", 0, 18)); // NOI18N
         register.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         register.setText("Register");
         register.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -129,6 +129,7 @@ public class LoginEPrinting extends javax.swing.JFrame {
         rightPanel.add(registerBG);
         registerBG.setBounds(40, 450, 380, 40);
 
+        jPanel1.setBackground(new java.awt.Color(250, 250, 250));
         jPanel1.setLayout(null);
 
         password.setFont(new java.awt.Font("Moon", 1, 13)); // NOI18N
@@ -153,7 +154,7 @@ public class LoginEPrinting extends javax.swing.JFrame {
         signinBG.setLayout(null);
 
         signin.setBackground(new java.awt.Color(153, 255, 153));
-        signin.setFont(new java.awt.Font("Cloud Light", 0, 24)); // NOI18N
+        signin.setFont(new java.awt.Font("Cloud Light", 0, 18)); // NOI18N
         signin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         signin.setText("Sign in");
         signin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
