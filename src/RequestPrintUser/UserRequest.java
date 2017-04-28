@@ -21,7 +21,7 @@ import javax.swing.ImageIcon;
  */
 public class UserRequest extends javax.swing.JFrame {
     
-    private String request = "";
+    private String DocURL;
     private String Username;
     
     public void setUsername(String Username) {
@@ -30,6 +30,14 @@ public class UserRequest extends javax.swing.JFrame {
     
     public String getUsername() {
         return Username;
+    }
+    
+    public void setDocURL(String DocURL) {
+        this.DocURL = DocURL;
+    }
+    
+    public String getDocURL() {
+        return DocURL;
     }
     /**
      * Creates new form UserProfile
@@ -208,6 +216,7 @@ public class UserRequest extends javax.swing.JFrame {
             YourRequest.setBackground(Color.black);
             YourRequest.setForeground(Color.white);
             Headder.setText("Welcome , "+Username);
+            
     }//GEN-LAST:event_formWindowActivated
 
     /**
