@@ -6,7 +6,7 @@
 package RequestPrintLogin;
 
 import RequestPrintDatabase.ConnectionBuilder;
-import RequestPrintShop.ShopProfile;
+import RequestPrintShop.HomeShop;
 import RequestPrintUser.Userprofile;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -54,6 +54,9 @@ public class LoginEPrinting extends javax.swing.JFrame {
         ePrinting = new javax.swing.JLabel();
         rightPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        line = new javax.swing.JLabel();
+        registerBG = new javax.swing.JPanel();
+        register = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         password = new javax.swing.JLabel();
         userNameField = new javax.swing.JTextField();
@@ -62,9 +65,6 @@ public class LoginEPrinting extends javax.swing.JFrame {
         signinBG = new javax.swing.JPanel();
         signin = new javax.swing.JLabel();
         errorText = new javax.swing.JLabel();
-        line = new javax.swing.JLabel();
-        registerBG = new javax.swing.JPanel();
-        register = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -98,52 +98,12 @@ public class LoginEPrinting extends javax.swing.JFrame {
         rightPanel.add(jLabel3);
         jLabel3.setBounds(0, 117, 460, 22);
 
-        jPanel1.setLayout(null);
-
-        password.setFont(new java.awt.Font("Moon", 1, 13)); // NOI18N
-        password.setText("Password :");
-        jPanel1.add(password);
-        password.setBounds(10, 100, 80, 16);
-        jPanel1.add(userNameField);
-        userNameField.setBounds(20, 40, 340, 40);
-
-        userName.setFont(new java.awt.Font("Moon", 1, 13)); // NOI18N
-        userName.setText("Username :");
-        jPanel1.add(userName);
-        userName.setBounds(10, 20, 80, 16);
-        jPanel1.add(passwordField);
-        passwordField.setBounds(20, 120, 340, 40);
-
-        signinBG.setBackground(new java.awt.Color(153, 255, 153));
-        signinBG.setLayout(null);
-
-        signin.setFont(new java.awt.Font("Cloud Light", 0, 24)); // NOI18N
-        signin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        signin.setText("Sign in");
-        signin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        signin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                signinMouseClicked(evt);
-            }
-        });
-        signinBG.add(signin);
-        signin.setBounds(0, 0, 340, 40);
-
-        jPanel1.add(signinBG);
-        signinBG.setBounds(20, 200, 340, 40);
-
-        errorText.setFont(new java.awt.Font("Cloud Light", 0, 13)); // NOI18N
-        errorText.setForeground(new java.awt.Color(255, 102, 102));
-        jPanel1.add(errorText);
-        errorText.setBounds(20, 160, 340, 40);
-
-        rightPanel.add(jPanel1);
-        jPanel1.setBounds(40, 160, 380, 250);
-
+        line.setFont(new java.awt.Font("Cloud Light", 0, 17)); // NOI18N
         line.setForeground(new java.awt.Color(102, 102, 102));
-        line.setText("----------------------------------   or    ----------------------------------");
+        line.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        line.setText("--------------------------------   or    --------------------------------");
         rightPanel.add(line);
-        line.setBounds(40, 420, 380, 16);
+        line.setBounds(40, 420, 380, 17);
 
         registerBG.setBackground(new java.awt.Color(204, 255, 255));
         registerBG.setLayout(null);
@@ -156,6 +116,12 @@ public class LoginEPrinting extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 registerMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                registerMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                registerMouseExited(evt);
+            }
         });
         registerBG.add(register);
         register.setBounds(0, 0, 380, 40);
@@ -163,8 +129,62 @@ public class LoginEPrinting extends javax.swing.JFrame {
         rightPanel.add(registerBG);
         registerBG.setBounds(40, 450, 380, 40);
 
+        jPanel1.setLayout(null);
+
+        password.setFont(new java.awt.Font("Moon", 1, 13)); // NOI18N
+        password.setText("Password :");
+        jPanel1.add(password);
+        password.setBounds(10, 100, 80, 16);
+
+        userNameField.setFont(new java.awt.Font("Cloud Light", 0, 16)); // NOI18N
+        jPanel1.add(userNameField);
+        userNameField.setBounds(20, 40, 340, 40);
+
+        userName.setFont(new java.awt.Font("Moon", 1, 13)); // NOI18N
+        userName.setText("Username :");
+        jPanel1.add(userName);
+        userName.setBounds(10, 20, 80, 16);
+
+        passwordField.setFont(new java.awt.Font("Cloud Light", 0, 16)); // NOI18N
+        jPanel1.add(passwordField);
+        passwordField.setBounds(20, 120, 340, 40);
+
+        signinBG.setBackground(new java.awt.Color(153, 255, 153));
+        signinBG.setLayout(null);
+
+        signin.setBackground(new java.awt.Color(153, 255, 153));
+        signin.setFont(new java.awt.Font("Cloud Light", 0, 24)); // NOI18N
+        signin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        signin.setText("Sign in");
+        signin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        signin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                signinMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                signinMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                signinMouseExited(evt);
+            }
+        });
+        signinBG.add(signin);
+        signin.setBounds(0, 0, 340, 40);
+        signin.getAccessibleContext().setAccessibleDescription("");
+
+        jPanel1.add(signinBG);
+        signinBG.setBounds(20, 200, 340, 40);
+
+        errorText.setFont(new java.awt.Font("Cloud Light", 0, 14)); // NOI18N
+        errorText.setForeground(new java.awt.Color(255, 102, 102));
+        jPanel1.add(errorText);
+        errorText.setBounds(20, 160, 340, 40);
+
+        rightPanel.add(jPanel1);
+        jPanel1.setBounds(40, 160, 380, 250);
+
         getContentPane().add(rightPanel);
-        rightPanel.setBounds(390, 0, 470, 590);
+        rightPanel.setBounds(390, 0, 480, 590);
 
         setSize(new java.awt.Dimension(868, 622));
         setLocationRelativeTo(null);
@@ -187,13 +207,13 @@ public class LoginEPrinting extends javax.swing.JFrame {
                 pstmUser.setString(1, userNameField.getText());
                 pstmUser.setString(2, passwordField.getText());
                 ResultSet rsUser = pstmUser.executeQuery();
-                
+
                 if (rsShop.next()) {
                     shopId = Integer.parseInt(rsShop.getString("shopID"));
                     JOptionPane.showMessageDialog(null, "Success");
-                    ShopProfile sProf = new ShopProfile();
+                    HomeShop home = new HomeShop();
                     this.setVisible(false);
-                    sProf.setVisible(true);
+                    home.setVisible(true);
                 } else if (rsUser.next()) {
                     userId = Integer.parseInt(rsUser.getString("ID"));
                     JOptionPane.showMessageDialog(null, "Success");
@@ -216,6 +236,22 @@ public class LoginEPrinting extends javax.swing.JFrame {
         selectRegis.setVisible(true);
         selectRegis.linkToLoginEPrinting(this);
     }//GEN-LAST:event_registerMouseClicked
+
+    private void signinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signinMouseEntered
+        signinBG.setBackground(new java.awt.Color(102, 255, 102));
+    }//GEN-LAST:event_signinMouseEntered
+
+    private void signinMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signinMouseExited
+        signinBG.setBackground(new java.awt.Color(153, 255, 153));
+    }//GEN-LAST:event_signinMouseExited
+
+    private void registerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerMouseEntered
+        registerBG.setBackground(new java.awt.Color(153, 255, 255));
+    }//GEN-LAST:event_registerMouseEntered
+
+    private void registerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerMouseExited
+        registerBG.setBackground(new java.awt.Color(204, 255, 255));
+    }//GEN-LAST:event_registerMouseExited
 
     /**
      * @param args the command line arguments
