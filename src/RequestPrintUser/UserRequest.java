@@ -6,11 +6,14 @@
 package RequestPrintUser;
 
 import RequestPrintDatabase.ConnectionBuilder;
+import java.awt.Color;
+import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -23,6 +26,10 @@ public class UserRequest extends javax.swing.JFrame {
     
     public void setUsername(String Username) {
         this.Username = Username;
+    }
+    
+    public String getUsername() {
+        return Username;
     }
     /**
      * Creates new form UserProfile
@@ -40,9 +47,7 @@ public class UserRequest extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        LogoutButton = new javax.swing.JButton();
         Request = new javax.swing.JButton();
-        CheckStatus = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         DocumentLink = new javax.swing.JTextField();
         LocationLink = new javax.swing.JLabel();
@@ -56,7 +61,6 @@ public class UserRequest extends javax.swing.JFrame {
         NumberofCopies = new javax.swing.JSpinner();
         Copies = new javax.swing.JLabel();
         BookList = new javax.swing.JComboBox<>();
-        ProfileButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         MessageLabel = new javax.swing.JLabel();
@@ -76,29 +80,13 @@ public class UserRequest extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        LogoutButton.setText("Logout");
-        LogoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                LogoutButtonMouseClicked(evt);
-            }
-        });
-        getContentPane().add(LogoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, -1, -1));
-
         Request.setText("Request");
         Request.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RequestActionPerformed(evt);
             }
         });
-        getContentPane().add(Request, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 520, -1, -1));
-
-        CheckStatus.setText("Check status");
-        CheckStatus.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CheckStatusMouseClicked(evt);
-            }
-        });
-        getContentPane().add(CheckStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, -1, -1));
+        getContentPane().add(Request, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 520, -1, -1));
 
         jLabel1.setText("beta 2");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, -1, -1));
@@ -143,14 +131,6 @@ public class UserRequest extends javax.swing.JFrame {
         BookList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(BookList, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 390, -1));
 
-        ProfileButton.setText("Profile");
-        ProfileButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ProfileButtonMouseClicked(evt);
-            }
-        });
-        getContentPane().add(ProfileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 520, -1, -1));
-
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
@@ -159,6 +139,8 @@ public class UserRequest extends javax.swing.JFrame {
 
         MessageLabel.setText("Message to shop.");
         getContentPane().add(MessageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, -1, -1));
+
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         YourRequest.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         YourRequest.setText("Your Request");
@@ -197,9 +179,9 @@ public class UserRequest extends javax.swing.JFrame {
                 .addComponent(YourProfile)
                 .addGap(67, 67, 67)
                 .addComponent(DocumnetStatus)
-                .addGap(83, 83, 83)
+                .addGap(85, 85, 85)
                 .addComponent(Logout)
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 570));
@@ -211,46 +193,20 @@ public class UserRequest extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void LogoutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutButtonMouseClicked
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_LogoutButtonMouseClicked
-
     private void RequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RequestActionPerformed
         // TODO add your handling code here:
         SelectShop selc = new SelectShop();
-        try {
-            Connection con = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = con.prepareStatement(request);
-            setVisible(false);
-            selc.setVisible(true);
-            con.close();
-            pstm.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(UserRequest.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_RequestActionPerformed
-
-    private void CheckStatusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckStatusMouseClicked
-        // TODO add your handling code here:
-        StatusCheck stch = new StatusCheck();
         setVisible(false);
-        stch.setVisible(true);
-    }//GEN-LAST:event_CheckStatusMouseClicked
+        selc.setVisible(true);
+    }//GEN-LAST:event_RequestActionPerformed
 
     private void ChooseFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ChooseFileMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_ChooseFileMouseClicked
 
-    private void ProfileButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProfileButtonMouseClicked
-        // TODO add your handling code here:
-        Userprofile usrp = new Userprofile();
-        setVisible(false);
-        usrp.setVisible(true);
-    }//GEN-LAST:event_ProfileButtonMouseClicked
-
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        // TODO add your handling code here:
+            YourRequest.setBackground(Color.black);
+            YourRequest.setForeground(Color.white);
             Headder.setText("Welcome , "+Username);
     }//GEN-LAST:event_formWindowActivated
 
@@ -293,7 +249,6 @@ public class UserRequest extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AttachFile;
     private javax.swing.JComboBox<String> BookList;
-    private javax.swing.JButton CheckStatus;
     private javax.swing.JLabel ChooseBookLabel;
     private javax.swing.JButton ChooseFile;
     private javax.swing.JLabel Copies;
@@ -302,10 +257,8 @@ public class UserRequest extends javax.swing.JFrame {
     private javax.swing.JLabel Headder;
     private javax.swing.JLabel LocationLink;
     private javax.swing.JLabel Logout;
-    private javax.swing.JButton LogoutButton;
     private javax.swing.JLabel MessageLabel;
     private javax.swing.JSpinner NumberofCopies;
-    private javax.swing.JButton ProfileButton;
     private javax.swing.JButton Request;
     private javax.swing.JLabel RequestHaed;
     private javax.swing.JLabel YourProfile;
