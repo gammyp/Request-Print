@@ -38,6 +38,10 @@ public class EditShopProfile extends javax.swing.JFrame {
     private void initComponents() {
 
         editProfileTitls = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        saveLabelButton = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         name = new javax.swing.JLabel();
         nameField = new javax.swing.JTextField();
         surname = new javax.swing.JLabel();
@@ -50,7 +54,6 @@ public class EditShopProfile extends javax.swing.JFrame {
         phoneField = new javax.swing.JTextField();
         email = new javax.swing.JLabel();
         emailField = new javax.swing.JTextField();
-        saveButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -61,89 +64,104 @@ public class EditShopProfile extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
-        editProfileTitls.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        editProfileTitls.setFont(new java.awt.Font("Moon", 1, 24)); // NOI18N
         editProfileTitls.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         editProfileTitls.setText("Edit Profile");
         getContentPane().add(editProfileTitls);
-        editProfileTitls.setBounds(-1, 13, 460, 30);
+        editProfileTitls.setBounds(-1, 13, 520, 30);
 
-        name.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        name.setText("Name :");
-        getContentPane().add(name);
-        name.setBounds(60, 60, 50, 30);
-        getContentPane().add(nameField);
-        nameField.setBounds(120, 60, 280, 30);
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setLayout(null);
 
-        surname.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        surname.setText("Surname :");
-        getContentPane().add(surname);
-        surname.setBounds(20, 100, 90, 30);
-        getContentPane().add(surnameField);
-        surnameField.setBounds(120, 100, 280, 30);
+        jPanel2.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel2.setLayout(null);
 
-        address.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        address.setText("Address :");
-        getContentPane().add(address);
-        address.setBounds(20, 180, 90, 30);
-        getContentPane().add(addressField);
-        addressField.setBounds(120, 180, 280, 30);
-
-        shopName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        shopName.setText("Shop name :");
-        getContentPane().add(shopName);
-        shopName.setBounds(20, 140, 90, 30);
-        getContentPane().add(shopNameField);
-        shopNameField.setBounds(120, 140, 280, 30);
-
-        phone.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        phone.setText("Phone :");
-        getContentPane().add(phone);
-        phone.setBounds(20, 220, 90, 30);
-        getContentPane().add(phoneField);
-        phoneField.setBounds(120, 220, 280, 30);
-
-        email.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        email.setText("Email :");
-        getContentPane().add(email);
-        email.setBounds(20, 260, 90, 30);
-        getContentPane().add(emailField);
-        emailField.setBounds(120, 260, 280, 30);
-
-        saveButton.setText("save");
-        saveButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveButtonActionPerformed(evt);
+        saveLabelButton.setFont(new java.awt.Font("Cloud Light", 0, 18)); // NOI18N
+        saveLabelButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        saveLabelButton.setText("Save");
+        saveLabelButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                saveLabelButtonMouseClicked(evt);
             }
         });
-        getContentPane().add(saveButton);
-        saveButton.setBounds(190, 310, 79, 25);
+        jPanel2.add(saveLabelButton);
+        saveLabelButton.setBounds(0, 0, 460, 40);
 
-        setSize(new java.awt.Dimension(468, 399));
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(30, 460, 460, 40);
+
+        jPanel3.setBackground(new java.awt.Color(250, 250, 250));
+        jPanel3.setLayout(null);
+
+        name.setFont(new java.awt.Font("Moon", 1, 13)); // NOI18N
+        name.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        name.setText("Name :");
+        jPanel3.add(name);
+        name.setBounds(30, 10, 50, 30);
+
+        nameField.setFont(new java.awt.Font("Cloud Light", 0, 13)); // NOI18N
+        jPanel3.add(nameField);
+        nameField.setBounds(30, 40, 400, 30);
+
+        surname.setFont(new java.awt.Font("Moon", 1, 13)); // NOI18N
+        surname.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        surname.setText("Surname :");
+        jPanel3.add(surname);
+        surname.setBounds(30, 70, 90, 30);
+
+        surnameField.setFont(new java.awt.Font("Cloud Light", 0, 13)); // NOI18N
+        jPanel3.add(surnameField);
+        surnameField.setBounds(30, 100, 400, 30);
+
+        address.setFont(new java.awt.Font("Moon", 1, 13)); // NOI18N
+        address.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        address.setText("Address :");
+        jPanel3.add(address);
+        address.setBounds(30, 190, 90, 30);
+
+        addressField.setFont(new java.awt.Font("Cloud Light", 0, 13)); // NOI18N
+        jPanel3.add(addressField);
+        addressField.setBounds(30, 220, 400, 30);
+
+        shopName.setFont(new java.awt.Font("Moon", 1, 13)); // NOI18N
+        shopName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        shopName.setText("Shop name :");
+        jPanel3.add(shopName);
+        shopName.setBounds(30, 130, 90, 30);
+
+        shopNameField.setFont(new java.awt.Font("Cloud Light", 0, 13)); // NOI18N
+        jPanel3.add(shopNameField);
+        shopNameField.setBounds(30, 160, 400, 30);
+
+        phone.setFont(new java.awt.Font("Moon", 1, 13)); // NOI18N
+        phone.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        phone.setText("Phone :");
+        jPanel3.add(phone);
+        phone.setBounds(30, 250, 90, 30);
+
+        phoneField.setFont(new java.awt.Font("Cloud Light", 0, 13)); // NOI18N
+        jPanel3.add(phoneField);
+        phoneField.setBounds(30, 280, 400, 30);
+
+        email.setFont(new java.awt.Font("Moon", 1, 13)); // NOI18N
+        email.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        email.setText("Email :");
+        jPanel3.add(email);
+        email.setBounds(30, 310, 60, 30);
+
+        emailField.setFont(new java.awt.Font("Cloud Light", 0, 13)); // NOI18N
+        jPanel3.add(emailField);
+        emailField.setBounds(30, 340, 400, 30);
+
+        jPanel1.add(jPanel3);
+        jPanel3.setBounds(30, 60, 460, 390);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 630, 570);
+
+        setSize(new java.awt.Dimension(524, 566));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        Connection con = null;
-        try {
-            con = ConnectionBuilder.getConnection();
-            LoginEPrinting login = new LoginEPrinting();
-            System.out.println(login.getShopId());
-            PreparedStatement pstm = con.prepareStatement("UPDATE ShopProfile SET "
-                    + "ownerName=?, ownerSurname=?, shopName=?, address=?, phone=?, email=?"
-                    + " WHERE shopID = " + login.getShopId());
-            pstm.setString(1, nameField.getText());
-            pstm.setString(2, surnameField.getText());
-            pstm.setString(3, shopNameField.getText());
-            pstm.setString(4, addressField.getText());
-            pstm.setString(5, phoneField.getText());
-            pstm.setString(6, emailField.getText());
-            pstm.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Save Successful");
-            this.setVisible(false);
-        } catch (SQLException ex) {
-            Logger.getLogger(EditShopProfile.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_saveButtonActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         Connection con = null;
@@ -164,6 +182,29 @@ public class EditShopProfile extends javax.swing.JFrame {
             Logger.getLogger(EditShopProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formComponentShown
+
+    private void saveLabelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveLabelButtonMouseClicked
+        Connection con = null;
+        try {
+            con = ConnectionBuilder.getConnection();
+            LoginEPrinting login = new LoginEPrinting();
+            System.out.println(login.getShopId());
+            PreparedStatement pstm = con.prepareStatement("UPDATE ShopProfile SET "
+                    + "ownerName=?, ownerSurname=?, shopName=?, address=?, phone=?, email=?"
+                    + " WHERE shopID = " + login.getShopId());
+            pstm.setString(1, nameField.getText());
+            pstm.setString(2, surnameField.getText());
+            pstm.setString(3, shopNameField.getText());
+            pstm.setString(4, addressField.getText());
+            pstm.setString(5, phoneField.getText());
+            pstm.setString(6, emailField.getText());
+            pstm.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Save Successful");
+            this.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(EditShopProfile.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_saveLabelButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -206,11 +247,14 @@ public class EditShopProfile extends javax.swing.JFrame {
     private javax.swing.JLabel editProfileTitls;
     private javax.swing.JLabel email;
     private javax.swing.JTextField emailField;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel name;
     private javax.swing.JTextField nameField;
     private javax.swing.JLabel phone;
     private javax.swing.JTextField phoneField;
-    private javax.swing.JButton saveButton;
+    private javax.swing.JLabel saveLabelButton;
     private javax.swing.JLabel shopName;
     private javax.swing.JTextField shopNameField;
     private javax.swing.JLabel surname;

@@ -6,11 +6,15 @@
 package RequestPrintUser;
 
 import RequestPrintDatabase.ConnectionBuilder;
+import java.awt.Color;
+import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -18,10 +22,15 @@ import java.util.logging.Logger;
  */
 public class UserRequest extends javax.swing.JFrame {
     
-    private String request = "";
+    private final String fetchBookList = "SELECT productName FROM Product";
+    private String DocURL;
     private String Username;
+    private String Book;
+    private Object DocFile;
+    private String UserID;
     
-    public void setUsername(String Username) {
+    public UserRequest(String Username , String UserID) {
+        this.UserID = UserID;
         this.Username = Username;
     }
     /**
@@ -40,9 +49,7 @@ public class UserRequest extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        LogoutButton = new javax.swing.JButton();
         Request = new javax.swing.JButton();
-        CheckStatus = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         DocumentLink = new javax.swing.JTextField();
         LocationLink = new javax.swing.JLabel();
@@ -56,7 +63,6 @@ public class UserRequest extends javax.swing.JFrame {
         NumberofCopies = new javax.swing.JSpinner();
         Copies = new javax.swing.JLabel();
         BookList = new javax.swing.JComboBox<>();
-        ProfileButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         MessageLabel = new javax.swing.JLabel();
@@ -76,29 +82,13 @@ public class UserRequest extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        LogoutButton.setText("Logout");
-        LogoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                LogoutButtonMouseClicked(evt);
-            }
-        });
-        getContentPane().add(LogoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, -1, -1));
-
         Request.setText("Request");
         Request.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RequestActionPerformed(evt);
             }
         });
-        getContentPane().add(Request, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 520, -1, -1));
-
-        CheckStatus.setText("Check status");
-        CheckStatus.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CheckStatusMouseClicked(evt);
-            }
-        });
-        getContentPane().add(CheckStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, -1, -1));
+        getContentPane().add(Request, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 520, -1, -1));
 
         jLabel1.setText("beta 2");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, -1, -1));
@@ -140,16 +130,7 @@ public class UserRequest extends javax.swing.JFrame {
         Copies.setText("Copies");
         getContentPane().add(Copies, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
 
-        BookList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(BookList, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 390, -1));
-
-        ProfileButton.setText("Profile");
-        ProfileButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ProfileButtonMouseClicked(evt);
-            }
-        });
-        getContentPane().add(ProfileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 520, -1, -1));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -160,8 +141,10 @@ public class UserRequest extends javax.swing.JFrame {
         MessageLabel.setText("Message to shop.");
         getContentPane().add(MessageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, -1, -1));
 
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
         YourRequest.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        YourRequest.setText("Your Request");
+        YourRequest.setText("Request to Print");
 
         YourProfile.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         YourProfile.setText("Your Profile");
@@ -176,33 +159,29 @@ public class UserRequest extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(YourRequest, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(YourRequest, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(YourProfile)
-                            .addComponent(DocumnetStatus)
-                            .addComponent(Logout))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(YourProfile)
+                    .addComponent(DocumnetStatus)
+                    .addComponent(Logout))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(95, 95, 95)
+                .addGap(96, 96, 96)
                 .addComponent(YourRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
+                .addGap(65, 65, 65)
                 .addComponent(YourProfile)
-                .addGap(67, 67, 67)
+                .addGap(65, 65, 65)
                 .addComponent(DocumnetStatus)
-                .addGap(83, 83, 83)
+                .addGap(87, 87, 87)
                 .addComponent(Logout)
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 570));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 570));
 
         Headder.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(Headder, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 500, 30));
@@ -211,47 +190,37 @@ public class UserRequest extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void LogoutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutButtonMouseClicked
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_LogoutButtonMouseClicked
-
     private void RequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RequestActionPerformed
         // TODO add your handling code here:
+        DocURL = DocumentLink.getText();
         SelectShop selc = new SelectShop();
-        try {
-            Connection con = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = con.prepareStatement(request);
-            setVisible(false);
-            selc.setVisible(true);
-            con.close();
-            pstm.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(UserRequest.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_RequestActionPerformed
-
-    private void CheckStatusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckStatusMouseClicked
-        // TODO add your handling code here:
-        StatusCheck stch = new StatusCheck();
         setVisible(false);
-        stch.setVisible(true);
-    }//GEN-LAST:event_CheckStatusMouseClicked
+        selc.setVisible(true);
+    }//GEN-LAST:event_RequestActionPerformed
 
     private void ChooseFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ChooseFileMouseClicked
         // TODO add your handling code here:
+        ChooseFile choose = new ChooseFile();
+        choose.setVisible(true);
     }//GEN-LAST:event_ChooseFileMouseClicked
 
-    private void ProfileButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProfileButtonMouseClicked
-        // TODO add your handling code here:
-        Userprofile usrp = new Userprofile();
-        setVisible(false);
-        usrp.setVisible(true);
-    }//GEN-LAST:event_ProfileButtonMouseClicked
-
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        // TODO add your handling code here:
+            YourRequest.setBackground(Color.black);
+            YourRequest.setForeground(Color.white);
             Headder.setText("Welcome , "+Username);
+
+        try {
+            Connection con = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = con.prepareStatement(fetchBookList);
+            ResultSet rs = pstm.executeQuery();
+            BookList.addItem("");
+                while (rs.next()){
+                    BookList.addItem(rs.getString("productName"));
+                }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserRequest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_formWindowActivated
 
     /**
@@ -293,7 +262,6 @@ public class UserRequest extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AttachFile;
     private javax.swing.JComboBox<String> BookList;
-    private javax.swing.JButton CheckStatus;
     private javax.swing.JLabel ChooseBookLabel;
     private javax.swing.JButton ChooseFile;
     private javax.swing.JLabel Copies;
@@ -302,10 +270,8 @@ public class UserRequest extends javax.swing.JFrame {
     private javax.swing.JLabel Headder;
     private javax.swing.JLabel LocationLink;
     private javax.swing.JLabel Logout;
-    private javax.swing.JButton LogoutButton;
     private javax.swing.JLabel MessageLabel;
     private javax.swing.JSpinner NumberofCopies;
-    private javax.swing.JButton ProfileButton;
     private javax.swing.JButton Request;
     private javax.swing.JLabel RequestHaed;
     private javax.swing.JLabel YourProfile;
