@@ -5,16 +5,40 @@
  */
 package RequestPrintUser;
 
+import RequestPrintDatabase.ConnectionBuilder;
+import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Game
  */
 public class StatusCheck extends javax.swing.JFrame {
 
+    private String Username;   
+    private String UserID;
     /**
-     * Creates new form StatusCheck
+     *Getter and setter on these method
      */
-    private String SelectUser = "SELECT * FROM ";
+    public StatusCheck(String Username , String UserID) {
+        this.Username = Username;
+        this.UserID = UserID;
+    }
+    
+    public String getUsername() {
+        return Username;
+    }
+    
+    public String getUserID() {
+        return UserID;
+    }
+        /**
+         * Creates new form StatusCheck
+         */
     public StatusCheck() {
         initComponents();
     }
@@ -29,28 +53,41 @@ public class StatusCheck extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        StatusTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        RequesttoPrintBox = new javax.swing.JPanel();
+        RequestPrintLabel = new javax.swing.JLabel();
+        YourProfileBox = new javax.swing.JPanel();
+        YourProfileLabel = new javax.swing.JLabel();
+        CheckStatusBox = new javax.swing.JPanel();
+        CheckStatusLabel = new javax.swing.JLabel();
+        LogoutBox = new javax.swing.JPanel();
+        LogoutLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        StatusTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Document Name", "Status"
+                "Shopname", "Document Name", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -61,20 +98,69 @@ public class StatusCheck extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
+        jScrollPane1.setViewportView(StatusTable);
+        if (StatusTable.getColumnModel().getColumnCount() > 0) {
+            StatusTable.getColumnModel().getColumn(0).setResizable(false);
+            StatusTable.getColumnModel().getColumn(1).setResizable(false);
+            StatusTable.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, -1, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Check your document status.");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
+
+        RequestPrintLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        RequestPrintLabel.setText("Request to Print");
+        RequesttoPrintBox.add(RequestPrintLabel);
+
+        getContentPane().add(RequesttoPrintBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 180, 40));
+
+        YourProfileLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        YourProfileLabel.setText("Your Profile");
+        YourProfileBox.add(YourProfileLabel);
+
+        getContentPane().add(YourProfileBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 160, 40));
+
+        CheckStatusBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                CheckStatusBoxMouseEntered(evt);
+            }
+        });
+
+        CheckStatusLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        CheckStatusLabel.setText("Check Status");
+        CheckStatusBox.add(CheckStatusLabel);
+
+        getContentPane().add(CheckStatusBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 150, 40));
+
+        LogoutLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        LogoutLabel.setText("Logout");
+        LogoutBox.add(LogoutLabel);
+
+        getContentPane().add(LogoutBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 160, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void CheckStatusBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckStatusBoxMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CheckStatusBoxMouseEntered
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        final String selectdoc = "SELECT "+Username+"FROM";
+        CheckStatusBox.setBackground(Color.BLACK);
+        CheckStatusLabel.setForeground(Color.WHITE);
+        try {
+            Connection con = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = con.prepareStatement(selectdoc);
+        } catch (SQLException ex) {
+            Logger.getLogger(StatusCheck.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -112,8 +198,16 @@ public class StatusCheck extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel CheckStatusBox;
+    private javax.swing.JLabel CheckStatusLabel;
+    private javax.swing.JPanel LogoutBox;
+    private javax.swing.JLabel LogoutLabel;
+    private javax.swing.JLabel RequestPrintLabel;
+    private javax.swing.JPanel RequesttoPrintBox;
+    private javax.swing.JTable StatusTable;
+    private javax.swing.JPanel YourProfileBox;
+    private javax.swing.JLabel YourProfileLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
