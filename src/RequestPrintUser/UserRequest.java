@@ -200,6 +200,8 @@ public class UserRequest extends javax.swing.JFrame {
 
     private void ChooseFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ChooseFileMouseClicked
         // TODO add your handling code here:
+        ChooseFile choose = new ChooseFile();
+        choose.setVisible(true);
     }//GEN-LAST:event_ChooseFileMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
