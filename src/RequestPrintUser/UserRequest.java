@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,7 +22,7 @@ import javax.swing.ImageIcon;
  */
 public class UserRequest extends javax.swing.JFrame {
     
-    private String request = "";
+    private String fetchBookList = "SELECT productName FROM Product";
     private String Username;
     
     public void setUsername(String Username) {
@@ -128,7 +129,6 @@ public class UserRequest extends javax.swing.JFrame {
         Copies.setText("Copies");
         getContentPane().add(Copies, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
 
-        BookList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(BookList, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 390, -1));
 
         jTextArea1.setColumns(20);
@@ -208,6 +208,17 @@ public class UserRequest extends javax.swing.JFrame {
             YourRequest.setBackground(Color.black);
             YourRequest.setForeground(Color.white);
             Headder.setText("Welcome , "+Username);
+        try {
+            Connection con = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = con.prepareStatement(fetchBookList);
+            ResultSet rs = pstm.executeQuery();
+                while (rs.next()){
+                    BookList.addItem(rs.getString("productName"));
+                }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserRequest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_formWindowActivated
 
     /**
