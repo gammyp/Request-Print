@@ -63,7 +63,7 @@ public class RegisterUser extends javax.swing.JFrame {
         Register.setFont(new java.awt.Font("supermarket", 0, 24)); // NOI18N
         Register.setText("Register");
         getContentPane().add(Register);
-        Register.setBounds(253, 13, 73, 43);
+        Register.setBounds(253, 13, 89, 43);
         getContentPane().add(surname);
         surname.setBounds(262, 135, 228, 33);
         getContentPane().add(name);
@@ -138,9 +138,9 @@ public class RegisterUser extends javax.swing.JFrame {
         getContentPane().add(error);
         error.setBounds(500, 350, 90, 30);
 
-        jLabel1.setText("beta 1");
+        jLabel1.setText("beta 2");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(520, 10, 36, 16);
+        jLabel1.setBounds(520, 10, 31, 14);
 
         setSize(new java.awt.Dimension(600, 546));
         setLocationRelativeTo(null);

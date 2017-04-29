@@ -22,7 +22,11 @@ import javax.swing.ImageIcon;
  */
 public class UserRequest extends javax.swing.JFrame {
     
+<<<<<<< HEAD
     private String fetchBookList = "SELECT productName FROM Product";
+=======
+    private String DocURL;
+>>>>>>> c08740797daf15f8d09a66e8f39359091493ec03
     private String Username;
     
     public void setUsername(String Username) {
@@ -31,6 +35,14 @@ public class UserRequest extends javax.swing.JFrame {
     
     public String getUsername() {
         return Username;
+    }
+    
+    public void setDocURL(String DocURL) {
+        this.DocURL = DocURL;
+    }
+    
+    public String getDocURL() {
+        return DocURL;
     }
     /**
      * Creates new form UserProfile
@@ -208,6 +220,7 @@ public class UserRequest extends javax.swing.JFrame {
             YourRequest.setBackground(Color.black);
             YourRequest.setForeground(Color.white);
             Headder.setText("Welcome , "+Username);
+<<<<<<< HEAD
         try {
             Connection con = ConnectionBuilder.getConnection();
             PreparedStatement pstm = con.prepareStatement(fetchBookList);
@@ -219,6 +232,9 @@ public class UserRequest extends javax.swing.JFrame {
             Logger.getLogger(UserRequest.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+=======
+            
+>>>>>>> c08740797daf15f8d09a66e8f39359091493ec03
     }//GEN-LAST:event_formWindowActivated
 
     /**

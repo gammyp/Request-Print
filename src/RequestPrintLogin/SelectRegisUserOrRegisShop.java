@@ -36,55 +36,111 @@ public class SelectRegisUserOrRegisShop extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
         questionSelectRegis = new javax.swing.JLabel();
-        shopRegisButton = new javax.swing.JButton();
-        userRegisButton = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        regisShopBG = new javax.swing.JPanel();
+        shopRegisLabelButton = new javax.swing.JLabel();
+        regisUserBG = new javax.swing.JPanel();
+        userRegisLabelButton = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(null);
 
-        questionSelectRegis.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        questionSelectRegis.setFont(new java.awt.Font("Moon", 1, 24)); // NOI18N
         questionSelectRegis.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        questionSelectRegis.setText("Do you prefer register user or shop ?");
+        questionSelectRegis.setText("Who are you ?");
         getContentPane().add(questionSelectRegis);
         questionSelectRegis.setBounds(0, 20, 450, 41);
 
-        shopRegisButton.setText("Shop Register");
-        shopRegisButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                shopRegisButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(shopRegisButton);
-        shopRegisButton.setBounds(250, 70, 120, 30);
+        jPanel1.setBackground(new java.awt.Color(234, 234, 234));
+        jPanel1.setLayout(null);
 
-        userRegisButton.setText("User Register");
-        userRegisButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userRegisButtonActionPerformed(evt);
+        regisShopBG.setBackground(new java.awt.Color(153, 255, 153));
+        regisShopBG.setLayout(null);
+
+        shopRegisLabelButton.setFont(new java.awt.Font("Cloud Light", 0, 18)); // NOI18N
+        shopRegisLabelButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        shopRegisLabelButton.setText("Shop Register");
+        shopRegisLabelButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        shopRegisLabelButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                shopRegisLabelButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                shopRegisLabelButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                shopRegisLabelButtonMouseExited(evt);
             }
         });
-        getContentPane().add(userRegisButton);
-        userRegisButton.setBounds(70, 70, 120, 30);
+        regisShopBG.add(shopRegisLabelButton);
+        shopRegisLabelButton.setBounds(0, 0, 190, 40);
+
+        jPanel1.add(regisShopBG);
+        regisShopBG.setBounds(230, 70, 190, 40);
+
+        regisUserBG.setBackground(new java.awt.Color(153, 255, 153));
+        regisUserBG.setLayout(null);
+
+        userRegisLabelButton.setFont(new java.awt.Font("Cloud Light", 0, 18)); // NOI18N
+        userRegisLabelButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        userRegisLabelButton.setText("User Register");
+        userRegisLabelButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        userRegisLabelButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                userRegisLabelButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                userRegisLabelButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                userRegisLabelButtonMouseExited(evt);
+            }
+        });
+        regisUserBG.add(userRegisLabelButton);
+        userRegisLabelButton.setBounds(0, 0, 190, 40);
+
+        jPanel1.add(regisUserBG);
+        regisUserBG.setBounds(20, 70, 190, 40);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 470, 140);
 
         setSize(new java.awt.Dimension(464, 173));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void userRegisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userRegisButtonActionPerformed
-        controlLoginEPrinting.setVisible(false);
-        RegisterUser regisUser = new RegisterUser();
-        this.setVisible(false);
-        regisUser.setVisible(true);
-    }//GEN-LAST:event_userRegisButtonActionPerformed
-
-    private void shopRegisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shopRegisButtonActionPerformed
-        controlLoginEPrinting.setVisible(false);
+    private void shopRegisLabelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_shopRegisLabelButtonMouseClicked
         RegisterShop regisShop = new RegisterShop();
+        controlLoginEPrinting.setVisible(false);
         this.setVisible(false);
         regisShop.setVisible(true);
-    }//GEN-LAST:event_shopRegisButtonActionPerformed
+    }//GEN-LAST:event_shopRegisLabelButtonMouseClicked
+
+    private void userRegisLabelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userRegisLabelButtonMouseClicked
+        RegisterUser regisUser = new RegisterUser();
+        controlLoginEPrinting.setVisible(false);
+        this.setVisible(false);
+        regisUser.setVisible(true);
+    }//GEN-LAST:event_userRegisLabelButtonMouseClicked
+
+    private void shopRegisLabelButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_shopRegisLabelButtonMouseEntered
+        regisShopBG.setBackground(new java.awt.Color(102, 255, 102));
+    }//GEN-LAST:event_shopRegisLabelButtonMouseEntered
+
+    private void shopRegisLabelButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_shopRegisLabelButtonMouseExited
+        regisShopBG.setBackground(new java.awt.Color(153, 255, 153));
+    }//GEN-LAST:event_shopRegisLabelButtonMouseExited
+
+    private void userRegisLabelButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userRegisLabelButtonMouseEntered
+        regisUserBG.setBackground(new java.awt.Color(102, 255, 102));
+    }//GEN-LAST:event_userRegisLabelButtonMouseEntered
+
+    private void userRegisLabelButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userRegisLabelButtonMouseExited
+        regisUserBG.setBackground(new java.awt.Color(153, 255, 153));
+    }//GEN-LAST:event_userRegisLabelButtonMouseExited
 
     /**
      * @param args the command line arguments
@@ -122,8 +178,12 @@ public class SelectRegisUserOrRegisShop extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel questionSelectRegis;
-    private javax.swing.JButton shopRegisButton;
-    private javax.swing.JButton userRegisButton;
+    private javax.swing.JPanel regisShopBG;
+    private javax.swing.JPanel regisUserBG;
+    private javax.swing.JLabel shopRegisLabelButton;
+    private javax.swing.JLabel userRegisLabelButton;
     // End of variables declaration//GEN-END:variables
 }
