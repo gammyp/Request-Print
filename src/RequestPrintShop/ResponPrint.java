@@ -298,11 +298,11 @@ public class ResponPrint extends javax.swing.JFrame {
             PreparedStatement pstmOrder = con.prepareStatement("SELECT * FROM mydb.Order WHERE "
                     + "ShopProfile_shopID = " + login.getShopId());
             ResultSet rsOrder = pstmOrder.executeQuery();
-            rsOrder.next();
-            PreparedStatement pstmUser = con.prepareStatement("SELECT * FROM UserProfile WHERE "
-                    + "id = " + rsOrder.getInt("UserProfile_id"));
-            ResultSet rsUser = pstmUser.executeQuery();
-            while (rsUser.next()) {
+            while (rsOrder.next()) {
+                PreparedStatement pstmUser = con.prepareStatement("SELECT * FROM UserProfile WHERE "
+                        + "id = " + rsOrder.getInt("UserProfile_id"));
+                ResultSet rsUser = pstmUser.executeQuery();
+                rsUser.next();
                 Vector v = new Vector();
                 v.add(rsOrder.getInt("orderID"));
                 v.add(rsUser.getString("name") + " " + rsUser.getString("surname"));
@@ -407,7 +407,7 @@ public class ResponPrint extends javax.swing.JFrame {
     }//GEN-LAST:event_changeStatusButtonActionPerformed
 
     private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
-        Home home = new Home();
+        HomeShop home = new HomeShop();
         this.setVisible(false);
         home.setVisible(true);
     }//GEN-LAST:event_homeMouseClicked

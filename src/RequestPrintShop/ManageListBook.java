@@ -352,7 +352,7 @@ public class ManageListBook extends javax.swing.JFrame {
     }//GEN-LAST:event_respondPrintMouseClicked
 
     private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
-        Home home = new Home();
+        HomeShop home = new HomeShop();
         this.setVisible(false);
         home.setVisible(true);
     }//GEN-LAST:event_homeMouseClicked
