@@ -298,7 +298,7 @@ public class ShopProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_signOutMouseClicked
 
     private void respondPrintMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_respondPrintMouseClicked
-        ResponPrint rp = new ResponPrint();
+        RespondPrint rp = new RespondPrint();
         this.setVisible(false);
         rp.setVisible(true);
     }//GEN-LAST:event_respondPrintMouseClicked

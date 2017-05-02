@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Lenovo
  */
-public class ResponPrint extends javax.swing.JFrame {
+public class RespondPrint extends javax.swing.JFrame {
 
     private static int orderId;
     DefaultTableModel model;
@@ -34,7 +34,7 @@ public class ResponPrint extends javax.swing.JFrame {
     /**
      * Creates new form ResponPrint
      */
-    public ResponPrint() {
+    public RespondPrint() {
         initComponents();
     }
 
@@ -258,11 +258,7 @@ public class ResponPrint extends javax.swing.JFrame {
             }
         });
         getContentPane().add(changeStatusButton);
-<<<<<<< HEAD
-        changeStatusButton.setBounds(730, 490, 89, 29);
-=======
         changeStatusButton.setBounds(850, 490, 73, 25);
->>>>>>> master
 
         productAmount.setText("Product Amount");
         getContentPane().add(productAmount);
@@ -278,8 +274,7 @@ public class ResponPrint extends javax.swing.JFrame {
         getContentPane().add(price);
         price.setBounds(720, 420, 110, 20);
         getContentPane().add(priceField);
-<<<<<<< HEAD
-        priceField.setBounds(610, 440, 190, 20);
+        priceField.setBounds(730, 440, 190, 20);
 
         orderField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -287,12 +282,7 @@ public class ResponPrint extends javax.swing.JFrame {
             }
         });
         getContentPane().add(orderField);
-        orderField.setBounds(610, 240, 190, 26);
-=======
-        priceField.setBounds(730, 440, 190, 20);
-        getContentPane().add(orderField);
         orderField.setBounds(730, 240, 190, 30);
->>>>>>> master
 
         setSize(new java.awt.Dimension(952, 566));
         setLocationRelativeTo(null);
@@ -331,7 +321,7 @@ public class ResponPrint extends javax.swing.JFrame {
                 model.addRow(v);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ResponPrint.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RespondPrint.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formWindowActivated
 
@@ -407,15 +397,14 @@ public class ResponPrint extends javax.swing.JFrame {
             orderId = (int) (orderTable.getValueAt(orderTable.getSelectedRow(), 0));
             System.out.println("Order id = " + orderId);
         } catch (SQLException ex) {
-            Logger.getLogger(ResponPrint.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RespondPrint.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_orderTableMouseClicked
 
-<<<<<<< HEAD
     private void orderFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_orderFieldActionPerformed
-=======
+
     private void signOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signOutMouseClicked
         LoginEPrinting login = new LoginEPrinting();
         this.setVisible(false);
@@ -432,7 +421,7 @@ public class ResponPrint extends javax.swing.JFrame {
         this.setVisible(false);
         home.setVisible(true);
     }//GEN-LAST:event_homeMouseClicked
->>>>>>> master
+
 
     /**
      * @param args the command line arguments
@@ -451,20 +440,23 @@ public class ResponPrint extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ResponPrint.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RespondPrint.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ResponPrint.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RespondPrint.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ResponPrint.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RespondPrint.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ResponPrint.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RespondPrint.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ResponPrint().setVisible(true);
+                new RespondPrint().setVisible(true);
             }
 
         });

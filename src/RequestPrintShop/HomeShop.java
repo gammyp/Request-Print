@@ -284,7 +284,7 @@ public class HomeShop extends javax.swing.JFrame {
     }//GEN-LAST:event_manageBookMouseClicked
 
     private void respondPrintMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_respondPrintMouseClicked
-        ResponPrint respond = new ResponPrint();
+        RespondPrint respond = new RespondPrint();
         this.setVisible(false);
         respond.setVisible(true);
     }//GEN-LAST:event_respondPrintMouseClicked

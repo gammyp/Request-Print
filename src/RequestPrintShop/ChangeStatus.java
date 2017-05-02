@@ -104,7 +104,7 @@ public class ChangeStatus extends javax.swing.JFrame {
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
-            ResponPrint respond = new ResponPrint();
+            RespondPrint respond = new RespondPrint();
             PreparedStatement pstm = con.prepareStatement("UPDATE mydb.Order SET `status` = ? WHERE orderID = " + respond.getOrderId());
             if (pendingResponding.isSelected()) {
                 pstm.setString(1, pendingResponding.getText());
@@ -135,7 +135,7 @@ public class ChangeStatus extends javax.swing.JFrame {
         try {
             con = ConnectionBuilder.getConnection();
             System.out.println("Conbuilder");
-            ResponPrint respond = new ResponPrint();
+            RespondPrint respond = new RespondPrint();
             PreparedStatement pstm = con.prepareStatement("SELECT `status` FROM mydb.Order WHERE orderID = " + respond.getOrderId());
             ResultSet rs = pstm.executeQuery();
             System.out.println(rs);
