@@ -7,6 +7,7 @@ package RequestPrintLogin;
 
 import RequestPrintDatabase.ConnectionBuilder;
 import RequestPrintShop.HomeShop;
+import RequestPrintUser.UserRequest;
 import RequestPrintUser.Userprofile;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -187,7 +188,7 @@ public class LoginEPrinting extends javax.swing.JFrame {
         getContentPane().add(rightPanel);
         rightPanel.setBounds(390, 0, 480, 590);
 
-        setSize(new java.awt.Dimension(868, 622));
+        setSize(new java.awt.Dimension(861, 622));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -218,9 +219,9 @@ public class LoginEPrinting extends javax.swing.JFrame {
                 } else if (rsUser.next()) {
                     userId = Integer.parseInt(rsUser.getString("ID"));
                     JOptionPane.showMessageDialog(null, "Success");
-                    Userprofile uProf = new Userprofile();
+                    UserRequest uRequest = new UserRequest();
                     this.setVisible(false);
-                    uProf.setVisible(true);
+                    uRequest.setVisible(true);
                 } else {
                     userNameField.setText("");
                     passwordField.setText("");
