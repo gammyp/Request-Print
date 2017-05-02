@@ -20,7 +20,29 @@ import java.lang.String;
  * @author Game
  */
 public class SelectShop extends javax.swing.JFrame {
+    private String Username;
+    private String DocURL;
+    private Object DocFile;
+    private String Book;
     
+    public SelectShop(String Username,String DocURL,Object DocFile,String Book) {
+        this.Book = Book;
+        this.DocURL = DocURL;
+        this.DocFile = DocFile;
+        this.Username = Username;
+    }
+
+    public String getUsername() {
+        return Username;
+    }
+    
+    public Object getDocFile() {
+        return DocFile;
+    }
+    
+    public String getDocURL() {
+        return DocURL;
+    }
     /**
      * Creates new form SelectShop
      */
@@ -40,8 +62,7 @@ public class SelectShop extends javax.swing.JFrame {
         CancleButton = new javax.swing.JButton();
         Request = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        ShopList = new javax.swing.JList<>();
+        ShopList = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -62,23 +83,26 @@ public class SelectShop extends javax.swing.JFrame {
                 CancleButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(CancleButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, -1, -1));
+        getContentPane().add(CancleButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
 
         Request.setText("Next");
-        getContentPane().add(Request, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, -1, -1));
+        Request.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RequestMouseClicked(evt);
+            }
+        });
+        getContentPane().add(Request, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Select shop to request.");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 19, -1, -1));
 
-        ShopList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        ShopList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShopListActionPerformed(evt);
+            }
         });
-        jScrollPane1.setViewportView(ShopList);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 330, 150));
+        getContentPane().add(ShopList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 360, 20));
 
         pack();
         setLocationRelativeTo(null);
@@ -99,15 +123,32 @@ public class SelectShop extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             Connection con = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = con.prepareStatement("SELECT * FROM ShopProfile WHERE shopName");
+            PreparedStatement pstm = con.prepareStatement("SELECT shopName FROM ShopProfile");
             ResultSet rs = pstm.executeQuery();
-            if (rs.next()) {
-                
+            while (rs.next()) {
+                ShopList.addItem(rs.getString("shopName"));
             }
+            con.close();
+            pstm.close();
         } catch (SQLException ex) {
             Logger.getLogger(SelectShop.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formWindowActivated
+
+    private void ShopListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShopListActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ShopListActionPerformed
+
+    private void RequestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestMouseClicked
+        try {
+            // TODO add your handling code here:
+            Connection con = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = con.prepareStatement("INSERT ");
+        } catch (SQLException ex) {
+            Logger.getLogger(SelectShop.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_RequestMouseClicked
 
     /**
      * @param args the command line arguments
@@ -147,8 +188,7 @@ public class SelectShop extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CancleButton;
     private javax.swing.JButton Request;
-    private javax.swing.JList<String> ShopList;
+    private javax.swing.JComboBox<String> ShopList;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

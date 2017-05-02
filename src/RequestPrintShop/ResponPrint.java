@@ -258,7 +258,11 @@ public class ResponPrint extends javax.swing.JFrame {
             }
         });
         getContentPane().add(changeStatusButton);
+<<<<<<< HEAD
+        changeStatusButton.setBounds(730, 490, 89, 29);
+=======
         changeStatusButton.setBounds(850, 490, 73, 25);
+>>>>>>> master
 
         productAmount.setText("Product Amount");
         getContentPane().add(productAmount);
@@ -274,9 +278,21 @@ public class ResponPrint extends javax.swing.JFrame {
         getContentPane().add(price);
         price.setBounds(720, 420, 110, 20);
         getContentPane().add(priceField);
+<<<<<<< HEAD
+        priceField.setBounds(610, 440, 190, 20);
+
+        orderField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderFieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(orderField);
+        orderField.setBounds(610, 240, 190, 26);
+=======
         priceField.setBounds(730, 440, 190, 20);
         getContentPane().add(orderField);
         orderField.setBounds(730, 240, 190, 30);
+>>>>>>> master
 
         setSize(new java.awt.Dimension(952, 566));
         setLocationRelativeTo(null);
@@ -395,6 +411,11 @@ public class ResponPrint extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_orderTableMouseClicked
 
+<<<<<<< HEAD
+    private void orderFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_orderFieldActionPerformed
+=======
     private void signOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signOutMouseClicked
         LoginEPrinting login = new LoginEPrinting();
         this.setVisible(false);
@@ -411,6 +432,7 @@ public class ResponPrint extends javax.swing.JFrame {
         this.setVisible(false);
         home.setVisible(true);
     }//GEN-LAST:event_homeMouseClicked
+>>>>>>> master
 
     /**
      * @param args the command line arguments

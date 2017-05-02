@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,15 +22,16 @@ import javax.swing.ImageIcon;
  */
 public class UserRequest extends javax.swing.JFrame {
     
-    private String request = "";
+    private final String fetchBookList = "SELECT productName FROM Product";
+    private String DocURL;
     private String Username;
+    private String Book;
+    private Object DocFile;
+    private String UserID;
     
-    public void setUsername(String Username) {
+    public UserRequest(String Username , String UserID) {
+        this.UserID = UserID;
         this.Username = Username;
-    }
-    
-    public String getUsername() {
-        return Username;
     }
     /**
      * Creates new form UserProfile
@@ -128,7 +130,6 @@ public class UserRequest extends javax.swing.JFrame {
         Copies.setText("Copies");
         getContentPane().add(Copies, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
 
-        BookList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(BookList, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 390, -1));
 
         jTextArea1.setColumns(20);
@@ -143,7 +144,7 @@ public class UserRequest extends javax.swing.JFrame {
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         YourRequest.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        YourRequest.setText("Your Request");
+        YourRequest.setText("Request to Print");
 
         YourProfile.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         YourProfile.setText("Your Profile");
@@ -158,33 +159,29 @@ public class UserRequest extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(YourRequest, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(YourRequest, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(YourProfile)
-                            .addComponent(DocumnetStatus)
-                            .addComponent(Logout))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(YourProfile)
+                    .addComponent(DocumnetStatus)
+                    .addComponent(Logout))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(95, 95, 95)
+                .addGap(96, 96, 96)
                 .addComponent(YourRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
+                .addGap(65, 65, 65)
                 .addComponent(YourProfile)
-                .addGap(67, 67, 67)
+                .addGap(65, 65, 65)
                 .addComponent(DocumnetStatus)
-                .addGap(85, 85, 85)
+                .addGap(87, 87, 87)
                 .addComponent(Logout)
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 570));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 570));
 
         Headder.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(Headder, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 500, 30));
@@ -195,6 +192,7 @@ public class UserRequest extends javax.swing.JFrame {
 
     private void RequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RequestActionPerformed
         // TODO add your handling code here:
+        DocURL = DocumentLink.getText();
         SelectShop selc = new SelectShop();
         setVisible(false);
         selc.setVisible(true);
@@ -202,12 +200,27 @@ public class UserRequest extends javax.swing.JFrame {
 
     private void ChooseFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ChooseFileMouseClicked
         // TODO add your handling code here:
+        ChooseFile choose = new ChooseFile();
+        choose.setVisible(true);
     }//GEN-LAST:event_ChooseFileMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
             YourRequest.setBackground(Color.black);
             YourRequest.setForeground(Color.white);
             Headder.setText("Welcome , "+Username);
+
+        try {
+            Connection con = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = con.prepareStatement(fetchBookList);
+            ResultSet rs = pstm.executeQuery();
+            BookList.addItem("");
+                while (rs.next()){
+                    BookList.addItem(rs.getString("productName"));
+                }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserRequest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_formWindowActivated
 
     /**
