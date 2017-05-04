@@ -70,7 +70,7 @@ public class EditUserProfile extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("beta 1");
+        jLabel5.setText("beta 2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -57,7 +57,7 @@ public class StatusCheck extends javax.swing.JFrame {
         BookList = new javax.swing.JLabel();
         CheckStatusBox = new javax.swing.JPanel();
         CheckStatus = new javax.swing.JLabel();
-        ProfileBox = new javax.swing.JPanel();
+        YourProfileBox = new javax.swing.JPanel();
         YourProfile = new javax.swing.JLabel();
         LogoutBox = new javax.swing.JPanel();
         Logout = new javax.swing.JLabel();
@@ -143,6 +143,15 @@ public class StatusCheck extends javax.swing.JFrame {
 
         NavBar.add(RequestBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 210, -1));
 
+        BookListBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BookListBoxMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BookListBoxMouseExited(evt);
+            }
+        });
+
         BookList.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         BookList.setText("Book List");
 
@@ -187,27 +196,39 @@ public class StatusCheck extends javax.swing.JFrame {
 
         NavBar.add(CheckStatusBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 256, 210, 51));
 
+        YourProfileBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                YourProfileBoxMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                YourProfileBoxMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                YourProfileBoxMouseExited(evt);
+            }
+        });
+
         YourProfile.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         YourProfile.setText("Your Profile");
 
-        javax.swing.GroupLayout ProfileBoxLayout = new javax.swing.GroupLayout(ProfileBox);
-        ProfileBox.setLayout(ProfileBoxLayout);
-        ProfileBoxLayout.setHorizontalGroup(
-            ProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ProfileBoxLayout.createSequentialGroup()
+        javax.swing.GroupLayout YourProfileBoxLayout = new javax.swing.GroupLayout(YourProfileBox);
+        YourProfileBox.setLayout(YourProfileBoxLayout);
+        YourProfileBoxLayout.setHorizontalGroup(
+            YourProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(YourProfileBoxLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(YourProfile)
                 .addContainerGap(51, Short.MAX_VALUE))
         );
-        ProfileBoxLayout.setVerticalGroup(
-            ProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ProfileBoxLayout.createSequentialGroup()
+        YourProfileBoxLayout.setVerticalGroup(
+            YourProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(YourProfileBoxLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(YourProfile)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        NavBar.add(ProfileBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 73, 210, -1));
+        NavBar.add(YourProfileBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 73, 210, -1));
 
         LogoutBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -334,6 +355,39 @@ public class StatusCheck extends javax.swing.JFrame {
         userreq.setVisible(true);
     }//GEN-LAST:event_RequestBoxMouseClicked
 
+    private void YourProfileBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseEntered
+        // TODO add your handling code here:
+        YourProfile.setForeground(Color.white);
+        YourProfileBox.setBackground(Color.BLACK);
+    }//GEN-LAST:event_YourProfileBoxMouseEntered
+
+    private void YourProfileBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseExited
+        // TODO add your handling code here:
+        YourProfile.setForeground(Color.BLACK);
+        YourProfileBox.setBackground(null);
+    }//GEN-LAST:event_YourProfileBoxMouseExited
+
+    private void YourProfileBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseClicked
+        // TODO add your handling code here:
+        Userprofile userpro = new Userprofile();
+        userpro.setUserId(UserId);
+        userpro.setUsername(Username);
+        userpro.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_YourProfileBoxMouseClicked
+
+    private void BookListBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseEntered
+        // TODO add your handling code here:
+        BookList.setForeground(Color.white);
+        BookListBox.setBackground(Color.black);
+    }//GEN-LAST:event_BookListBoxMouseEntered
+
+    private void BookListBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseExited
+        // TODO add your handling code here:
+        BookList.setForeground(Color.black);
+        BookListBox.setBackground(null);
+    }//GEN-LAST:event_BookListBoxMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -380,10 +434,10 @@ public class StatusCheck extends javax.swing.JFrame {
     private javax.swing.JLabel Logout;
     private javax.swing.JPanel LogoutBox;
     private javax.swing.JPanel NavBar;
-    private javax.swing.JPanel ProfileBox;
     private javax.swing.JPanel RequestBox;
     private javax.swing.JLabel RequestPrint;
     private javax.swing.JLabel YourProfile;
+    private javax.swing.JPanel YourProfileBox;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
