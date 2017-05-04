@@ -42,6 +42,14 @@ public class UserRequest extends javax.swing.JFrame {
         return Username;
     }
     
+    public void setUserId(int UserId) {
+        this.UserId = UserId;
+    }
+    
+    public int getuserId() {
+        return UserId;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -400,7 +408,9 @@ public class UserRequest extends javax.swing.JFrame {
 
     private void HomeBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseClicked
         // TODO add your handling code here:
-        Home home = new Home(Username , UserId);
+        Home home = new Home();
+        home.setUserId(UserId);
+        home.setUsername(Username);
         home.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_HomeBoxMouseClicked
@@ -453,7 +463,9 @@ public class UserRequest extends javax.swing.JFrame {
 
     private void CheckStatusBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckStatusBoxMouseClicked
         // TODO add your handling code here:
-        StatusCheck status = new StatusCheck(Username , UserId);
+        StatusCheck status = new StatusCheck();
+        status.setUserId(UserId);
+        status.setUsername(Username);
         status.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_CheckStatusBoxMouseClicked

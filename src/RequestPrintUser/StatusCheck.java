@@ -31,9 +31,12 @@ public class StatusCheck extends javax.swing.JFrame {
         initComponents();
     }
     
-    public StatusCheck(String Username , int UserId) {
-        this.UserId = UserId;
+    public void setUsername(String Username) {
         this.Username = Username;
+    }
+    
+    public void setUserId(int UserId) {
+        this.UserId = UserId;
     }
     
     /**
@@ -286,7 +289,9 @@ public class StatusCheck extends javax.swing.JFrame {
 
     private void HomeBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseClicked
         // TODO add your handling code here:
-        Home home = new Home(Username , UserId);
+        Home home = new Home();
+        home.setUsername(Username);
+        home.setUserId(UserId);
         home.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_HomeBoxMouseClicked

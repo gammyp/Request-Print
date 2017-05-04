@@ -23,11 +23,15 @@ public class Userprofile extends javax.swing.JFrame {
     public Userprofile() {
         initComponents();
     }
-    
-    public Userprofile(String Username , int UserId) {
-        this.UserId = UserId;
+
+    public void setUsername(String Username) {
         this.Username = Username;
     }
+
+    public void setUserId(int UserId) {
+        this.UserId = UserId;
+    }
+    
     
     public String getUsername() {
         return Username;
