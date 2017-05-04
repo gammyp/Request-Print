@@ -16,9 +16,25 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Userprofile extends javax.swing.JFrame {
+    
+    private String Username;
+    private int UserId;
 
     public Userprofile() {
         initComponents();
+    }
+    
+    public Userprofile(String Username , int UserId) {
+        this.UserId = UserId;
+        this.Username = Username;
+    }
+    
+    public String getUsername() {
+        return Username;
+    }
+    
+    public int getUserId() {
+        return UserId;
     }
 
     /**
@@ -70,7 +86,7 @@ public class Userprofile extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("beta 1");
+        jLabel2.setText("beta 2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

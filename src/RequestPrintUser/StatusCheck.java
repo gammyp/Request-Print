@@ -36,13 +36,6 @@ public class StatusCheck extends javax.swing.JFrame {
         this.Username = Username;
     }
     
-    public String getUsername() {
-        return Username;
-    }
-    
-    public int getUserId() {
-        return UserId;
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -99,9 +92,9 @@ public class StatusCheck extends javax.swing.JFrame {
         HomeBoxLayout.setHorizontalGroup(
             HomeBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HomeBoxLayout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addGap(60, 60, 60)
                 .addComponent(Home)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         HomeBoxLayout.setVerticalGroup(
             HomeBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,17 +106,29 @@ public class StatusCheck extends javax.swing.JFrame {
 
         NavBar.add(HomeBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 210, -1));
 
+        RequestBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RequestBoxMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                RequestBoxMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                RequestBoxMouseExited(evt);
+            }
+        });
+
         RequestPrint.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        RequestPrint.setText("Request Print");
+        RequestPrint.setText("Request to Print");
 
         javax.swing.GroupLayout RequestBoxLayout = new javax.swing.GroupLayout(RequestBox);
         RequestBox.setLayout(RequestBoxLayout);
         RequestBoxLayout.setHorizontalGroup(
             RequestBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RequestBoxLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(20, 20, 20)
                 .addComponent(RequestPrint)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         RequestBoxLayout.setVerticalGroup(
             RequestBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,8 +170,8 @@ public class StatusCheck extends javax.swing.JFrame {
         CheckStatusBoxLayout.setHorizontalGroup(
             CheckStatusBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CheckStatusBoxLayout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(CheckStatus)
+                .addContainerGap()
+                .addComponent(CheckStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
                 .addContainerGap())
         );
         CheckStatusBoxLayout.setVerticalGroup(
@@ -186,10 +191,10 @@ public class StatusCheck extends javax.swing.JFrame {
         ProfileBox.setLayout(ProfileBoxLayout);
         ProfileBoxLayout.setHorizontalGroup(
             ProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProfileBoxLayout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
+            .addGroup(ProfileBoxLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
                 .addComponent(YourProfile)
-                .addGap(40, 40, 40))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         ProfileBoxLayout.setVerticalGroup(
             ProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,6 +205,18 @@ public class StatusCheck extends javax.swing.JFrame {
         );
 
         NavBar.add(ProfileBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 73, 210, -1));
+
+        LogoutBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LogoutBoxMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                LogoutBoxMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                LogoutBoxMouseExited(evt);
+            }
+        });
 
         Logout.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         Logout.setText("Logout");
@@ -273,6 +290,42 @@ public class StatusCheck extends javax.swing.JFrame {
         home.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_HomeBoxMouseClicked
+
+    private void RequestBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseEntered
+        // TODO add your handling code here:
+        RequestPrint.setForeground(Color.white);
+        RequestBox.setBackground(Color.black);
+    }//GEN-LAST:event_RequestBoxMouseEntered
+
+    private void RequestBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseExited
+        // TODO add your handling code here:
+        RequestPrint.setForeground(Color.black);
+        RequestBox.setBackground(null);
+    }//GEN-LAST:event_RequestBoxMouseExited
+
+    private void LogoutBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseEntered
+        // TODO add your handling code here:
+        Logout.setForeground(Color.white);
+        LogoutBox.setBackground(Color.black);
+    }//GEN-LAST:event_LogoutBoxMouseEntered
+
+    private void LogoutBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseExited
+        // TODO add your handling code here:
+        Logout.setForeground(Color.black);
+        LogoutBox.setBackground(null);
+    }//GEN-LAST:event_LogoutBoxMouseExited
+
+    private void LogoutBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_LogoutBoxMouseClicked
+
+    private void RequestBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseClicked
+        // TODO add your handling code here:
+        UserRequest userreq = new UserRequest();
+        setVisible(false);
+        userreq.setVisible(true);
+    }//GEN-LAST:event_RequestBoxMouseClicked
 
     /**
      * @param args the command line arguments

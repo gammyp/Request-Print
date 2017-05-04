@@ -26,19 +26,22 @@ public class UserRequest extends javax.swing.JFrame {
     private String DocURL;
     private String Username;
     private String Book;
-    private Object DocFile;
-    private String UserID;
+    private int UserId;
     
-    public UserRequest(String Username , String UserID) {
-        this.UserID = UserID;
-        this.Username = Username;
-    }
     /**
      * Creates new form UserProfile
      */
     public UserRequest() {
         initComponents();
     }
+    public void setUsername(String Username) {
+        this.Username = Username;
+    }
+    
+    public String getUsername() {
+        return Username;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,19 +58,26 @@ public class UserRequest extends javax.swing.JFrame {
         LocationLink = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         RequestHaed = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         ChooseBookLabel = new javax.swing.JLabel();
         NumberofCopies = new javax.swing.JSpinner();
         Copies = new javax.swing.JLabel();
-        BookList = new javax.swing.JComboBox<>();
+        BookListTab = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         MessageLabel = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        YourRequest = new javax.swing.JLabel();
+        HomeBox = new javax.swing.JPanel();
+        Home = new javax.swing.JLabel();
+        RequestPrintBox = new javax.swing.JPanel();
+        RequestPrint = new javax.swing.JLabel();
+        YourProfileBox = new javax.swing.JPanel();
         YourProfile = new javax.swing.JLabel();
-        DocumnetStatus = new javax.swing.JLabel();
+        BookListBox = new javax.swing.JPanel();
+        BookList = new javax.swing.JLabel();
+        CheckStatusBox = new javax.swing.JPanel();
+        CheckStatus = new javax.swing.JLabel();
+        LogoutBox = new javax.swing.JPanel();
         Logout = new javax.swing.JLabel();
         Headder = new javax.swing.JLabel();
 
@@ -86,93 +96,249 @@ public class UserRequest extends javax.swing.JFrame {
                 RequestActionPerformed(evt);
             }
         });
-        getContentPane().add(Request, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 520, -1, -1));
+        getContentPane().add(Request, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 520, -1, -1));
 
         jLabel1.setText("beta 2");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, -1, -1));
-        getContentPane().add(DocumentLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 410, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, -1, -1));
+        getContentPane().add(DocumentLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 410, -1));
 
         LocationLink.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         LocationLink.setText("Location link");
-        getContentPane().add(LocationLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, -1, -1));
+        getContentPane().add(LocationLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, -1, -1));
 
         jLabel3.setText("Require cloud service (Google Drive , Onedrive , etc.)");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, -1, -1));
 
         RequestHaed.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         RequestHaed.setText("Request to print your document");
-        getContentPane().add(RequestHaed, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, -1, -1));
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, 400, 20));
+        getContentPane().add(RequestHaed, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("OR");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, -1, -1));
 
         ChooseBookLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         ChooseBookLabel.setText("Choose book from list.");
-        getContentPane().add(ChooseBookLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 140, 30));
-        getContentPane().add(NumberofCopies, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, -1, -1));
+        getContentPane().add(ChooseBookLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 140, 30));
+        getContentPane().add(NumberofCopies, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, -1, -1));
 
         Copies.setText("Copies");
-        getContentPane().add(Copies, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, -1, -1));
+        getContentPane().add(Copies, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, -1, -1));
 
-        getContentPane().add(BookList, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 390, -1));
+        getContentPane().add(BookListTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 390, -1));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 520, 170));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 520, 170));
 
         MessageLabel.setText("Message to shop.");
-        getContentPane().add(MessageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, -1, -1));
+        getContentPane().add(MessageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, -1, -1));
 
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        YourRequest.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        YourRequest.setText("Request to Print");
+        HomeBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HomeBoxMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                HomeBoxMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                HomeBoxMouseExited(evt);
+            }
+        });
+
+        Home.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        Home.setText("Home");
+
+        javax.swing.GroupLayout HomeBoxLayout = new javax.swing.GroupLayout(HomeBox);
+        HomeBox.setLayout(HomeBoxLayout);
+        HomeBoxLayout.setHorizontalGroup(
+            HomeBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HomeBoxLayout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addComponent(Home)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        HomeBoxLayout.setVerticalGroup(
+            HomeBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HomeBoxLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Home)
+                .addContainerGap())
+        );
+
+        RequestPrintBox.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        RequestPrint.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        RequestPrint.setText("Request to Print");
+        RequestPrintBox.add(RequestPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 179, 27));
+
+        YourProfileBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                YourProfileBoxMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                YourProfileBoxMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                YourProfileBoxMouseExited(evt);
+            }
+        });
 
         YourProfile.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         YourProfile.setText("Your Profile");
 
-        DocumnetStatus.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        DocumnetStatus.setText("Check Status");
+        javax.swing.GroupLayout YourProfileBoxLayout = new javax.swing.GroupLayout(YourProfileBox);
+        YourProfileBox.setLayout(YourProfileBoxLayout);
+        YourProfileBoxLayout.setHorizontalGroup(
+            YourProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(YourProfileBoxLayout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(YourProfile)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        YourProfileBoxLayout.setVerticalGroup(
+            YourProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(YourProfileBoxLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(YourProfile)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        BookListBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BookListBoxMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BookListBoxMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BookListBoxMouseExited(evt);
+            }
+        });
+
+        BookList.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        BookList.setText("Book List");
+
+        javax.swing.GroupLayout BookListBoxLayout = new javax.swing.GroupLayout(BookListBox);
+        BookListBox.setLayout(BookListBoxLayout);
+        BookListBoxLayout.setHorizontalGroup(
+            BookListBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BookListBoxLayout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(BookList)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        BookListBoxLayout.setVerticalGroup(
+            BookListBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BookListBoxLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BookList)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        CheckStatusBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CheckStatusBoxMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                CheckStatusBoxMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                CheckStatusBoxMouseExited(evt);
+            }
+        });
+
+        CheckStatus.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        CheckStatus.setText("Check Status");
+
+        javax.swing.GroupLayout CheckStatusBoxLayout = new javax.swing.GroupLayout(CheckStatusBox);
+        CheckStatusBox.setLayout(CheckStatusBoxLayout);
+        CheckStatusBoxLayout.setHorizontalGroup(
+            CheckStatusBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CheckStatusBoxLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(CheckStatus)
+                .addGap(30, 30, 30))
+        );
+        CheckStatusBoxLayout.setVerticalGroup(
+            CheckStatusBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CheckStatusBoxLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(CheckStatus)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        LogoutBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LogoutBoxMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                LogoutBoxMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                LogoutBoxMouseExited(evt);
+            }
+        });
 
         Logout.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         Logout.setText("Logout");
+
+        javax.swing.GroupLayout LogoutBoxLayout = new javax.swing.GroupLayout(LogoutBox);
+        LogoutBox.setLayout(LogoutBoxLayout);
+        LogoutBoxLayout.setHorizontalGroup(
+            LogoutBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LogoutBoxLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Logout)
+                .addGap(67, 67, 67))
+        );
+        LogoutBoxLayout.setVerticalGroup(
+            LogoutBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LogoutBoxLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Logout)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(YourRequest, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(YourProfile)
-                    .addComponent(DocumnetStatus)
-                    .addComponent(Logout))
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(HomeBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(RequestPrintBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(YourProfileBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(BookListBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(CheckStatusBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(LogoutBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(96, 96, 96)
-                .addComponent(YourRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
-                .addComponent(YourProfile)
-                .addGap(65, 65, 65)
-                .addComponent(DocumnetStatus)
-                .addGap(87, 87, 87)
-                .addComponent(Logout)
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(HomeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(YourProfileBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(RequestPrintBox, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(BookListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(CheckStatusBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(LogoutBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(118, 118, 118))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 570));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 210, 500));
 
-        Headder.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        getContentPane().add(Headder, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 500, 30));
+        Headder.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        getContentPane().add(Headder, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 500, 30));
 
-        setSize(new java.awt.Dimension(778, 591));
+        setSize(new java.awt.Dimension(793, 598));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -185,23 +351,112 @@ public class UserRequest extends javax.swing.JFrame {
     }//GEN-LAST:event_RequestActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-            YourRequest.setBackground(Color.black);
-            YourRequest.setForeground(Color.white);
+            RequestPrintBox.setBackground(Color.black);
+            RequestPrint.setForeground(Color.white);
             Headder.setText("Welcome , "+Username);
 
         try {
             Connection con = ConnectionBuilder.getConnection();
             PreparedStatement pstm = con.prepareStatement(fetchBookList);
             ResultSet rs = pstm.executeQuery();
-            BookList.addItem("");
+            BookListTab.addItem("");
                 while (rs.next()){
-                    BookList.addItem(rs.getString("productName"));
+                    BookListTab.addItem(rs.getString("productName"));
                 }
         } catch (SQLException ex) {
             Logger.getLogger(UserRequest.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_formWindowActivated
+
+    private void YourProfileBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseEntered
+        // TODO add your handling code here:
+        YourProfile.setForeground(Color.white);
+        YourProfileBox.setBackground(Color.black);
+    }//GEN-LAST:event_YourProfileBoxMouseEntered
+
+    private void YourProfileBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseExited
+        // TODO add your handling code here:
+        YourProfile.setForeground(Color.black);
+        YourProfileBox.setBackground(null);
+    }//GEN-LAST:event_YourProfileBoxMouseExited
+
+    private void YourProfileBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseClicked
+        // TODO add your handling code here:
+        Userprofile userp = new Userprofile();
+    }//GEN-LAST:event_YourProfileBoxMouseClicked
+
+    private void HomeBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseEntered
+        // TODO add your handling code here:
+        Home.setForeground(Color.white);
+        HomeBox.setBackground(Color.black);
+    }//GEN-LAST:event_HomeBoxMouseEntered
+
+    private void HomeBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseExited
+        // TODO add your handling code here:
+        Home.setForeground(Color.black);
+        HomeBox.setBackground(null);
+    }//GEN-LAST:event_HomeBoxMouseExited
+
+    private void HomeBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseClicked
+        // TODO add your handling code here:
+        Home home = new Home(Username , UserId);
+        home.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_HomeBoxMouseClicked
+
+    private void BookListBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseEntered
+        // TODO add your handling code here:
+        BookList.setForeground(Color.white);
+        BookListBox.setBackground(Color.black);
+    }//GEN-LAST:event_BookListBoxMouseEntered
+
+    private void BookListBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseExited
+        // TODO add your handling code here:
+        BookList.setForeground(Color.black);
+        BookListBox.setBackground(null);
+    }//GEN-LAST:event_BookListBoxMouseExited
+
+    private void BookListBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_BookListBoxMouseClicked
+
+    private void CheckStatusBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckStatusBoxMouseEntered
+        // TODO add your handling code here:
+        CheckStatusBox.setBackground(Color.black);
+        CheckStatus.setForeground(Color.white);
+    }//GEN-LAST:event_CheckStatusBoxMouseEntered
+
+    private void CheckStatusBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckStatusBoxMouseExited
+        // TODO add your handling code here:
+        CheckStatusBox.setBackground(null);
+        CheckStatus.setForeground(Color.black);
+    }//GEN-LAST:event_CheckStatusBoxMouseExited
+
+    private void LogoutBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseEntered
+        // TODO add your handling code here:
+        Logout.setForeground(Color.white);
+        LogoutBox.setBackground(Color.black);
+    }//GEN-LAST:event_LogoutBoxMouseEntered
+
+    private void LogoutBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseExited
+        // TODO add your handling code here:
+        Logout.setForeground(Color.BLACK);
+        LogoutBox.setBackground(null);
+    }//GEN-LAST:event_LogoutBoxMouseExited
+
+    private void LogoutBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_LogoutBoxMouseClicked
+
+    private void CheckStatusBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckStatusBoxMouseClicked
+        // TODO add your handling code here:
+        StatusCheck status = new StatusCheck(Username , UserId);
+        status.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_CheckStatusBoxMouseClicked
 
     /**
      * @param args the command line arguments
@@ -240,23 +495,30 @@ public class UserRequest extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> BookList;
+    private javax.swing.JLabel BookList;
+    private javax.swing.JPanel BookListBox;
+    private javax.swing.JComboBox<String> BookListTab;
+    private javax.swing.JLabel CheckStatus;
+    private javax.swing.JPanel CheckStatusBox;
     private javax.swing.JLabel ChooseBookLabel;
     private javax.swing.JLabel Copies;
     private javax.swing.JTextField DocumentLink;
-    private javax.swing.JLabel DocumnetStatus;
     private javax.swing.JLabel Headder;
+    private javax.swing.JLabel Home;
+    private javax.swing.JPanel HomeBox;
     private javax.swing.JLabel LocationLink;
     private javax.swing.JLabel Logout;
+    private javax.swing.JPanel LogoutBox;
     private javax.swing.JLabel MessageLabel;
     private javax.swing.JSpinner NumberofCopies;
     private javax.swing.JButton Request;
     private javax.swing.JLabel RequestHaed;
+    private javax.swing.JLabel RequestPrint;
+    private javax.swing.JPanel RequestPrintBox;
     private javax.swing.JLabel YourProfile;
-    private javax.swing.JLabel YourRequest;
+    private javax.swing.JPanel YourProfileBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

@@ -21,28 +21,7 @@ import java.lang.String;
  */
 public class SelectShop extends javax.swing.JFrame {
     private String Username;
-    private String DocURL;
-    private Object DocFile;
-    private String Book;
-    
-    public SelectShop(String Username,String DocURL,Object DocFile,String Book) {
-        this.Book = Book;
-        this.DocURL = DocURL;
-        this.DocFile = DocFile;
-        this.Username = Username;
-    }
-
-    public String getUsername() {
-        return Username;
-    }
-    
-    public Object getDocFile() {
-        return DocFile;
-    }
-    
-    public String getDocURL() {
-        return DocURL;
-    }
+    private int UserId;
     /**
      * Creates new form SelectShop
      */
