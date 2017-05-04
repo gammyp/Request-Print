@@ -55,8 +55,6 @@ public class UserRequest extends javax.swing.JFrame {
         LocationLink = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         RequestHaed = new javax.swing.JLabel();
-        AttachFile = new javax.swing.JLabel();
-        ChooseFile = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         ChooseBookLabel = new javax.swing.JLabel();
@@ -104,33 +102,21 @@ public class UserRequest extends javax.swing.JFrame {
         RequestHaed.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         RequestHaed.setText("Request to print your document");
         getContentPane().add(RequestHaed, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, -1, -1));
-
-        AttachFile.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        AttachFile.setText("Attach your file");
-        getContentPane().add(AttachFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, -1, -1));
-
-        ChooseFile.setText("Choose File");
-        ChooseFile.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ChooseFileMouseClicked(evt);
-            }
-        });
-        getContentPane().add(ChooseFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, -1, -1));
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 400, 20));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, 400, 20));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("OR");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, -1, -1));
 
         ChooseBookLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         ChooseBookLabel.setText("Choose book from list.");
-        getContentPane().add(ChooseBookLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 140, 30));
-        getContentPane().add(NumberofCopies, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, -1, -1));
+        getContentPane().add(ChooseBookLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 140, 30));
+        getContentPane().add(NumberofCopies, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, -1, -1));
 
         Copies.setText("Copies");
-        getContentPane().add(Copies, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
+        getContentPane().add(Copies, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, -1, -1));
 
-        getContentPane().add(BookList, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 390, -1));
+        getContentPane().add(BookList, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 390, -1));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -198,12 +184,6 @@ public class UserRequest extends javax.swing.JFrame {
         selc.setVisible(true);
     }//GEN-LAST:event_RequestActionPerformed
 
-    private void ChooseFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ChooseFileMouseClicked
-        // TODO add your handling code here:
-        ChooseFile choose = new ChooseFile();
-        choose.setVisible(true);
-    }//GEN-LAST:event_ChooseFileMouseClicked
-
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
             YourRequest.setBackground(Color.black);
             YourRequest.setForeground(Color.white);
@@ -260,10 +240,8 @@ public class UserRequest extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel AttachFile;
     private javax.swing.JComboBox<String> BookList;
     private javax.swing.JLabel ChooseBookLabel;
-    private javax.swing.JButton ChooseFile;
     private javax.swing.JLabel Copies;
     private javax.swing.JTextField DocumentLink;
     private javax.swing.JLabel DocumnetStatus;

@@ -4,56 +4,45 @@
  * and open the template in the editor.
  */
 package RequestPrintUser;
-<<<<<<< HEAD
+
 import RequestPrintDatabase.ConnectionBuilder;
-import RequestPrintLogin.UserLogin;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-=======
->>>>>>> master
-
-import RequestPrintDatabase.ConnectionBuilder;
-import java.awt.Color;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
- * @author Game
+ * @author Phornlert
  */
 public class StatusCheck extends javax.swing.JFrame {
+    
+    private String Username;
+    private int UserId;
+    private int CopiesofDoc;
 
-    private String Username;   
-    private String UserID;
     /**
-     *Getter and setter on these method
+     * Creates new form StatusCheck
      */
-    public StatusCheck(String Username , String UserID) {
+    public StatusCheck() {
+        initComponents();
+    }
+    
+    public StatusCheck(String Username , int UserId) {
+        this.UserId = UserId;
         this.Username = Username;
-        this.UserID = UserID;
     }
     
     public String getUsername() {
         return Username;
     }
     
-    public String getUserID() {
-        return UserID;
+    public int getUserId() {
+        return UserId;
     }
-        /**
-         * Creates new form StatusCheck
-         */
-    public StatusCheck() {
-        initComponents();
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,27 +52,21 @@ public class StatusCheck extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        StatusTable = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-<<<<<<< HEAD
-<<<<<<< HEAD
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Status = new javax.swing.JTable();
-        RefreshButton = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-=======
->>>>>>> master
-=======
-        RequesttoPrintBox = new javax.swing.JPanel();
-        RequestPrintLabel = new javax.swing.JLabel();
-        YourProfileBox = new javax.swing.JPanel();
-        YourProfileLabel = new javax.swing.JLabel();
+        NavBar = new javax.swing.JPanel();
+        HomeBox = new javax.swing.JPanel();
+        Home = new javax.swing.JLabel();
+        RequestBox = new javax.swing.JPanel();
+        RequestPrint = new javax.swing.JLabel();
+        BookListBox = new javax.swing.JPanel();
+        BookList = new javax.swing.JLabel();
         CheckStatusBox = new javax.swing.JPanel();
-        CheckStatusLabel = new javax.swing.JLabel();
+        CheckStatus = new javax.swing.JLabel();
+        ProfileBox = new javax.swing.JPanel();
+        YourProfile = new javax.swing.JLabel();
         LogoutBox = new javax.swing.JPanel();
-        LogoutLabel = new javax.swing.JLabel();
->>>>>>> master
+        Logout = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        DocumentList = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -93,154 +76,203 @@ public class StatusCheck extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        StatusTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Shopname", "Document Name", "Status"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
+        NavBar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        NavBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-<<<<<<< HEAD
-        Status.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Document ", "Status"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(Status);
-        if (Status.getColumnModel().getColumnCount() > 0) {
-            Status.getColumnModel().getColumn(0).setResizable(false);
-            Status.getColumnModel().getColumn(1).setResizable(false);
-        }
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
-
-        RefreshButton.setText("Refresh");
-        RefreshButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        HomeBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RefreshButtonMouseClicked(evt);
-=======
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
->>>>>>> master
+                HomeBoxMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                HomeBoxMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                HomeBoxMouseExited(evt);
             }
         });
-        jScrollPane1.setViewportView(StatusTable);
-        if (StatusTable.getColumnModel().getColumnCount() > 0) {
-            StatusTable.getColumnModel().getColumn(0).setResizable(false);
-            StatusTable.getColumnModel().getColumn(1).setResizable(false);
-            StatusTable.getColumnModel().getColumn(2).setResizable(false);
-        }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, -1, -1));
+        Home.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        Home.setText("Home");
 
-<<<<<<< HEAD
-    private void StatusTableActivated(java.awt.event.WindowEvent evt) {
-        Connection con = null;
-        try {
-            con = ConnectionBuilder.getConnection();
-            UserLogin uLogin = new UserLogin();
-            PreparedStatement pstmOrder = con.prepareStatement("SELECT orderName FROM Orders WHERE id="+ uLogin.getUserId());
-            ResultSet rsOrder = pstmOrder.executeQuery();
-            
-            PreparedStatement pstmStatus = con.prepareStatement("SELECT status FROM Orders WHERE id="+ uLogin.getUserId());
-            ResultSet rsStatus = pstmStatus.executeQuery();
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(StatusCheck.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }
-    private void BackButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseClicked
-        // TODO add your handling code here:
-        UserRequest userR = new UserRequest();
-        setVisible(false);
-        userR.setVisible(true);
-    }//GEN-LAST:event_BackButtonMouseClicked
-=======
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Check your document status.");
+        javax.swing.GroupLayout HomeBoxLayout = new javax.swing.GroupLayout(HomeBox);
+        HomeBox.setLayout(HomeBoxLayout);
+        HomeBoxLayout.setHorizontalGroup(
+            HomeBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HomeBoxLayout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(Home)
+                .addContainerGap(78, Short.MAX_VALUE))
+        );
+        HomeBoxLayout.setVerticalGroup(
+            HomeBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HomeBoxLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Home)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        NavBar.add(HomeBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 210, -1));
+
+        RequestPrint.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        RequestPrint.setText("Request Print");
+
+        javax.swing.GroupLayout RequestBoxLayout = new javax.swing.GroupLayout(RequestBox);
+        RequestBox.setLayout(RequestBoxLayout);
+        RequestBoxLayout.setHorizontalGroup(
+            RequestBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RequestBoxLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(RequestPrint)
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+        RequestBoxLayout.setVerticalGroup(
+            RequestBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RequestBoxLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(RequestPrint)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        NavBar.add(RequestBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 210, -1));
+
+        BookList.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        BookList.setText("Book List");
+
+        javax.swing.GroupLayout BookListBoxLayout = new javax.swing.GroupLayout(BookListBox);
+        BookListBox.setLayout(BookListBoxLayout);
+        BookListBoxLayout.setHorizontalGroup(
+            BookListBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BookListBoxLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(BookList)
+                .addContainerGap(63, Short.MAX_VALUE))
+        );
+        BookListBoxLayout.setVerticalGroup(
+            BookListBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BookListBoxLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BookList)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        NavBar.add(BookListBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 199, 210, -1));
+
+        CheckStatus.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        CheckStatus.setText("Document Status");
+
+        javax.swing.GroupLayout CheckStatusBoxLayout = new javax.swing.GroupLayout(CheckStatusBox);
+        CheckStatusBox.setLayout(CheckStatusBoxLayout);
+        CheckStatusBoxLayout.setHorizontalGroup(
+            CheckStatusBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CheckStatusBoxLayout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addComponent(CheckStatus)
+                .addContainerGap())
+        );
+        CheckStatusBoxLayout.setVerticalGroup(
+            CheckStatusBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CheckStatusBoxLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(CheckStatus)
+                .addGap(172, 172, 172))
+        );
+
+        NavBar.add(CheckStatusBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 256, 210, 51));
+
+        YourProfile.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        YourProfile.setText("Your Profile");
+
+        javax.swing.GroupLayout ProfileBoxLayout = new javax.swing.GroupLayout(ProfileBox);
+        ProfileBox.setLayout(ProfileBoxLayout);
+        ProfileBoxLayout.setHorizontalGroup(
+            ProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProfileBoxLayout.createSequentialGroup()
+                .addContainerGap(47, Short.MAX_VALUE)
+                .addComponent(YourProfile)
+                .addGap(40, 40, 40))
+        );
+        ProfileBoxLayout.setVerticalGroup(
+            ProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ProfileBoxLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(YourProfile)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        NavBar.add(ProfileBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 73, 210, -1));
+
+        Logout.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        Logout.setText("Logout");
+
+        javax.swing.GroupLayout LogoutBoxLayout = new javax.swing.GroupLayout(LogoutBox);
+        LogoutBox.setLayout(LogoutBoxLayout);
+        LogoutBoxLayout.setHorizontalGroup(
+            LogoutBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LogoutBoxLayout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addComponent(Logout)
+                .addContainerGap(72, Short.MAX_VALUE))
+        );
+        LogoutBoxLayout.setVerticalGroup(
+            LogoutBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LogoutBoxLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Logout)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        NavBar.add(LogoutBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 210, 50));
+
+        getContentPane().add(NavBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 400));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setText("Select your document to see status.");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
 
-        RequestPrintLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        RequestPrintLabel.setText("Request to Print");
-        RequesttoPrintBox.add(RequestPrintLabel);
-
-        getContentPane().add(RequesttoPrintBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 180, 40));
-
-        YourProfileLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        YourProfileLabel.setText("Your Profile");
-        YourProfileBox.add(YourProfileLabel);
-
-        getContentPane().add(YourProfileBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 160, 40));
-
-        CheckStatusBox.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                CheckStatusBoxMouseEntered(evt);
-            }
-        });
-
-        CheckStatusLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        CheckStatusLabel.setText("Check Status");
-        CheckStatusBox.add(CheckStatusLabel);
-
-        getContentPane().add(CheckStatusBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 150, 40));
-
-        LogoutLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        LogoutLabel.setText("Logout");
-        LogoutBox.add(LogoutLabel);
-
-        getContentPane().add(LogoutBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 160, 40));
+        DocumentList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select your document" }));
+        getContentPane().add(DocumentList, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 440, 20));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
->>>>>>> master
-
-    private void CheckStatusBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckStatusBoxMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CheckStatusBoxMouseEntered
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
-        final String selectdoc = "SELECT "+Username+"FROM";
-        CheckStatusBox.setBackground(Color.BLACK);
-        CheckStatusLabel.setForeground(Color.WHITE);
+        CheckStatus.setForeground(Color.white);
+        CheckStatusBox.setBackground(Color.black);
         try {
             Connection con = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = con.prepareStatement(selectdoc);
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM ORDER");
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()) {
+                if (rs.getInt("UserProfile_id") == UserId) {
+                    DocumentList.addItem(rs.getString("ORDERID"));
+                }
+            }
         } catch (SQLException ex) {
             Logger.getLogger(StatusCheck.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_formWindowActivated
+
+    private void HomeBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseEntered
+        // TODO add your handling code here:
+        Home.setForeground(Color.white);
+        HomeBox.setBackground(Color.black);
+    }//GEN-LAST:event_HomeBoxMouseEntered
+
+    private void HomeBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseExited
+        // TODO add your handling code here:
+        Home.setForeground(Color.black);
+        HomeBox.setBackground(null);
+    }//GEN-LAST:event_HomeBoxMouseExited
+
+    private void HomeBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseClicked
+        // TODO add your handling code here:
+        Home home = new Home(Username , UserId);
+        home.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_HomeBoxMouseClicked
 
     /**
      * @param args the command line arguments
@@ -278,31 +310,20 @@ public class StatusCheck extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-<<<<<<< HEAD
-<<<<<<< HEAD
-    private javax.swing.JButton BackButton;
-    private javax.swing.JButton RefreshButton;
-    private javax.swing.JTable Status;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-=======
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
->>>>>>> master
-=======
+    private javax.swing.JLabel BookList;
+    private javax.swing.JPanel BookListBox;
+    private javax.swing.JLabel CheckStatus;
     private javax.swing.JPanel CheckStatusBox;
-    private javax.swing.JLabel CheckStatusLabel;
+    private javax.swing.JComboBox<String> DocumentList;
+    private javax.swing.JLabel Home;
+    private javax.swing.JPanel HomeBox;
+    private javax.swing.JLabel Logout;
     private javax.swing.JPanel LogoutBox;
-    private javax.swing.JLabel LogoutLabel;
-    private javax.swing.JLabel RequestPrintLabel;
-    private javax.swing.JPanel RequesttoPrintBox;
-    private javax.swing.JTable StatusTable;
-    private javax.swing.JPanel YourProfileBox;
-    private javax.swing.JLabel YourProfileLabel;
+    private javax.swing.JPanel NavBar;
+    private javax.swing.JPanel ProfileBox;
+    private javax.swing.JPanel RequestBox;
+    private javax.swing.JLabel RequestPrint;
+    private javax.swing.JLabel YourProfile;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
->>>>>>> master
     // End of variables declaration//GEN-END:variables
 }
