@@ -408,7 +408,7 @@ public class UserRequest extends javax.swing.JFrame {
 
     private void HomeBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseClicked
         // TODO add your handling code here:
-        Home home = new Home();
+        HomeUser home = new HomeUser();
         home.setUserId(UserId);
         home.setUsername(Username);
         home.setVisible(true);

@@ -289,7 +289,7 @@ public class StatusCheck extends javax.swing.JFrame {
 
     private void HomeBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseClicked
         // TODO add your handling code here:
-        Home home = new Home();
+        HomeUser home = new HomeUser();
         home.setUsername(Username);
         home.setUserId(UserId);
         home.setVisible(true);
@@ -328,6 +328,8 @@ public class StatusCheck extends javax.swing.JFrame {
     private void RequestBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseClicked
         // TODO add your handling code here:
         UserRequest userreq = new UserRequest();
+        userreq.setUserId(UserId);
+        userreq.setUsername(Username);
         setVisible(false);
         userreq.setVisible(true);
     }//GEN-LAST:event_RequestBoxMouseClicked

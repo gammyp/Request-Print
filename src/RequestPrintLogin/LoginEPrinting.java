@@ -7,6 +7,7 @@ package RequestPrintLogin;
 
 import RequestPrintDatabase.ConnectionBuilder;
 import RequestPrintShop.HomeShop;
+import RequestPrintUser.HomeUser;
 import RequestPrintUser.UserRequest;
 import RequestPrintUser.Userprofile;
 import java.sql.Connection;
@@ -219,9 +220,11 @@ public class LoginEPrinting extends javax.swing.JFrame {
                 } else if (rsUser.next()) {
                     userId = Integer.parseInt(rsUser.getString("ID"));
                     JOptionPane.showMessageDialog(null, "Success");
-                    UserRequest uRequest = new UserRequest();
+                    HomeUser home = new HomeUser();
+                    home.setUsername(userNameField.getText());
+                    home.setUserId(userId);
                     this.setVisible(false);
-                    uRequest.setVisible(true);
+                    home.setVisible(true);
                 } else {
                     userNameField.setText("");
                     passwordField.setText("");

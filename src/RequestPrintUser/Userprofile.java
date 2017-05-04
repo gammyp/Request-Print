@@ -154,17 +154,19 @@ public class Userprofile extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void NextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextActionPerformed
-        UserRequest usr = new UserRequest();
-        usr.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_NextActionPerformed
-
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
         EditUserProfile editUProf = new EditUserProfile();
         editUProf.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_EditActionPerformed
+
+    private void NextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextActionPerformed
+        UserRequest usr = new UserRequest();
+        usr.setUserId(UserId);
+        usr.setUsername(Username);
+        usr.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_NextActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) throws SQLException {
         Connection con = null;
