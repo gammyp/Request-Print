@@ -217,14 +217,19 @@ public class LoginEPrinting extends javax.swing.JFrame {
                     HomeShop home = new HomeShop();
                     this.setVisible(false);
                     home.setVisible(true);
+                    con.close();
+                    pstmShop.close();
                 } else if (rsUser.next()) {
                     userId = Integer.parseInt(rsUser.getString("ID"));
                     JOptionPane.showMessageDialog(null, "Success");
                     HomeUser home = new HomeUser();
+                    home.setUserId(userId);
                     home.setUsername(userNameField.getText());
                     home.setUserId(userId);
                     this.setVisible(false);
                     home.setVisible(true);
+                    con.close();
+                    pstmUser.close();
                 } else {
                     userNameField.setText("");
                     passwordField.setText("");
