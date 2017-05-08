@@ -22,6 +22,33 @@ import java.lang.String;
 public class SelectShop extends javax.swing.JFrame {
     private String Username;
     private int UserId;
+    private String Link;
+    private int DocCopies;
+    
+    public void setUsername(String Username) {
+        this.Username = Username;
+    }
+    
+    public void setUserId(int UserId) {
+        this.UserId = UserId;
+    }
+    
+    public void setLink(String Link) {
+        this.Link = Link;
+    }
+    
+    public void setDocCopies(int DocCopies) {
+        this.DocCopies = DocCopies;
+    }
+    
+    public String getUsername() {
+        return Username;
+    }
+    
+    public int getUserId() {
+        return UserId;
+    }
+    
     /**
      * Creates new form SelectShop
      */
@@ -64,7 +91,7 @@ public class SelectShop extends javax.swing.JFrame {
         });
         getContentPane().add(CancleButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
 
-        Request.setText("Next");
+        Request.setText("Request");
         Request.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 RequestMouseClicked(evt);
@@ -123,10 +150,12 @@ public class SelectShop extends javax.swing.JFrame {
             // TODO add your handling code here:
             Connection con = ConnectionBuilder.getConnection();
             PreparedStatement pstm = con.prepareStatement("INSERT ");
+            
+            con.close();
+            pstm.close();
         } catch (SQLException ex) {
             Logger.getLogger(SelectShop.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }//GEN-LAST:event_RequestMouseClicked
 
     /**
