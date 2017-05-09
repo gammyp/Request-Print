@@ -99,6 +99,11 @@ public class UserRequest extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Request.setText("Request");
+        Request.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RequestMouseClicked(evt);
+            }
+        });
         Request.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RequestActionPerformed(evt);
@@ -469,6 +474,17 @@ public class UserRequest extends javax.swing.JFrame {
         status.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_CheckStatusBoxMouseClicked
+
+    private void RequestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestMouseClicked
+        // TODO add your handling code here:
+        int DocCopies = (int)NumberofCopies.getValue();
+        SelectShop select = new SelectShop();
+        select.setDocCopies(DocCopies);
+        select.setUsername(Username);
+        select.setUserId(UserId);
+        select.setLink(DocumentLink.getText());
+        select.setVisible(true);
+    }//GEN-LAST:event_RequestMouseClicked
 
     /**
      * @param args the command line arguments

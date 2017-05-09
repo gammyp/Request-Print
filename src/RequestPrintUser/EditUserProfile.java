@@ -64,6 +64,11 @@ public class EditUserProfile extends javax.swing.JFrame {
         phone.setText("Telephone : ");
 
         saveButton.setText("Save");
+        saveButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                saveButtonMouseClicked(evt);
+            }
+        });
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveButtonActionPerformed(evt);
@@ -157,10 +162,19 @@ public class EditUserProfile extends javax.swing.JFrame {
             pstm.executeUpdate();
             usr.setVisible(true);
             this.setVisible(false);
+            con.close();
+            pstm.close();
+            UserRequest user = new UserRequest();
+            user.setVisible(true);
+            setVisible(false);
         } catch (SQLException ex) {
             Logger.getLogger(EditUserProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_saveButtonActionPerformed
+
+    private void saveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_saveButtonMouseClicked
     private void formComponentShown(java.awt.event.ComponentEvent evt) {
 
         try {
