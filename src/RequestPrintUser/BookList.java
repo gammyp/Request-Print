@@ -19,11 +19,13 @@ import javax.swing.JComboBox;
  * @author jirayupeach
  */
 public class BookList extends javax.swing.JFrame {
+
     /**
      * Creates new form BookList
      */
     public BookList() {
         initComponents();
+
     }
 
     /**
@@ -57,12 +59,17 @@ public class BookList extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Message = new javax.swing.JTextArea();
         RequestButton = new javax.swing.JButton();
-        selectBook = new javax.swing.JComboBox<>();
-        selectShop = new javax.swing.JComboBox<>();
+        ShopSelect = new javax.swing.JComboBox<>();
+        BookSelect = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(769, 750));
         setPreferredSize(new java.awt.Dimension(769, 750));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         YourProfile.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         YourProfile.setText("Your Profile");
@@ -243,10 +250,15 @@ public class BookList extends javax.swing.JFrame {
         jScrollPane1.setViewportView(Message);
 
         RequestButton.setText("Request");
+        RequestButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RequestButtonActionPerformed(evt);
+            }
+        });
 
-        selectBook.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ShopSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
 
-        selectShop.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        BookSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -274,8 +286,8 @@ public class BookList extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(selectBook, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(selectShop, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(BookSelect, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ShopSelect, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 91, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -287,11 +299,11 @@ public class BookList extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(selectShop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ShopSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(selectBook, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BookSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10)
                 .addGap(18, 18, 18)
@@ -311,33 +323,47 @@ public class BookList extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void SelectShopformWindowActivated(java.awt.event.WindowEvent evt){
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         try {
-            Connection con = null;
-            PreparedStatement pstm = con.prepareStatement("SELECT shopName FROM ShopProfile ");
+            Connection con = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = con.prepareStatement("SELECT shopName FROM ShopProfile");
             ResultSet rs = pstm.executeQuery();
-            selectShop.addItem("");
-            while(rs.next()){
-                selectShop.addItem(rs.getString("shopName"));
+            while (rs.next()) {
+                ShopSelect.addItem(rs.getString("shopName"));
+            }
+            con.close();
+            pstm.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        try {
+            Connection con = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = con.prepareStatement("SELECT productName From mydb.Product P JOIN mydb.ShopProfile S\n"
+                    + "ON mydb.P.ShopProfile_shopID = mydb.S.shopID WHERE shopName=" + ShopSelect.getSelectedItem());
+            ResultSet rs = pstm.executeQuery();
+            BookSelect.addItem("");
+            while (rs.next()) {
+                BookSelect.addItem(rs.getString("productName"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    private void SelectBookformWindowActivated(java.awt.event.WindowEvent evt){
-    try {
-            Connection con = null;
-            PreparedStatement pstm = con.prepareStatement("SELECT productName From mydb.Product P JOIN mydb.ShopProfile S\n" +
-                                                            "ON mydb.P.ShopProfile_shopID = mydb.S.shopID;");
-            ResultSet rs = pstm.executeQuery();
-            selectBook.addItem("");
-            while(rs.next()){
-                selectBook.addItem(rs.getString("productName"));
-            }
+
+
+    }//GEN-LAST:event_formWindowActivated
+
+    private void RequestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RequestButtonActionPerformed
+        try {
+            // TODO add your handling code here:
+            Connection con = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = con.prepareStatement("INSERT");
         } catch (SQLException ex) {
-            Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SelectShop.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+
+    }//GEN-LAST:event_RequestButtonActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -372,6 +398,7 @@ public class BookList extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BookList;
+    private javax.swing.JComboBox<String> BookSelect;
     private javax.swing.JLabel CheckStatus;
     private javax.swing.JSpinner Copies;
     private javax.swing.JLabel Home;
@@ -379,6 +406,7 @@ public class BookList extends javax.swing.JFrame {
     private javax.swing.JTextArea Message;
     private javax.swing.JButton RequestButton;
     private javax.swing.JLabel RequestPrint;
+    private javax.swing.JComboBox<String> ShopSelect;
     private javax.swing.JLabel YourProfile;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -393,7 +421,5 @@ public class BookList extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<String> selectBook;
-    private javax.swing.JComboBox<String> selectShop;
     // End of variables declaration//GEN-END:variables
 }
