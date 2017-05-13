@@ -317,7 +317,7 @@ public class BookList extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addComponent(RequestButton)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -339,12 +339,22 @@ public class BookList extends javax.swing.JFrame {
 
         try {
             Connection con = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = con.prepareStatement("SELECT productName From mydb.Product P JOIN mydb.ShopProfile S\n"
-                    + "ON mydb.P.ShopProfile_shopID = mydb.S.shopID WHERE shopName=" + ShopSelect.getSelectedItem());
-            ResultSet rs = pstm.executeQuery();
+            
+            //executeQuery ShopProfile Table to use ShopID
+            PreparedStatement pstmSelectShopId = con.prepareStatement("SELECT shopID FROM ShopProfile WHERE "
+                    + "shopName = '" + ShopSelect.getSelectedItem() + "'");
+            ResultSet rsShopId = pstmSelectShopId.executeQuery();
+            rsShopId.next();
+            
+            //executeQuery Product Table to use ProductName
+            PreparedStatement pstmSelectProduct = con.prepareStatement("SELECT productName FROM mydb.Product WHERE "
+                    + "ShopProfile_shopID = " + rsShopId.getInt("shopID"));
+            ResultSet rsProductName = pstmSelectProduct.executeQuery();
+            
+            //Add intitial text
             BookSelect.addItem("");
-            while (rs.next()) {
-                BookSelect.addItem(rs.getString("productName"));
+            while (rsProductName.next()) {
+                BookSelect.addItem(rsProductName.getString("productName"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
