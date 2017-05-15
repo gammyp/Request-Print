@@ -117,7 +117,7 @@ public class ManageListBook extends javax.swing.JFrame {
         jScrollPane1.setViewportView(manageTable);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(390, 50, 452, 360);
+        jScrollPane1.setBounds(390, 50, 454, 360);
 
         manageBookTitle.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         manageBookTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

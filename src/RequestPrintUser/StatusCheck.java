@@ -6,13 +6,18 @@
 package RequestPrintUser;
 
 import RequestPrintDatabase.ConnectionBuilder;
+import RequestPrintLogin.LoginEPrinting;
+import RequestPrintShop.ManageListBook;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,6 +28,7 @@ public class StatusCheck extends javax.swing.JFrame {
     private String Username;
     private int UserId;
     private int CopiesofDoc;
+    DefaultTableModel model;
 
     /**
      * Creates new form StatusCheck
@@ -62,7 +68,8 @@ public class StatusCheck extends javax.swing.JFrame {
         LogoutBox = new javax.swing.JPanel();
         Logout = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        DocumentList = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -270,30 +277,59 @@ public class StatusCheck extends javax.swing.JFrame {
         jLabel1.setText("Select your document to see status.");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
 
-        DocumentList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select your document" }));
-        getContentPane().add(DocumentList, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 440, 20));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Document", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 410, 310));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        // TODO add your handling code here:
-        CheckStatus.setForeground(Color.white);
-        CheckStatusBox.setBackground(Color.black);
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
         try {
             Connection con = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = con.prepareStatement("SELECT * FROM ORDER");
+            LoginEPrinting login = new LoginEPrinting();
+            PreparedStatement pstm = con.prepareStatement(" SELECT orderID, status FROM Order " );     
             ResultSet rs = pstm.executeQuery();
-            while(rs.next()) {
-                if (rs.getInt("UserProfile_id") == UserId) {
-                    DocumentList.addItem(rs.getString("ORDERID"));
-                }
+            while(rs.next()){
+                Vector v = new Vector();
+                v.add("orderID");
+                v.add("status");
+                model.addRow(v);
             }
         } catch (SQLException ex) {
             Logger.getLogger(StatusCheck.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }//GEN-LAST:event_formWindowActivated
 
     private void HomeBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseEntered
@@ -388,6 +424,10 @@ public class StatusCheck extends javax.swing.JFrame {
         BookListBox.setBackground(null);
     }//GEN-LAST:event_BookListBoxMouseExited
 
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+
+    }//GEN-LAST:event_jTable1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -428,7 +468,6 @@ public class StatusCheck extends javax.swing.JFrame {
     private javax.swing.JPanel BookListBox;
     private javax.swing.JLabel CheckStatus;
     private javax.swing.JPanel CheckStatusBox;
-    private javax.swing.JComboBox<String> DocumentList;
     private javax.swing.JLabel Home;
     private javax.swing.JPanel HomeBox;
     private javax.swing.JLabel Logout;
@@ -439,5 +478,7 @@ public class StatusCheck extends javax.swing.JFrame {
     private javax.swing.JLabel YourProfile;
     private javax.swing.JPanel YourProfileBox;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
