@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 /**
  *
  * @author Phornlert
@@ -53,7 +54,7 @@ public class HomeUser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        Tabbar = new javax.swing.JPanel();
         HomeBox = new javax.swing.JPanel();
         Home = new javax.swing.JLabel();
         YourProfileBox = new javax.swing.JPanel();
@@ -249,10 +250,10 @@ public class HomeUser extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout TabbarLayout = new javax.swing.GroupLayout(Tabbar);
+        Tabbar.setLayout(TabbarLayout);
+        TabbarLayout.setHorizontalGroup(
+            TabbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(HomeBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(YourProfileBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(RequestPrintBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -260,9 +261,9 @@ public class HomeUser extends javax.swing.JFrame {
             .addComponent(DocumentStatusBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(LogoutBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        TabbarLayout.setVerticalGroup(
+            TabbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TabbarLayout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addComponent(HomeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -278,7 +279,7 @@ public class HomeUser extends javax.swing.JFrame {
                 .addContainerGap(136, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, -1));
+        getContentPane().add(Tabbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -287,6 +288,7 @@ public class HomeUser extends javax.swing.JFrame {
         // TODO add your handling code here:
         Home.setForeground(Color.WHITE);
         HomeBox.setBackground(Color.BLACK);
+        
     }//GEN-LAST:event_formWindowActivated
 
     private void YourProfileBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseEntered
@@ -428,8 +430,8 @@ public class HomeUser extends javax.swing.JFrame {
     private javax.swing.JPanel LogoutBox;
     private javax.swing.JLabel RequestPrint;
     private javax.swing.JPanel RequestPrintBox;
+    private javax.swing.JPanel Tabbar;
     private javax.swing.JLabel YourProfile;
     private javax.swing.JPanel YourProfileBox;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
