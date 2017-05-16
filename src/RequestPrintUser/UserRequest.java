@@ -22,7 +22,6 @@ import javax.swing.ImageIcon;
  */
 public class UserRequest extends javax.swing.JFrame {
     
-    private final String fetchBookList = "SELECT productName FROM Product";
     private String DocURL;
     private String Username;
     private String Book;
@@ -66,11 +65,8 @@ public class UserRequest extends javax.swing.JFrame {
         LocationLink = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         RequestHaed = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        ChooseBookLabel = new javax.swing.JLabel();
         NumberofCopies = new javax.swing.JSpinner();
         Copies = new javax.swing.JLabel();
-        BookListTab = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         MessageLabel = new javax.swing.JLabel();
@@ -109,7 +105,7 @@ public class UserRequest extends javax.swing.JFrame {
                 RequestActionPerformed(evt);
             }
         });
-        getContentPane().add(Request, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 520, -1, -1));
+        getContentPane().add(Request, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 460, -1, -1));
 
         jLabel1.setText("beta 2");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, -1, -1));
@@ -125,29 +121,19 @@ public class UserRequest extends javax.swing.JFrame {
         RequestHaed.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         RequestHaed.setText("Request to print your document");
         getContentPane().add(RequestHaed, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setText("OR");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, -1, -1));
-
-        ChooseBookLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        ChooseBookLabel.setText("Choose book from list.");
-        getContentPane().add(ChooseBookLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 140, 30));
         getContentPane().add(NumberofCopies, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, -1, -1));
 
         Copies.setText("Copies");
         getContentPane().add(Copies, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, -1, -1));
 
-        getContentPane().add(BookListTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 390, -1));
-
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 520, 170));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 520, 170));
 
         MessageLabel.setText("Message to shop.");
-        getContentPane().add(MessageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, -1, -1));
+        getContentPane().add(MessageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, -1, -1));
 
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -351,7 +337,7 @@ public class UserRequest extends javax.swing.JFrame {
         Headder.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         getContentPane().add(Headder, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 500, 30));
 
-        setSize(new java.awt.Dimension(793, 598));
+        setSize(new java.awt.Dimension(793, 535));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -367,18 +353,6 @@ public class UserRequest extends javax.swing.JFrame {
             RequestPrintBox.setBackground(Color.black);
             RequestPrint.setForeground(Color.white);
             Headder.setText("Welcome , "+Username);
-
-        try {
-            Connection con = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = con.prepareStatement(fetchBookList);
-            ResultSet rs = pstm.executeQuery();
-            BookListTab.addItem("");
-                while (rs.next()){
-                    BookListTab.addItem(rs.getString("productName"));
-                }
-        } catch (SQLException ex) {
-            Logger.getLogger(UserRequest.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
     }//GEN-LAST:event_formWindowActivated
 
@@ -525,10 +499,8 @@ public class UserRequest extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BookList;
     private javax.swing.JPanel BookListBox;
-    private javax.swing.JComboBox<String> BookListTab;
     private javax.swing.JLabel CheckStatus;
     private javax.swing.JPanel CheckStatusBox;
-    private javax.swing.JLabel ChooseBookLabel;
     private javax.swing.JLabel Copies;
     private javax.swing.JTextField DocumentLink;
     private javax.swing.JLabel Headder;
@@ -547,7 +519,6 @@ public class UserRequest extends javax.swing.JFrame {
     private javax.swing.JPanel YourProfileBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
