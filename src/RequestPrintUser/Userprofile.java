@@ -111,13 +111,17 @@ public class Userprofile extends javax.swing.JFrame {
                             .addComponent(Surname)
                             .addComponent(Email)
                             .addComponent(Edit))
-                        .addGap(73, 73, 73)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Next)
-                            .addComponent(NameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(SurnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(EmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PhoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(73, 73, 73)
+                                .addComponent(Next))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(SurnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(NameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(EmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(PhoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 98, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -168,18 +172,19 @@ public class Userprofile extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_NextActionPerformed
 
-    private void formWindowActivated(java.awt.event.WindowEvent evt) throws SQLException {
+    private void formWindowActivated(java.awt.event.WindowEvent evt){
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
             LoginEPrinting login = new LoginEPrinting();
-            PreparedStatement pstm = con.prepareStatement("SELECT * FROM ShopProfile WHERE shopID = " + login.getUserId());
+            PreparedStatement pstm = con.prepareStatement("SELECT name,surname,email,phone FROM UserProfile WHERE UserID = " + login.getUserId());
             ResultSet rs = pstm.executeQuery();
-            if (rs.next()) {
-                NameLabel.setText(rs.getString("Name"));
-                SurnameLabel.setText(rs.getString("Surname"));
-                EmailLabel.setText(rs.getString("Email"));
-                PhoneLabel.setText(rs.getString("Phone"));
+            while(rs.next()) {
+                System.out.println("a");
+                NameLabel.setText(rs.getString("name"));
+                SurnameLabel.setText(rs.getString("surname"));
+                EmailLabel.setText(rs.getString("email"));
+                PhoneLabel.setText(rs.getString("phone"));
             }
             con.close();
             pstm.close();

@@ -13,38 +13,38 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 /**
  *
  * @author Phornlert
  */
 public class HomeUser extends javax.swing.JFrame {
-    
+
     private String Username;
     private int UserId;
+
     /**
      * Creates new form Home
      */
     public HomeUser() {
         initComponents();
     }
-    
+
     public void setUserId(int UserId) {
         this.UserId = UserId;
     }
-    
+
     public void setUsername(String Username) {
         this.Username = Username;
     }
-    
+
     public String getUsername() {
         return Username;
     }
-    
+
     public int getUserId() {
         return UserId;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -171,6 +171,11 @@ public class HomeUser extends javax.swing.JFrame {
 
         BookList.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         BookList.setText("Book List");
+        BookList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BookListMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout BookListBoxLayout = new javax.swing.GroupLayout(BookListBox);
         BookListBox.setLayout(BookListBoxLayout);
@@ -288,7 +293,7 @@ public class HomeUser extends javax.swing.JFrame {
         // TODO add your handling code here:
         Home.setForeground(Color.WHITE);
         HomeBox.setBackground(Color.BLACK);
-        
+
     }//GEN-LAST:event_formWindowActivated
 
     private void YourProfileBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseEntered
@@ -382,6 +387,14 @@ public class HomeUser extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_LogoutBoxMouseClicked
+
+    private void BookListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListMouseClicked
+        BookList bkl = new BookList();
+        bkl.setUserId(UserId);
+        bkl.setUsername(Username);
+        bkl.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_BookListMouseClicked
 
     /**
      * @param args the command line arguments

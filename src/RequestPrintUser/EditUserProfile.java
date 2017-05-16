@@ -161,12 +161,9 @@ public class EditUserProfile extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Save Successful");
             pstm.executeUpdate();
             usr.setVisible(true);
-            this.setVisible(false);
+            setVisible(false);
             con.close();
             pstm.close();
-            UserRequest user = new UserRequest();
-            user.setVisible(true);
-            setVisible(false);
         } catch (SQLException ex) {
             Logger.getLogger(EditUserProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -174,6 +171,7 @@ public class EditUserProfile extends javax.swing.JFrame {
 
     private void saveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveButtonMouseClicked
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_saveButtonMouseClicked
     private void formComponentShown(java.awt.event.ComponentEvent evt) {
 
