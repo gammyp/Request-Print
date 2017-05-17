@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -68,6 +69,8 @@ public class ManageListBook extends javax.swing.JFrame {
         showBookName = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         showDetail = new javax.swing.JTextPane();
+        searchField = new javax.swing.JTextField();
+        searchButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -117,7 +120,7 @@ public class ManageListBook extends javax.swing.JFrame {
         jScrollPane1.setViewportView(manageTable);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(390, 50, 454, 360);
+        jScrollPane1.setBounds(390, 20, 452, 360);
 
         manageBookTitle.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         manageBookTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -246,6 +249,17 @@ public class ManageListBook extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(220, 260, 150, 80);
+        getContentPane().add(searchField);
+        searchField.setBounds(390, 390, 360, 30);
+
+        searchButton.setText("search");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(searchButton);
+        searchButton.setBounds(760, 390, 80, 30);
 
         setSize(new java.awt.Dimension(879, 524));
         setLocationRelativeTo(null);
@@ -260,7 +274,7 @@ public class ManageListBook extends javax.swing.JFrame {
         model = (DefaultTableModel) manageTable.getModel();
         model.setRowCount(0);
         Connection con = null;
-        
+
         try {
             con = ConnectionBuilder.getConnection();
             LoginEPrinting login = new LoginEPrinting();
@@ -316,10 +330,12 @@ public class ManageListBook extends javax.swing.JFrame {
                 } else {
                     showDate.setText(rs.getDate("date").toString());
                     showDetail.setText(rs.getString("detail"));
+
                 }
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ManageListBook.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManageListBook.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_manageTableMouseClicked
 
@@ -333,9 +349,11 @@ public class ManageListBook extends javax.swing.JFrame {
             int ans = JOptionPane.showConfirmDialog(null, "Delete", "Confirm", JOptionPane.WARNING_MESSAGE);
             if (ans == 0) {
                 pstm.executeUpdate();
+
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ManageListBook.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManageListBook.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_deleteButtonActionPerformed
 
@@ -357,6 +375,31 @@ public class ManageListBook extends javax.swing.JFrame {
         home.setVisible(true);
     }//GEN-LAST:event_homeMouseClicked
 
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        this.model = (DefaultTableModel) manageTable.getModel();
+        model.setRowCount(0);
+        Connection con = null;
+        try {
+            con = ConnectionBuilder.getConnection();
+            LoginEPrinting login = new LoginEPrinting();
+            PreparedStatement pstm = con.prepareStatement("SELECT productID,productName,price FROM Product "
+                    + "WHERE productName LIKE ? AND ShopProfile_shopId = " + login.getShopId());
+            pstm.setString(1, searchField.getText() + "%");
+            ResultSet rs = pstm.executeQuery();
+
+            while (rs.next()) {
+                Vector v = new Vector();
+                v.add(rs.getInt("productID"));
+                v.add(rs.getString("productName"));
+                v.add(rs.getString("price"));
+                model.addRow(v);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageListBook.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_searchButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -371,16 +414,24 @@ public class ManageListBook extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ManageListBook.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageListBook.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ManageListBook.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageListBook.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ManageListBook.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageListBook.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ManageListBook.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageListBook.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -412,6 +463,8 @@ public class ManageListBook extends javax.swing.JFrame {
     private javax.swing.JLabel productID;
     private javax.swing.JLabel profile;
     private javax.swing.JLabel respondPrint;
+    private javax.swing.JButton searchButton;
+    private javax.swing.JTextField searchField;
     private javax.swing.JLabel showBookName;
     public javax.swing.JLabel showDate;
     private javax.swing.JTextPane showDetail;
