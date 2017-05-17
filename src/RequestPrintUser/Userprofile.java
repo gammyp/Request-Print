@@ -64,6 +64,11 @@ public class Userprofile extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel1.setText("Profile");
@@ -145,9 +150,9 @@ public class Userprofile extends javax.swing.JFrame {
                     .addComponent(Email, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(EmailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Phone)
-                    .addComponent(PhoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PhoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Phone))
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Edit)
@@ -172,13 +177,15 @@ public class Userprofile extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_NextActionPerformed
 
-    private void formWindowActivated(java.awt.event.WindowEvent evt){
-        Connection con = null;
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         try {
+            // TODO add your handling code here:
+            Connection con = null;
             con = ConnectionBuilder.getConnection();
             LoginEPrinting login = new LoginEPrinting();
-            PreparedStatement pstm = con.prepareStatement("SELECT name,surname,email,phone FROM UserProfile WHERE UserID = " + login.getUserId());
+            PreparedStatement pstm = con.prepareStatement("SELECT name,surname,email,phone FROM UserProfile WHERE id = " + login.getUserId());
             ResultSet rs = pstm.executeQuery();
+            System.out.println(login.getUserId());
             while(rs.next()) {
                 System.out.println("a");
                 NameLabel.setText(rs.getString("name"));
@@ -191,7 +198,9 @@ public class Userprofile extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Userprofile.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    }//GEN-LAST:event_formWindowActivated
+
+    
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

@@ -51,6 +51,11 @@ public class EditUserProfile extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(470, 300));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         jLabel1.setText("Edit Profile");
@@ -150,18 +155,17 @@ public class EditUserProfile extends javax.swing.JFrame {
             con = ConnectionBuilder.getConnection();
             LoginEPrinting login = new LoginEPrinting();
             System.out.println(login.getUserId());
-            PreparedStatement pstm = con.prepareStatement("UPDATE ShopProfile SET "
-                    + "name=?, surname=?, email=?, phone=?"
-                    + " WHERE id = " + login.getUserId());
-            
+            PreparedStatement pstm = con.prepareStatement("UPDATE UserProfile SET name=?, surname=?, email=?, phone=? WHERE id = "+ login.getUserId());
             pstm.setString(1, nameField.getText());
             pstm.setString(2, surnameField.getText());
-            pstm.setString(3, phoneField.getText());
-            pstm.setString(4, emailField.getText());
-            JOptionPane.showMessageDialog(null, "Save Successful");
+            pstm.setString(3, emailField.getText());
+            pstm.setInt(4, Integer.parseInt(phoneField.getText()));
+            
             pstm.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Save Successful");
+            
             usr.setVisible(true);
-            setVisible(false);
+            this.setVisible(false);
             con.close();
             pstm.close();
         } catch (SQLException ex) {
@@ -173,8 +177,9 @@ public class EditUserProfile extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_saveButtonMouseClicked
-    private void formComponentShown(java.awt.event.ComponentEvent evt) {
 
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
         try {
             Connection con = ConnectionBuilder.getConnection();
             LoginEPrinting login = new LoginEPrinting();
@@ -189,7 +194,8 @@ public class EditUserProfile extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(EditUserProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    }//GEN-LAST:event_formComponentShown
+   
 
     /**
      * @param args the command line arguments

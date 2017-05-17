@@ -81,7 +81,6 @@ public class BookList extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(769, 750));
-        setPreferredSize(new java.awt.Dimension(769, 750));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -346,8 +345,18 @@ public class BookList extends javax.swing.JFrame {
         });
 
         ShopSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
+        ShopSelect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShopSelectActionPerformed(evt);
+            }
+        });
 
         BookSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { }));
+        BookSelect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BookSelectActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -413,6 +422,8 @@ public class BookList extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        ShopSelect.removeAllItems();
+        BookSelect.removeAllItems();
         try {
             Connection con = ConnectionBuilder.getConnection();
             PreparedStatement pstm = con.prepareStatement("SELECT shopName FROM ShopProfile");
@@ -573,6 +584,38 @@ public class BookList extends javax.swing.JFrame {
         Logout.setForeground(Color.black);
         LogoutBox.setBackground(null);
     }//GEN-LAST:event_LogoutBoxMouseExited
+
+    private void ShopSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShopSelectActionPerformed
+        BookSelect.removeAllItems();
+        try {
+            Connection con = ConnectionBuilder.getConnection();
+            
+            //executeQuery ShopProfile Table to use ShopID
+            PreparedStatement pstmSelectShopId = con.prepareStatement("SELECT shopID FROM ShopProfile WHERE "
+                    + "shopName = '" + ShopSelect.getSelectedItem() + "'");
+            ResultSet rsShopId = pstmSelectShopId.executeQuery();
+            rsShopId.next();
+            
+            //executeQuery Product Table to use ProductName
+            PreparedStatement pstmSelectProduct = con.prepareStatement("SELECT productName FROM mydb.Product WHERE "
+                    + "ShopProfile_shopID = " + rsShopId.getInt("shopID"));
+            ResultSet rsProductName = pstmSelectProduct.executeQuery();
+            
+            //Add intitial text
+            BookSelect.addItem("");
+            while (rsProductName.next()) {
+                BookSelect.addItem(rsProductName.getString("productName"));
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_ShopSelectActionPerformed
+
+    private void BookSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookSelectActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BookSelectActionPerformed
 
     
     
