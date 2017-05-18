@@ -47,36 +47,37 @@ public class RespondPrint extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        sideLeft = new javax.swing.JPanel();
         home = new javax.swing.JLabel();
         profile = new javax.swing.JLabel();
         signOut = new javax.swing.JLabel();
         bgMenu = new javax.swing.JPanel();
         respondPrint = new javax.swing.JLabel();
         manageBook = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         orderTable = new javax.swing.JTable();
         responnPrintTitle = new javax.swing.JLabel();
         customerName = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         custNameField = new javax.swing.JLabel();
         telephone = new javax.swing.JLabel();
         telephoneField = new javax.swing.JLabel();
-        order = new javax.swing.JLabel();
         email = new javax.swing.JLabel();
         emailField = new javax.swing.JLabel();
+        order = new javax.swing.JLabel();
+        orderField = new javax.swing.JTextField();
         description = new javax.swing.JLabel();
-        status = new javax.swing.JLabel();
-        statusField = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         descriptionField = new javax.swing.JTextPane();
-        changeStatusButton = new javax.swing.JButton();
         productAmount = new javax.swing.JLabel();
         productAmountField = new javax.swing.JLabel();
-        typeOrder = new javax.swing.JLabel();
         price = new javax.swing.JLabel();
         priceField = new javax.swing.JLabel();
-        orderField = new javax.swing.JTextField();
+        status = new javax.swing.JLabel();
+        statusField = new javax.swing.JLabel();
+        changeStatusButton = new javax.swing.JButton();
+        typeOrder = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -92,10 +93,12 @@ public class RespondPrint extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.setLayout(null);
+        sideLeft.setBackground(new java.awt.Color(102, 102, 102));
+        sideLeft.setLayout(null);
 
-        home.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        home.setBackground(new java.awt.Color(204, 204, 204));
+        home.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
+        home.setForeground(new java.awt.Color(255, 255, 255));
         home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         home.setText("Home");
         home.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -104,10 +107,12 @@ public class RespondPrint extends javax.swing.JFrame {
                 homeMouseClicked(evt);
             }
         });
-        jPanel1.add(home);
-        home.setBounds(0, 100, 190, 30);
+        sideLeft.add(home);
+        home.setBounds(0, 100, 230, 30);
 
-        profile.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        profile.setBackground(new java.awt.Color(204, 204, 204));
+        profile.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
+        profile.setForeground(new java.awt.Color(255, 255, 255));
         profile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         profile.setText("Profile");
         profile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -116,8 +121,8 @@ public class RespondPrint extends javax.swing.JFrame {
                 profileMouseClicked(evt);
             }
         });
-        jPanel1.add(profile);
-        profile.setBounds(0, 150, 190, 30);
+        sideLeft.add(profile);
+        profile.setBounds(0, 150, 230, 30);
 
         signOut.setText("Sign out");
         signOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -126,12 +131,14 @@ public class RespondPrint extends javax.swing.JFrame {
                 signOutMouseClicked(evt);
             }
         });
-        jPanel1.add(signOut);
+        sideLeft.add(signOut);
         signOut.setBounds(10, 500, 50, 16);
 
-        bgMenu.setBackground(new java.awt.Color(204, 204, 204));
+        bgMenu.setBackground(new java.awt.Color(102, 102, 102));
 
-        respondPrint.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        respondPrint.setBackground(new java.awt.Color(204, 204, 204));
+        respondPrint.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
+        respondPrint.setForeground(new java.awt.Color(255, 255, 255));
         respondPrint.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         respondPrint.setText("Respond Print");
         respondPrint.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -141,8 +148,8 @@ public class RespondPrint extends javax.swing.JFrame {
         bgMenuLayout.setHorizontalGroup(
             bgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgMenuLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(respondPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 2, Short.MAX_VALUE)
+                .addComponent(respondPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         bgMenuLayout.setVerticalGroup(
             bgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,10 +158,12 @@ public class RespondPrint extends javax.swing.JFrame {
                 .addComponent(respondPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(bgMenu);
-        bgMenu.setBounds(0, 250, 190, 30);
+        sideLeft.add(bgMenu);
+        bgMenu.setBounds(0, 250, 230, 30);
 
-        manageBook.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        manageBook.setBackground(new java.awt.Color(204, 204, 204));
+        manageBook.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
+        manageBook.setForeground(new java.awt.Color(255, 255, 255));
         manageBook.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         manageBook.setText("Manage Book");
         manageBook.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -163,12 +172,18 @@ public class RespondPrint extends javax.swing.JFrame {
                 manageBookMouseClicked(evt);
             }
         });
-        jPanel1.add(manageBook);
-        manageBook.setBounds(0, 200, 190, 30);
+        sideLeft.add(manageBook);
+        manageBook.setBounds(0, 200, 230, 30);
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 190, 520);
+        getContentPane().add(sideLeft);
+        sideLeft.setBounds(0, 0, 230, 600);
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(610, 100, 190, 0);
 
+        jPanel1.setBackground(new java.awt.Color(228, 228, 228));
+        jPanel1.setLayout(null);
+
+        orderTable.setBackground(new java.awt.Color(226, 252, 226));
         orderTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -195,6 +210,8 @@ public class RespondPrint extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        orderTable.setSelectionBackground(new java.awt.Color(204, 255, 255));
+        orderTable.setSelectionForeground(new java.awt.Color(0, 0, 0));
         orderTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 orderTableMouseClicked(evt);
@@ -202,53 +219,93 @@ public class RespondPrint extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(orderTable);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(200, 70, 500, 440);
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(20, 70, 500, 480);
 
-        responnPrintTitle.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        responnPrintTitle.setFont(new java.awt.Font("Moon", 1, 24)); // NOI18N
         responnPrintTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         responnPrintTitle.setText("Respond Print");
-        getContentPane().add(responnPrintTitle);
-        responnPrintTitle.setBounds(190, 15, 750, 40);
+        jPanel1.add(responnPrintTitle);
+        responnPrintTitle.setBounds(0, 20, 810, 40);
 
+        customerName.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
         customerName.setText("Customer name");
-        getContentPane().add(customerName);
-        customerName.setBounds(720, 70, 110, 20);
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(610, 100, 190, 0);
-        getContentPane().add(custNameField);
-        custNameField.setBounds(730, 90, 190, 20);
+        jPanel1.add(customerName);
+        customerName.setBounds(540, 70, 160, 20);
 
+        custNameField.setFont(new java.awt.Font("Moon", 0, 13)); // NOI18N
+        jPanel1.add(custNameField);
+        custNameField.setBounds(550, 90, 230, 20);
+
+        telephone.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
         telephone.setText("Telephone");
-        getContentPane().add(telephone);
-        telephone.setBounds(720, 120, 110, 20);
-        getContentPane().add(telephoneField);
-        telephoneField.setBounds(730, 140, 190, 20);
+        jPanel1.add(telephone);
+        telephone.setBounds(540, 120, 110, 20);
 
-        order.setText("Order");
-        getContentPane().add(order);
-        order.setBounds(720, 220, 40, 20);
+        telephoneField.setFont(new java.awt.Font("Moon", 0, 13)); // NOI18N
+        jPanel1.add(telephoneField);
+        telephoneField.setBounds(550, 140, 230, 20);
 
+        email.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
         email.setText("Email");
-        getContentPane().add(email);
-        email.setBounds(720, 170, 110, 20);
-        getContentPane().add(emailField);
-        emailField.setBounds(730, 190, 190, 20);
+        jPanel1.add(email);
+        email.setBounds(540, 170, 110, 20);
 
+        emailField.setFont(new java.awt.Font("Moon", 0, 13)); // NOI18N
+        jPanel1.add(emailField);
+        emailField.setBounds(550, 190, 230, 20);
+
+        order.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
+        order.setText("Order");
+        jPanel1.add(order);
+        order.setBounds(540, 210, 60, 20);
+
+        orderField.setFont(new java.awt.Font("Moon", 0, 13)); // NOI18N
+        orderField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderFieldActionPerformed(evt);
+            }
+        });
+        jPanel1.add(orderField);
+        orderField.setBounds(550, 230, 230, 30);
+
+        description.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
         description.setText("Description");
-        getContentPane().add(description);
-        description.setBounds(720, 270, 110, 20);
+        jPanel1.add(description);
+        description.setBounds(540, 270, 110, 20);
 
-        status.setText("Order status");
-        getContentPane().add(status);
-        status.setBounds(720, 470, 110, 20);
-        getContentPane().add(statusField);
-        statusField.setBounds(730, 490, 120, 20);
-
+        descriptionField.setFont(new java.awt.Font("Moon", 0, 13)); // NOI18N
         jScrollPane2.setViewportView(descriptionField);
 
-        getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(730, 290, 190, 70);
+        jPanel1.add(jScrollPane2);
+        jScrollPane2.setBounds(550, 290, 230, 70);
+
+        productAmount.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
+        productAmount.setText("Product Amount");
+        jPanel1.add(productAmount);
+        productAmount.setBounds(540, 370, 160, 20);
+
+        productAmountField.setFont(new java.awt.Font("Moon", 0, 13)); // NOI18N
+        jPanel1.add(productAmountField);
+        productAmountField.setBounds(550, 390, 230, 20);
+
+        price.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
+        price.setText("Price");
+        jPanel1.add(price);
+        price.setBounds(540, 420, 110, 20);
+
+        priceField.setFont(new java.awt.Font("Moon", 0, 13)); // NOI18N
+        jPanel1.add(priceField);
+        priceField.setBounds(550, 440, 230, 20);
+
+        status.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
+        status.setText("Order status");
+        jPanel1.add(status);
+        status.setBounds(540, 470, 120, 20);
+
+        statusField.setFont(new java.awt.Font("Moon", 0, 13)); // NOI18N
+        jPanel1.add(statusField);
+        statusField.setBounds(550, 490, 230, 20);
 
         changeStatusButton.setText("change");
         changeStatusButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -257,34 +314,18 @@ public class RespondPrint extends javax.swing.JFrame {
                 changeStatusButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(changeStatusButton);
-        changeStatusButton.setBounds(850, 490, 73, 25);
+        jPanel1.add(changeStatusButton);
+        changeStatusButton.setBounds(710, 520, 73, 25);
 
-        productAmount.setText("Product Amount");
-        getContentPane().add(productAmount);
-        productAmount.setBounds(720, 370, 110, 20);
-        getContentPane().add(productAmountField);
-        productAmountField.setBounds(730, 390, 190, 20);
-
+        typeOrder.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
         typeOrder.setForeground(new java.awt.Color(255, 0, 0));
-        getContentPane().add(typeOrder);
-        typeOrder.setBounds(760, 220, 90, 20);
+        jPanel1.add(typeOrder);
+        typeOrder.setBounds(610, 210, 90, 20);
 
-        price.setText("Price");
-        getContentPane().add(price);
-        price.setBounds(720, 420, 110, 20);
-        getContentPane().add(priceField);
-        priceField.setBounds(730, 440, 190, 20);
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(230, 0, 850, 630);
 
-        orderField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                orderFieldActionPerformed(evt);
-            }
-        });
-        getContentPane().add(orderField);
-        orderField.setBounds(730, 240, 190, 30);
-
-        setSize(new java.awt.Dimension(952, 566));
+        setSize(new java.awt.Dimension(1052, 625));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -487,6 +528,7 @@ public class RespondPrint extends javax.swing.JFrame {
     private javax.swing.JLabel profile;
     private javax.swing.JLabel respondPrint;
     private javax.swing.JLabel responnPrintTitle;
+    private javax.swing.JPanel sideLeft;
     private javax.swing.JLabel signOut;
     private javax.swing.JLabel status;
     private javax.swing.JLabel statusField;

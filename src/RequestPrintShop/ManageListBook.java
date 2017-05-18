@@ -227,7 +227,7 @@ public class ManageListBook extends javax.swing.JFrame {
         jPanel2.add(productID);
         productID.setBounds(20, 100, 100, 30);
 
-        showProductID.setFont(new java.awt.Font("Moon", 1, 13)); // NOI18N
+        showProductID.setFont(new java.awt.Font("Moon", 0, 13)); // NOI18N
         jPanel2.add(showProductID);
         showProductID.setBounds(30, 130, 170, 20);
 
@@ -236,7 +236,7 @@ public class ManageListBook extends javax.swing.JFrame {
         jPanel2.add(bookName);
         bookName.setBounds(20, 160, 60, 30);
 
-        showBookName.setFont(new java.awt.Font("Moon", 1, 13)); // NOI18N
+        showBookName.setFont(new java.awt.Font("Moon", 0, 13)); // NOI18N
         jPanel2.add(showBookName);
         showBookName.setBounds(30, 190, 170, 20);
 
@@ -245,7 +245,7 @@ public class ManageListBook extends javax.swing.JFrame {
         jPanel2.add(date);
         date.setBounds(20, 220, 50, 30);
 
-        showDate.setFont(new java.awt.Font("Moon", 1, 13)); // NOI18N
+        showDate.setFont(new java.awt.Font("Moon", 0, 13)); // NOI18N
         jPanel2.add(showDate);
         showDate.setBounds(30, 250, 170, 20);
 
@@ -258,7 +258,7 @@ public class ManageListBook extends javax.swing.JFrame {
         showDetail.setEditable(false);
         showDetail.setBackground(new java.awt.Color(228, 228, 228));
         showDetail.setBorder(null);
-        showDetail.setFont(new java.awt.Font("Moon", 1, 13)); // NOI18N
+        showDetail.setFont(new java.awt.Font("Moon", 0, 13)); // NOI18N
         showDetail.setCaretColor(new java.awt.Color(102, 102, 102));
         jScrollPane2.setViewportView(showDetail);
 
@@ -270,7 +270,7 @@ public class ManageListBook extends javax.swing.JFrame {
         jPanel2.add(price);
         price.setBounds(20, 400, 140, 30);
 
-        showPrice.setFont(new java.awt.Font("Moon", 1, 13)); // NOI18N
+        showPrice.setFont(new java.awt.Font("Moon", 0, 13)); // NOI18N
         jPanel2.add(showPrice);
         showPrice.setBounds(30, 430, 170, 20);
 

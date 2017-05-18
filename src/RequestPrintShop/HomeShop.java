@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -53,9 +54,14 @@ public class HomeShop extends javax.swing.JFrame {
         signout = new javax.swing.JLabel();
         update = new javax.swing.JLabel();
         topHit = new javax.swing.JLabel();
-        topOne = new javax.swing.JPanel();
-        topTwo = new javax.swing.JPanel();
-        topThree = new javax.swing.JPanel();
+        topOneBG = new javax.swing.JPanel();
+        topOne = new javax.swing.JLabel();
+        topOneBG1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        topTwoBG = new javax.swing.JPanel();
+        topTwo = new javax.swing.JLabel();
+        topThreeBG = new javax.swing.JPanel();
+        topThree = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         updateTable = new javax.swing.JTable();
 
@@ -171,53 +177,46 @@ public class HomeShop extends javax.swing.JFrame {
         getContentPane().add(topHit);
         topHit.setBounds(220, 20, 100, 20);
 
-        topOne.setBackground(new java.awt.Color(255, 204, 204));
+        topOneBG.setBackground(new java.awt.Color(225, 225, 225));
+        topOneBG.setLayout(null);
 
-        javax.swing.GroupLayout topOneLayout = new javax.swing.GroupLayout(topOne);
-        topOne.setLayout(topOneLayout);
-        topOneLayout.setHorizontalGroup(
-            topOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        topOneLayout.setVerticalGroup(
-            topOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
-        );
+        topOne.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        topOne.setText("test b1");
+        topOneBG.add(topOne);
+        topOne.setBounds(0, 0, 130, 160);
 
-        getContentPane().add(topOne);
-        topOne.setBounds(230, 50, 130, 160);
+        topOneBG1.setBackground(new java.awt.Color(225, 225, 225));
+        topOneBG1.setLayout(null);
 
-        topTwo.setBackground(new java.awt.Color(255, 204, 204));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        topOneBG1.add(jLabel3);
+        jLabel3.setBounds(-20, 30, 130, 160);
 
-        javax.swing.GroupLayout topTwoLayout = new javax.swing.GroupLayout(topTwo);
-        topTwo.setLayout(topTwoLayout);
-        topTwoLayout.setHorizontalGroup(
-            topTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        topTwoLayout.setVerticalGroup(
-            topTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
-        );
+        topOneBG.add(topOneBG1);
+        topOneBG1.setBounds(230, 50, 130, 160);
 
-        getContentPane().add(topTwo);
-        topTwo.setBounds(390, 50, 130, 160);
+        getContentPane().add(topOneBG);
+        topOneBG.setBounds(230, 50, 130, 160);
 
-        topThree.setBackground(new java.awt.Color(255, 204, 204));
+        topTwoBG.setBackground(new java.awt.Color(225, 225, 225));
+        topTwoBG.setLayout(null);
 
-        javax.swing.GroupLayout topThreeLayout = new javax.swing.GroupLayout(topThree);
-        topThree.setLayout(topThreeLayout);
-        topThreeLayout.setHorizontalGroup(
-            topThreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        topThreeLayout.setVerticalGroup(
-            topThreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
-        );
+        topTwo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        topTwoBG.add(topTwo);
+        topTwo.setBounds(0, 0, 130, 160);
 
-        getContentPane().add(topThree);
-        topThree.setBounds(550, 50, 130, 160);
+        getContentPane().add(topTwoBG);
+        topTwoBG.setBounds(390, 50, 130, 160);
+
+        topThreeBG.setBackground(new java.awt.Color(225, 225, 225));
+        topThreeBG.setLayout(null);
+
+        topThree.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        topThreeBG.add(topThree);
+        topThree.setBounds(0, 0, 130, 160);
+
+        getContentPane().add(topThreeBG);
+        topThreeBG.setBounds(550, 50, 130, 160);
 
         updateTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -296,10 +295,13 @@ public class HomeShop extends javax.swing.JFrame {
         try {
             con = ConnectionBuilder.getConnection();
             LoginEPrinting login = new LoginEPrinting();
-            PreparedStatement pstmOrder = con.prepareStatement("SELECT * FROM mydb.Order WHERE ShopProfile_shopID = " + login.getShopId());
+            PreparedStatement pstmOrder = con.prepareStatement("SELECT * FROM mydb.Order "
+                    + "WHERE ShopProfile_shopID = " + login.getShopId());
             ResultSet rsOrder = pstmOrder.executeQuery();
+
             while (rsOrder.next()) {
-                PreparedStatement pstmUser = con.prepareStatement("SELECT * FROM UserProfile WHERE id = " + rsOrder.getInt("UserProfile_id"));
+                PreparedStatement pstmUser = con.prepareStatement("SELECT * FROM UserProfile "
+                        + "WHERE id = " + rsOrder.getInt("UserProfile_id"));
                 ResultSet rsUser = pstmUser.executeQuery();
                 rsUser.next();
                 Vector v = new Vector();
@@ -310,7 +312,35 @@ public class HomeShop extends javax.swing.JFrame {
                     v.add("Pending Responding");
                 }
                 model.addRow(v);
+                
+                //Sort Top 3 Hit
+                PreparedStatement pstmProduct = con.prepareStatement("SELECT productName FROM Product "
+                        + "WHERE ShopProfile_shopID = " + login.getShopId() + " AND NOT productName = 'link product shop" + login.getShopId() +
+                        "' ORDER BY TotalOfPrint LIMIT 3");
+                ResultSet rsProduct = pstmProduct.executeQuery();
+                if (rsProduct.next()) {
+                    topOne.setText(rsProduct.getString("productName"));
+                    if (rsProduct.next()) {
+                        topTwo.setText(rsProduct.getString("productName"));
+                        if (rsProduct.next()) {
+                            topThree.setText(rsProduct.getString("productName"));
+                        } else {
+                            topThree.setText("No Data");
+                        }
+                    } else {
+                        topTwo.setText("No Data");
+                        topThree.setText("No Data");
+                    }
+                } else {
+                    topOne.setText("No Data");
+                    topTwo.setText("No Data");
+                    topThree.setText("No Data");
+                }
+                pstmProduct.close();
+                pstmUser.close();
             }
+            pstmOrder.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(HomeShop.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -356,6 +386,7 @@ public class HomeShop extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bgMenu;
     private javax.swing.JLabel home;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -365,9 +396,13 @@ public class HomeShop extends javax.swing.JFrame {
     private javax.swing.JLabel respondPrint;
     private javax.swing.JLabel signout;
     private javax.swing.JLabel topHit;
-    private javax.swing.JPanel topOne;
-    private javax.swing.JPanel topThree;
-    private javax.swing.JPanel topTwo;
+    private javax.swing.JLabel topOne;
+    private javax.swing.JPanel topOneBG;
+    private javax.swing.JPanel topOneBG1;
+    private javax.swing.JLabel topThree;
+    private javax.swing.JPanel topThreeBG;
+    private javax.swing.JLabel topTwo;
+    private javax.swing.JPanel topTwoBG;
     private javax.swing.JLabel update;
     private javax.swing.JTable updateTable;
     // End of variables declaration//GEN-END:variables
