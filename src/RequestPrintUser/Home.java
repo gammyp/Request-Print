@@ -115,6 +115,9 @@ public class Home extends javax.swing.JFrame {
         NavBar.add(RequestBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 210, -1));
 
         BookListBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BookListBoxMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 BookListBoxMouseEntered(evt);
             }
@@ -372,6 +375,15 @@ public class Home extends javax.swing.JFrame {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
 
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void BookListBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseClicked
+        // TODO add your handling code here:
+        BookList book = new BookList();
+        book.setUserId(UserId);
+        book.setUsername(Username);
+        book.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_BookListBoxMouseClicked
 
     /**
      * @param args the command line arguments

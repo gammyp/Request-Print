@@ -103,6 +103,9 @@ public class Userprofile extends javax.swing.JFrame {
 
         HomeBox.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         HomeBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HomeBoxMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 HomeBoxMouseEntered(evt);
             }
@@ -152,6 +155,9 @@ public class Userprofile extends javax.swing.JFrame {
         );
 
         RequestBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RequestBoxMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 RequestBoxMouseEntered(evt);
             }
@@ -181,6 +187,9 @@ public class Userprofile extends javax.swing.JFrame {
         );
 
         BookListBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BookListBoxMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 BookListBoxMouseEntered(evt);
             }
@@ -370,7 +379,7 @@ public class Userprofile extends javax.swing.JFrame {
     private void HomeBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseExited
         // TODO add your handling code here:
         HomeBox.setBackground(null);
-        HomeLabel.setForeground(Color.white);
+        HomeLabel.setForeground(Color.black);
     }//GEN-LAST:event_HomeBoxMouseExited
 
     private void RequestBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseEntered
@@ -413,6 +422,33 @@ public class Userprofile extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_LogoutBoxMouseClicked
+
+    private void BookListBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseClicked
+        // TODO add your handling code here:
+        BookList book = new BookList();
+        book.setUserId(UserId);
+        book.setUsername(Username);
+        book.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_BookListBoxMouseClicked
+
+    private void HomeBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseClicked
+        // TODO add your handling code here:
+        Home h = new Home();
+        h.setUserId(UserId);
+        h.setUsername(Username);
+        h.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_HomeBoxMouseClicked
+
+    private void RequestBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseClicked
+        // TODO add your handling code here:
+        UserRequest userreq = new UserRequest();
+        userreq.setUserId(UserId);
+        userreq.setUsername(Username);
+        userreq.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_RequestBoxMouseClicked
 
     
 

@@ -298,7 +298,7 @@ public class UserRequest extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 210, 500));
 
         Headder.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        getContentPane().add(Headder, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 500, 30));
+        getContentPane().add(Headder, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 500, 50));
 
         setSize(new java.awt.Dimension(793, 535));
         setLocationRelativeTo(null);
@@ -371,7 +371,11 @@ public class UserRequest extends javax.swing.JFrame {
 
     private void BookListBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseClicked
         // TODO add your handling code here:
-        
+        BookList book = new BookList();
+        book.setUserId(UserId);
+        book.setUsername(Username);
+        book.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_BookListBoxMouseClicked
 
     private void LogoutBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseEntered
