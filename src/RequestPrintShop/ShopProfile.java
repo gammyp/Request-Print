@@ -168,7 +168,7 @@ public class ShopProfile extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 230, 510);
 
-        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel3.setBackground(new java.awt.Color(228, 228, 228));
         jPanel3.setLayout(null);
 
         profileTitle.setFont(new java.awt.Font("Moon", 1, 24)); // NOI18N

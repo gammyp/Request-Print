@@ -10,6 +10,7 @@ import RequestPrintShop.HomeShop;
 import RequestPrintUser.HomeUser;
 import RequestPrintUser.UserRequest;
 import RequestPrintUser.Userprofile;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -140,6 +141,11 @@ public class LoginEPrinting extends javax.swing.JFrame {
         password.setBounds(10, 100, 80, 16);
 
         userNameField.setFont(new java.awt.Font("Cloud Light", 0, 16)); // NOI18N
+        userNameField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                userNameFieldKeyPressed(evt);
+            }
+        });
         jPanel1.add(userNameField);
         userNameField.setBounds(20, 40, 340, 40);
 
@@ -149,6 +155,11 @@ public class LoginEPrinting extends javax.swing.JFrame {
         userName.setBounds(10, 20, 80, 16);
 
         passwordField.setFont(new java.awt.Font("Cloud Light", 0, 16)); // NOI18N
+        passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordFieldKeyPressed(evt);
+            }
+        });
         jPanel1.add(passwordField);
         passwordField.setBounds(20, 120, 340, 40);
 
@@ -193,7 +204,7 @@ public class LoginEPrinting extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void signinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signinMouseClicked
+    private void signin() {
         Connection con = null;
         if (userNameField.getText().equals("") && passwordField.getText().equals("")) {
             errorText.setText("Please enter your username and password!");
@@ -235,10 +246,15 @@ public class LoginEPrinting extends javax.swing.JFrame {
                     passwordField.setText("");
                     errorText.setText("Invalid username or password");
                 }
+                con.close();
             } catch (SQLException ex) {
                 Logger.getLogger(LoginEPrinting.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+
+    private void signinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signinMouseClicked
+        signin();
     }//GEN-LAST:event_signinMouseClicked
 
     private void registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerMouseClicked
@@ -262,6 +278,18 @@ public class LoginEPrinting extends javax.swing.JFrame {
     private void registerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerMouseExited
         registerBG.setBackground(new java.awt.Color(204, 255, 255));
     }//GEN-LAST:event_registerMouseExited
+
+    private void userNameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userNameFieldKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            signin();
+        }
+    }//GEN-LAST:event_userNameFieldKeyPressed
+
+    private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            signin();
+        }
+    }//GEN-LAST:event_passwordFieldKeyPressed
 
     /**
      * @param args the command line arguments

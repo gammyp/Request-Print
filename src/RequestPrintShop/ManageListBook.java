@@ -7,7 +7,9 @@ package RequestPrintShop;
 
 import RequestPrintDatabase.ConnectionBuilder;
 import RequestPrintLogin.LoginEPrinting;
-import java.awt.Color;
+import java.awt.Event;
+import java.awt.Image;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -44,33 +47,37 @@ public class ManageListBook extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        sideLeft = new javax.swing.JPanel();
+        signOut = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        home = new javax.swing.JLabel();
+        profile = new javax.swing.JLabel();
+        manageBook = new javax.swing.JLabel();
+        bgMenu = new javax.swing.JPanel();
+        respondPrint = new javax.swing.JLabel();
+        logoutIcon = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         manageTable = new javax.swing.JTable();
         manageBookTitle = new javax.swing.JLabel();
-        bookName = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        date = new javax.swing.JLabel();
         productID = new javax.swing.JLabel();
         showProductID = new javax.swing.JLabel();
-        respondPrint = new javax.swing.JLabel();
-        detail = new javax.swing.JLabel();
-        price = new javax.swing.JLabel();
-        showPrice = new javax.swing.JLabel();
-        deleteButton = new javax.swing.JButton();
-        addButton = new javax.swing.JButton();
-        home = new javax.swing.JLabel();
-        profile = new javax.swing.JLabel();
-        showDate = new javax.swing.JLabel();
-        signOut = new javax.swing.JLabel();
-        manageBook = new javax.swing.JLabel();
-        bgMenu = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        bookName = new javax.swing.JLabel();
         showBookName = new javax.swing.JLabel();
+        date = new javax.swing.JLabel();
+        showDate = new javax.swing.JLabel();
+        detail = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         showDetail = new javax.swing.JTextPane();
+        price = new javax.swing.JLabel();
+        showPrice = new javax.swing.JLabel();
         searchField = new javax.swing.JTextField();
-        searchButton = new javax.swing.JButton();
+        searchButton = new javax.swing.JPanel();
+        searchIcon = new javax.swing.JLabel();
+        addBookButtonBG = new javax.swing.JPanel();
+        addBookButton = new javax.swing.JLabel();
+        deleteButtonBG = new javax.swing.JPanel();
+        deleteButton = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -86,6 +93,91 @@ public class ManageListBook extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
+        sideLeft.setBackground(new java.awt.Color(102, 102, 102));
+        sideLeft.setLayout(null);
+
+        signOut.setFont(new java.awt.Font("Cloud Light", 1, 14)); // NOI18N
+        signOut.setForeground(new java.awt.Color(255, 255, 255));
+        signOut.setText("Sign out");
+        signOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        signOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                signOutMouseClicked(evt);
+            }
+        });
+        sideLeft.add(signOut);
+        signOut.setBounds(140, 510, 60, 20);
+        sideLeft.add(jLabel1);
+        jLabel1.setBounds(200, 500, 0, 0);
+
+        home.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
+        home.setForeground(new java.awt.Color(255, 255, 255));
+        home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        home.setText("Home");
+        home.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        home.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                homeMouseClicked(evt);
+            }
+        });
+        sideLeft.add(home);
+        home.setBounds(0, 100, 230, 30);
+
+        profile.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
+        profile.setForeground(new java.awt.Color(255, 255, 255));
+        profile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        profile.setText("Profile");
+        profile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        profile.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                profileMouseClicked(evt);
+            }
+        });
+        sideLeft.add(profile);
+        profile.setBounds(0, 150, 230, 30);
+
+        manageBook.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
+        manageBook.setForeground(new java.awt.Color(255, 255, 255));
+        manageBook.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        manageBook.setText("Manage Book");
+        manageBook.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sideLeft.add(manageBook);
+        manageBook.setBounds(0, 200, 230, 30);
+
+        bgMenu.setBackground(new java.awt.Color(102, 102, 102));
+        sideLeft.add(bgMenu);
+        bgMenu.setBounds(0, 200, 230, 30);
+
+        respondPrint.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
+        respondPrint.setForeground(new java.awt.Color(255, 255, 255));
+        respondPrint.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        respondPrint.setText("Respond Print");
+        respondPrint.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        respondPrint.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                respondPrintMouseClicked(evt);
+            }
+        });
+        sideLeft.add(respondPrint);
+        respondPrint.setBounds(0, 250, 230, 30);
+
+        logoutIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logoutIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutIconMouseClicked(evt);
+            }
+        });
+        sideLeft.add(logoutIcon);
+        logoutIcon.setBounds(200, 510, 20, 20);
+
+        getContentPane().add(sideLeft);
+        sideLeft.setBounds(0, 0, 230, 570);
+
+        jPanel2.setBackground(new java.awt.Color(228, 228, 228));
+        jPanel2.setLayout(null);
+
+        manageTable.setBackground(new java.awt.Color(226, 252, 226));
+        manageTable.setFont(new java.awt.Font("Cloud Light", 0, 13)); // NOI18N
         manageTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -112,6 +204,8 @@ public class ManageListBook extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        manageTable.setSelectionBackground(new java.awt.Color(204, 255, 255));
+        manageTable.setSelectionForeground(new java.awt.Color(0, 0, 0));
         manageTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 manageTableMouseClicked(evt);
@@ -119,157 +213,185 @@ public class ManageListBook extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(manageTable);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(390, 20, 452, 360);
+        jPanel2.add(jScrollPane1);
+        jScrollPane1.setBounds(220, 60, 470, 380);
 
-        manageBookTitle.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        manageBookTitle.setFont(new java.awt.Font("Moon", 1, 24)); // NOI18N
         manageBookTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         manageBookTitle.setText("Manage Books");
-        getContentPane().add(manageBookTitle);
-        manageBookTitle.setBounds(190, 40, 200, 30);
+        jPanel2.add(manageBookTitle);
+        manageBookTitle.setBounds(0, 20, 710, 30);
 
-        bookName.setText("Name");
-        getContentPane().add(bookName);
-        bookName.setBounds(210, 140, 40, 16);
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(20, 110, 160, 0);
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(20, 110, 160, 0);
-
-        date.setText("Date");
-        getContentPane().add(date);
-        date.setBounds(210, 190, 50, 16);
-
+        productID.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
         productID.setText("Product ID");
-        getContentPane().add(productID);
-        productID.setBounds(210, 90, 60, 16);
-        getContentPane().add(showProductID);
-        showProductID.setBounds(220, 110, 150, 20);
+        jPanel2.add(productID);
+        productID.setBounds(20, 100, 100, 30);
 
-        respondPrint.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        respondPrint.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        respondPrint.setText("Respond Print");
-        respondPrint.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        respondPrint.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                respondPrintMouseClicked(evt);
-            }
-        });
-        getContentPane().add(respondPrint);
-        respondPrint.setBounds(0, 250, 190, 30);
+        showProductID.setFont(new java.awt.Font("Moon", 1, 13)); // NOI18N
+        jPanel2.add(showProductID);
+        showProductID.setBounds(30, 130, 170, 20);
 
+        bookName.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
+        bookName.setText("Name");
+        jPanel2.add(bookName);
+        bookName.setBounds(20, 160, 60, 30);
+
+        showBookName.setFont(new java.awt.Font("Moon", 1, 13)); // NOI18N
+        jPanel2.add(showBookName);
+        showBookName.setBounds(30, 190, 170, 20);
+
+        date.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
+        date.setText("Date");
+        jPanel2.add(date);
+        date.setBounds(20, 220, 50, 30);
+
+        showDate.setFont(new java.awt.Font("Moon", 1, 13)); // NOI18N
+        jPanel2.add(showDate);
+        showDate.setBounds(30, 250, 170, 20);
+
+        detail.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
         detail.setText("Detail");
-        getContentPane().add(detail);
-        detail.setBounds(210, 240, 70, 16);
-
-        price.setText("Price of print");
-        getContentPane().add(price);
-        price.setBounds(210, 350, 80, 16);
-        getContentPane().add(showPrice);
-        showPrice.setBounds(220, 370, 150, 20);
-
-        deleteButton.setText("Delete");
-        deleteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        deleteButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(deleteButton);
-        deleteButton.setBounds(680, 430, 70, 30);
-
-        addButton.setText("Add");
-        addButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        addButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(addButton);
-        addButton.setBounds(770, 430, 70, 30);
-
-        home.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        home.setText("Home");
-        home.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        home.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                homeMouseClicked(evt);
-            }
-        });
-        getContentPane().add(home);
-        home.setBounds(0, 100, 190, 30);
-
-        profile.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        profile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        profile.setText("Profile");
-        profile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        profile.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                profileMouseClicked(evt);
-            }
-        });
-        getContentPane().add(profile);
-        profile.setBounds(0, 150, 190, 30);
-        getContentPane().add(showDate);
-        showDate.setBounds(220, 210, 150, 20);
-
-        signOut.setText("Sign out");
-        signOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        signOut.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                signOutMouseClicked(evt);
-            }
-        });
-        getContentPane().add(signOut);
-        signOut.setBounds(7, 450, 50, 20);
-
-        manageBook.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        manageBook.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        manageBook.setText("Manage Book");
-        manageBook.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(manageBook);
-        manageBook.setBounds(0, 200, 190, 30);
-
-        bgMenu.setBackground(new java.awt.Color(204, 204, 204));
-        getContentPane().add(bgMenu);
-        bgMenu.setBounds(0, 200, 190, 30);
-
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 190, 480);
-        getContentPane().add(showBookName);
-        showBookName.setBounds(220, 160, 150, 20);
+        jPanel2.add(detail);
+        detail.setBounds(20, 280, 70, 30);
 
         showDetail.setBackground(null);
         showDetail.setEditable(false);
-        showDetail.setBackground(new java.awt.Color(240, 240, 240));
+        showDetail.setBackground(new java.awt.Color(228, 228, 228));
         showDetail.setBorder(null);
+        showDetail.setFont(new java.awt.Font("Moon", 1, 13)); // NOI18N
+        showDetail.setCaretColor(new java.awt.Color(102, 102, 102));
         jScrollPane2.setViewportView(showDetail);
 
-        getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(220, 260, 150, 80);
-        getContentPane().add(searchField);
-        searchField.setBounds(390, 390, 360, 30);
+        jPanel2.add(jScrollPane2);
+        jScrollPane2.setBounds(30, 310, 170, 80);
 
-        searchButton.setText("search");
-        searchButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButtonActionPerformed(evt);
+        price.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
+        price.setText("Price of print");
+        jPanel2.add(price);
+        price.setBounds(20, 400, 140, 30);
+
+        showPrice.setFont(new java.awt.Font("Moon", 1, 13)); // NOI18N
+        jPanel2.add(showPrice);
+        showPrice.setBounds(30, 430, 170, 20);
+
+        searchField.setFont(new java.awt.Font("Cloud Light", 0, 13)); // NOI18N
+        searchField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchFieldKeyPressed(evt);
             }
         });
-        getContentPane().add(searchButton);
-        searchButton.setBounds(760, 390, 80, 30);
+        jPanel2.add(searchField);
+        searchField.setBounds(220, 450, 420, 30);
 
-        setSize(new java.awt.Dimension(879, 524));
+        searchButton.setBackground(new java.awt.Color(204, 204, 204));
+        searchButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                searchButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                searchButtonMouseExited(evt);
+            }
+        });
+        searchButton.setLayout(null);
+
+        searchIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchIconMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                searchIconMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                searchIconMouseExited(evt);
+            }
+        });
+        searchButton.add(searchIcon);
+        searchIcon.setBounds(10, 0, 30, 30);
+
+        jPanel2.add(searchButton);
+        searchButton.setBounds(640, 450, 50, 30);
+
+        addBookButtonBG.setBackground(new java.awt.Color(153, 255, 153));
+        addBookButtonBG.setLayout(null);
+
+        addBookButton.setFont(new java.awt.Font("Cloud Light", 0, 18)); // NOI18N
+        addBookButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        addBookButton.setText("Add Book");
+        addBookButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addBookButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addBookButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                addBookButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                addBookButtonMouseExited(evt);
+            }
+        });
+        addBookButtonBG.add(addBookButton);
+        addBookButton.setBounds(0, 0, 230, 40);
+
+        jPanel2.add(addBookButtonBG);
+        addBookButtonBG.setBounds(460, 490, 230, 40);
+
+        deleteButtonBG.setBackground(new java.awt.Color(255, 204, 204));
+        deleteButtonBG.setLayout(null);
+
+        deleteButton.setFont(new java.awt.Font("Cloud Light", 0, 18)); // NOI18N
+        deleteButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        deleteButton.setText("Delete");
+        deleteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                deleteButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                deleteButtonMouseExited(evt);
+            }
+        });
+        deleteButtonBG.add(deleteButton);
+        deleteButton.setBounds(0, 0, 230, 40);
+
+        jPanel2.add(deleteButtonBG);
+        deleteButtonBG.setBounds(220, 490, 230, 40);
+
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(230, 0, 810, 590);
+
+        setSize(new java.awt.Dimension(952, 575));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+    private void search() {
+        this.model = (DefaultTableModel) manageTable.getModel();
+        model.setRowCount(0);
+        Connection con = null;
+        try {
+            con = ConnectionBuilder.getConnection();
+            LoginEPrinting login = new LoginEPrinting();
+            PreparedStatement pstm = con.prepareStatement("SELECT productID,productName,price FROM Product "
+                    + "WHERE productName LIKE ? AND ShopProfile_shopId = " + login.getShopId());
+            pstm.setString(1, searchField.getText() + "%");
+            ResultSet rs = pstm.executeQuery();
 
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        AddBookToManageBook add = new AddBookToManageBook();
-        add.setVisible(true);
-    }//GEN-LAST:event_addButtonActionPerformed
-
+            while (rs.next()) {
+                Vector v = new Vector();
+                v.add(rs.getInt("productID"));
+                v.add(rs.getString("productName"));
+                v.add(rs.getString("price"));
+                model.addRow(v);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageListBook.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         model = (DefaultTableModel) manageTable.getModel();
         model.setRowCount(0);
@@ -294,9 +416,16 @@ public class ManageListBook extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        manageBook.setForeground(Color.WHITE);
-        manageBook.setBackground(Color.DARK_GRAY);
-        bgMenu.setBackground(Color.DARK_GRAY);
+        manageBook.setForeground(new java.awt.Color(30, 30, 30));
+        manageBook.setBackground(new java.awt.Color(234, 234, 234));
+        bgMenu.setBackground(new java.awt.Color(234, 234, 234));
+        showDetail.setBackground(new java.awt.Color(228, 228, 228));
+
+        Image logout = new ImageIcon(this.getClass().getResource("../icon/logout.png")).getImage();
+        logoutIcon.setIcon(new ImageIcon(logout.getScaledInstance(logoutIcon.getWidth(), logoutIcon.getHeight(), 0)));
+
+        Image search = new ImageIcon(this.getClass().getResource("../icon/search.png")).getImage();
+        searchIcon.setIcon(new ImageIcon(search.getScaledInstance(searchIcon.getWidth(), searchIcon.getHeight(), 0)));
     }//GEN-LAST:event_formComponentShown
 
     private void profileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseClicked
@@ -339,24 +468,6 @@ public class ManageListBook extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_manageTableMouseClicked
 
-    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        int row = manageTable.getSelectedRow();
-        Connection con = null;
-        try {
-            con = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = con.prepareStatement("DELETE FROM Product WHERE ProductID = ?");
-            pstm.setInt(1, Integer.parseInt(showProductID.getText()));
-            int ans = JOptionPane.showConfirmDialog(null, "Delete", "Confirm", JOptionPane.WARNING_MESSAGE);
-            if (ans == 0) {
-                pstm.executeUpdate();
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ManageListBook.class
-                    .getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_deleteButtonActionPerformed
-
     private void signOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signOutMouseClicked
         LoginEPrinting login = new LoginEPrinting();
         this.setVisible(false);
@@ -375,30 +486,80 @@ public class ManageListBook extends javax.swing.JFrame {
         home.setVisible(true);
     }//GEN-LAST:event_homeMouseClicked
 
-    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        this.model = (DefaultTableModel) manageTable.getModel();
-        model.setRowCount(0);
+    private void searchIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchIconMouseClicked
+        search();
+    }//GEN-LAST:event_searchIconMouseClicked
+
+    private void searchButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseClicked
+        search();
+    }//GEN-LAST:event_searchButtonMouseClicked
+
+    private void searchFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            search();
+        }
+    }//GEN-LAST:event_searchFieldKeyPressed
+
+    private void addBookButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBookButtonMouseClicked
+        AddBookToManageBook add = new AddBookToManageBook();
+        add.setVisible(true);
+    }//GEN-LAST:event_addBookButtonMouseClicked
+
+    private void deleteButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonMouseClicked
+        int row = manageTable.getSelectedRow();
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
-            LoginEPrinting login = new LoginEPrinting();
-            PreparedStatement pstm = con.prepareStatement("SELECT productID,productName,price FROM Product "
-                    + "WHERE productName LIKE ? AND ShopProfile_shopId = " + login.getShopId());
-            pstm.setString(1, searchField.getText() + "%");
-            ResultSet rs = pstm.executeQuery();
+            PreparedStatement pstm = con.prepareStatement("DELETE FROM Product WHERE ProductID = ?");
+            pstm.setInt(1, Integer.parseInt(showProductID.getText()));
+            int ans = JOptionPane.showConfirmDialog(null, "Delete", "Confirm", JOptionPane.WARNING_MESSAGE);
+            if (ans == 0) {
+                pstm.executeUpdate();
 
-            while (rs.next()) {
-                Vector v = new Vector();
-                v.add(rs.getInt("productID"));
-                v.add(rs.getString("productName"));
-                v.add(rs.getString("price"));
-                model.addRow(v);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ManageListBook.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManageListBook.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
+    }//GEN-LAST:event_deleteButtonMouseClicked
 
-    }//GEN-LAST:event_searchButtonActionPerformed
+    private void logoutIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutIconMouseClicked
+        LoginEPrinting sLogin = new LoginEPrinting();
+        this.setVisible(false);
+        sLogin.setVisible(true);
+    }//GEN-LAST:event_logoutIconMouseClicked
+
+    private void deleteButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonMouseEntered
+        deleteButtonBG.setBackground(new java.awt.Color(255, 153, 153));
+    }//GEN-LAST:event_deleteButtonMouseEntered
+
+    private void deleteButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonMouseExited
+        deleteButtonBG.setBackground(new java.awt.Color(255, 204, 204));
+    }//GEN-LAST:event_deleteButtonMouseExited
+
+    private void addBookButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBookButtonMouseEntered
+        addBookButtonBG.setBackground(new java.awt.Color(102, 255, 102));
+    }//GEN-LAST:event_addBookButtonMouseEntered
+
+    private void addBookButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBookButtonMouseExited
+        addBookButtonBG.setBackground(new java.awt.Color(153, 255, 153));
+    }//GEN-LAST:event_addBookButtonMouseExited
+
+    private void searchButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseEntered
+        searchButton.setBackground(new java.awt.Color(182,182,182));
+    }//GEN-LAST:event_searchButtonMouseEntered
+
+    private void searchButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseExited
+        searchButton.setBackground(new java.awt.Color(204,204,204));
+    }//GEN-LAST:event_searchButtonMouseExited
+
+    private void searchIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchIconMouseEntered
+        searchButton.setBackground(new java.awt.Color(182,182,182));
+    }//GEN-LAST:event_searchIconMouseEntered
+
+    private void searchIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchIconMouseExited
+        searchButton.setBackground(new java.awt.Color(204,204,204));
+    }//GEN-LAST:event_searchIconMouseExited
 
     /**
      * @param args the command line arguments
@@ -444,18 +605,20 @@ public class ManageListBook extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addButton;
+    private javax.swing.JLabel addBookButton;
+    private javax.swing.JPanel addBookButtonBG;
     private javax.swing.JPanel bgMenu;
     private javax.swing.JLabel bookName;
     private javax.swing.JLabel date;
-    private javax.swing.JButton deleteButton;
+    private javax.swing.JLabel deleteButton;
+    private javax.swing.JPanel deleteButtonBG;
     private javax.swing.JLabel detail;
     private javax.swing.JLabel home;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel logoutIcon;
     private javax.swing.JLabel manageBook;
     private javax.swing.JLabel manageBookTitle;
     private javax.swing.JTable manageTable;
@@ -463,13 +626,15 @@ public class ManageListBook extends javax.swing.JFrame {
     private javax.swing.JLabel productID;
     private javax.swing.JLabel profile;
     private javax.swing.JLabel respondPrint;
-    private javax.swing.JButton searchButton;
+    private javax.swing.JPanel searchButton;
     private javax.swing.JTextField searchField;
+    private javax.swing.JLabel searchIcon;
     private javax.swing.JLabel showBookName;
     public javax.swing.JLabel showDate;
     private javax.swing.JTextPane showDetail;
     private javax.swing.JLabel showPrice;
     public javax.swing.JLabel showProductID;
+    private javax.swing.JPanel sideLeft;
     private javax.swing.JLabel signOut;
     // End of variables declaration//GEN-END:variables
 }

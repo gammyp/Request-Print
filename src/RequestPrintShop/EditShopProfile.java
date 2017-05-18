@@ -70,7 +70,7 @@ public class EditShopProfile extends javax.swing.JFrame {
         getContentPane().add(editProfileTitls);
         editProfileTitls.setBounds(-1, 13, 520, 30);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(228, 228, 228));
         jPanel1.setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(153, 255, 153));
@@ -79,6 +79,7 @@ public class EditShopProfile extends javax.swing.JFrame {
         saveLabelButton.setFont(new java.awt.Font("Cloud Light", 0, 18)); // NOI18N
         saveLabelButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         saveLabelButton.setText("Save");
+        saveLabelButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         saveLabelButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 saveLabelButtonMouseClicked(evt);
