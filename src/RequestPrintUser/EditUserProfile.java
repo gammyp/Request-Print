@@ -150,7 +150,6 @@ public class EditUserProfile extends javax.swing.JFrame {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         Connection con = null;
-        UserRequest usr = new UserRequest();
         try {
             con = ConnectionBuilder.getConnection();
             LoginEPrinting login = new LoginEPrinting();
@@ -164,7 +163,6 @@ public class EditUserProfile extends javax.swing.JFrame {
             pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Save Successful");
             
-            usr.setVisible(true);
             this.setVisible(false);
             con.close();
             pstm.close();

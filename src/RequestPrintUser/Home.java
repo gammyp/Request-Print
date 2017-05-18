@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Phornlert
  */
-public class StatusCheck extends javax.swing.JFrame {
+public class Home extends javax.swing.JFrame {
     
     private String Username;
     private int UserId;
@@ -33,7 +33,7 @@ public class StatusCheck extends javax.swing.JFrame {
     /**
      * Creates new form StatusCheck
      */
-    public StatusCheck() {
+    public Home() {
         initComponents();
     }
     
@@ -55,18 +55,16 @@ public class StatusCheck extends javax.swing.JFrame {
     private void initComponents() {
 
         NavBar = new javax.swing.JPanel();
-        HomeBox = new javax.swing.JPanel();
-        Home = new javax.swing.JLabel();
         RequestBox = new javax.swing.JPanel();
         RequestPrint = new javax.swing.JLabel();
         BookListBox = new javax.swing.JPanel();
         BookList = new javax.swing.JLabel();
-        CheckStatusBox = new javax.swing.JPanel();
-        CheckStatus = new javax.swing.JLabel();
         YourProfileBox = new javax.swing.JPanel();
         YourProfile = new javax.swing.JLabel();
         LogoutBox = new javax.swing.JPanel();
         Logout = new javax.swing.JLabel();
+        HomeBox = new javax.swing.JPanel();
+        HomeLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -81,40 +79,6 @@ public class StatusCheck extends javax.swing.JFrame {
 
         NavBar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         NavBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        HomeBox.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                HomeBoxMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                HomeBoxMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                HomeBoxMouseExited(evt);
-            }
-        });
-
-        Home.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        Home.setText("Home");
-
-        javax.swing.GroupLayout HomeBoxLayout = new javax.swing.GroupLayout(HomeBox);
-        HomeBox.setLayout(HomeBoxLayout);
-        HomeBoxLayout.setHorizontalGroup(
-            HomeBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HomeBoxLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(Home)
-                .addContainerGap(88, Short.MAX_VALUE))
-        );
-        HomeBoxLayout.setVerticalGroup(
-            HomeBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HomeBoxLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Home)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        NavBar.add(HomeBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 210, -1));
 
         RequestBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -179,29 +143,7 @@ public class StatusCheck extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        NavBar.add(BookListBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 199, 210, -1));
-
-        CheckStatus.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        CheckStatus.setText("Document Status");
-
-        javax.swing.GroupLayout CheckStatusBoxLayout = new javax.swing.GroupLayout(CheckStatusBox);
-        CheckStatusBox.setLayout(CheckStatusBoxLayout);
-        CheckStatusBoxLayout.setHorizontalGroup(
-            CheckStatusBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CheckStatusBoxLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(CheckStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        CheckStatusBoxLayout.setVerticalGroup(
-            CheckStatusBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CheckStatusBoxLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(CheckStatus)
-                .addGap(172, 172, 172))
-        );
-
-        NavBar.add(CheckStatusBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 256, 210, 51));
+        NavBar.add(BookListBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 210, -1));
 
         YourProfileBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -222,10 +164,10 @@ public class StatusCheck extends javax.swing.JFrame {
         YourProfileBox.setLayout(YourProfileBoxLayout);
         YourProfileBoxLayout.setHorizontalGroup(
             YourProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(YourProfileBoxLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, YourProfileBoxLayout.createSequentialGroup()
+                .addContainerGap(45, Short.MAX_VALUE)
                 .addComponent(YourProfile)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addGap(42, 42, 42))
         );
         YourProfileBoxLayout.setVerticalGroup(
             YourProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,12 +211,34 @@ public class StatusCheck extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        NavBar.add(LogoutBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 210, 50));
+        NavBar.add(LogoutBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 210, 50));
+
+        HomeLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        HomeLabel.setText("Home");
+
+        javax.swing.GroupLayout HomeBoxLayout = new javax.swing.GroupLayout(HomeBox);
+        HomeBox.setLayout(HomeBoxLayout);
+        HomeBoxLayout.setHorizontalGroup(
+            HomeBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HomeBoxLayout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addComponent(HomeLabel)
+                .addContainerGap(77, Short.MAX_VALUE))
+        );
+        HomeBoxLayout.setVerticalGroup(
+            HomeBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HomeBoxLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(HomeLabel)
+                .addContainerGap())
+        );
+
+        NavBar.add(HomeBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 210, 50));
 
         getContentPane().add(NavBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 400));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Select your document to see status.");
+        jLabel1.setText("Your document to see status.");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -328,30 +292,11 @@ public class StatusCheck extends javax.swing.JFrame {
                 model.addRow(v);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(StatusCheck.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_formWindowActivated
-
-    private void HomeBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseEntered
-        // TODO add your handling code here:
-        Home.setForeground(Color.white);
+        HomeLabel.setForeground(Color.white);
         HomeBox.setBackground(Color.black);
-    }//GEN-LAST:event_HomeBoxMouseEntered
-
-    private void HomeBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseExited
-        // TODO add your handling code here:
-        Home.setForeground(Color.black);
-        HomeBox.setBackground(null);
-    }//GEN-LAST:event_HomeBoxMouseExited
-
-    private void HomeBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseClicked
-        // TODO add your handling code here:
-        HomeUser home = new HomeUser();
-        home.setUsername(Username);
-        home.setUserId(UserId);
-        home.setVisible(true);
-        setVisible(false);
-    }//GEN-LAST:event_HomeBoxMouseClicked
+    }//GEN-LAST:event_formWindowActivated
 
     private void RequestBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseEntered
         // TODO add your handling code here:
@@ -445,20 +390,21 @@ public class StatusCheck extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StatusCheck.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StatusCheck.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StatusCheck.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StatusCheck.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StatusCheck().setVisible(true);
+                new Home().setVisible(true);
             }
         });
     }
@@ -466,10 +412,8 @@ public class StatusCheck extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BookList;
     private javax.swing.JPanel BookListBox;
-    private javax.swing.JLabel CheckStatus;
-    private javax.swing.JPanel CheckStatusBox;
-    private javax.swing.JLabel Home;
     private javax.swing.JPanel HomeBox;
+    private javax.swing.JLabel HomeLabel;
     private javax.swing.JLabel Logout;
     private javax.swing.JPanel LogoutBox;
     private javax.swing.JPanel NavBar;

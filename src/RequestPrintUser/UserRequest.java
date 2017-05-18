@@ -79,8 +79,6 @@ public class UserRequest extends javax.swing.JFrame {
         YourProfile = new javax.swing.JLabel();
         BookListBox = new javax.swing.JPanel();
         BookList = new javax.swing.JLabel();
-        CheckStatusBox = new javax.swing.JPanel();
-        CheckStatus = new javax.swing.JLabel();
         LogoutBox = new javax.swing.JPanel();
         Logout = new javax.swing.JLabel();
         Headder = new javax.swing.JLabel();
@@ -239,38 +237,6 @@ public class UserRequest extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        CheckStatusBox.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CheckStatusBoxMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                CheckStatusBoxMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                CheckStatusBoxMouseExited(evt);
-            }
-        });
-
-        CheckStatus.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        CheckStatus.setText("Check Status");
-
-        javax.swing.GroupLayout CheckStatusBoxLayout = new javax.swing.GroupLayout(CheckStatusBox);
-        CheckStatusBox.setLayout(CheckStatusBoxLayout);
-        CheckStatusBoxLayout.setHorizontalGroup(
-            CheckStatusBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CheckStatusBoxLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(CheckStatus)
-                .addGap(30, 30, 30))
-        );
-        CheckStatusBoxLayout.setVerticalGroup(
-            CheckStatusBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CheckStatusBoxLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(CheckStatus)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         LogoutBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 LogoutBoxMouseClicked(evt);
@@ -308,10 +274,9 @@ public class UserRequest extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(HomeBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(RequestPrintBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(RequestPrintBox, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
             .addComponent(YourProfileBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(BookListBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(CheckStatusBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(LogoutBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -323,13 +288,11 @@ public class UserRequest extends javax.swing.JFrame {
                 .addComponent(YourProfileBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(RequestPrintBox, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(BookListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(CheckStatusBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(LogoutBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(118, 118, 118))
+                .addGap(180, 180, 180))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 210, 500));
@@ -387,7 +350,7 @@ public class UserRequest extends javax.swing.JFrame {
 
     private void HomeBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseClicked
         // TODO add your handling code here:
-        HomeUser home = new HomeUser();
+        Home home = new Home();
         home.setUserId(UserId);
         home.setUsername(Username);
         home.setVisible(true);
@@ -411,18 +374,6 @@ public class UserRequest extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BookListBoxMouseClicked
 
-    private void CheckStatusBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckStatusBoxMouseEntered
-        // TODO add your handling code here:
-        CheckStatusBox.setBackground(Color.black);
-        CheckStatus.setForeground(Color.white);
-    }//GEN-LAST:event_CheckStatusBoxMouseEntered
-
-    private void CheckStatusBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckStatusBoxMouseExited
-        // TODO add your handling code here:
-        CheckStatusBox.setBackground(null);
-        CheckStatus.setForeground(Color.black);
-    }//GEN-LAST:event_CheckStatusBoxMouseExited
-
     private void LogoutBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseEntered
         // TODO add your handling code here:
         Logout.setForeground(Color.white);
@@ -439,15 +390,6 @@ public class UserRequest extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_LogoutBoxMouseClicked
-
-    private void CheckStatusBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckStatusBoxMouseClicked
-        // TODO add your handling code here:
-        StatusCheck status = new StatusCheck();
-        status.setUserId(UserId);
-        status.setUsername(Username);
-        status.setVisible(true);
-        setVisible(false);
-    }//GEN-LAST:event_CheckStatusBoxMouseClicked
 
     private void RequestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestMouseClicked
         // TODO add your handling code here:
@@ -499,8 +441,6 @@ public class UserRequest extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BookList;
     private javax.swing.JPanel BookListBox;
-    private javax.swing.JLabel CheckStatus;
-    private javax.swing.JPanel CheckStatusBox;
     private javax.swing.JLabel Copies;
     private javax.swing.JTextField DocumentLink;
     private javax.swing.JLabel Headder;
