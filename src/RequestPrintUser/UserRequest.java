@@ -36,16 +36,8 @@ public class UserRequest extends javax.swing.JFrame {
         this.Username = Username;
     }
     
-    public String getUsername() {
-        return Username;
-    }
-    
     public void setUserId(int UserId) {
         this.UserId = UserId;
-    }
-    
-    public int getuserId() {
-        return UserId;
     }
     
 
@@ -59,7 +51,6 @@ public class UserRequest extends javax.swing.JFrame {
     private void initComponents() {
 
         Request = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         DocumentLink = new javax.swing.JTextField();
         LocationLink = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -69,7 +60,7 @@ public class UserRequest extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         MessageLabel = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        Navbar = new javax.swing.JPanel();
         HomeBox = new javax.swing.JPanel();
         Home = new javax.swing.JLabel();
         RequestPrintBox = new javax.swing.JPanel();
@@ -80,6 +71,7 @@ public class UserRequest extends javax.swing.JFrame {
         BookList = new javax.swing.JLabel();
         LogoutBox = new javax.swing.JPanel();
         Logout = new javax.swing.JLabel();
+        HeaderBox = new javax.swing.JPanel();
         Headder = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -102,10 +94,7 @@ public class UserRequest extends javax.swing.JFrame {
                 RequestActionPerformed(evt);
             }
         });
-        getContentPane().add(Request, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 460, -1, -1));
-
-        jLabel1.setText("beta 2");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, -1, -1));
+        getContentPane().add(Request, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, -1, -1));
         getContentPane().add(DocumentLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 410, -1));
 
         LocationLink.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -132,7 +121,7 @@ public class UserRequest extends javax.swing.JFrame {
         MessageLabel.setText("Message to shop.");
         getContentPane().add(MessageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, -1, -1));
 
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Navbar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         HomeBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -268,19 +257,19 @@ public class UserRequest extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout NavbarLayout = new javax.swing.GroupLayout(Navbar);
+        Navbar.setLayout(NavbarLayout);
+        NavbarLayout.setHorizontalGroup(
+            NavbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(HomeBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(RequestPrintBox, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
             .addComponent(YourProfileBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(BookListBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(LogoutBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        NavbarLayout.setVerticalGroup(
+            NavbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(NavbarLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(HomeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -294,28 +283,51 @@ public class UserRequest extends javax.swing.JFrame {
                 .addGap(180, 180, 180))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 210, 500));
+        getContentPane().add(Navbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 210, 510));
 
         Headder.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        getContentPane().add(Headder, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 500, 50));
 
-        setSize(new java.awt.Dimension(793, 535));
+        javax.swing.GroupLayout HeaderBoxLayout = new javax.swing.GroupLayout(HeaderBox);
+        HeaderBox.setLayout(HeaderBoxLayout);
+        HeaderBoxLayout.setHorizontalGroup(
+            HeaderBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HeaderBoxLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Headder, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(280, Short.MAX_VALUE))
+        );
+        HeaderBoxLayout.setVerticalGroup(
+            HeaderBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HeaderBoxLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Headder, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(HeaderBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 60));
+
+        setSize(new java.awt.Dimension(793, 526));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void RequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RequestActionPerformed
         // TODO add your handling code here:
-        DocURL = DocumentLink.getText();
+        /*DocURL = DocumentLink.getText();
         SelectShop selc = new SelectShop();
         setVisible(false);
-        selc.setVisible(true);
+        selc.setVisible(true);*/
     }//GEN-LAST:event_RequestActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-            RequestPrintBox.setBackground(Color.black);
-            RequestPrint.setForeground(Color.white);
-            Headder.setText("Welcome , "+Username);
-        
+        RequestPrintBox.setBackground(Color.black);
+        RequestPrint.setForeground(Color.white);
+        Headder.setText("Welcome , "+Username);
+        HeaderBox.setBackground(Color.green.brighter());
+        Navbar.setBackground(Color.LIGHT_GRAY);
+        YourProfileBox.setBackground(null);
+        HomeBox.setBackground(null);
+        BookListBox.setBackground(null);
+        LogoutBox.setBackground(null);
     }//GEN-LAST:event_formWindowActivated
 
     private void YourProfileBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseEntered
@@ -451,12 +463,14 @@ public class UserRequest extends javax.swing.JFrame {
     private javax.swing.JLabel Copies;
     private javax.swing.JTextField DocumentLink;
     private javax.swing.JLabel Headder;
+    private javax.swing.JPanel HeaderBox;
     private javax.swing.JLabel Home;
     private javax.swing.JPanel HomeBox;
     private javax.swing.JLabel LocationLink;
     private javax.swing.JLabel Logout;
     private javax.swing.JPanel LogoutBox;
     private javax.swing.JLabel MessageLabel;
+    private javax.swing.JPanel Navbar;
     private javax.swing.JSpinner NumberofCopies;
     private javax.swing.JButton Request;
     private javax.swing.JLabel RequestHaed;
@@ -464,9 +478,7 @@ public class UserRequest extends javax.swing.JFrame {
     private javax.swing.JPanel RequestPrintBox;
     private javax.swing.JLabel YourProfile;
     private javax.swing.JPanel YourProfileBox;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
