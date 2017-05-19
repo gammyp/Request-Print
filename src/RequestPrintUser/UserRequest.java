@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import RequestPrintUser.SelectShop;
 
 /**
  *
@@ -58,7 +59,7 @@ public class UserRequest extends javax.swing.JFrame {
         NumberofCopies = new javax.swing.JSpinner();
         Copies = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        Message = new javax.swing.JTextArea();
         MessageLabel = new javax.swing.JLabel();
         Navbar = new javax.swing.JPanel();
         HomeBox = new javax.swing.JPanel();
@@ -112,9 +113,9 @@ public class UserRequest extends javax.swing.JFrame {
         Copies.setText("Copies");
         getContentPane().add(Copies, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, -1, -1));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        Message.setColumns(20);
+        Message.setRows(5);
+        jScrollPane1.setViewportView(Message);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 520, 170));
 
@@ -414,11 +415,12 @@ public class UserRequest extends javax.swing.JFrame {
     private void RequestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestMouseClicked
         // TODO add your handling code here:
         int DocCopies = (int)NumberofCopies.getValue();
-        SelectShop select = new SelectShop();
+        RequestPrintUser.SelectShop select = new RequestPrintUser.SelectShop();
         select.setDocCopies(DocCopies);
         select.setUsername(Username);
         select.setUserId(UserId);
         select.setLink(DocumentLink.getText());
+        select.setMessage(Message.getText());
         select.setVisible(true);
     }//GEN-LAST:event_RequestMouseClicked
 
@@ -470,6 +472,7 @@ public class UserRequest extends javax.swing.JFrame {
     private javax.swing.JLabel LocationLink;
     private javax.swing.JLabel Logout;
     private javax.swing.JPanel LogoutBox;
+    private javax.swing.JTextArea Message;
     private javax.swing.JLabel MessageLabel;
     private javax.swing.JPanel Navbar;
     private javax.swing.JSpinner NumberofCopies;
@@ -481,6 +484,5 @@ public class UserRequest extends javax.swing.JFrame {
     private javax.swing.JPanel YourProfileBox;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

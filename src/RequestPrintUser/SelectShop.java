@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import javax.swing.JList;
 import java.lang.String;
 import java.sql.Date;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 
 /**
@@ -23,33 +24,35 @@ import java.text.SimpleDateFormat;
  * @author Game
  */
 public class SelectShop extends javax.swing.JFrame {
+
     private String Username;
     private int UserId;
     private String Link;
     private int DocCopies;
     private int ShopId;
     private String Message;
-    
+    private int OrderID;
+
     public void setUsername(String Username) {
         this.Username = Username;
     }
-    
+
     public void setUserId(int UserId) {
         this.UserId = UserId;
     }
-    
+
     public void setLink(String Link) {
         this.Link = Link;
     }
-    
+
     public void setDocCopies(int DocCopies) {
         this.DocCopies = DocCopies;
     }
-    
+
     public String getUsername() {
         return Username;
     }
-    
+
     public int getUserId() {
         return UserId;
     }
@@ -57,7 +60,7 @@ public class SelectShop extends javax.swing.JFrame {
     public void setMessage(String Message) {
         this.Message = Message;
     }
-    
+
     /**
      * Creates new form SelectShop
      */
@@ -106,6 +109,11 @@ public class SelectShop extends javax.swing.JFrame {
                 RequestMouseClicked(evt);
             }
         });
+        Request.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RequestActionPerformed(evt);
+            }
+        });
         getContentPane().add(Request, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -145,7 +153,7 @@ public class SelectShop extends javax.swing.JFrame {
             while (rs.next()) {
                 ShopList.addItem(rs.getString("shopName"));
             }
-            
+
             con.close();
             pstm.close();
         } catch (SQLException ex) {
@@ -158,7 +166,14 @@ public class SelectShop extends javax.swing.JFrame {
     }//GEN-LAST:event_ShopListActionPerformed
 
     private void RequestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestMouseClicked
+    }//GEN-LAST:event_RequestMouseClicked
+
+    private void RequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RequestActionPerformed
         try {
+            System.out.println("Click");
+            //int OrderID = -1;
+            int productID = -5;
+            int shopID = -1;
             // TODO add your handling code here:
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Date date = new Date(System.currentTimeMillis());
@@ -166,43 +181,61 @@ public class SelectShop extends javax.swing.JFrame {
             String datestr = sdf.format(date);
             LoginEPrinting login = new LoginEPrinting();
             Connection con = ConnectionBuilder.getConnection();
-            PreparedStatement pstmShopId = con.prepareStatement("SELECT shopID FROM ShopProfile WHERE shopName = " + ShopList.getSelectedItem().toString());
-            PreparedStatement pstm = con.prepareStatement("INSERT INTO mydb.Order VALUES (null,?,?,?,?,?,?,?)");
+            PreparedStatement pstmShopId = con.prepareStatement("SELECT shopID FROM ShopProfile WHERE shopName = '"+ ShopList.getSelectedItem().toString()+"'");
+            ResultSet rs = pstmShopId.executeQuery();
+            while(rs.next()){
+                shopID = rs.getInt("shopID");
+            }
+            System.out.println("shopID "+shopID);
+            PreparedStatement pstm = con.prepareStatement("INSERT INTO Orders VALUES (null,?,?,?,?,?,?,?)");
+            System.out.println("DocCopies : " + DocCopies);
+            System.out.println("datestr : " + datestr);
+            System.out.println("Message : " + Message);
+            System.out.println("Link : " + Link);
+            System.out.println("getUserId : " + login.getUserId());
             pstm.setInt(1, DocCopies);
-            if(DocCopies > 0) {
+            if (DocCopies > 0) {
                 pstm.setString(2, "Pending Responding");
-            } else if (DocCopies > 100){
+            } else if (DocCopies > 100) {
                 pstm.setString(2, "Pending Payment");
-            } 
+            }
             pstm.setString(3, datestr);
             pstm.setString(4, Message);
             pstm.setString(5, Link);
             pstm.setInt(6, login.getUserId());
-            pstm.setInt(7, ShopId);
+            pstm.setInt(7, shopID);
             pstm.executeUpdate();
             //SELECT ProductID
-            PreparedStatement pstm2 = con.prepareStatement("SELECT productID FROM Product WHERE productName = 'LINK Product shop'"+ShopId+"'");
-            ResultSet rs2 = pstm.executeQuery();
-            rs2.next();
+            PreparedStatement pstm2 = con.prepareStatement("SELECT productID FROM Product WHERE ShopProfile_shopID = "+shopID);
+            ResultSet rs2 = pstm2.executeQuery();
+            while(rs2.next()){
+                productID = rs2.getInt("productID");
+                System.out.println(productID);
+            }
             //SELECT OrderID
-            PreparedStatement pstm3 = con.prepareStatement("SELECT OrderID FROM mydb.Order WHERE url = "+Link);
-            ResultSet rs3 = pstm3.executeQuery();
-            rs3.next();
+            PreparedStatement pstm3 = con.prepareStatement("SELECT orderID FROM Orders ORDER BY orderID DESC LIMIT 0,1");
+            ResultSet rstest = pstm3.executeQuery();
+            while(rs.next()){
+                OrderID = rstest.getInt("orderID");
+            }
+            
             //INSERT SheetOrder
-            PreparedStatement pstm4 = con.prepareStatement("INSERT INTO SheetOrder (productAmount , Order_orderid , Product_productID) VALUE (? , ? , ?)");
+            PreparedStatement pstm4 = con.prepareStatement("INSERT INTO SheetOrder (productAmount , Order_orderid , Product_productID) VALUES (? , ? , ?)");
             pstm4.setInt(1, DocCopies);
-            pstm4.setInt(2, rs3.getInt("OrderID"));
-            pstm4.setInt(3 , rs2.getInt("productID"));
+            System.out.println("OrderID : "+OrderID);
+            System.out.println("productID : "+productID);
+            pstm4.setInt(2, OrderID);
+            pstm4.setInt(3, productID);
             pstm4.executeUpdate();
             con.close();
             pstm.close();
-            pstm2.close();
+            //pstm2.close();
             pstm3.close();
             pstm4.close();
         } catch (SQLException ex) {
-            Logger.getLogger(SelectShop.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
-    }//GEN-LAST:event_RequestMouseClicked
+    }//GEN-LAST:event_RequestActionPerformed
 
     /**
      * @param args the command line arguments
