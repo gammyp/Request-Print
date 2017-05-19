@@ -43,6 +43,53 @@ public class Home extends javax.swing.JFrame {
         this.UserId = UserId;
     }
     
+    public void fetchDocStatus() {
+        try {
+            Connection con = ConnectionBuilder.getConnection();
+            LoginEPrinting login = new LoginEPrinting();
+
+            PreparedStatement pstm = con.prepareStatement(" SELECT orderID, status FROM Orders WHERE UserProfile_id = "+ login.getUserId());     
+
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()){
+                Vector v = new Vector();
+                v.add(rs.getString("orderID"));
+                v.add(rs.getString("status"));
+                model.addRow(v);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void Logout() {
+        System.exit(0);
+    }
+    
+    public void callRequestPage() {
+        UserRequest userreq = new UserRequest();
+        userreq.setUserId(UserId);
+        userreq.setUsername(Username);
+        setVisible(false);
+        userreq.setVisible(true);
+    }
+    
+    public void callProfile() {
+        Userprofile userpro = new Userprofile();
+        userpro.setUserId(UserId);
+        userpro.setUsername(Username);
+        userpro.setVisible(true);
+        setVisible(false);
+    }
+    
+    public void callBookList() {
+        BookList book = new BookList();
+        book.setUserId(UserId);
+        book.setUsername(Username);
+        book.setVisible(true);
+        setVisible(false);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -281,22 +328,7 @@ public class Home extends javax.swing.JFrame {
         Header.setText("Welcome , "+Username);
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
-        try {
-            Connection con = ConnectionBuilder.getConnection();
-            LoginEPrinting login = new LoginEPrinting();
-
-            PreparedStatement pstm = con.prepareStatement(" SELECT orderID, status FROM Orders WHERE UserProfile_id = "+ login.getUserId());     
-
-            ResultSet rs = pstm.executeQuery();
-            while(rs.next()){
-                Vector v = new Vector();
-                v.add(rs.getString("orderID"));
-                v.add(rs.getString("status"));
-                model.addRow(v);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        fetchDocStatus();
         HomeLabel.setForeground(Color.white);
         HomeBox.setBackground(Color.black);
     }//GEN-LAST:event_formWindowActivated
@@ -327,16 +359,12 @@ public class Home extends javax.swing.JFrame {
 
     private void LogoutBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseClicked
         // TODO add your handling code here:
-        System.exit(0);
+        Logout();
     }//GEN-LAST:event_LogoutBoxMouseClicked
 
     private void RequestBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseClicked
         // TODO add your handling code here:
-        UserRequest userreq = new UserRequest();
-        userreq.setUserId(UserId);
-        userreq.setUsername(Username);
-        setVisible(false);
-        userreq.setVisible(true);
+        callRequestPage();
     }//GEN-LAST:event_RequestBoxMouseClicked
 
     private void YourProfileBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseEntered
@@ -353,11 +381,7 @@ public class Home extends javax.swing.JFrame {
 
     private void YourProfileBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseClicked
         // TODO add your handling code here:
-        Userprofile userpro = new Userprofile();
-        userpro.setUserId(UserId);
-        userpro.setUsername(Username);
-        userpro.setVisible(true);
-        setVisible(false);
+        callProfile();
     }//GEN-LAST:event_YourProfileBoxMouseClicked
 
     private void BookListBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseEntered
@@ -374,11 +398,7 @@ public class Home extends javax.swing.JFrame {
 
     private void BookListBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseClicked
         // TODO add your handling code here:
-        BookList book = new BookList();
-        book.setUserId(UserId);
-        book.setUsername(Username);
-        book.setVisible(true);
-        setVisible(false);
+        callBookList();
     }//GEN-LAST:event_BookListBoxMouseClicked
 
     /**

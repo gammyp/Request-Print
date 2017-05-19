@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -49,7 +50,93 @@ public class SelectShop2 extends javax.swing.JFrame {
     public void setMessage(String Message) {
         this.Message = Message;
     }
+    
+    public void fetchShopList() {
+        try {
+            // TODO add your handling code here:
+            Connection con = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = con.prepareStatement("SELECT shopName FROM ShopProfile");
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                ShopList.addItem(rs.getString("shopName"));
+            }
 
+            con.close();
+            pstm.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void Back() {
+        UserRequest usrreq = new UserRequest();
+        usrreq.setUserId(UserId);
+        usrreq.setUsername(Username);
+        setVisible(false);
+        usrreq.setVisible(true);
+    }
+    
+    public void RequestBook() {
+        try {
+            int orderId = -1;
+            int productID = -5;
+            int shopID = -1;
+            // TODO add your handling code here:
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = new Date(System.currentTimeMillis());
+            //System.out.println(sdf.format(date));
+            String datestr = sdf.format(date);
+            LoginEPrinting login = new LoginEPrinting();
+            Connection con = ConnectionBuilder.getConnection();
+            PreparedStatement pstmShopId = con.prepareStatement("SELECT shopID FROM ShopProfile WHERE shopName = '" + ShopList.getSelectedItem().toString() + "'");
+            ResultSet rs = pstmShopId.executeQuery();
+            while (rs.next()) {
+                shopID = rs.getInt("shopID");
+            }
+            PreparedStatement pstm = con.prepareStatement("INSERT INTO Orders VALUES (null,?,?,?,?,?,?,?)");
+            pstm.setInt(1, DocCopies);
+            if (DocCopies > 0) {
+                pstm.setString(2, "Pending Responding");
+            } else if (DocCopies > 100) {
+                pstm.setString(2, "Pending Payment");
+            }
+            pstm.setString(3, datestr);
+            pstm.setString(4, Message);
+            pstm.setString(5, Link);
+            pstm.setInt(6, UserId);
+            pstm.setInt(7, shopID);
+            pstm.executeUpdate();
+            //SELECT ProductID
+            PreparedStatement pstm2 = con.prepareStatement("SELECT productID FROM Product WHERE ShopProfile_shopID = " + shopID);
+            ResultSet rs2 = pstm2.executeQuery();
+            while (rs2.next()) {
+                productID = rs2.getInt("productID");
+            }
+            
+            //SELECT OrderID
+            PreparedStatement pstm3 = con.prepareStatement("SELECT MAX(orderID) FROM Orders");
+            ResultSet rstest = pstm3.executeQuery();
+            while (rstest.next()) {
+                orderId = rstest.getInt("MAX(orderID)");
+            }
+            //INSERT SheetOrder
+            PreparedStatement pstm4 = con.prepareStatement("INSERT INTO SheetOrder (productAmount, Order_orderID, Product_productID) VALUES (?, ?, ?)");
+            pstm4.setInt(1, DocCopies);
+            pstm4.setInt(2, orderId);
+            pstm4.setInt(3, productID);
+            pstm4.executeUpdate();
+            con.close();
+            pstm.close();
+            pstm2.close();
+            pstm3.close();
+            pstm4.close();
+            JOptionPane.showMessageDialog(null, "Thank you for chosing our shop.");
+            setVisible(false);
+            Back();
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+    }
     /**
      * Creates new form SelectShop2
      */
@@ -143,89 +230,17 @@ public class SelectShop2 extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
-        try {
-            // TODO add your handling code here:
-            Connection con = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = con.prepareStatement("SELECT shopName FROM ShopProfile");
-            ResultSet rs = pstm.executeQuery();
-            while (rs.next()) {
-                ShopList.addItem(rs.getString("shopName"));
-            }
-
-            con.close();
-            pstm.close();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+        fetchShopList();
     }//GEN-LAST:event_formWindowActivated
 
     private void CancelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelButtonMouseClicked
         // TODO add your handling code here:
-        UserRequest usrreq = new UserRequest();
-        usrreq.setUserId(UserId);
-        usrreq.setUsername(Username);
-        setVisible(false);
-        usrreq.setVisible(true);
+        Back();
     }//GEN-LAST:event_CancelButtonMouseClicked
 
     private void RequestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestMouseClicked
         // TODO add your handling code here:
-        try {
-            int orderId = -1;
-            int productID = -5;
-            int shopID = -1;
-            // TODO add your handling code here:
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            Date date = new Date(System.currentTimeMillis());
-            //System.out.println(sdf.format(date));
-            String datestr = sdf.format(date);
-            LoginEPrinting login = new LoginEPrinting();
-            Connection con = ConnectionBuilder.getConnection();
-            PreparedStatement pstmShopId = con.prepareStatement("SELECT shopID FROM ShopProfile WHERE shopName = '" + ShopList.getSelectedItem().toString() + "'");
-            ResultSet rs = pstmShopId.executeQuery();
-            while (rs.next()) {
-                shopID = rs.getInt("shopID");
-            }
-            PreparedStatement pstm = con.prepareStatement("INSERT INTO Orders VALUES (null,?,?,?,?,?,?,?)");
-            pstm.setInt(1, DocCopies);
-            if (DocCopies > 0) {
-                pstm.setString(2, "Pending Responding");
-            } else if (DocCopies > 100) {
-                pstm.setString(2, "Pending Payment");
-            }
-            pstm.setString(3, datestr);
-            pstm.setString(4, Message);
-            pstm.setString(5, Link);
-            pstm.setInt(6, UserId);
-            pstm.setInt(7, shopID);
-            pstm.executeUpdate();
-            //SELECT ProductID
-            PreparedStatement pstm2 = con.prepareStatement("SELECT productID FROM Product WHERE ShopProfile_shopID = " + shopID);
-            ResultSet rs2 = pstm2.executeQuery();
-            while (rs2.next()) {
-                productID = rs2.getInt("productID");
-            }
-            
-            //SELECT OrderID
-            PreparedStatement pstm3 = con.prepareStatement("SELECT MAX(orderID) FROM Orders");
-            ResultSet rstest = pstm3.executeQuery();
-            while (rstest.next()) {
-                orderId = rstest.getInt("MAX(orderID)");
-            }
-            //INSERT SheetOrder
-            PreparedStatement pstm4 = con.prepareStatement("INSERT INTO SheetOrder (productAmount, Order_orderID, Product_productID) VALUES (?, ?, ?)");
-            pstm4.setInt(1, DocCopies);
-            pstm4.setInt(2, orderId);
-            pstm4.setInt(3, productID);
-            pstm4.executeUpdate();
-            con.close();
-            pstm.close();
-            pstm2.close();
-            pstm3.close();
-            pstm4.close();
-        } catch (SQLException ex) {
-            System.err.println(ex);
-        }
+        RequestBook();
     }//GEN-LAST:event_RequestMouseClicked
 
     /**

@@ -19,7 +19,97 @@ public class RegisterUser extends javax.swing.JFrame {
     public RegisterUser() {
         initComponents();
     }
+    
+    public void Regis() {
+         try {
+            System.out.println(name.getText());
 
+            if (name.getText() != "" && surname.getText() != "" && userName.getText() != ""
+                    && password.getText() != "" && Email.getText() != "" && phone.getText() != "") {
+                if (checkall) {
+                    //   JOptionPane.showConfirmDialog(null, "Do you confirm?", "Message", JOptionPane.YES_NO_OPTION);
+                    int confirm = JOptionPane.showOptionDialog(this, "Are You confirm?", "CONFIRM", JOptionPane.YES_NO_OPTION,
+                            JOptionPane.QUESTION_MESSAGE, null, null, null);
+                    if (confirm == JOptionPane.YES_OPTION) {
+                        Connection con = ConnectionBuilder.getConnection();
+                        String sql = "INSERT INTO UserProfile(id,username,password,name,surname,address,phone,email) VALUES (null,?,?,?,?,null,?,?)";
+                        PreparedStatement pstm = con.prepareStatement(sql);
+                        pstm.setString(3, name.getText());
+                        pstm.setString(4, surname.getText());
+                        pstm.setString(6, Email.getText());
+                        pstm.setString(5, phone.getText());
+                        pstm.setString(1, userName.getText());
+                        pstm.setString(2, password.getText());
+                        pstm.executeUpdate();
+                        JOptionPane.showMessageDialog(null, "Registered Successfully.");
+                        name.setText("");
+                        surname.setText("");
+                        Email.setText("");
+                        phone.setText("");
+                        userName.setText("");
+                        password.setText("");
+                        checkPassword.setIcon(null);
+                        checkUsername.setIcon(null);
+                        con.close();
+                        pstm.close();
+                    }
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void checkUsername() throws Exception {
+        Connection con = ConnectionBuilder.getConnection();
+        Image trueIcon = new ImageIcon(this.getClass().getResource("icon/check.png")).getImage();
+        Image falseIcon = new ImageIcon(this.getClass().getResource("icon/uncheck.png")).getImage();
+
+        try {
+            PreparedStatement pstm = con.prepareStatement("SELECT USERNAME FROM userProfile WHERE USERNAME = ? ");
+            pstm.setString(1, userName.getText());
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+                checkall = false;
+                checkUsername.setIcon(new ImageIcon(falseIcon.getScaledInstance(checkUsername.getWidth(), checkUsername.getHeight(), 0)));
+            } else {
+                checkall = true;
+                checkUsername.setIcon(new ImageIcon(trueIcon.getScaledInstance(checkUsername.getWidth(), checkUsername.getHeight(), 0)));
+
+            }
+            con.close();
+            pstm.close();
+
+//        checkUsername.hide();
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void checkRetypePass() {
+        Image trueIcon = new ImageIcon(this.getClass().getResource("icon/check.png")).getImage();
+        Image falseIcon = new ImageIcon(this.getClass().getResource("icon/uncheck.png")).getImage();
+
+        if (CreatePassword.getText().length() < 6 || CreatePassword.getText().length() > 12) {
+            checkall = false;
+        } else if (password.getText().equals(CreatePassword.getText())) {
+            checkall = true;
+            checkPassword.setIcon(new ImageIcon(trueIcon.getScaledInstance(checkPassword.getWidth(), checkPassword.getHeight(), 0)));
+        } else {
+            checkall = false;
+            checkPassword.setIcon(new ImageIcon(falseIcon.getScaledInstance(checkPassword.getWidth(), checkPassword.getHeight(), 0)));
+        }
+    }
+    
+    private void PassFocusLost(java.awt.event.FocusEvent evt) {
+        if (password.getText().length() < 6 || password.getText().length() > 45) {
+            error.setText("** Password 6-45 charecter ");
+            checkall = false;
+        } else {
+            error.setText("");
+            checkall = true;
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -142,99 +232,20 @@ public class RegisterUser extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-
-        try {
-            System.out.println(name.getText());
-
-            if (name.getText() != "" && surname.getText() != "" && userName.getText() != ""
-                    && password.getText() != "" && Email.getText() != "" && phone.getText() != "") {
-                if (checkall) {
-                    //   JOptionPane.showConfirmDialog(null, "Do you confirm?", "Message", JOptionPane.YES_NO_OPTION);
-                    int confirm = JOptionPane.showOptionDialog(this, "Are You confirm?", "CONFIRM", JOptionPane.YES_NO_OPTION,
-                            JOptionPane.QUESTION_MESSAGE, null, null, null);
-                    if (confirm == JOptionPane.YES_OPTION) {
-                        Connection con = ConnectionBuilder.getConnection();
-                        String sql = "INSERT INTO UserProfile(id,username,password,name,surname,address,phone,email) VALUES (null,?,?,?,?,null,?,?)";
-                        PreparedStatement pstm = con.prepareStatement(sql);
-                        pstm.setString(3, name.getText());
-                        pstm.setString(4, surname.getText());
-                        pstm.setString(6, Email.getText());
-                        pstm.setString(5, phone.getText());
-                        pstm.setString(1, userName.getText());
-                        pstm.setString(2, password.getText());
-                        pstm.executeUpdate();
-                        JOptionPane.showMessageDialog(null, "Registered Successfully.");
-                        name.setText("");
-                        surname.setText("");
-                        Email.setText("");
-                        phone.setText("");
-                        userName.setText("");
-                        password.setText("");
-                        checkPassword.setIcon(null);
-                        checkUsername.setIcon(null);
-                        con.close();
-                        pstm.close();
-                    }
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(RegisterUser.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        Regis();
     }//GEN-LAST:event_submitButtonActionPerformed
 
-    private void UsernameFocusLost(java.awt.event.FocusEvent evt) throws SQLException {
-        Connection con = ConnectionBuilder.getConnection();
-        Image trueIcon = new ImageIcon(this.getClass().getResource("icon/check.png")).getImage();
-        Image falseIcon = new ImageIcon(this.getClass().getResource("icon/uncheck.png")).getImage();
-
-        try {
-            PreparedStatement pstm = con.prepareStatement("SELECT USERNAME FROM userProfile WHERE USERNAME = ? ");
-            pstm.setString(1, userName.getText());
-            ResultSet rs = pstm.executeQuery();
-            if (rs.next()) {
-                checkall = false;
-                checkUsername.setIcon(new ImageIcon(falseIcon.getScaledInstance(checkUsername.getWidth(), checkUsername.getHeight(), 0)));
-            } else {
-                checkall = true;
-                checkUsername.setIcon(new ImageIcon(trueIcon.getScaledInstance(checkUsername.getWidth(), checkUsername.getHeight(), 0)));
-
-            }
-            con.close();
-            pstm.close();
-
-//        checkUsername.hide();
-        } catch (SQLException ex) {
-            Logger.getLogger(RegisterUser.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void PassFocusLost(java.awt.event.FocusEvent evt) {
-        if (password.getText().length() < 6 || password.getText().length() > 45) {
-            error.setText("** Password 6-45 charecter ");
-            checkall = false;
-        } else {
-            error.setText("");
-            checkall = true;
-        }
-
+    private void UsernameFocusLost(java.awt.event.FocusEvent evt) throws Exception {
+        checkUsername();
     }
 
     private void RePassFocusLost(java.awt.event.FocusEvent evt) {
-        Image trueIcon = new ImageIcon(this.getClass().getResource("icon/check.png")).getImage();
-        Image falseIcon = new ImageIcon(this.getClass().getResource("icon/uncheck.png")).getImage();
-
-        if (CreatePassword.getText().length() < 6 || CreatePassword.getText().length() > 12) {
-            checkall = false;
-        } else if (password.getText().equals(CreatePassword.getText())) {
-            checkall = true;
-            checkPassword.setIcon(new ImageIcon(trueIcon.getScaledInstance(checkPassword.getWidth(), checkPassword.getHeight(), 0)));
-        } else {
-            checkall = false;
-            checkPassword.setIcon(new ImageIcon(falseIcon.getScaledInstance(checkPassword.getWidth(), checkPassword.getHeight(), 0)));
-        }
+        checkRetypePass();
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        LoginEPrinting login = new LoginEPrinting();
+        login.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
 

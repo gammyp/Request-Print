@@ -45,7 +45,154 @@ public class BookList extends javax.swing.JFrame {
     public void setUsername(String Username) {
         this.Username = Username;
     }
+    //Method for call from GUI
+    
+    public void callList() {
+        ShopSelect.removeAllItems();
+        BookSelect.removeAllItems();
+        Copies.setValue(1);
+        try {
+            Connection con = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = con.prepareStatement("SELECT shopName FROM ShopProfile");
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                ShopSelect.addItem(rs.getString("shopName"));
+            }
+            con.close();
+            pstm.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            Connection con = ConnectionBuilder.getConnection();
 
+            //executeQuery ShopProfile Table to use ShopID
+            PreparedStatement pstmSelectShopId = con.prepareStatement("SELECT shopID FROM ShopProfile WHERE "
+                    + "shopName = '" + ShopSelect.getSelectedItem() + "'");
+            ResultSet rsShopId = pstmSelectShopId.executeQuery();
+            if (rsShopId.next()) {
+                shopID = rsShopId.getInt("shopID");
+            }
+            
+            con.close();
+            pstmSelectShopId.close();
+            //executeQuery Product Table to use ProductName
+            
+            con = ConnectionBuilder.getConnection();
+            PreparedStatement pstmSelectProduct = con.prepareStatement("SELECT productName,productID FROM Product WHERE ShopProfile_shopID = " + shopID);
+            ResultSet rsProductName = pstmSelectProduct.executeQuery();
+            if(rsProductName.next()){
+                productID = rsProductName.getInt("productID");
+            }
+            
+            //Add intitial text
+            BookSelect.addItem("");
+        } catch (SQLException ex) {
+            Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void callHome() {
+        Home h = new Home();
+        h.setUserId(UserId);
+        h.setUsername(Username);
+        h.setVisible(true);
+        this.setVisible(false);
+    }
+    public void callUserProfile() {
+        Userprofile userpro = new Userprofile();
+        userpro.setUserId(UserId);
+        userpro.setUsername(Username);
+        userpro.setVisible(true);
+        setVisible(false);
+    }
+    
+    public void callRequestPage() {
+        UserRequest userreq = new UserRequest();
+        userreq.setUserId(UserId);
+        userreq.setUsername(Username);
+        userreq.setVisible(true);
+        setVisible(false);
+    }
+    
+    public void PrintBook() {
+        BookSelect.removeAllItems();
+        try {
+            Connection con = ConnectionBuilder.getConnection();
+
+            //executeQuery ShopProfile Table to use ShopID
+            PreparedStatement pstmSelectShopId = con.prepareStatement("SELECT shopID FROM ShopProfile WHERE "
+                    + "shopName = '" + ShopSelect.getSelectedItem() + "'");
+            ResultSet rsShopId = pstmSelectShopId.executeQuery();
+            if(rsShopId.next()){
+                LastShopID = rsShopId.getInt("shopID");
+            }
+              
+
+            //executeQuery Product Table to use ProductName
+            PreparedStatement pstmSelectProduct = con.prepareStatement("SELECT productName FROM Product WHERE "
+                    + "ShopProfile_shopID = "+ LastShopID);
+            ResultSet rsProductName = pstmSelectProduct.executeQuery();
+
+            //Add intitial text
+            BookSelect.addItem("");
+            while (rsProductName.next()) {
+                BookSelect.addItem(rsProductName.getString("productName"));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    public void Logout() {
+        System.exit(0);
+    }
+    
+    public void RequestBook() {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = new Date(System.currentTimeMillis());
+            String datestr = sdf.format(date);
+            Connection con = ConnectionBuilder.getConnection();
+            
+            PreparedStatement pstmInsert1 = con.prepareStatement("INSERT INTO Orders(orderID,priceOrder,status,datetime,description,url,UserProfile_id,ShopProfile_shopID)"
+                    + "VALUES (null,?,?,?,?,null,?,?)");
+            pstmInsert1.setInt(1, productID);
+            if ((int) Copies.getValue() > 0) {
+                pstmInsert1.setString(2, "Pending Responding");
+            } else if ((int) Copies.getValue() > 100) {
+                pstmInsert1.setString(2, "Pending Payment");
+            }
+            pstmInsert1.setString(3, datestr);
+            pstmInsert1.setString(4, description.getText());
+            pstmInsert1.setInt(5, UserId);
+            pstmInsert1.setInt(6, shopID);
+            pstmInsert1.executeUpdate();
+
+            PreparedStatement pstmSel = con.prepareStatement("SELECT orderID FROM Orders WHERE orderID = ?");
+            pstmSel.setInt(1, getOrderID());
+            ResultSet rs = pstmSel.executeQuery();
+            while (rs.next()) {
+                orderID = rs.getInt("orderID");
+            }
+
+            PreparedStatement pstmInsert2 = con.prepareStatement("INSERT INTO SheetOrder(sheetID,productAmount,Order_orderID,Product_productID)"
+                    + "VALUES(null,?,?,?)");
+            pstmInsert2.setInt(1, (int) Copies.getValue());
+            pstmInsert2.setInt(2, orderID);
+            pstmInsert2.setInt(3, productID);
+            pstmInsert2.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Success");
+                    } catch (SQLException ex) {
+            Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    //End Method for call
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -387,49 +534,7 @@ public class BookList extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        ShopSelect.removeAllItems();
-        BookSelect.removeAllItems();
-        Copies.setValue(1);
-        try {
-            Connection con = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = con.prepareStatement("SELECT shopName FROM ShopProfile");
-            ResultSet rs = pstm.executeQuery();
-            while (rs.next()) {
-                ShopSelect.addItem(rs.getString("shopName"));
-            }
-            con.close();
-            pstm.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        try {
-            Connection con = ConnectionBuilder.getConnection();
-
-            //executeQuery ShopProfile Table to use ShopID
-            PreparedStatement pstmSelectShopId = con.prepareStatement("SELECT shopID FROM ShopProfile WHERE "
-                    + "shopName = '" + ShopSelect.getSelectedItem() + "'");
-            ResultSet rsShopId = pstmSelectShopId.executeQuery();
-            if (rsShopId.next()) {
-                shopID = rsShopId.getInt("shopID");
-            }
-            
-            con.close();
-            pstmSelectShopId.close();
-            //executeQuery Product Table to use ProductName
-            
-            con = ConnectionBuilder.getConnection();
-            PreparedStatement pstmSelectProduct = con.prepareStatement("SELECT productName,productID FROM Product WHERE ShopProfile_shopID = " + shopID);
-            ResultSet rsProductName = pstmSelectProduct.executeQuery();
-            if(rsProductName.next()){
-                productID = rsProductName.getInt("productID");
-            }
-            
-            //Add intitial text
-            BookSelect.addItem("");
-        } catch (SQLException ex) {
-            Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        callList();
         BookList.setForeground(Color.white);
         BookListBox.setBackground(Color.black);
 
@@ -437,11 +542,7 @@ public class BookList extends javax.swing.JFrame {
 
     private void HomeBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseClicked
         // TODO add your handling code here:
-        Home h = new Home();
-        h.setUserId(UserId);
-        h.setUsername(Username);
-        h.setVisible(true);
-        this.setVisible(false);
+        callHome();
     }//GEN-LAST:event_HomeBoxMouseClicked
 
     private void HomeBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseEntered
@@ -464,11 +565,7 @@ public class BookList extends javax.swing.JFrame {
 
     private void YourProfileBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseClicked
         // TODO add your handling code here:
-        Userprofile userpro = new Userprofile();
-        userpro.setUserId(UserId);
-        userpro.setUsername(Username);
-        userpro.setVisible(true);
-        setVisible(false);
+        callUserProfile();
     }//GEN-LAST:event_YourProfileBoxMouseClicked
 
     private void YourProfileBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseExited
@@ -479,11 +576,7 @@ public class BookList extends javax.swing.JFrame {
 
     private void RequestPrintBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestPrintBoxMouseClicked
         // TODO add your handling code here:
-        UserRequest userreq = new UserRequest();
-        userreq.setUserId(UserId);
-        userreq.setUsername(Username);
-        userreq.setVisible(true);
-        setVisible(false);
+        callRequestPage();
     }//GEN-LAST:event_RequestPrintBoxMouseClicked
 
     private void RequestPrintBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestPrintBoxMouseEntered
@@ -500,7 +593,7 @@ public class BookList extends javax.swing.JFrame {
 
     private void LogoutBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseClicked
         // TODO add your handling code here:
-        System.exit(0);
+        Logout();
     }//GEN-LAST:event_LogoutBoxMouseClicked
 
     private void LogoutBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseEntered
@@ -516,34 +609,7 @@ public class BookList extends javax.swing.JFrame {
     }//GEN-LAST:event_LogoutBoxMouseExited
 
     private void ShopSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShopSelectActionPerformed
-        BookSelect.removeAllItems();
-        try {
-            Connection con = ConnectionBuilder.getConnection();
-
-            //executeQuery ShopProfile Table to use ShopID
-            PreparedStatement pstmSelectShopId = con.prepareStatement("SELECT shopID FROM ShopProfile WHERE "
-                    + "shopName = '" + ShopSelect.getSelectedItem() + "'");
-            ResultSet rsShopId = pstmSelectShopId.executeQuery();
-            if(rsShopId.next()){
-                LastShopID = rsShopId.getInt("shopID");
-            }
-              
-
-            //executeQuery Product Table to use ProductName
-            PreparedStatement pstmSelectProduct = con.prepareStatement("SELECT productName FROM Product WHERE "
-                    + "ShopProfile_shopID = "+ LastShopID);
-            ResultSet rsProductName = pstmSelectProduct.executeQuery();
-
-            //Add intitial text
-            BookSelect.addItem("");
-            while (rsProductName.next()) {
-                BookSelect.addItem(rsProductName.getString("productName"));
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        PrintBook();
     }//GEN-LAST:event_ShopSelectActionPerformed
 
     private void BookSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookSelectActionPerformed
@@ -563,44 +629,7 @@ public class BookList extends javax.swing.JFrame {
     }//GEN-LAST:event_BookListBoxMouseClicked
 
     private void RequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RequestActionPerformed
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            Date date = new Date(System.currentTimeMillis());
-            String datestr = sdf.format(date);
-            Connection con = ConnectionBuilder.getConnection();
-            
-            PreparedStatement pstmInsert1 = con.prepareStatement("INSERT INTO Orders(orderID,priceOrder,status,datetime,description,url,UserProfile_id,ShopProfile_shopID)"
-                    + "VALUES (null,?,?,?,?,null,?,?)");
-            pstmInsert1.setInt(1, productID);
-            if ((int) Copies.getValue() > 0) {
-                pstmInsert1.setString(2, "Pending Responding");
-            } else if ((int) Copies.getValue() > 100) {
-                pstmInsert1.setString(2, "Pending Payment");
-            }
-            pstmInsert1.setString(3, datestr);
-            pstmInsert1.setString(4, description.getText());
-            pstmInsert1.setInt(5, UserId);
-            pstmInsert1.setInt(6, shopID);
-            pstmInsert1.executeUpdate();
-
-            PreparedStatement pstmSel = con.prepareStatement("SELECT orderID FROM Orders WHERE orderID = ?");
-            pstmSel.setInt(1, getOrderID());
-            ResultSet rs = pstmSel.executeQuery();
-            while (rs.next()) {
-                orderID = rs.getInt("orderID");
-            }
-
-            PreparedStatement pstmInsert2 = con.prepareStatement("INSERT INTO SheetOrder(sheetID,productAmount,Order_orderID,Product_productID)"
-                    + "VALUES(null,?,?,?)");
-            pstmInsert2.setInt(1, (int) Copies.getValue());
-            pstmInsert2.setInt(2, orderID);
-            pstmInsert2.setInt(3, productID);
-            pstmInsert2.executeUpdate();
-            
-            JOptionPane.showMessageDialog(null, "Success");
-                    } catch (SQLException ex) {
-            Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        RequestBook();
     }//GEN-LAST:event_RequestActionPerformed
 
     public static int getOrderID(){

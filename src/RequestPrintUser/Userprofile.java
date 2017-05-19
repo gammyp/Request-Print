@@ -32,6 +32,62 @@ public class Userprofile extends javax.swing.JFrame {
     public void setUserId(int UserId) {
         this.UserId = UserId;
     }
+    
+    public void EditProfile() {
+        EditUserProfile editUProf = new EditUserProfile();
+        editUProf.setVisible(true);
+    }
+    
+    public void fetchProfile() {
+        try {
+            // TODO add your handling code here:
+            Connection con = null;
+            con = ConnectionBuilder.getConnection();
+            LoginEPrinting login = new LoginEPrinting();
+            PreparedStatement pstm = con.prepareStatement("SELECT name,surname,email,phone FROM UserProfile WHERE id = " + login.getUserId());
+            ResultSet rs = pstm.executeQuery();
+            System.out.println(login.getUserId());
+            while(rs.next()) {
+                System.out.println("a");
+                NameLabel.setText(rs.getString("name"));
+                SurnameLabel.setText(rs.getString("surname"));
+                EmailLabel.setText(rs.getString("email"));
+                PhoneLabel.setText(rs.getString("phone"));
+            }
+            con.close();
+            pstm.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Userprofile.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void callBookList() {
+        BookList book = new BookList();
+        book.setUserId(UserId);
+        book.setUsername(Username);
+        book.setVisible(true);
+        setVisible(false);
+    }
+    
+    public void Logout() {
+        System.exit(0);
+    }
+    
+    public void callHome() {
+        Home h = new Home();
+        h.setUserId(UserId);
+        h.setUsername(Username);
+        h.setVisible(true);
+        setVisible(false);
+    }
+    
+    public void callRequestPage() {
+        UserRequest userreq = new UserRequest();
+        userreq.setUserId(UserId);
+        userreq.setUsername(Username);
+        userreq.setVisible(true);
+        setVisible(false);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -343,8 +399,7 @@ public class Userprofile extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
-        EditUserProfile editUProf = new EditUserProfile();
-        editUProf.setVisible(true);
+        EditProfile();
     }//GEN-LAST:event_EditActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -354,26 +409,7 @@ public class Userprofile extends javax.swing.JFrame {
         RequestBox.setBackground(null);
         BookListBox.setBackground(null);
         LogoutBox.setBackground(null);
-        try {
-            // TODO add your handling code here:
-            Connection con = null;
-            con = ConnectionBuilder.getConnection();
-            LoginEPrinting login = new LoginEPrinting();
-            PreparedStatement pstm = con.prepareStatement("SELECT name,surname,email,phone FROM UserProfile WHERE id = " + login.getUserId());
-            ResultSet rs = pstm.executeQuery();
-            System.out.println(login.getUserId());
-            while(rs.next()) {
-                System.out.println("a");
-                NameLabel.setText(rs.getString("name"));
-                SurnameLabel.setText(rs.getString("surname"));
-                EmailLabel.setText(rs.getString("email"));
-                PhoneLabel.setText(rs.getString("phone"));
-            }
-            con.close();
-            pstm.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(Userprofile.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        fetchProfile();
         YourProfileLabel.setForeground(Color.white);
         YourProfileBox.setBackground(Color.black);
     }//GEN-LAST:event_formWindowActivated
@@ -428,34 +464,22 @@ public class Userprofile extends javax.swing.JFrame {
 
     private void LogoutBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseClicked
         // TODO add your handling code here:
-        System.exit(0);
+        Logout();
     }//GEN-LAST:event_LogoutBoxMouseClicked
 
     private void BookListBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseClicked
         // TODO add your handling code here:
-        BookList book = new BookList();
-        book.setUserId(UserId);
-        book.setUsername(Username);
-        book.setVisible(true);
-        setVisible(false);
+        callBookList();
     }//GEN-LAST:event_BookListBoxMouseClicked
 
     private void HomeBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseClicked
         // TODO add your handling code here:
-        Home h = new Home();
-        h.setUserId(UserId);
-        h.setUsername(Username);
-        h.setVisible(true);
-        setVisible(false);
+        callHome();
     }//GEN-LAST:event_HomeBoxMouseClicked
 
     private void RequestBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseClicked
         // TODO add your handling code here:
-        UserRequest userreq = new UserRequest();
-        userreq.setUserId(UserId);
-        userreq.setUsername(Username);
-        userreq.setVisible(true);
-        setVisible(false);
+        callRequestPage();
     }//GEN-LAST:event_RequestBoxMouseClicked
 
     

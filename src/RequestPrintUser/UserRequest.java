@@ -29,6 +29,8 @@ public class UserRequest extends javax.swing.JFrame {
     /**
      * Creates new form UserProfile
      */
+    
+    //Start method for call
     public UserRequest() {
         initComponents();
     }
@@ -40,7 +42,45 @@ public class UserRequest extends javax.swing.JFrame {
         this.UserId = UserId;
     }
     
-
+    public void callProfile() {
+        Userprofile userp = new Userprofile();
+        userp.setUserId(UserId);
+        userp.setUsername(Username);
+        setVisible(false);
+        userp.setVisible(true);
+    }
+    
+    public void callHome() {
+        Home home = new Home();
+        home.setUserId(UserId);
+        home.setUsername(Username);
+        home.setVisible(true);
+        setVisible(false);
+    }
+    
+    public void callBooklistPage() {
+        BookList book = new BookList();
+        book.setUserId(UserId);
+        book.setUsername(Username);
+        book.setVisible(true);
+        setVisible(false);
+    }
+    
+    public void Logout() {
+        System.exit(0);
+    }
+    
+    public void selectShoptoPrint() {
+        int DocCopies = (int)NumberofCopies.getValue();
+        RequestPrintUser.SelectShop2 select = new RequestPrintUser.SelectShop2();
+        select.setDocCopies(DocCopies);
+        select.setUsername(Username);
+        select.setUserId(UserId);
+        select.setLink(DocumentLink.getText());
+        select.setMessage(Message.getText());
+        select.setVisible(true);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -345,11 +385,7 @@ public class UserRequest extends javax.swing.JFrame {
 
     private void YourProfileBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseClicked
         // TODO add your handling code here:
-        Userprofile userp = new Userprofile();
-        userp.setUserId(UserId);
-        userp.setUsername(Username);
-        setVisible(false);
-        userp.setVisible(true);
+        callProfile();
     }//GEN-LAST:event_YourProfileBoxMouseClicked
 
     private void HomeBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseEntered
@@ -366,11 +402,7 @@ public class UserRequest extends javax.swing.JFrame {
 
     private void HomeBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseClicked
         // TODO add your handling code here:
-        Home home = new Home();
-        home.setUserId(UserId);
-        home.setUsername(Username);
-        home.setVisible(true);
-        setVisible(false);
+        callHome();
     }//GEN-LAST:event_HomeBoxMouseClicked
 
     private void BookListBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseEntered
@@ -387,11 +419,7 @@ public class UserRequest extends javax.swing.JFrame {
 
     private void BookListBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseClicked
         // TODO add your handling code here:
-        BookList book = new BookList();
-        book.setUserId(UserId);
-        book.setUsername(Username);
-        book.setVisible(true);
-        setVisible(false);
+        callBooklistPage();
     }//GEN-LAST:event_BookListBoxMouseClicked
 
     private void LogoutBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseEntered
@@ -408,19 +436,12 @@ public class UserRequest extends javax.swing.JFrame {
 
     private void LogoutBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseClicked
         // TODO add your handling code here:
-        System.exit(0);
+        Logout();
     }//GEN-LAST:event_LogoutBoxMouseClicked
 
     private void RequestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestMouseClicked
         // TODO add your handling code here:
-        int DocCopies = (int)NumberofCopies.getValue();
-        RequestPrintUser.SelectShop2 select = new RequestPrintUser.SelectShop2();
-        select.setDocCopies(DocCopies);
-        select.setUsername(Username);
-        select.setUserId(UserId);
-        select.setLink(DocumentLink.getText());
-        select.setMessage(Message.getText());
-        select.setVisible(true);
+        selectShoptoPrint();
     }//GEN-LAST:event_RequestMouseClicked
 
     /**

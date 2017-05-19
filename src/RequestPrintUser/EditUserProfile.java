@@ -27,7 +27,47 @@ public class EditUserProfile extends javax.swing.JFrame {
     public EditUserProfile() {
         initComponents();
     }
-
+    
+    public void callOldProfile() {
+        try {
+            Connection con = ConnectionBuilder.getConnection();
+            LoginEPrinting login = new LoginEPrinting();
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM UserProfile WHERE id = " + login.getUserId());
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+                nameField.setText(rs.getString("name"));
+                surnameField.setText(rs.getString("surname"));
+                emailField.setText(rs.getString("email"));
+                phoneField.setText(rs.getString("phone"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(EditUserProfile.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void UpdateProfile() {
+        Connection con = null;
+        try {
+            con = ConnectionBuilder.getConnection();
+            LoginEPrinting login = new LoginEPrinting();
+            System.out.println(login.getUserId());
+            PreparedStatement pstm = con.prepareStatement("UPDATE UserProfile SET name=?, surname=?, email=?, phone=? WHERE id = "+ login.getUserId());
+            pstm.setString(1, nameField.getText());
+            pstm.setString(2, surnameField.getText());
+            pstm.setString(3, emailField.getText());
+            pstm.setInt(4, Integer.parseInt(phoneField.getText()));
+            
+            pstm.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Save Successful");
+            
+            this.setVisible(false);
+            con.close();
+            pstm.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(EditUserProfile.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -148,26 +188,7 @@ public class EditUserProfile extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        Connection con = null;
-        try {
-            con = ConnectionBuilder.getConnection();
-            LoginEPrinting login = new LoginEPrinting();
-            System.out.println(login.getUserId());
-            PreparedStatement pstm = con.prepareStatement("UPDATE UserProfile SET name=?, surname=?, email=?, phone=? WHERE id = "+ login.getUserId());
-            pstm.setString(1, nameField.getText());
-            pstm.setString(2, surnameField.getText());
-            pstm.setString(3, emailField.getText());
-            pstm.setInt(4, Integer.parseInt(phoneField.getText()));
-            
-            pstm.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Save Successful");
-            
-            this.setVisible(false);
-            con.close();
-            pstm.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(EditUserProfile.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        UpdateProfile();
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void saveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveButtonMouseClicked
@@ -197,20 +218,7 @@ public class EditUserProfile extends javax.swing.JFrame {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
-        try {
-            Connection con = ConnectionBuilder.getConnection();
-            LoginEPrinting login = new LoginEPrinting();
-            PreparedStatement pstm = con.prepareStatement("SELECT * FROM UserProfile WHERE id = " + login.getUserId());
-            ResultSet rs = pstm.executeQuery();
-            if (rs.next()) {
-                nameField.setText(rs.getString("name"));
-                surnameField.setText(rs.getString("surname"));
-                emailField.setText(rs.getString("email"));
-                phoneField.setText(rs.getString("phone"));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(EditUserProfile.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        callOldProfile();
     }//GEN-LAST:event_formComponentShown
    
 
