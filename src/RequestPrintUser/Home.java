@@ -68,6 +68,7 @@ public class Home extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        Header = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -112,7 +113,7 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        NavBar.add(RequestBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 210, -1));
+        NavBar.add(RequestBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 210, -1));
 
         BookListBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -133,10 +134,10 @@ public class Home extends javax.swing.JFrame {
         BookListBox.setLayout(BookListBoxLayout);
         BookListBoxLayout.setHorizontalGroup(
             BookListBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BookListBoxLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BookListBoxLayout.createSequentialGroup()
+                .addContainerGap(58, Short.MAX_VALUE)
                 .addComponent(BookList)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addGap(56, 56, 56))
         );
         BookListBoxLayout.setVerticalGroup(
             BookListBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,7 +147,7 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        NavBar.add(BookListBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 210, -1));
+        NavBar.add(BookListBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 210, -1));
 
         YourProfileBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -180,7 +181,7 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        NavBar.add(YourProfileBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 73, 210, -1));
+        NavBar.add(YourProfileBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 210, -1));
 
         LogoutBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -214,7 +215,7 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        NavBar.add(LogoutBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 210, 50));
+        NavBar.add(LogoutBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 210, 50));
 
         HomeLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         HomeLabel.setText("Home");
@@ -223,26 +224,26 @@ public class Home extends javax.swing.JFrame {
         HomeBox.setLayout(HomeBoxLayout);
         HomeBoxLayout.setHorizontalGroup(
             HomeBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HomeBoxLayout.createSequentialGroup()
-                .addGap(71, 71, 71)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HomeBoxLayout.createSequentialGroup()
+                .addContainerGap(79, Short.MAX_VALUE)
                 .addComponent(HomeLabel)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addGap(69, 69, 69))
         );
         HomeBoxLayout.setVerticalGroup(
             HomeBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HomeBoxLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(HomeBoxLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(HomeLabel)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        NavBar.add(HomeBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 210, 50));
+        NavBar.add(HomeBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 210, 50));
 
         getContentPane().add(NavBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 400));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
         jLabel1.setText("Your document to see status.");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -274,13 +275,17 @@ public class Home extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 410, 310));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 410, 270));
+
+        Header.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        getContentPane().add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 380, 40));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        Header.setText("Welcome , "+Username);
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         try {
@@ -424,6 +429,7 @@ public class Home extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BookList;
     private javax.swing.JPanel BookListBox;
+    private javax.swing.JLabel Header;
     private javax.swing.JPanel HomeBox;
     private javax.swing.JLabel HomeLabel;
     private javax.swing.JLabel Logout;

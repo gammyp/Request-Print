@@ -84,13 +84,25 @@ public class Userprofile extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel1.setText("Your Profile");
 
+        Name.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Name.setText("Name : ");
 
+        Surname.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Surname.setText("Surname : ");
 
+        Email.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Email.setText("Email : ");
 
+        Phone.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Phone.setText("Telephone : ");
+
+        NameLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        SurnameLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        EmailLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        PhoneLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         Edit.setText("Edit");
         Edit.addActionListener(new java.awt.event.ActionListener() {
@@ -297,16 +309,18 @@ public class Userprofile extends javax.swing.JFrame {
                                     .addComponent(Email))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(SurnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(NameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(EmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(PhoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Edit))))
-                        .addContainerGap(103, Short.MAX_VALUE))
+                                    .addComponent(EmailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(SurnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(NameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(PhoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Edit))
+                                        .addGap(0, 77, Short.MAX_VALUE))))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addContainerGap())))
+                        .addComponent(jLabel2)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -338,6 +352,7 @@ public class Userprofile extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed

@@ -6,6 +6,7 @@
 package RequestPrintUser;
 
 import RequestPrintDatabase.ConnectionBuilder;
+import RequestPrintLogin.LoginEPrinting;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +15,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JList;
 import java.lang.String;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -24,6 +27,8 @@ public class SelectShop extends javax.swing.JFrame {
     private int UserId;
     private String Link;
     private int DocCopies;
+    private int ShopId;
+    private String Message;
     
     public void setUsername(String Username) {
         this.Username = Username;
@@ -47,6 +52,10 @@ public class SelectShop extends javax.swing.JFrame {
     
     public int getUserId() {
         return UserId;
+    }
+
+    public void setMessage(String Message) {
+        this.Message = Message;
     }
     
     /**
@@ -121,6 +130,8 @@ public class SelectShop extends javax.swing.JFrame {
     private void CancleButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancleButtonMouseClicked
         // TODO add your handling code here:
         UserRequest usrreq = new UserRequest();
+        usrreq.setUserId(UserId);
+        usrreq.setUsername(Username);
         setVisible(false);
         usrreq.setVisible(true);
     }//GEN-LAST:event_CancleButtonMouseClicked
@@ -134,6 +145,7 @@ public class SelectShop extends javax.swing.JFrame {
             while (rs.next()) {
                 ShopList.addItem(rs.getString("shopName"));
             }
+            
             con.close();
             pstm.close();
         } catch (SQLException ex) {
@@ -148,11 +160,45 @@ public class SelectShop extends javax.swing.JFrame {
     private void RequestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestMouseClicked
         try {
             // TODO add your handling code here:
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = new Date(System.currentTimeMillis());
+            //System.out.println(sdf.format(date));
+            String datestr = sdf.format(date);
+            LoginEPrinting login = new LoginEPrinting();
             Connection con = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = con.prepareStatement("INSERT ");
-            
+            PreparedStatement pstmShopId = con.prepareStatement("SELECT shopID FROM ShopProfile WHERE shopName = " + ShopList.getSelectedItem().toString());
+            PreparedStatement pstm = con.prepareStatement("INSERT INTO mydb.Order VALUES (null,?,?,?,?,?,?,?)");
+            pstm.setInt(1, DocCopies);
+            if(DocCopies > 0) {
+                pstm.setString(2, "Pending Responding");
+            } else if (DocCopies > 100){
+                pstm.setString(2, "Pending Payment");
+            } 
+            pstm.setString(3, datestr);
+            pstm.setString(4, Message);
+            pstm.setString(5, Link);
+            pstm.setInt(6, login.getUserId());
+            pstm.setInt(7, ShopId);
+            pstm.executeUpdate();
+            //SELECT ProductID
+            PreparedStatement pstm2 = con.prepareStatement("SELECT productID FROM Product WHERE productName = 'LINK Product shop'"+ShopId+"'");
+            ResultSet rs2 = pstm.executeQuery();
+            rs2.next();
+            //SELECT OrderID
+            PreparedStatement pstm3 = con.prepareStatement("SELECT OrderID FROM mydb.Order WHERE url = "+Link);
+            ResultSet rs3 = pstm3.executeQuery();
+            rs3.next();
+            //INSERT SheetOrder
+            PreparedStatement pstm4 = con.prepareStatement("INSERT INTO SheetOrder (productAmount , Order_orderid , Product_productID) VALUE (? , ? , ?)");
+            pstm4.setInt(1, DocCopies);
+            pstm4.setInt(2, rs3.getInt("OrderID"));
+            pstm4.setInt(3 , rs2.getInt("productID"));
+            pstm4.executeUpdate();
             con.close();
             pstm.close();
+            pstm2.close();
+            pstm3.close();
+            pstm4.close();
         } catch (SQLException ex) {
             Logger.getLogger(SelectShop.class.getName()).log(Level.SEVERE, null, ex);
         }
