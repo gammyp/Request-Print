@@ -371,7 +371,8 @@ public class ManageListBook extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(952, 575));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    private void search() {
+
+    private void searchListBook() {
         this.model = (DefaultTableModel) manageTable.getModel();
         model.setRowCount(0);
         Connection con = null;
@@ -396,7 +397,8 @@ public class ManageListBook extends javax.swing.JFrame {
             Logger.getLogger(ManageListBook.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+
+    private void showTableListBook() {
         model = (DefaultTableModel) manageTable.getModel();
         model.setRowCount(0);
         Connection con = null;
@@ -418,28 +420,9 @@ public class ManageListBook extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(ManageListBook.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_formWindowActivated
+    }
 
-    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        manageBook.setForeground(new java.awt.Color(30, 30, 30));
-        manageBook.setBackground(new java.awt.Color(234, 234, 234));
-        bgMenu.setBackground(new java.awt.Color(234, 234, 234));
-        showDetail.setBackground(new java.awt.Color(228, 228, 228));
-
-        Image logout = new ImageIcon(this.getClass().getResource("../icon/logout.png")).getImage();
-        logoutIcon.setIcon(new ImageIcon(logout.getScaledInstance(logoutIcon.getWidth(), logoutIcon.getHeight(), 0)));
-
-        Image search = new ImageIcon(this.getClass().getResource("../icon/search.png")).getImage();
-        searchIcon.setIcon(new ImageIcon(search.getScaledInstance(searchIcon.getWidth(), searchIcon.getHeight(), 0)));
-    }//GEN-LAST:event_formComponentShown
-
-    private void profileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseClicked
-        ShopProfile sProf = new ShopProfile();
-        this.setVisible(false);
-        sProf.setVisible(true);
-    }//GEN-LAST:event_profileMouseClicked
-
-    private void manageTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageTableMouseClicked
+    private void showDataBook() {
         Connection con = null;
         showProductID.setText((manageTable.getValueAt(manageTable.getSelectedRow(), 0)) + "");
         showBookName.setText((manageTable.getValueAt(manageTable.getSelectedRow(), 1)) + "");
@@ -473,6 +456,53 @@ public class ManageListBook extends javax.swing.JFrame {
             Logger.getLogger(ManageListBook.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private void deleteBookList() {
+        int row = manageTable.getSelectedRow();
+        Connection con = null;
+        try {
+            con = ConnectionBuilder.getConnection();
+            PreparedStatement pstm = con.prepareStatement("DELETE FROM Product WHERE ProductID = ?");
+            pstm.setInt(1, Integer.parseInt(showProductID.getText()));
+            int ans = JOptionPane.showConfirmDialog(null, "Delete", "Confirm", JOptionPane.WARNING_MESSAGE);
+            if (ans == 0) {
+                pstm.executeUpdate();
+
+            }
+            pstm.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageListBook.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        showTableListBook();
+    }//GEN-LAST:event_formWindowActivated
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        manageBook.setForeground(new java.awt.Color(30, 30, 30));
+        manageBook.setBackground(new java.awt.Color(234, 234, 234));
+        bgMenu.setBackground(new java.awt.Color(234, 234, 234));
+        showDetail.setBackground(new java.awt.Color(228, 228, 228));
+
+        Image logout = new ImageIcon(this.getClass().getResource("../icon/logout.png")).getImage();
+        logoutIcon.setIcon(new ImageIcon(logout.getScaledInstance(logoutIcon.getWidth(), logoutIcon.getHeight(), 0)));
+
+        Image search = new ImageIcon(this.getClass().getResource("../icon/search.png")).getImage();
+        searchIcon.setIcon(new ImageIcon(search.getScaledInstance(searchIcon.getWidth(), searchIcon.getHeight(), 0)));
+    }//GEN-LAST:event_formComponentShown
+
+    private void profileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseClicked
+        ShopProfile sProf = new ShopProfile();
+        this.setVisible(false);
+        sProf.setVisible(true);
+    }//GEN-LAST:event_profileMouseClicked
+
+    private void manageTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageTableMouseClicked
+        showDataBook();
     }//GEN-LAST:event_manageTableMouseClicked
 
     private void signOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signOutMouseClicked
@@ -494,16 +524,16 @@ public class ManageListBook extends javax.swing.JFrame {
     }//GEN-LAST:event_homeMouseClicked
 
     private void searchIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchIconMouseClicked
-        search();
+        searchListBook();
     }//GEN-LAST:event_searchIconMouseClicked
 
     private void searchButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseClicked
-        search();
+        searchListBook();
     }//GEN-LAST:event_searchButtonMouseClicked
 
     private void searchFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            search();
+            searchListBook();
         }
     }//GEN-LAST:event_searchFieldKeyPressed
 
@@ -513,23 +543,7 @@ public class ManageListBook extends javax.swing.JFrame {
     }//GEN-LAST:event_addBookButtonMouseClicked
 
     private void deleteButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonMouseClicked
-        int row = manageTable.getSelectedRow();
-        Connection con = null;
-        try {
-            con = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = con.prepareStatement("DELETE FROM Product WHERE ProductID = ?");
-            pstm.setInt(1, Integer.parseInt(showProductID.getText()));
-            int ans = JOptionPane.showConfirmDialog(null, "Delete", "Confirm", JOptionPane.WARNING_MESSAGE);
-            if (ans == 0) {
-                pstm.executeUpdate();
-
-            }
-            pstm.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(ManageListBook.class
-                    .getName()).log(Level.SEVERE, null, ex);
-        }
+        deleteBookList();
     }//GEN-LAST:event_deleteButtonMouseClicked
 
     private void logoutIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutIconMouseClicked

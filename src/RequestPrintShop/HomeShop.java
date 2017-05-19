@@ -303,45 +303,7 @@ public class HomeShop extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        bgMenu.setBackground(new java.awt.Color(234, 234, 234));
-        home.setBackground(new java.awt.Color(234, 234, 234));
-        home.setForeground(new java.awt.Color(30, 30, 30));
-        updateTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        updateTable.getColumnModel().getColumn(0).setPreferredWidth(20);
-        updateTable.getColumnModel().getColumn(1).setPreferredWidth(120);
-        updateTable.getColumnModel().getColumn(2).setPreferredWidth(30);
-        updateTable.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
-
-        Image logout = new ImageIcon(this.getClass().getResource("../icon/logout.png")).getImage();
-        logoutIcon.setIcon(new ImageIcon(logout.getScaledInstance(logoutIcon.getWidth(), logoutIcon.getHeight(), 0)));
-    }//GEN-LAST:event_formComponentShown
-
-    private void signoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signoutMouseClicked
-        LoginEPrinting login = new LoginEPrinting();
-        this.setVisible(false);
-        login.setVisible(true);
-    }//GEN-LAST:event_signoutMouseClicked
-
-    private void profileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseClicked
-        ShopProfile sProf = new ShopProfile();
-        this.setVisible(false);
-        sProf.setVisible(true);
-    }//GEN-LAST:event_profileMouseClicked
-
-    private void manageBookMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageBookMouseClicked
-        ManageListBook manageBook = new ManageListBook();
-        this.setVisible(false);
-        manageBook.setVisible(true);
-    }//GEN-LAST:event_manageBookMouseClicked
-
-    private void respondPrintMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_respondPrintMouseClicked
-        RespondPrint respond = new RespondPrint();
-        this.setVisible(false);
-        respond.setVisible(true);
-    }//GEN-LAST:event_respondPrintMouseClicked
-
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+    private void showTableActivated() {
         model = (DefaultTableModel) updateTable.getModel();
         model.setRowCount(0);
         Connection con = null;
@@ -394,7 +356,48 @@ public class HomeShop extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(HomeShop.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
 
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        bgMenu.setBackground(new java.awt.Color(234, 234, 234));
+        home.setBackground(new java.awt.Color(234, 234, 234));
+        home.setForeground(new java.awt.Color(30, 30, 30));
+        updateTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        updateTable.getColumnModel().getColumn(0).setPreferredWidth(20);
+        updateTable.getColumnModel().getColumn(1).setPreferredWidth(120);
+        updateTable.getColumnModel().getColumn(2).setPreferredWidth(30);
+        updateTable.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
+
+        Image logout = new ImageIcon(this.getClass().getResource("../icon/logout.png")).getImage();
+        logoutIcon.setIcon(new ImageIcon(logout.getScaledInstance(logoutIcon.getWidth(), logoutIcon.getHeight(), 0)));
+    }//GEN-LAST:event_formComponentShown
+
+    private void signoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signoutMouseClicked
+        LoginEPrinting login = new LoginEPrinting();
+        this.setVisible(false);
+        login.setVisible(true);
+    }//GEN-LAST:event_signoutMouseClicked
+
+    private void profileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseClicked
+        ShopProfile sProf = new ShopProfile();
+        this.setVisible(false);
+        sProf.setVisible(true);
+    }//GEN-LAST:event_profileMouseClicked
+
+    private void manageBookMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageBookMouseClicked
+        ManageListBook manageBook = new ManageListBook();
+        this.setVisible(false);
+        manageBook.setVisible(true);
+    }//GEN-LAST:event_manageBookMouseClicked
+
+    private void respondPrintMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_respondPrintMouseClicked
+        RespondPrint respond = new RespondPrint();
+        this.setVisible(false);
+        respond.setVisible(true);
+    }//GEN-LAST:event_respondPrintMouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        showTableActivated();
     }//GEN-LAST:event_formWindowActivated
 
     private void logoutIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutIconMouseClicked
