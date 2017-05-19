@@ -7,13 +7,11 @@ package RequestPrintUser;
 
 import RequestPrintDatabase.ConnectionBuilder;
 import RequestPrintLogin.LoginEPrinting;
-import RequestPrintShop.ManageListBook;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -66,9 +64,9 @@ public class Home extends javax.swing.JFrame {
         HomeBox = new javax.swing.JPanel();
         HomeLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         Header = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -245,6 +243,9 @@ public class Home extends javax.swing.JFrame {
         jLabel1.setText("Your document to see status.");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, -1, -1));
 
+        Header.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        getContentPane().add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 380, 40));
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -264,21 +265,13 @@ public class Home extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane2.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setResizable(false);
             jTable1.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 410, 270));
-
-        Header.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        getContentPane().add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 380, 40));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 440, 290));
 
         pack();
         setLocationRelativeTo(null);
@@ -291,12 +284,12 @@ public class Home extends javax.swing.JFrame {
         try {
             Connection con = ConnectionBuilder.getConnection();
             LoginEPrinting login = new LoginEPrinting();
-            PreparedStatement pstm = con.prepareStatement(" SELECT orderID, status FROM mydb.`Order` WHERE UserProfile_id = "+ login.getUserId());     
+            PreparedStatement pstm = con.prepareStatement(" SELECT orderID, status FROM Order WHERE UserProfile_id = "+ login.getUserId());     
             ResultSet rs = pstm.executeQuery();
             while(rs.next()){
                 Vector v = new Vector();
-                v.add("orderID");
-                v.add("status");
+                v.add(rs.getString("orderID"));
+                v.add(rs.getString("status"));
                 model.addRow(v);
             }
         } catch (SQLException ex) {
@@ -377,10 +370,6 @@ public class Home extends javax.swing.JFrame {
         BookListBox.setBackground(null);
     }//GEN-LAST:event_BookListBoxMouseExited
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-
-    }//GEN-LAST:event_jTable1MouseClicked
-
     private void BookListBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseClicked
         // TODO add your handling code here:
         BookList book = new BookList();
@@ -440,7 +429,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel YourProfile;
     private javax.swing.JPanel YourProfileBox;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
