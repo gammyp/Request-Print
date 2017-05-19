@@ -9,6 +9,8 @@ import RequestPrintDatabase.ConnectionBuilder;
 import RequestPrintLogin.LoginEPrinting;
 import java.awt.*;
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.logging.*;
 import javax.swing.*;
 
@@ -21,34 +23,7 @@ public class AddBookToManageBook extends javax.swing.JFrame {
     private LoginEPrinting shopID;
     private int month;
 
-    public int getMonth() {
-        if ((monthSpinner.getValue()+"").equals("January")) {
-            month = 0;
-        } else if ((monthSpinner.getValue()+"").equals("February")) {
-            month = 1;
-        } else if ((monthSpinner.getValue()+"").equals("March")) {
-            month = 2;
-        } else if ((monthSpinner.getValue()+"").equals("April")) {
-            month = 3;
-        } else if ((monthSpinner.getValue()+"").equals("May")) {
-            month = 4;
-        } else if ((monthSpinner.getValue()+"").equals("June")) {
-            month = 5;
-        } else if ((monthSpinner.getValue()+"").equals("July")) {
-            month = 6;
-        } else if ((monthSpinner.getValue()+"").equals("August")) {
-            month = 7;
-        } else if ((monthSpinner.getValue()+"").equals("September")) {
-            month = 8;
-        } else if ((monthSpinner.getValue()+"").equals("October")) {
-            month = 9;
-        } else if ((monthSpinner.getValue()+"").equals("November")) {
-            month = 10;
-        } else if ((monthSpinner.getValue()+"").equals("December")) {
-            month = 11;
-        }
-        return month;
-    }
+  
 
     /**
      * Creates new form AddBookToManageBook
@@ -70,20 +45,20 @@ public class AddBookToManageBook extends javax.swing.JFrame {
         jSpinner1 = new javax.swing.JSpinner();
         Submit = new javax.swing.JButton();
         addBookTitle = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        bookNameField = new javax.swing.JTextField();
         bookName = new javax.swing.JLabel();
         date = new javax.swing.JLabel();
-        monthSpinner = new javax.swing.JSpinner();
-        dateSpinner = new javax.swing.JSpinner();
-        detail = new javax.swing.JLabel();
-        bookNameField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         detailField = new javax.swing.JTextPane();
+        detail = new javax.swing.JLabel();
         setPrice = new javax.swing.JLabel();
         setPriceField = new javax.swing.JTextField();
-        submitButton = new javax.swing.JButton();
         errorText = new javax.swing.JLabel();
-        yearSpinner = new javax.swing.JSpinner();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        dateBook = new com.toedter.calendar.JDateChooser();
+        submitBG = new javax.swing.JPanel();
+        submitButton = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
 
@@ -94,90 +69,107 @@ public class AddBookToManageBook extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        addBookTitle.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        addBookTitle.setFont(new java.awt.Font("Moon", 1, 24)); // NOI18N
         addBookTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         addBookTitle.setText("Add book");
         getContentPane().add(addBookTitle);
-        addBookTitle.setBounds(0, 10, 440, 31);
+        addBookTitle.setBounds(0, 10, 430, 31);
 
-        bookName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        bookName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        bookName.setText("Book name :");
-        getContentPane().add(bookName);
-        bookName.setBounds(40, 50, 90, 30);
+        jPanel1.setBackground(new java.awt.Color(228, 228, 228));
+        jPanel1.setLayout(null);
 
-        date.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        date.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        date.setText("Date :");
-        getContentPane().add(date);
-        date.setBounds(80, 90, 50, 30);
+        jPanel2.setBackground(new java.awt.Color(250, 250, 250));
+        jPanel2.setLayout(null);
 
-        monthSpinner.setModel(new javax.swing.SpinnerListModel(new String[] {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"}));
-        getContentPane().add(monthSpinner);
-        monthSpinner.setBounds(190, 90, 100, 30);
-
-        dateSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
-        getContentPane().add(dateSpinner);
-        dateSpinner.setBounds(140, 90, 50, 30);
-
-        detail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        detail.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        detail.setText("Detail :");
-        getContentPane().add(detail);
-        detail.setBounds(40, 130, 90, 30);
-
-        bookNameField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        bookNameField.setFont(new java.awt.Font("Cloud Light", 0, 14)); // NOI18N
         bookNameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bookNameFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(bookNameField);
-        bookNameField.setBounds(140, 50, 220, 30);
+        jPanel2.add(bookNameField);
+        bookNameField.setBounds(140, 20, 220, 30);
 
+        bookName.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
+        bookName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        bookName.setText("Book name :");
+        jPanel2.add(bookName);
+        bookName.setBounds(20, 20, 110, 30);
+
+        date.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
+        date.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        date.setText("Date :");
+        jPanel2.add(date);
+        date.setBounds(80, 60, 50, 30);
+
+        detailField.setFont(new java.awt.Font("Cloud Light", 0, 14)); // NOI18N
         jScrollPane1.setViewportView(detailField);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(140, 130, 220, 100);
+        jPanel2.add(jScrollPane1);
+        jScrollPane1.setBounds(140, 100, 220, 100);
 
-        setPrice.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        detail.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
+        detail.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        detail.setText("Detail :");
+        jPanel2.add(detail);
+        detail.setBounds(40, 100, 90, 30);
+
+        setPrice.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
         setPrice.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         setPrice.setText("Set price :");
-        getContentPane().add(setPrice);
-        setPrice.setBounds(40, 240, 90, 30);
+        jPanel2.add(setPrice);
+        setPrice.setBounds(40, 210, 90, 30);
 
-        setPriceField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(setPriceField);
-        setPriceField.setBounds(140, 240, 220, 30);
+        setPriceField.setFont(new java.awt.Font("Cloud Light", 0, 14)); // NOI18N
+        jPanel2.add(setPriceField);
+        setPriceField.setBounds(140, 210, 220, 30);
 
-        submitButton.setText("Submit");
-        submitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(submitButton);
-        submitButton.setBounds(160, 300, 100, 30);
-
+        errorText.setFont(new java.awt.Font("Cloud Light", 0, 14)); // NOI18N
         errorText.setForeground(new java.awt.Color(255, 0, 0));
         errorText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(errorText);
-        errorText.setBounds(40, 270, 360, 20);
+        jPanel2.add(errorText);
+        errorText.setBounds(0, 240, 390, 30);
+        jPanel2.add(dateBook);
+        dateBook.setBounds(140, 60, 220, 30);
 
-        yearSpinner.setModel(new javax.swing.SpinnerNumberModel(1900, 1900, 2500, 1));
-        yearSpinner.setEditor(new javax.swing.JSpinner.NumberEditor(yearSpinner, "0000"));
-        getContentPane().add(yearSpinner);
-        yearSpinner.setBounds(290, 90, 70, 30);
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(20, 50, 390, 280);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(190, 90, 90, 22);
+        submitBG.setBackground(new java.awt.Color(153, 255, 153));
+        submitBG.setLayout(null);
 
-        setSize(new java.awt.Dimension(451, 399));
+        submitButton.setFont(new java.awt.Font("Cloud Light", 0, 18)); // NOI18N
+        submitButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        submitButton.setText("Submit");
+        submitButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                submitButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                submitButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                submitButtonMouseExited(evt);
+            }
+        });
+        submitBG.add(submitButton);
+        submitButton.setBounds(0, 0, 390, 40);
+
+        jPanel1.add(submitBG);
+        submitBG.setBounds(20, 340, 390, 40);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 510, 430);
+
+        setSize(new java.awt.Dimension(441, 426));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+    private void bookNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookNameFieldActionPerformed
+        bookNameField.setBackground(null);
+    }//GEN-LAST:event_bookNameFieldActionPerformed
+
+    private void submitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitButtonMouseClicked
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
@@ -192,17 +184,16 @@ public class AddBookToManageBook extends javax.swing.JFrame {
             } else {
                 PreparedStatement pstmInsert = con.prepareStatement("INSERT INTO Product (productName, date, detail, price, ShopProfile_shopID)"
                         + " VALUES (?,?,?,?,?)");
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 pstmInsert.setString(1, bookNameField.getText());
-                pstmInsert.setDate(2, new Date((Integer.parseInt(yearSpinner.getValue()+"")-1900), getMonth() ,Integer.parseInt(dateSpinner.getValue()+"")));
+                pstmInsert.setString(2, sdf.format(dateBook.getDate()));
                 pstmInsert.setString(3, detailField.getText());
                 pstmInsert.setString(4, setPriceField.getText());
                 pstmInsert.setInt(5, login.getShopId());
                 pstmInsert.executeUpdate();
                 System.out.println("Insert complete");
                 bookNameField.setText("");
-                dateSpinner.setValue(1);
-                monthSpinner.setValue("January");
-                yearSpinner.setValue(1900);
+                
                 detailField.setText("");
                 setPriceField.setText("");
                 this.setVisible(false);
@@ -210,11 +201,15 @@ public class AddBookToManageBook extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(AddBookToManageBook.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_submitButtonActionPerformed
+    }//GEN-LAST:event_submitButtonMouseClicked
 
-    private void bookNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookNameFieldActionPerformed
-        bookNameField.setBackground(null);
-    }//GEN-LAST:event_bookNameFieldActionPerformed
+    private void submitButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitButtonMouseEntered
+        submitBG.setBackground(new java.awt.Color(102, 255, 102));
+    }//GEN-LAST:event_submitButtonMouseEntered
+
+    private void submitButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitButtonMouseExited
+        submitBG.setBackground(new java.awt.Color(153,255,153));
+    }//GEN-LAST:event_submitButtonMouseExited
 
     /**
      * @param args the command line arguments
@@ -257,18 +252,18 @@ public class AddBookToManageBook extends javax.swing.JFrame {
     private javax.swing.JLabel bookName;
     private javax.swing.JTextField bookNameField;
     private javax.swing.JLabel date;
-    public javax.swing.JSpinner dateSpinner;
+    private com.toedter.calendar.JDateChooser dateBook;
     private javax.swing.JLabel detail;
     private javax.swing.JTextPane detailField;
     private javax.swing.JLabel errorText;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;
-    public javax.swing.JSpinner monthSpinner;
     private javax.swing.JLabel setPrice;
     private javax.swing.JTextField setPriceField;
-    private javax.swing.JButton submitButton;
-    public javax.swing.JSpinner yearSpinner;
+    private javax.swing.JPanel submitBG;
+    private javax.swing.JLabel submitButton;
     // End of variables declaration//GEN-END:variables
 }

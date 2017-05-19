@@ -39,13 +39,17 @@ public class ChangeStatus extends javax.swing.JFrame {
     private void initComponents() {
 
         changeGroup = new javax.swing.ButtonGroup();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         changeStatusTitle = new javax.swing.JLabel();
-        done = new javax.swing.JRadioButton();
-        pendingResponding = new javax.swing.JRadioButton();
+        jPanel2 = new javax.swing.JPanel();
         waitForReceipt = new javax.swing.JRadioButton();
         pendingPayment = new javax.swing.JRadioButton();
+        pendingResponding = new javax.swing.JRadioButton();
         process = new javax.swing.JRadioButton();
-        updateButton = new javax.swing.JButton();
+        done = new javax.swing.JRadioButton();
+        updateBG = new javax.swing.JPanel();
+        updateButton = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -56,79 +60,85 @@ public class ChangeStatus extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
-        changeStatusTitle.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(228, 228, 228));
+        jPanel1.setLayout(null);
+
+        changeStatusTitle.setFont(new java.awt.Font("Moon", 1, 24)); // NOI18N
         changeStatusTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         changeStatusTitle.setText("Change Status");
-        getContentPane().add(changeStatusTitle);
-        changeStatusTitle.setBounds(0, 10, 360, 25);
+        jPanel1.add(changeStatusTitle);
+        changeStatusTitle.setBounds(0, 10, 370, 29);
 
-        changeGroup.add(done);
-        done.setText("Done");
-        getContentPane().add(done);
-        done.setBounds(20, 110, 81, 25);
+        jPanel2.setBackground(new java.awt.Color(250, 250, 250));
+        jPanel2.setLayout(null);
 
-        changeGroup.add(pendingResponding);
-        pendingResponding.setText("Pending Responding");
-        getContentPane().add(pendingResponding);
-        pendingResponding.setBounds(20, 50, 150, 25);
-
+        waitForReceipt.setBackground(new java.awt.Color(250, 250, 250));
         changeGroup.add(waitForReceipt);
+        waitForReceipt.setFont(new java.awt.Font("Cloud Light", 0, 14)); // NOI18N
         waitForReceipt.setText("Waiting for receipt");
-        getContentPane().add(waitForReceipt);
-        waitForReceipt.setBounds(200, 80, 140, 25);
+        jPanel2.add(waitForReceipt);
+        waitForReceipt.setBounds(190, 40, 150, 25);
 
+        pendingPayment.setBackground(new java.awt.Color(250, 250, 250));
         changeGroup.add(pendingPayment);
+        pendingPayment.setFont(new java.awt.Font("Cloud Light", 0, 14)); // NOI18N
         pendingPayment.setText("Pending Payment");
-        getContentPane().add(pendingPayment);
-        pendingPayment.setBounds(200, 50, 140, 25);
+        jPanel2.add(pendingPayment);
+        pendingPayment.setBounds(190, 10, 140, 25);
 
+        pendingResponding.setBackground(new java.awt.Color(250, 250, 250));
+        changeGroup.add(pendingResponding);
+        pendingResponding.setFont(new java.awt.Font("Cloud Light", 0, 14)); // NOI18N
+        pendingResponding.setText("Pending Responding");
+        jPanel2.add(pendingResponding);
+        pendingResponding.setBounds(10, 10, 170, 25);
+
+        process.setBackground(new java.awt.Color(250, 250, 250));
         changeGroup.add(process);
+        process.setFont(new java.awt.Font("Cloud Light", 0, 14)); // NOI18N
         process.setText("Process");
-        getContentPane().add(process);
-        process.setBounds(20, 80, 73, 25);
+        jPanel2.add(process);
+        process.setBounds(10, 40, 100, 25);
 
+        done.setBackground(new java.awt.Color(250, 250, 250));
+        changeGroup.add(done);
+        done.setFont(new java.awt.Font("Cloud Light", 0, 14)); // NOI18N
+        done.setText("Done");
+        jPanel2.add(done);
+        done.setBounds(10, 70, 81, 25);
+
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(10, 50, 350, 110);
+
+        updateBG.setBackground(new java.awt.Color(153, 255, 153));
+        updateBG.setLayout(null);
+
+        updateButton.setFont(new java.awt.Font("Cloud Light", 0, 18)); // NOI18N
+        updateButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         updateButton.setText("Update");
-        updateButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateButtonActionPerformed(evt);
+        updateButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                updateButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                updateButtonMouseExited(evt);
             }
         });
-        getContentPane().add(updateButton);
-        updateButton.setBounds(140, 140, 80, 30);
+        updateBG.add(updateButton);
+        updateButton.setBounds(0, 0, 350, 30);
 
-        setSize(new java.awt.Dimension(377, 228));
+        jPanel1.add(updateBG);
+        updateBG.setBounds(10, 170, 350, 30);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 430, 230);
+
+        setSize(new java.awt.Dimension(377, 247));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-        Connection con = null;
-        try {
-            con = ConnectionBuilder.getConnection();
-            RespondPrint respond = new RespondPrint();
-            PreparedStatement pstm = con.prepareStatement("UPDATE mydb.Order SET `status` = ? WHERE orderID = " + respond.getOrderId());
-            if (pendingResponding.isSelected()) {
-                pstm.setString(1, pendingResponding.getText());
-                System.out.println("pending responding update value function working !");
-            } else if (pendingPayment.isSelected()) {
-                pstm.setString(1, pendingPayment.getText());
-                System.out.println("pending payment update value function working !");
-            } else if (process.isSelected()) {
-                pstm.setString(1, process.getText());
-                System.out.println("process update value function working !");
-            } else if (waitForReceipt.isSelected()) {
-                pstm.setString(1, "Product can be picked");
-                System.out.println("wait for receipt update value function working !");
-            } else if (done.isSelected()) {
-                pstm.setString(1, done.getText());
-                System.out.println("done update value function working !");
-            }
-            pstm.executeUpdate();
-            System.out.println("Executed update");
-            this.setVisible(false);
-        } catch (SQLException ex) {
-            Logger.getLogger(ChangeStatus.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_updateButtonActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         Connection con = null;
@@ -157,10 +167,52 @@ public class ChangeStatus extends javax.swing.JFrame {
                     System.out.println("done window activate function is working !");
                 }
             }
+            pstm.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(ChangeStatus.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formWindowActivated
+
+    private void updateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseClicked
+        Connection con = null;
+        try {
+            con = ConnectionBuilder.getConnection();
+            RespondPrint respond = new RespondPrint();
+            PreparedStatement pstm = con.prepareStatement("UPDATE mydb.Order SET `status` = ? WHERE orderID = " + respond.getOrderId());
+            if (pendingResponding.isSelected()) {
+                pstm.setString(1, pendingResponding.getText());
+                System.out.println("pending responding update value function working !");
+            } else if (pendingPayment.isSelected()) {
+                pstm.setString(1, pendingPayment.getText());
+                System.out.println("pending payment update value function working !");
+            } else if (process.isSelected()) {
+                pstm.setString(1, process.getText());
+                System.out.println("process update value function working !");
+            } else if (waitForReceipt.isSelected()) {
+                pstm.setString(1, "Product can be picked");
+                System.out.println("wait for receipt update value function working !");
+            } else if (done.isSelected()) {
+                pstm.setString(1, done.getText());
+                System.out.println("done update value function working !");
+            }
+            pstm.executeUpdate();
+            System.out.println("Executed update");
+            this.setVisible(false);
+            pstm.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ChangeStatus.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_updateButtonMouseClicked
+
+    private void updateButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseEntered
+        updateBG.setBackground(new java.awt.Color(102, 255, 102));
+    }//GEN-LAST:event_updateButtonMouseEntered
+
+    private void updateButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseExited
+        updateBG.setBackground(new java.awt.Color(153,255,153));
+    }//GEN-LAST:event_updateButtonMouseExited
 
     /**
      * @param args the command line arguments
@@ -201,10 +253,14 @@ public class ChangeStatus extends javax.swing.JFrame {
     private javax.swing.ButtonGroup changeGroup;
     private javax.swing.JLabel changeStatusTitle;
     private javax.swing.JRadioButton done;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JRadioButton pendingPayment;
     private javax.swing.JRadioButton pendingResponding;
     private javax.swing.JRadioButton process;
-    private javax.swing.JButton updateButton;
+    private javax.swing.JPanel updateBG;
+    private javax.swing.JLabel updateButton;
     private javax.swing.JRadioButton waitForReceipt;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,14 +8,15 @@ package RequestPrintShop;
 import RequestPrintDatabase.ConnectionBuilder;
 import RequestPrintLogin.LoginEPrinting;
 import java.awt.Color;
+import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -45,13 +46,14 @@ public class HomeShop extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        home = new javax.swing.JLabel();
         bgMenu = new javax.swing.JPanel();
+        home = new javax.swing.JLabel();
         profile = new javax.swing.JLabel();
         manageBook = new javax.swing.JLabel();
         respondPrint = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         signout = new javax.swing.JLabel();
+        logoutIcon = new javax.swing.JLabel();
         update = new javax.swing.JLabel();
         topHit = new javax.swing.JLabel();
         topOneBG = new javax.swing.JPanel();
@@ -64,6 +66,10 @@ public class HomeShop extends javax.swing.JFrame {
         topThree = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         updateTable = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -92,30 +98,22 @@ public class HomeShop extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
-        home.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bgMenu.setBackground(new java.awt.Color(102, 102, 102));
+        bgMenu.setLayout(null);
+
+        home.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
+        home.setForeground(new java.awt.Color(255, 255, 255));
         home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         home.setText("Home");
         home.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(home);
-        home.setBounds(0, 100, 190, 30);
-
-        bgMenu.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout bgMenuLayout = new javax.swing.GroupLayout(bgMenu);
-        bgMenu.setLayout(bgMenuLayout);
-        bgMenuLayout.setHorizontalGroup(
-            bgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 190, Short.MAX_VALUE)
-        );
-        bgMenuLayout.setVerticalGroup(
-            bgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
-        );
+        bgMenu.add(home);
+        home.setBounds(0, 0, 230, 40);
 
         getContentPane().add(bgMenu);
-        bgMenu.setBounds(0, 100, 190, 30);
+        bgMenu.setBounds(0, 100, 230, 40);
 
-        profile.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        profile.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
+        profile.setForeground(new java.awt.Color(255, 255, 255));
         profile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         profile.setText("Profile");
         profile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -125,9 +123,10 @@ public class HomeShop extends javax.swing.JFrame {
             }
         });
         getContentPane().add(profile);
-        profile.setBounds(0, 150, 190, 30);
+        profile.setBounds(0, 150, 230, 40);
 
-        manageBook.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        manageBook.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
+        manageBook.setForeground(new java.awt.Color(255, 255, 255));
         manageBook.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         manageBook.setText("Manage Book");
         manageBook.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -137,9 +136,10 @@ public class HomeShop extends javax.swing.JFrame {
             }
         });
         getContentPane().add(manageBook);
-        manageBook.setBounds(0, 200, 190, 30);
+        manageBook.setBounds(0, 200, 230, 40);
 
-        respondPrint.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        respondPrint.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
+        respondPrint.setForeground(new java.awt.Color(255, 255, 255));
         respondPrint.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         respondPrint.setText("Respond Print");
         respondPrint.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -149,11 +149,13 @@ public class HomeShop extends javax.swing.JFrame {
             }
         });
         getContentPane().add(respondPrint);
-        respondPrint.setBounds(0, 250, 190, 30);
+        respondPrint.setBounds(0, 250, 230, 40);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.setLayout(null);
 
+        signout.setFont(new java.awt.Font("Cloud Light", 1, 13)); // NOI18N
+        signout.setForeground(new java.awt.Color(255, 255, 255));
         signout.setText("Sign out");
         signout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         signout.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -162,26 +164,35 @@ public class HomeShop extends javax.swing.JFrame {
             }
         });
         jPanel1.add(signout);
-        signout.setBounds(7, 421, 50, 16);
+        signout.setBounds(140, 460, 60, 20);
+
+        logoutIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logoutIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutIconMouseClicked(evt);
+            }
+        });
+        jPanel1.add(logoutIcon);
+        logoutIcon.setBounds(200, 460, 20, 20);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 190, 450);
+        jPanel1.setBounds(0, 0, 230, 500);
 
-        update.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        update.setFont(new java.awt.Font("Moon", 1, 18)); // NOI18N
         update.setText("Update");
         getContentPane().add(update);
-        update.setBounds(220, 230, 60, 20);
+        update.setBounds(250, 260, 80, 20);
 
-        topHit.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        topHit.setFont(new java.awt.Font("Moon", 1, 18)); // NOI18N
         topHit.setText("Top 3 Book");
         getContentPane().add(topHit);
-        topHit.setBounds(220, 20, 100, 20);
+        topHit.setBounds(250, 20, 110, 22);
 
-        topOneBG.setBackground(new java.awt.Color(225, 225, 225));
+        topOneBG.setBackground(new java.awt.Color(211, 211, 211));
         topOneBG.setLayout(null);
 
+        topOne.setFont(new java.awt.Font("Moon", 1, 18)); // NOI18N
         topOne.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        topOne.setText("test b1");
         topOneBG.add(topOne);
         topOne.setBounds(0, 0, 130, 160);
 
@@ -196,28 +207,31 @@ public class HomeShop extends javax.swing.JFrame {
         topOneBG1.setBounds(230, 50, 130, 160);
 
         getContentPane().add(topOneBG);
-        topOneBG.setBounds(230, 50, 130, 160);
+        topOneBG.setBounds(260, 50, 130, 160);
 
-        topTwoBG.setBackground(new java.awt.Color(225, 225, 225));
+        topTwoBG.setBackground(new java.awt.Color(211, 211, 211));
         topTwoBG.setLayout(null);
 
+        topTwo.setFont(new java.awt.Font("Moon", 1, 18)); // NOI18N
         topTwo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         topTwoBG.add(topTwo);
         topTwo.setBounds(0, 0, 130, 160);
 
         getContentPane().add(topTwoBG);
-        topTwoBG.setBounds(390, 50, 130, 160);
+        topTwoBG.setBounds(420, 50, 130, 160);
 
-        topThreeBG.setBackground(new java.awt.Color(225, 225, 225));
+        topThreeBG.setBackground(new java.awt.Color(211, 211, 211));
         topThreeBG.setLayout(null);
 
+        topThree.setFont(new java.awt.Font("Moon", 1, 18)); // NOI18N
         topThree.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         topThreeBG.add(topThree);
         topThree.setBounds(0, 0, 130, 160);
 
         getContentPane().add(topThreeBG);
-        topThreeBG.setBounds(550, 50, 130, 160);
+        topThreeBG.setBounds(580, 50, 130, 160);
 
+        updateTable.setBackground(new java.awt.Color(204, 255, 204));
         updateTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -244,24 +258,63 @@ public class HomeShop extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        updateTable.setSelectionBackground(new java.awt.Color(204, 255, 255));
+        updateTable.setSelectionForeground(new java.awt.Color(0, 0, 0));
         jScrollPane2.setViewportView(updateTable);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(230, 260, 452, 170);
+        jScrollPane2.setBounds(260, 290, 452, 170);
 
-        setSize(new java.awt.Dimension(737, 491));
+        jLabel2.setFont(new java.awt.Font("Moon", 1, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("- Top 3 -");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(580, 210, 130, 30);
+
+        jLabel4.setFont(new java.awt.Font("Moon", 1, 14)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("- Top 1 -");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(260, 210, 130, 30);
+
+        jLabel5.setFont(new java.awt.Font("Moon", 1, 14)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("- Top 2  -");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(420, 210, 130, 30);
+
+        jPanel2.setBackground(new java.awt.Color(228, 228, 228));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 590, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 530, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(230, 0, 590, 530);
+
+        setSize(new java.awt.Dimension(741, 525));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        bgMenu.setBackground(Color.DARK_GRAY);
-        home.setBackground(Color.DARK_GRAY);
-        home.setForeground(Color.WHITE);
+        bgMenu.setBackground(new java.awt.Color(234, 234, 234));
+        home.setBackground(new java.awt.Color(234, 234, 234));
+        home.setForeground(new java.awt.Color(30, 30, 30));
         updateTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         updateTable.getColumnModel().getColumn(0).setPreferredWidth(20);
         updateTable.getColumnModel().getColumn(1).setPreferredWidth(120);
         updateTable.getColumnModel().getColumn(2).setPreferredWidth(30);
         updateTable.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
+        
+        Image logout = new ImageIcon(this.getClass().getResource("../icon/logout.png")).getImage();
+        logoutIcon.setIcon(new ImageIcon(logout.getScaledInstance(logoutIcon.getWidth(), logoutIcon.getHeight(), 0)));
     }//GEN-LAST:event_formComponentShown
 
     private void signoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signoutMouseClicked
@@ -296,7 +349,7 @@ public class HomeShop extends javax.swing.JFrame {
             con = ConnectionBuilder.getConnection();
             LoginEPrinting login = new LoginEPrinting();
             PreparedStatement pstmOrder = con.prepareStatement("SELECT * FROM mydb.Order "
-                    + "WHERE ShopProfile_shopID = " + login.getShopId());
+                    + "WHERE ShopProfile_shopID = " + login.getShopId() + " AND status = 'Pending Responding'");
             ResultSet rsOrder = pstmOrder.executeQuery();
 
             while (rsOrder.next()) {
@@ -307,12 +360,11 @@ public class HomeShop extends javax.swing.JFrame {
                 Vector v = new Vector();
                 v.add(rsOrder.getInt("orderID"));
                 v.add(rsUser.getString("name") + " " + rsUser.getString("surname"));
-                v.add(rsOrder.getDate("datetime"));
-                if (rsOrder.getString("status").equals("Pending Responding")) {
-                    v.add("Pending Responding");
-                }
+                v.add(rsOrder.getString("datetime"));
+                v.add(rsOrder.getString("status"));
                 model.addRow(v);
-                
+                pstmUser.close();
+            }
                 //Sort Top 3 Hit
                 PreparedStatement pstmProduct = con.prepareStatement("SELECT productName FROM Product "
                         + "WHERE ShopProfile_shopID = " + login.getShopId() + " AND NOT productName = 'link product shop" + login.getShopId() +
@@ -337,8 +389,7 @@ public class HomeShop extends javax.swing.JFrame {
                     topThree.setText("No Data");
                 }
                 pstmProduct.close();
-                pstmUser.close();
-            }
+            
             pstmOrder.close();
             con.close();
         } catch (SQLException ex) {
@@ -346,6 +397,12 @@ public class HomeShop extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_formWindowActivated
+
+    private void logoutIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutIconMouseClicked
+        LoginEPrinting login = new LoginEPrinting();
+        this.setVisible(false);
+        login.setVisible(true);
+    }//GEN-LAST:event_logoutIconMouseClicked
 
     /**
      * @param args the command line arguments
@@ -386,11 +443,16 @@ public class HomeShop extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bgMenu;
     private javax.swing.JLabel home;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel logoutIcon;
     private javax.swing.JLabel manageBook;
     private javax.swing.JLabel profile;
     private javax.swing.JLabel respondPrint;

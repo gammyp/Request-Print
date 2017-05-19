@@ -188,6 +188,12 @@ public class ShopProfile extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 editLabelButtonMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editLabelButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editLabelButtonMouseExited(evt);
+            }
         });
         editBG.add(editLabelButton);
         editLabelButton.setBounds(0, 0, 400, 40);
@@ -319,6 +325,14 @@ public class ShopProfile extends javax.swing.JFrame {
         this.setVisible(false);
         sLogin.setVisible(true);
     }//GEN-LAST:event_logoutIconMouseClicked
+
+    private void editLabelButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editLabelButtonMouseEntered
+        editBG.setBackground(new java.awt.Color(222,163,52));
+    }//GEN-LAST:event_editLabelButtonMouseEntered
+
+    private void editLabelButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editLabelButtonMouseExited
+        editBG.setBackground(new java.awt.Color(222,173,75));
+    }//GEN-LAST:event_editLabelButtonMouseExited
 
     /**
      * @param args the command line arguments

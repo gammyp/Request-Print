@@ -52,8 +52,8 @@ public class ManageListBook extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         home = new javax.swing.JLabel();
         profile = new javax.swing.JLabel();
-        manageBook = new javax.swing.JLabel();
         bgMenu = new javax.swing.JPanel();
+        manageBook = new javax.swing.JLabel();
         respondPrint = new javax.swing.JLabel();
         logoutIcon = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -121,7 +121,7 @@ public class ManageListBook extends javax.swing.JFrame {
             }
         });
         sideLeft.add(home);
-        home.setBounds(0, 100, 230, 30);
+        home.setBounds(0, 100, 230, 40);
 
         profile.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
         profile.setForeground(new java.awt.Color(255, 255, 255));
@@ -134,19 +134,21 @@ public class ManageListBook extends javax.swing.JFrame {
             }
         });
         sideLeft.add(profile);
-        profile.setBounds(0, 150, 230, 30);
+        profile.setBounds(0, 150, 230, 40);
+
+        bgMenu.setBackground(new java.awt.Color(102, 102, 102));
+        bgMenu.setLayout(null);
 
         manageBook.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
         manageBook.setForeground(new java.awt.Color(255, 255, 255));
         manageBook.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         manageBook.setText("Manage Book");
         manageBook.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        sideLeft.add(manageBook);
-        manageBook.setBounds(0, 200, 230, 30);
+        bgMenu.add(manageBook);
+        manageBook.setBounds(0, 0, 230, 40);
 
-        bgMenu.setBackground(new java.awt.Color(102, 102, 102));
         sideLeft.add(bgMenu);
-        bgMenu.setBounds(0, 200, 230, 30);
+        bgMenu.setBounds(0, 200, 230, 40);
 
         respondPrint.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
         respondPrint.setForeground(new java.awt.Color(255, 255, 255));
@@ -159,7 +161,7 @@ public class ManageListBook extends javax.swing.JFrame {
             }
         });
         sideLeft.add(respondPrint);
-        respondPrint.setBounds(0, 250, 230, 30);
+        respondPrint.setBounds(0, 250, 230, 40);
 
         logoutIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logoutIcon.addMouseListener(new java.awt.event.MouseAdapter() {

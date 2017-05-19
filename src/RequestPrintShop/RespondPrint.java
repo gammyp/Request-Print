@@ -7,7 +7,7 @@ package RequestPrintShop;
 
 import RequestPrintDatabase.ConnectionBuilder;
 import RequestPrintLogin.LoginEPrinting;
-import java.awt.Color;
+import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -54,8 +55,9 @@ public class RespondPrint extends javax.swing.JFrame {
         bgMenu = new javax.swing.JPanel();
         respondPrint = new javax.swing.JLabel();
         manageBook = new javax.swing.JLabel();
+        logoutIcon = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        body = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         orderTable = new javax.swing.JTable();
         responnPrintTitle = new javax.swing.JLabel();
@@ -76,8 +78,9 @@ public class RespondPrint extends javax.swing.JFrame {
         priceField = new javax.swing.JLabel();
         status = new javax.swing.JLabel();
         statusField = new javax.swing.JLabel();
-        changeStatusButton = new javax.swing.JButton();
         typeOrder = new javax.swing.JLabel();
+        changeStatusBG = new javax.swing.JPanel();
+        changeStatusButton = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -108,7 +111,7 @@ public class RespondPrint extends javax.swing.JFrame {
             }
         });
         sideLeft.add(home);
-        home.setBounds(0, 100, 230, 30);
+        home.setBounds(0, 100, 230, 40);
 
         profile.setBackground(new java.awt.Color(204, 204, 204));
         profile.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
@@ -122,8 +125,10 @@ public class RespondPrint extends javax.swing.JFrame {
             }
         });
         sideLeft.add(profile);
-        profile.setBounds(0, 150, 230, 30);
+        profile.setBounds(0, 150, 230, 40);
 
+        signOut.setFont(new java.awt.Font("Cloud Light", 1, 13)); // NOI18N
+        signOut.setForeground(new java.awt.Color(255, 255, 255));
         signOut.setText("Sign out");
         signOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         signOut.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -132,7 +137,7 @@ public class RespondPrint extends javax.swing.JFrame {
             }
         });
         sideLeft.add(signOut);
-        signOut.setBounds(10, 500, 50, 16);
+        signOut.setBounds(140, 550, 60, 20);
 
         bgMenu.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -147,19 +152,19 @@ public class RespondPrint extends javax.swing.JFrame {
         bgMenu.setLayout(bgMenuLayout);
         bgMenuLayout.setHorizontalGroup(
             bgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgMenuLayout.createSequentialGroup()
-                .addGap(0, 2, Short.MAX_VALUE)
-                .addComponent(respondPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(bgMenuLayout.createSequentialGroup()
+                .addComponent(respondPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
         );
         bgMenuLayout.setVerticalGroup(
             bgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgMenuLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(respondPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(respondPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         sideLeft.add(bgMenu);
-        bgMenu.setBounds(0, 250, 230, 30);
+        bgMenu.setBounds(0, 250, 230, 40);
 
         manageBook.setBackground(new java.awt.Color(204, 204, 204));
         manageBook.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
@@ -173,15 +178,19 @@ public class RespondPrint extends javax.swing.JFrame {
             }
         });
         sideLeft.add(manageBook);
-        manageBook.setBounds(0, 200, 230, 30);
+        manageBook.setBounds(0, 200, 230, 40);
+
+        logoutIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sideLeft.add(logoutIcon);
+        logoutIcon.setBounds(200, 550, 20, 20);
 
         getContentPane().add(sideLeft);
         sideLeft.setBounds(0, 0, 230, 600);
         getContentPane().add(jLabel8);
         jLabel8.setBounds(610, 100, 190, 0);
 
-        jPanel1.setBackground(new java.awt.Color(228, 228, 228));
-        jPanel1.setLayout(null);
+        body.setBackground(new java.awt.Color(228, 228, 228));
+        body.setLayout(null);
 
         orderTable.setBackground(new java.awt.Color(226, 252, 226));
         orderTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -219,46 +228,46 @@ public class RespondPrint extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(orderTable);
 
-        jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 70, 500, 480);
+        body.add(jScrollPane1);
+        jScrollPane1.setBounds(20, 70, 500, 490);
 
         responnPrintTitle.setFont(new java.awt.Font("Moon", 1, 24)); // NOI18N
         responnPrintTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         responnPrintTitle.setText("Respond Print");
-        jPanel1.add(responnPrintTitle);
+        body.add(responnPrintTitle);
         responnPrintTitle.setBounds(0, 20, 810, 40);
 
         customerName.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
         customerName.setText("Customer name");
-        jPanel1.add(customerName);
+        body.add(customerName);
         customerName.setBounds(540, 70, 160, 20);
 
         custNameField.setFont(new java.awt.Font("Moon", 0, 13)); // NOI18N
-        jPanel1.add(custNameField);
+        body.add(custNameField);
         custNameField.setBounds(550, 90, 230, 20);
 
         telephone.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
         telephone.setText("Telephone");
-        jPanel1.add(telephone);
+        body.add(telephone);
         telephone.setBounds(540, 120, 110, 20);
 
         telephoneField.setFont(new java.awt.Font("Moon", 0, 13)); // NOI18N
-        jPanel1.add(telephoneField);
+        body.add(telephoneField);
         telephoneField.setBounds(550, 140, 230, 20);
 
         email.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
         email.setText("Email");
-        jPanel1.add(email);
+        body.add(email);
         email.setBounds(540, 170, 110, 20);
 
         emailField.setFont(new java.awt.Font("Moon", 0, 13)); // NOI18N
-        jPanel1.add(emailField);
+        body.add(emailField);
         emailField.setBounds(550, 190, 230, 20);
 
         order.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
         order.setText("Order");
-        jPanel1.add(order);
-        order.setBounds(540, 210, 60, 20);
+        body.add(order);
+        order.setBounds(540, 220, 60, 20);
 
         orderField.setFont(new java.awt.Font("Moon", 0, 13)); // NOI18N
         orderField.addActionListener(new java.awt.event.ActionListener() {
@@ -266,66 +275,80 @@ public class RespondPrint extends javax.swing.JFrame {
                 orderFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(orderField);
-        orderField.setBounds(550, 230, 230, 30);
+        body.add(orderField);
+        orderField.setBounds(550, 240, 230, 30);
 
         description.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
         description.setText("Description");
-        jPanel1.add(description);
-        description.setBounds(540, 270, 110, 20);
+        body.add(description);
+        description.setBounds(540, 280, 110, 20);
 
         descriptionField.setFont(new java.awt.Font("Moon", 0, 13)); // NOI18N
         jScrollPane2.setViewportView(descriptionField);
 
-        jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(550, 290, 230, 70);
+        body.add(jScrollPane2);
+        jScrollPane2.setBounds(550, 300, 230, 70);
 
         productAmount.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
         productAmount.setText("Product Amount");
-        jPanel1.add(productAmount);
-        productAmount.setBounds(540, 370, 160, 20);
+        body.add(productAmount);
+        productAmount.setBounds(540, 380, 160, 20);
 
         productAmountField.setFont(new java.awt.Font("Moon", 0, 13)); // NOI18N
-        jPanel1.add(productAmountField);
-        productAmountField.setBounds(550, 390, 230, 20);
+        body.add(productAmountField);
+        productAmountField.setBounds(550, 400, 230, 20);
 
         price.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
         price.setText("Price");
-        jPanel1.add(price);
-        price.setBounds(540, 420, 110, 20);
+        body.add(price);
+        price.setBounds(540, 430, 110, 20);
 
         priceField.setFont(new java.awt.Font("Moon", 0, 13)); // NOI18N
-        jPanel1.add(priceField);
-        priceField.setBounds(550, 440, 230, 20);
+        body.add(priceField);
+        priceField.setBounds(550, 450, 230, 20);
 
         status.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
         status.setText("Order status");
-        jPanel1.add(status);
-        status.setBounds(540, 470, 120, 20);
+        body.add(status);
+        status.setBounds(540, 480, 120, 20);
 
         statusField.setFont(new java.awt.Font("Moon", 0, 13)); // NOI18N
-        jPanel1.add(statusField);
-        statusField.setBounds(550, 490, 230, 20);
-
-        changeStatusButton.setText("change");
-        changeStatusButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        changeStatusButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                changeStatusButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(changeStatusButton);
-        changeStatusButton.setBounds(710, 520, 73, 25);
+        body.add(statusField);
+        statusField.setBounds(550, 500, 230, 20);
 
         typeOrder.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
         typeOrder.setForeground(new java.awt.Color(255, 0, 0));
-        jPanel1.add(typeOrder);
-        typeOrder.setBounds(610, 210, 90, 20);
+        body.add(typeOrder);
+        typeOrder.setBounds(610, 220, 90, 20);
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(230, 0, 850, 630);
+        changeStatusBG.setBackground(new java.awt.Color(255, 204, 153));
+        changeStatusBG.setLayout(null);
 
-        setSize(new java.awt.Dimension(1052, 625));
+        changeStatusButton.setFont(new java.awt.Font("Cloud Light", 0, 18)); // NOI18N
+        changeStatusButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        changeStatusButton.setText("Change Status");
+        changeStatusButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        changeStatusButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                changeStatusButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                changeStatusButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                changeStatusButtonMouseExited(evt);
+            }
+        });
+        changeStatusBG.add(changeStatusButton);
+        changeStatusButton.setBounds(0, 0, 240, 30);
+
+        body.add(changeStatusBG);
+        changeStatusBG.setBounds(540, 530, 240, 30);
+
+        getContentPane().add(body);
+        body.setBounds(230, 0, 850, 630);
+
+        setSize(new java.awt.Dimension(1034, 611));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -353,7 +376,7 @@ public class RespondPrint extends javax.swing.JFrame {
                 Vector v = new Vector();
                 v.add(rsOrder.getInt("orderID"));
                 v.add(rsUser.getString("name") + " " + rsUser.getString("surname"));
-                v.add(rsOrder.getDate("datetime"));
+                v.add(rsOrder.getString("datetime"));
                 if (rsOrder.getString("status").equals("Product can be picked")) {
                     v.add("Wait for receipt");
                 } else {
@@ -373,14 +396,17 @@ public class RespondPrint extends javax.swing.JFrame {
     }//GEN-LAST:event_profileMouseClicked
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        bgMenu.setBackground(Color.DARK_GRAY);
-        respondPrint.setBackground(Color.DARK_GRAY);
-        respondPrint.setForeground(Color.WHITE);
+        bgMenu.setBackground(new java.awt.Color(234, 234, 234));
+        respondPrint.setBackground(new java.awt.Color(234, 234, 234));
+        respondPrint.setForeground(new java.awt.Color(30, 30, 30));
         orderTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         orderTable.getColumnModel().getColumn(0).setPreferredWidth(60);
         orderTable.getColumnModel().getColumn(1).setPreferredWidth(160);
         orderTable.getColumnModel().getColumn(2).setPreferredWidth(79);
         orderTable.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
+        
+        Image logout = new ImageIcon(this.getClass().getResource("../icon/logout.png")).getImage();
+        logoutIcon.setIcon(new ImageIcon(logout.getScaledInstance(logoutIcon.getWidth(), logoutIcon.getHeight(), 0)));
     }//GEN-LAST:event_formComponentShown
 
     private void orderTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderTableMouseClicked
@@ -452,16 +478,24 @@ public class RespondPrint extends javax.swing.JFrame {
         login.setVisible(true);
     }//GEN-LAST:event_signOutMouseClicked
 
-    private void changeStatusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeStatusButtonActionPerformed
-        ChangeStatus change = new ChangeStatus();
-        change.setVisible(true);
-    }//GEN-LAST:event_changeStatusButtonActionPerformed
-
     private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
         HomeShop home = new HomeShop();
         this.setVisible(false);
         home.setVisible(true);
     }//GEN-LAST:event_homeMouseClicked
+
+    private void changeStatusButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeStatusButtonMouseEntered
+        changeStatusBG.setBackground(new java.awt.Color(255,187,127));
+    }//GEN-LAST:event_changeStatusButtonMouseEntered
+
+    private void changeStatusButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeStatusButtonMouseExited
+        changeStatusBG.setBackground(new java.awt.Color(255,204,153));
+    }//GEN-LAST:event_changeStatusButtonMouseExited
+
+    private void changeStatusButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeStatusButtonMouseClicked
+        ChangeStatus change = new ChangeStatus();
+        change.setVisible(true);
+    }//GEN-LAST:event_changeStatusButtonMouseClicked
 
 
     /**
@@ -505,7 +539,9 @@ public class RespondPrint extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bgMenu;
-    private javax.swing.JButton changeStatusButton;
+    private javax.swing.JPanel body;
+    private javax.swing.JPanel changeStatusBG;
+    private javax.swing.JLabel changeStatusButton;
     private javax.swing.JLabel custNameField;
     private javax.swing.JLabel customerName;
     private javax.swing.JLabel description;
@@ -514,9 +550,9 @@ public class RespondPrint extends javax.swing.JFrame {
     private javax.swing.JLabel emailField;
     private javax.swing.JLabel home;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel logoutIcon;
     private javax.swing.JLabel manageBook;
     private javax.swing.JLabel order;
     private javax.swing.JTextField orderField;
