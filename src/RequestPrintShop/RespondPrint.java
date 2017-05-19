@@ -383,7 +383,10 @@ public class RespondPrint extends javax.swing.JFrame {
                     v.add(rsOrder.getString("status"));
                 }
                 model.addRow(v);
+                pstmUser.close();
             }
+            pstmOrder.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(RespondPrint.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -462,7 +465,12 @@ public class RespondPrint extends javax.swing.JFrame {
             priceField.setText(rsOrder.getDouble("priceOrder") + "");
 
             orderId = (int) (orderTable.getValueAt(orderTable.getSelectedRow(), 0));
-            System.out.println("Order id = " + orderId);
+            
+            pstmOrder.close();
+            pstmProduct.close();
+            pstmSheetOrder.close();
+            pstmUser.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(RespondPrint.class.getName()).log(Level.SEVERE, null, ex);
         }

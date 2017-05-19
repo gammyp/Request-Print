@@ -198,6 +198,8 @@ public class AddBookToManageBook extends javax.swing.JFrame {
                 setPriceField.setText("");
                 this.setVisible(false);
             }
+            pstmSelect.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(AddBookToManageBook.class.getName()).log(Level.SEVERE, null, ex);
         }

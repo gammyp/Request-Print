@@ -309,6 +309,8 @@ public class RegisterShop extends javax.swing.JFrame {
                 userNameCheck.setIcon(new ImageIcon(wrongIcon.getScaledInstance(userNameCheck.getWidth(), userNameCheck.getHeight(), 0)));
                 userNameField.setBackground(Color.PINK);
             }
+            pstm.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(RegisterShop.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -369,7 +371,7 @@ public class RegisterShop extends javax.swing.JFrame {
                     //add Product link
                     PreparedStatement pstmSelect = con.prepareStatement("SELECT * FROM ShopProfile WHERE Username = ?");
                     pstmSelect.setString(1, userNameField.getText());
-                   // System.out.println("test "+userNameField.getText());
+                    // System.out.println("test "+userNameField.getText());
                     ResultSet rsProf = pstmSelect.executeQuery();
                     if (rsProf.next()) {
                         int profileID = rsProf.getInt("shopID");
@@ -394,9 +396,11 @@ public class RegisterShop extends javax.swing.JFrame {
                     emailCheck.setIcon(null);
                     passwordCheck.setIcon(null);
                     userNameCheck.setIcon(null);
+                    pstmInsertProf.close();
+                    pstmSelect.close();
                 }
             }
-
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(RegisterShop.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -415,11 +419,11 @@ public class RegisterShop extends javax.swing.JFrame {
     }//GEN-LAST:event_submitButtonMouseExited
 
     private void backButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseEntered
-        backBG.setBackground(new java.awt.Color(255,255,102));
+        backBG.setBackground(new java.awt.Color(255, 255, 102));
     }//GEN-LAST:event_backButtonMouseEntered
 
     private void backButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseExited
-        backBG.setBackground(new java.awt.Color(255,255,153));
+        backBG.setBackground(new java.awt.Color(255, 255, 153));
     }//GEN-LAST:event_backButtonMouseExited
 
     /**

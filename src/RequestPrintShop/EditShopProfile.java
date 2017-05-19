@@ -179,6 +179,8 @@ public class EditShopProfile extends javax.swing.JFrame {
                 phoneField.setText(rs.getString("phone"));
                 emailField.setText(rs.getString("email"));
             }
+            pstm.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(EditShopProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -202,6 +204,8 @@ public class EditShopProfile extends javax.swing.JFrame {
             pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Save Successful");
             this.setVisible(false);
+            pstm.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(EditShopProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
