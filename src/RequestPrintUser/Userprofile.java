@@ -32,15 +32,6 @@ public class Userprofile extends javax.swing.JFrame {
     public void setUserId(int UserId) {
         this.UserId = UserId;
     }
-    
-    
-    public String getUsername() {
-        return Username;
-    }
-    
-    public int getUserId() {
-        return UserId;
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
