@@ -365,7 +365,7 @@ public class RespondPrint extends javax.swing.JFrame {
         try {
             con = ConnectionBuilder.getConnection();
             LoginEPrinting login = new LoginEPrinting();
-            PreparedStatement pstmOrder = con.prepareStatement("SELECT * FROM mydb.Order WHERE "
+            PreparedStatement pstmOrder = con.prepareStatement("SELECT * FROM Orders WHERE "
                     + "ShopProfile_shopID = " + login.getShopId());
             ResultSet rsOrder = pstmOrder.executeQuery();
             while (rsOrder.next()) {
@@ -418,7 +418,7 @@ public class RespondPrint extends javax.swing.JFrame {
             con = ConnectionBuilder.getConnection();
             LoginEPrinting login = new LoginEPrinting();
             //executeQuery Order Table
-            PreparedStatement pstmOrder = con.prepareStatement("SELECT * FROM mydb.Order WHERE "
+            PreparedStatement pstmOrder = con.prepareStatement("SELECT * FROM Orders WHERE "
                     + "ShopProfile_shopID = " + login.getShopId());
             ResultSet rsOrder = pstmOrder.executeQuery();
             rsOrder.next();
@@ -441,7 +441,7 @@ public class RespondPrint extends javax.swing.JFrame {
             ResultSet rsProduct = pstmProduct.executeQuery();
             rsProduct.next();
 
-            custNameField.setText(orderTable.getValueAt(orderTable.getSelectedRow(), 0) + "");
+            custNameField.setText(orderTable.getValueAt(orderTable.getSelectedRow(), 1) + "");
             statusField.setText(orderTable.getValueAt(orderTable.getSelectedRow(), 3) + "");
             telephoneField.setText(rsUser.getString("phone"));
             emailField.setText(rsUser.getString("email"));
