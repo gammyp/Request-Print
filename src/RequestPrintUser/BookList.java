@@ -8,9 +8,11 @@ package RequestPrintUser;
 import RequestPrintDatabase.ConnectionBuilder;
 import java.awt.Color;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
@@ -71,7 +73,7 @@ public class BookList extends javax.swing.JFrame {
         Copies = new javax.swing.JSpinner();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Message = new javax.swing.JTextArea();
+        description = new javax.swing.JTextArea();
         ShopSelect = new javax.swing.JComboBox<>();
         BookSelect = new javax.swing.JComboBox<>();
         Request = new javax.swing.JButton();
@@ -294,9 +296,9 @@ public class BookList extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel11.setText("Message");
 
-        Message.setColumns(20);
-        Message.setRows(5);
-        jScrollPane1.setViewportView(Message);
+        description.setColumns(20);
+        description.setRows(5);
+        jScrollPane1.setViewportView(description);
 
         ShopSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
         ShopSelect.addActionListener(new java.awt.event.ActionListener() {
@@ -312,7 +314,7 @@ public class BookList extends javax.swing.JFrame {
             }
         });
 
-        Request.setText("Request");
+        Request.setText("RequestPrint");
         Request.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RequestActionPerformed(evt);
@@ -331,25 +333,24 @@ public class BookList extends javax.swing.JFrame {
                         .addComponent(jLabel7)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(jScrollPane1)
-                                .addGap(18, 18, 18)
-                                .addComponent(Request))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(BookSelect, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(ShopSelect, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel9)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(Copies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel10))
-                                    .addComponent(jLabel11))))
-                        .addGap(0, 87, Short.MAX_VALUE))))
+                        .addGap(41, 41, 41)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(BookSelect, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ShopSelect, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel9)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(Copies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel10))
+                            .addComponent(jLabel11))
+                        .addGap(0, 87, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jScrollPane1)
+                        .addGap(32, 32, 32)
+                        .addComponent(Request)
+                        .addGap(49, 49, 49))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,17 +370,17 @@ public class BookList extends javax.swing.JFrame {
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Copies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel11)
                         .addGap(24, 24, 24)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(28, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Request)
-                        .addGap(58, 58, 58))))
+                        .addGap(55, 55, 55))))
         );
 
         pack();
@@ -563,13 +564,24 @@ public class BookList extends javax.swing.JFrame {
 
     private void RequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RequestActionPerformed
         try {
-            // TODO add your handling code here:
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = new Date(System.currentTimeMillis());
+            String datestr = sdf.format(date);
             Connection con = ConnectionBuilder.getConnection();
-            PreparedStatement pstmInsert1 = con.prepareStatement("INSERT INTO Orders(orderID,priceOrder,status,datetime,desciption,url,UserProfile_id,ShopProfile_shopID)"
-                    + "VALUES (null,null,null,null,?,null,?,?)");
-            pstmInsert1.setString(1, "description");
-            pstmInsert1.setInt(2, UserId);
-            pstmInsert1.setInt(3, shopID);
+            
+            PreparedStatement pstmInsert1 = con.prepareStatement("INSERT INTO Orders(orderID,priceOrder,status,datetime,description,url,UserProfile_id,ShopProfile_shopID)"
+                    + "VALUES (null,?,?,?,?,null,?,?)");
+            pstmInsert1.setInt(1, productID);
+            if ((int) Copies.getValue() > 0) {
+                pstmInsert1.setString(2, "Pending Responding");
+            } else if ((int) Copies.getValue() > 100) {
+                pstmInsert1.setString(2, "Pending Payment");
+            }
+            pstmInsert1.setString(3, datestr);
+            pstmInsert1.setString(4, description.getText());
+            pstmInsert1.setInt(5, UserId);
+            pstmInsert1.setInt(6, shopID);
+            pstmInsert1.executeUpdate();
 
             PreparedStatement pstmSel = con.prepareStatement("SELECT orderID FROM Orders WHERE orderID = ?");
             pstmSel.setInt(1, getOrderID());
@@ -583,13 +595,12 @@ public class BookList extends javax.swing.JFrame {
             pstmInsert2.setInt(1, (int) Copies.getValue());
             pstmInsert2.setInt(2, orderID);
             pstmInsert2.setInt(3, productID);
-
             pstmInsert2.executeUpdate();
+            
             JOptionPane.showMessageDialog(null, "Success");
-        } catch (SQLException ex) {
-            Logger.getLogger(SelectShop.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+            Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }//GEN-LAST:event_RequestActionPerformed
 
     public static int getOrderID(){
@@ -597,7 +608,6 @@ public class BookList extends javax.swing.JFrame {
             Connection con = ConnectionBuilder.getConnection();
             PreparedStatement pstmSel = con.prepareStatement("SELECT orderID FROM Orders;");
             ResultSet rs = pstmSel.executeQuery();
-            
             while(rs.next()){
                 LastOrderID = rs.getInt("orderID");
             }
@@ -650,13 +660,13 @@ public class BookList extends javax.swing.JFrame {
     private javax.swing.JPanel HomeBox;
     private javax.swing.JLabel Logout;
     private javax.swing.JPanel LogoutBox;
-    private javax.swing.JTextArea Message;
     private javax.swing.JButton Request;
     private javax.swing.JLabel RequestPrint;
     private javax.swing.JPanel RequestPrintBox;
     private javax.swing.JComboBox<String> ShopSelect;
     private javax.swing.JLabel YourProfile;
     private javax.swing.JPanel YourProfileBox;
+    private javax.swing.JTextArea description;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel7;
