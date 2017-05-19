@@ -390,6 +390,8 @@ public class ManageListBook extends javax.swing.JFrame {
                 v.add(rs.getString("price"));
                 model.addRow(v);
             }
+            pstm.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(ManageListBook.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -398,7 +400,6 @@ public class ManageListBook extends javax.swing.JFrame {
         model = (DefaultTableModel) manageTable.getModel();
         model.setRowCount(0);
         Connection con = null;
-
         try {
             con = ConnectionBuilder.getConnection();
             LoginEPrinting login = new LoginEPrinting();
@@ -412,6 +413,8 @@ public class ManageListBook extends javax.swing.JFrame {
                 v.add(rs.getInt("price"));
                 model.addRow(v);
             }
+            pstm.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(ManageListBook.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -464,6 +467,8 @@ public class ManageListBook extends javax.swing.JFrame {
 
                 }
             }
+            pstm.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(ManageListBook.class
                     .getName()).log(Level.SEVERE, null, ex);
@@ -519,6 +524,8 @@ public class ManageListBook extends javax.swing.JFrame {
                 pstm.executeUpdate();
 
             }
+            pstm.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(ManageListBook.class
                     .getName()).log(Level.SEVERE, null, ex);
@@ -548,19 +555,19 @@ public class ManageListBook extends javax.swing.JFrame {
     }//GEN-LAST:event_addBookButtonMouseExited
 
     private void searchButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseEntered
-        searchButton.setBackground(new java.awt.Color(182,182,182));
+        searchButton.setBackground(new java.awt.Color(182, 182, 182));
     }//GEN-LAST:event_searchButtonMouseEntered
 
     private void searchButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseExited
-        searchButton.setBackground(new java.awt.Color(204,204,204));
+        searchButton.setBackground(new java.awt.Color(204, 204, 204));
     }//GEN-LAST:event_searchButtonMouseExited
 
     private void searchIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchIconMouseEntered
-        searchButton.setBackground(new java.awt.Color(182,182,182));
+        searchButton.setBackground(new java.awt.Color(182, 182, 182));
     }//GEN-LAST:event_searchIconMouseEntered
 
     private void searchIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchIconMouseExited
-        searchButton.setBackground(new java.awt.Color(204,204,204));
+        searchButton.setBackground(new java.awt.Color(204, 204, 204));
     }//GEN-LAST:event_searchIconMouseExited
 
     /**

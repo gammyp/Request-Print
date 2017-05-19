@@ -286,6 +286,8 @@ public class ShopProfile extends javax.swing.JFrame {
                 emailField.setEditable(false);
                 emailField.setText(rs.getString("email"));
             }
+            pstm.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(ShopProfile.class.getName()).log(Level.SEVERE, null, ex);
         }

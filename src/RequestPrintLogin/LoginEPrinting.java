@@ -246,6 +246,8 @@ public class LoginEPrinting extends javax.swing.JFrame {
                     passwordField.setText("");
                     errorText.setText("Invalid username or password");
                 }
+                pstmShop.close();
+                pstmUser.close();
                 con.close();
             } catch (SQLException ex) {
                 Logger.getLogger(LoginEPrinting.class.getName()).log(Level.SEVERE, null, ex);
