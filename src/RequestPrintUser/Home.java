@@ -291,7 +291,7 @@ public class Home extends javax.swing.JFrame {
         try {
             Connection con = ConnectionBuilder.getConnection();
             LoginEPrinting login = new LoginEPrinting();
-            PreparedStatement pstm = con.prepareStatement(" SELECT orderID, status FROM mydb.`Order` WHERE UserProfile_id = "+ login.getUserId());     
+            PreparedStatement pstm = con.prepareStatement(" SELECT orderID, status FROM Orders WHERE UserProfile_id = "+ login.getUserId());     
             ResultSet rs = pstm.executeQuery();
             while(rs.next()){
                 Vector v = new Vector();
