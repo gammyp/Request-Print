@@ -270,11 +270,6 @@ public class RespondPrint extends javax.swing.JFrame {
         order.setBounds(540, 220, 60, 20);
 
         orderField.setFont(new java.awt.Font("Moon", 0, 13)); // NOI18N
-        orderField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                orderFieldActionPerformed(evt);
-            }
-        });
         body.add(orderField);
         orderField.setBounds(550, 240, 230, 30);
 
@@ -351,14 +346,7 @@ public class RespondPrint extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1034, 611));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void manageBookMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageBookMouseClicked
-        ManageListBook mlb = new ManageListBook();
-        this.setVisible(false);
-        mlb.setVisible(true);
-    }//GEN-LAST:event_manageBookMouseClicked
-
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+    private void showTableRespondCustomer(){
         model = (DefaultTableModel) orderTable.getModel();
         model.setRowCount(0);
         Connection con = null;
@@ -390,29 +378,9 @@ public class RespondPrint extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(RespondPrint.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_formWindowActivated
-
-    private void profileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseClicked
-        ShopProfile sProf = new ShopProfile();
-        this.setVisible(false);
-        sProf.setVisible(true);
-    }//GEN-LAST:event_profileMouseClicked
-
-    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        bgMenu.setBackground(new java.awt.Color(234, 234, 234));
-        respondPrint.setBackground(new java.awt.Color(234, 234, 234));
-        respondPrint.setForeground(new java.awt.Color(30, 30, 30));
-        orderTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        orderTable.getColumnModel().getColumn(0).setPreferredWidth(60);
-        orderTable.getColumnModel().getColumn(1).setPreferredWidth(160);
-        orderTable.getColumnModel().getColumn(2).setPreferredWidth(79);
-        orderTable.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
-        
-        Image logout = new ImageIcon(this.getClass().getResource("../icon/logout.png")).getImage();
-        logoutIcon.setIcon(new ImageIcon(logout.getScaledInstance(logoutIcon.getWidth(), logoutIcon.getHeight(), 0)));
-    }//GEN-LAST:event_formComponentShown
-
-    private void orderTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderTableMouseClicked
+    }
+    
+    private void showData(){
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
@@ -474,11 +442,41 @@ public class RespondPrint extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(RespondPrint.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_orderTableMouseClicked
+    }
+    
+    private void manageBookMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageBookMouseClicked
+        ManageListBook mlb = new ManageListBook();
+        this.setVisible(false);
+        mlb.setVisible(true);
+    }//GEN-LAST:event_manageBookMouseClicked
 
-    private void orderFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_orderFieldActionPerformed
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        showTableRespondCustomer();
+    }//GEN-LAST:event_formWindowActivated
+
+    private void profileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseClicked
+        ShopProfile sProf = new ShopProfile();
+        this.setVisible(false);
+        sProf.setVisible(true);
+    }//GEN-LAST:event_profileMouseClicked
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        bgMenu.setBackground(new java.awt.Color(234, 234, 234));
+        respondPrint.setBackground(new java.awt.Color(234, 234, 234));
+        respondPrint.setForeground(new java.awt.Color(30, 30, 30));
+        orderTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        orderTable.getColumnModel().getColumn(0).setPreferredWidth(60);
+        orderTable.getColumnModel().getColumn(1).setPreferredWidth(160);
+        orderTable.getColumnModel().getColumn(2).setPreferredWidth(79);
+        orderTable.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
+        
+        Image logout = new ImageIcon(this.getClass().getResource("../icon/logout.png")).getImage();
+        logoutIcon.setIcon(new ImageIcon(logout.getScaledInstance(logoutIcon.getWidth(), logoutIcon.getHeight(), 0)));
+    }//GEN-LAST:event_formComponentShown
+
+    private void orderTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderTableMouseClicked
+        showData();
+    }//GEN-LAST:event_orderTableMouseClicked
 
     private void signOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signOutMouseClicked
         LoginEPrinting login = new LoginEPrinting();

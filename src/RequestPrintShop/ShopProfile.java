@@ -258,16 +258,8 @@ public class ShopProfile extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(725, 509));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        profile.setForeground(new java.awt.Color(30, 30, 30));
-        profile.setBackground(new java.awt.Color(234, 234, 234));
-        bgMenu.setBackground(new java.awt.Color(234, 234, 234));
-        Image logout = new ImageIcon(this.getClass().getResource("../icon/logout.png")).getImage();
-        logoutIcon.setIcon(new ImageIcon(logout.getScaledInstance(logoutIcon.getWidth(), logoutIcon.getHeight(), 0)));
-    }//GEN-LAST:event_formComponentShown
-
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+    
+    private void showDataProfile(){
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
@@ -291,6 +283,18 @@ public class ShopProfile extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(ShopProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        profile.setForeground(new java.awt.Color(30, 30, 30));
+        profile.setBackground(new java.awt.Color(234, 234, 234));
+        bgMenu.setBackground(new java.awt.Color(234, 234, 234));
+        Image logout = new ImageIcon(this.getClass().getResource("../icon/logout.png")).getImage();
+        logoutIcon.setIcon(new ImageIcon(logout.getScaledInstance(logoutIcon.getWidth(), logoutIcon.getHeight(), 0)));
+    }//GEN-LAST:event_formComponentShown
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        showDataProfile();
     }//GEN-LAST:event_formWindowActivated
 
     private void manageBookMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageBookMouseClicked

@@ -164,7 +164,7 @@ public class EditShopProfile extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+    private void showdataProfile() {
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
@@ -184,9 +184,9 @@ public class EditShopProfile extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(EditShopProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_formComponentShown
+    }
 
-    private void saveLabelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveLabelButtonMouseClicked
+    private void saveUpdateProfile() {
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
@@ -209,6 +209,14 @@ public class EditShopProfile extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(EditShopProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        showdataProfile();
+    }//GEN-LAST:event_formComponentShown
+
+    private void saveLabelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveLabelButtonMouseClicked
+        saveUpdateProfile();
     }//GEN-LAST:event_saveLabelButtonMouseClicked
 
     /**

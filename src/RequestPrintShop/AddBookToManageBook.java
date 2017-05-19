@@ -20,11 +20,6 @@ import javax.swing.*;
  */
 public class AddBookToManageBook extends javax.swing.JFrame {
 
-    private LoginEPrinting shopID;
-    private int month;
-
-  
-
     /**
      * Creates new form AddBookToManageBook
      */
@@ -165,11 +160,7 @@ public class AddBookToManageBook extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bookNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookNameFieldActionPerformed
-        bookNameField.setBackground(null);
-    }//GEN-LAST:event_bookNameFieldActionPerformed
-
-    private void submitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitButtonMouseClicked
+    private void submitAddBook() {
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
@@ -193,7 +184,7 @@ public class AddBookToManageBook extends javax.swing.JFrame {
                 pstmInsert.executeUpdate();
                 System.out.println("Insert complete");
                 bookNameField.setText("");
-                
+
                 detailField.setText("");
                 setPriceField.setText("");
                 this.setVisible(false);
@@ -203,6 +194,13 @@ public class AddBookToManageBook extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(AddBookToManageBook.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    private void bookNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookNameFieldActionPerformed
+        bookNameField.setBackground(null);
+    }//GEN-LAST:event_bookNameFieldActionPerformed
+
+    private void submitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitButtonMouseClicked
+        submitAddBook();
     }//GEN-LAST:event_submitButtonMouseClicked
 
     private void submitButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitButtonMouseEntered
@@ -210,7 +208,7 @@ public class AddBookToManageBook extends javax.swing.JFrame {
     }//GEN-LAST:event_submitButtonMouseEntered
 
     private void submitButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitButtonMouseExited
-        submitBG.setBackground(new java.awt.Color(153,255,153));
+        submitBG.setBackground(new java.awt.Color(153, 255, 153));
     }//GEN-LAST:event_submitButtonMouseExited
 
     /**

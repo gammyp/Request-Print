@@ -140,7 +140,7 @@ public class ChangeStatus extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+    private void showTableActivated() {
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
@@ -172,9 +172,9 @@ public class ChangeStatus extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(ChangeStatus.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_formWindowActivated
+    }
 
-    private void updateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseClicked
+    private void updateStatus() {
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
@@ -204,6 +204,13 @@ public class ChangeStatus extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(ChangeStatus.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        showTableActivated();
+    }//GEN-LAST:event_formWindowActivated
+
+    private void updateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseClicked
+        updateStatus();
     }//GEN-LAST:event_updateButtonMouseClicked
 
     private void updateButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseEntered
@@ -211,7 +218,7 @@ public class ChangeStatus extends javax.swing.JFrame {
     }//GEN-LAST:event_updateButtonMouseEntered
 
     private void updateButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseExited
-        updateBG.setBackground(new java.awt.Color(153,255,153));
+        updateBG.setBackground(new java.awt.Color(153, 255, 153));
     }//GEN-LAST:event_updateButtonMouseExited
 
     /**

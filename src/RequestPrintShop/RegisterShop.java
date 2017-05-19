@@ -276,8 +276,8 @@ public class RegisterShop extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(634, 547));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void emailFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailFieldFocusLost
+    
+    private void emailLost(){
         Image trueIcon = new ImageIcon(this.getClass().getResource("../icon/correct.png")).getImage();
         Image wrongIcon = new ImageIcon(this.getClass().getResource("../icon/wrong.png")).getImage();
         if (emailField.getText().indexOf("@") > 0) {
@@ -287,9 +287,9 @@ public class RegisterShop extends javax.swing.JFrame {
             emailCheck.setIcon(new ImageIcon(wrongIcon.getScaledInstance(emailCheck.getWidth(), emailCheck.getHeight(), 0)));
             emailField.setBackground(Color.PINK);
         }
-    }//GEN-LAST:event_emailFieldFocusLost
-
-    private void userNameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userNameFieldFocusLost
+    }
+    
+    private void userNameLost(){
         try {
             Connection con = ConnectionBuilder.getConnection();
             Image trueIcon = new ImageIcon(this.getClass().getResource("../icon/correct.png")).getImage();
@@ -314,9 +314,9 @@ public class RegisterShop extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(RegisterShop.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_userNameFieldFocusLost
-
-    private void passFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passFieldFocusLost
+    }
+    
+    private void passwordLost(){
         if (passField.getText().length() >= 0 & passField.getText().length() <= 5) {
             errorPassText.setText("Password weak");
             passField.setBackground(Color.PINK);
@@ -330,9 +330,9 @@ public class RegisterShop extends javax.swing.JFrame {
             errorPassText.setText("Error");
             passField.setBackground(Color.PINK);
         }
-    }//GEN-LAST:event_passFieldFocusLost
-
-    private void confirmFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_confirmFieldFocusLost
+    }
+    
+    private void confirmPassLost(){
         Image trueIcon = new ImageIcon(this.getClass().getResource("../icon/correct.png")).getImage();
         Image wrongIcon = new ImageIcon(this.getClass().getResource("../icon/wrong.png")).getImage();
         if (passField.getText().length() <= 5 || passField.getText().length() > 45) {
@@ -345,14 +345,9 @@ public class RegisterShop extends javax.swing.JFrame {
             passwordCheck.setIcon(new ImageIcon(wrongIcon.getScaledInstance(passwordCheck.getWidth(), passwordCheck.getHeight(), 0)));
             passField.setBackground(Color.PINK);
         }
-    }//GEN-LAST:event_confirmFieldFocusLost
-
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        LoginEPrinting login = new LoginEPrinting();
-        login.setVisible(false);
-    }//GEN-LAST:event_formWindowActivated
-
-    private void submitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitButtonMouseClicked
+    }
+    
+    private void submitRegister(){
         try {
             Connection con = ConnectionBuilder.getConnection();
             if ((passField.getText().length() > 5) & (userNameField.getText().length() > 0) & (emailField.getText().indexOf("@") > 0)) {
@@ -404,6 +399,30 @@ public class RegisterShop extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(RegisterShop.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    private void emailFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailFieldFocusLost
+        emailLost();
+    }//GEN-LAST:event_emailFieldFocusLost
+
+    private void userNameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userNameFieldFocusLost
+        userNameLost();
+    }//GEN-LAST:event_userNameFieldFocusLost
+
+    private void passFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passFieldFocusLost
+        passwordLost();
+    }//GEN-LAST:event_passFieldFocusLost
+
+    private void confirmFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_confirmFieldFocusLost
+        confirmPassLost();
+    }//GEN-LAST:event_confirmFieldFocusLost
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        LoginEPrinting login = new LoginEPrinting();
+        login.setVisible(false);
+    }//GEN-LAST:event_formWindowActivated
+
+    private void submitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitButtonMouseClicked
+        submitRegister();
     }//GEN-LAST:event_submitButtonMouseClicked
 
     private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
