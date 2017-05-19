@@ -24,7 +24,6 @@ public class UserRequest extends javax.swing.JFrame {
     
     private String DocURL;
     private String Username;
-    private String Book;
     private int UserId;
     
     /**
@@ -297,7 +296,7 @@ public class UserRequest extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 210, 500));
 
-        Headder.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        Headder.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         getContentPane().add(Headder, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 500, 50));
 
         setSize(new java.awt.Dimension(793, 535));
@@ -334,6 +333,10 @@ public class UserRequest extends javax.swing.JFrame {
     private void YourProfileBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseClicked
         // TODO add your handling code here:
         Userprofile userp = new Userprofile();
+        userp.setUserId(UserId);
+        userp.setUsername(Username);
+        setVisible(false);
+        userp.setVisible(true);
     }//GEN-LAST:event_YourProfileBoxMouseClicked
 
     private void HomeBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseEntered
