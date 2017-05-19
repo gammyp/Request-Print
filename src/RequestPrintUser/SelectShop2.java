@@ -22,12 +22,12 @@ import java.util.logging.Logger;
  */
 public class SelectShop2 extends javax.swing.JFrame {
 
-    private String Username = "Game";
-    private int UserId = 4;
-    private String Link = "poiuhgyuiopikjhg";
-    private int DocCopies = 4;
-    private int ShopId = 2;
-    private String Message ="euw9dojifpeklj";
+    private String Username;
+    private int UserId;
+    private String Link;
+    private int DocCopies;
+    private int ShopId;
+    private String Message;
     //private int OrderID;
 
     public void setUsername(String Username) {
@@ -44,14 +44,6 @@ public class SelectShop2 extends javax.swing.JFrame {
 
     public void setDocCopies(int DocCopies) {
         this.DocCopies = DocCopies;
-    }
-
-    public String getUsername() {
-        return Username;
-    }
-
-    public int getUserId() {
-        return UserId;
     }
 
     public void setMessage(String Message) {
@@ -179,7 +171,6 @@ public class SelectShop2 extends javax.swing.JFrame {
     private void RequestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestMouseClicked
         // TODO add your handling code here:
         try {
-            System.out.println("Click");
             int orderId = -1;
             int productID = -5;
             int shopID = -1;
@@ -195,13 +186,7 @@ public class SelectShop2 extends javax.swing.JFrame {
             while (rs.next()) {
                 shopID = rs.getInt("shopID");
             }
-            System.out.println("shopID " + shopID);
             PreparedStatement pstm = con.prepareStatement("INSERT INTO Orders VALUES (null,?,?,?,?,?,?,?)");
-            System.out.println("DocCopies : " + DocCopies);
-            System.out.println("datestr : " + datestr);
-            System.out.println("Message : " + Message);
-            System.out.println("Link : " + Link);
-            System.out.println("getUserId : " + UserId);
             pstm.setInt(1, DocCopies);
             if (DocCopies > 0) {
                 pstm.setString(2, "Pending Responding");
@@ -219,30 +204,23 @@ public class SelectShop2 extends javax.swing.JFrame {
             ResultSet rs2 = pstm2.executeQuery();
             while (rs2.next()) {
                 productID = rs2.getInt("productID");
-                System.out.println("prodId"+productID);
             }
             
             //SELECT OrderID
-            System.out.println("Start");
             PreparedStatement pstm3 = con.prepareStatement("SELECT MAX(orderID) FROM Orders");
             ResultSet rstest = pstm3.executeQuery();
-            System.out.println(rstest.toString());
             while (rstest.next()) {
-                System.out.println(rstest.getInt("MAX(orderID)"));
                 orderId = rstest.getInt("MAX(orderID)");
             }
-            System.out.println("End");
             //INSERT SheetOrder
             PreparedStatement pstm4 = con.prepareStatement("INSERT INTO SheetOrder (productAmount, Order_orderID, Product_productID) VALUES (?, ?, ?)");
             pstm4.setInt(1, DocCopies);
-            System.out.println("OrderID : " + orderId);
-            System.out.println("productID : " + productID);
             pstm4.setInt(2, orderId);
             pstm4.setInt(3, productID);
             pstm4.executeUpdate();
             con.close();
             pstm.close();
-            //pstm2.close();
+            pstm2.close();
             pstm3.close();
             pstm4.close();
         } catch (SQLException ex) {

@@ -35,16 +35,9 @@ public class BookList extends javax.swing.JFrame {
 
     }
 
-    public int getUserId() {
-        return UserId;
-    }
 
     public void setUserId(int UserId) {
         this.UserId = UserId;
-    }
-
-    public String getUsername() {
-        return Username;
     }
 
     public void setUsername(String Username) {
