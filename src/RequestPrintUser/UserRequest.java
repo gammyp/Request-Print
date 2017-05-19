@@ -328,6 +328,7 @@ public class UserRequest extends javax.swing.JFrame {
         HomeBox.setBackground(null);
         BookListBox.setBackground(null);
         LogoutBox.setBackground(null);
+        NumberofCopies.setValue(1);
     }//GEN-LAST:event_formWindowActivated
 
     private void YourProfileBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseEntered

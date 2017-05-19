@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,7 +24,12 @@ public class BookList extends javax.swing.JFrame {
 
     private int UserId;
     private String Username;
-    
+    private int shopID;
+    private int productID;
+    private int orderID;
+    private static int LastOrderID;
+    private static int LastShopID;
+
     public BookList() {
         initComponents();
 
@@ -66,9 +72,9 @@ public class BookList extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Message = new javax.swing.JTextArea();
-        RequestButton = new javax.swing.JButton();
         ShopSelect = new javax.swing.JComboBox<>();
         BookSelect = new javax.swing.JComboBox<>();
+        Request = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(769, 750));
@@ -283,19 +289,14 @@ public class BookList extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel10.setText("Copies");
 
+        Copies.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
         jLabel11.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel11.setText("Message");
 
         Message.setColumns(20);
         Message.setRows(5);
         jScrollPane1.setViewportView(Message);
-
-        RequestButton.setText("Request");
-        RequestButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RequestButtonActionPerformed(evt);
-            }
-        });
 
         ShopSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
         ShopSelect.addActionListener(new java.awt.event.ActionListener() {
@@ -308,6 +309,13 @@ public class BookList extends javax.swing.JFrame {
         BookSelect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BookSelectActionPerformed(evt);
+            }
+        });
+
+        Request.setText("Request");
+        Request.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RequestActionPerformed(evt);
             }
         });
 
@@ -326,22 +334,21 @@ public class BookList extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
+                                .addComponent(jScrollPane1)
+                                .addGap(18, 18, 18)
+                                .addComponent(Request))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(BookSelect, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(ShopSelect, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jLabel9)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(Copies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel10))
-                                    .addComponent(jLabel11)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jScrollPane1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(RequestButton))
-                                    .addComponent(jLabel8)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(BookSelect, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ShopSelect, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jLabel11))))
                         .addGap(0, 87, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -350,9 +357,9 @@ public class BookList extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jLabel7)
-                .addGap(32, 32, 32)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(ShopSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
                 .addComponent(jLabel9)
@@ -360,19 +367,19 @@ public class BookList extends javax.swing.JFrame {
                 .addComponent(BookSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Copies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
+                        .addComponent(jLabel11)
+                        .addGap(24, 24, 24)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(28, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(RequestButton)
-                        .addGap(76, 76, 76))))
+                        .addComponent(Request)
+                        .addGap(58, 58, 58))))
         );
 
         pack();
@@ -381,6 +388,7 @@ public class BookList extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         ShopSelect.removeAllItems();
         BookSelect.removeAllItems();
+        Copies.setValue(1);
         try {
             Connection con = ConnectionBuilder.getConnection();
             PreparedStatement pstm = con.prepareStatement("SELECT shopName FROM ShopProfile");
@@ -393,26 +401,31 @@ public class BookList extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         try {
             Connection con = ConnectionBuilder.getConnection();
-            
+
             //executeQuery ShopProfile Table to use ShopID
             PreparedStatement pstmSelectShopId = con.prepareStatement("SELECT shopID FROM ShopProfile WHERE "
                     + "shopName = '" + ShopSelect.getSelectedItem() + "'");
             ResultSet rsShopId = pstmSelectShopId.executeQuery();
-            rsShopId.next();
+            if (rsShopId.next()) {
+                shopID = rsShopId.getInt("shopID");
+            }
             
+            con.close();
+            pstmSelectShopId.close();
             //executeQuery Product Table to use ProductName
-            PreparedStatement pstmSelectProduct = con.prepareStatement("SELECT productName FROM mydb.Product WHERE "
-                    + "ShopProfile_shopID = " + rsShopId.getInt("shopID"));
+            
+            con = ConnectionBuilder.getConnection();
+            PreparedStatement pstmSelectProduct = con.prepareStatement("SELECT productName,productID FROM Product WHERE ShopProfile_shopID = " + shopID);
             ResultSet rsProductName = pstmSelectProduct.executeQuery();
+            if(rsProductName.next()){
+                productID = rsProductName.getInt("productID");
+            }
             
             //Add intitial text
             BookSelect.addItem("");
-            while (rsProductName.next()) {
-                BookSelect.addItem(rsProductName.getString("productName"));
-            }
         } catch (SQLException ex) {
             Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -420,17 +433,6 @@ public class BookList extends javax.swing.JFrame {
         BookListBox.setBackground(Color.black);
 
     }//GEN-LAST:event_formWindowActivated
-
-    private void RequestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RequestButtonActionPerformed
-        try {
-            // TODO add your handling code here:
-            Connection con = ConnectionBuilder.getConnection();
-            PreparedStatement pstm = con.prepareStatement("INSERT");
-        } catch (SQLException ex) {
-            Logger.getLogger(SelectShop.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }//GEN-LAST:event_RequestButtonActionPerformed
 
     private void HomeBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseClicked
         // TODO add your handling code here:
@@ -449,7 +451,7 @@ public class BookList extends javax.swing.JFrame {
 
     private void HomeBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseExited
         // TODO add your handling code here:
-         HomeBox.setBackground(null);
+        HomeBox.setBackground(null);
         Home.setForeground(Color.BLACK);
     }//GEN-LAST:event_HomeBoxMouseExited
 
@@ -485,7 +487,7 @@ public class BookList extends javax.swing.JFrame {
 
     private void RequestPrintBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestPrintBoxMouseEntered
         // TODO add your handling code here:
-         RequestPrintBox.setBackground(Color.BLACK);
+        RequestPrintBox.setBackground(Color.BLACK);
         RequestPrint.setForeground(Color.WHITE);
     }//GEN-LAST:event_RequestPrintBoxMouseEntered
 
@@ -516,24 +518,27 @@ public class BookList extends javax.swing.JFrame {
         BookSelect.removeAllItems();
         try {
             Connection con = ConnectionBuilder.getConnection();
-            
+
             //executeQuery ShopProfile Table to use ShopID
             PreparedStatement pstmSelectShopId = con.prepareStatement("SELECT shopID FROM ShopProfile WHERE "
                     + "shopName = '" + ShopSelect.getSelectedItem() + "'");
             ResultSet rsShopId = pstmSelectShopId.executeQuery();
-            rsShopId.next();
-            
+            if(rsShopId.next()){
+                LastShopID = rsShopId.getInt("shopID");
+            }
+              
+
             //executeQuery Product Table to use ProductName
-            PreparedStatement pstmSelectProduct = con.prepareStatement("SELECT productName FROM mydb.Product WHERE "
-                    + "ShopProfile_shopID = " + rsShopId.getInt("shopID"));
+            PreparedStatement pstmSelectProduct = con.prepareStatement("SELECT productName FROM Product WHERE "
+                    + "ShopProfile_shopID = "+ LastShopID);
             ResultSet rsProductName = pstmSelectProduct.executeQuery();
-            
+
             //Add intitial text
             BookSelect.addItem("");
             while (rsProductName.next()) {
                 BookSelect.addItem(rsProductName.getString("productName"));
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -556,8 +561,54 @@ public class BookList extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BookListBoxMouseClicked
 
-    
-    
+    private void RequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RequestActionPerformed
+        try {
+            // TODO add your handling code here:
+            Connection con = ConnectionBuilder.getConnection();
+            PreparedStatement pstmInsert1 = con.prepareStatement("INSERT INTO Orders(orderID,priceOrder,status,datetime,desciption,url,UserProfile_id,ShopProfile_shopID)"
+                    + "VALUES (null,null,null,null,?,null,?,?)");
+            pstmInsert1.setString(1, "description");
+            pstmInsert1.setInt(2, UserId);
+            pstmInsert1.setInt(3, shopID);
+
+            PreparedStatement pstmSel = con.prepareStatement("SELECT orderID FROM Orders WHERE orderID = ?");
+            pstmSel.setInt(1, getOrderID());
+            ResultSet rs = pstmSel.executeQuery();
+            while (rs.next()) {
+                orderID = rs.getInt("orderID");
+            }
+
+            PreparedStatement pstmInsert2 = con.prepareStatement("INSERT INTO SheetOrder(sheetID,productAmount,Order_orderID,Product_productID)"
+                    + "VALUES(null,?,?,?)");
+            pstmInsert2.setInt(1, (int) Copies.getValue());
+            pstmInsert2.setInt(2, orderID);
+            pstmInsert2.setInt(3, productID);
+
+            pstmInsert2.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Success");
+        } catch (SQLException ex) {
+            Logger.getLogger(SelectShop.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_RequestActionPerformed
+
+    public static int getOrderID(){
+        try {
+            Connection con = ConnectionBuilder.getConnection();
+            PreparedStatement pstmSel = con.prepareStatement("SELECT orderID FROM Orders;");
+            ResultSet rs = pstmSel.executeQuery();
+            
+            while(rs.next()){
+                LastOrderID = rs.getInt("orderID");
+            }
+            
+            System.out.println("LastOrderId"+LastOrderID);
+        } catch (SQLException ex) {
+            Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return LastOrderID;
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -600,7 +651,7 @@ public class BookList extends javax.swing.JFrame {
     private javax.swing.JLabel Logout;
     private javax.swing.JPanel LogoutBox;
     private javax.swing.JTextArea Message;
-    private javax.swing.JButton RequestButton;
+    private javax.swing.JButton Request;
     private javax.swing.JLabel RequestPrint;
     private javax.swing.JPanel RequestPrintBox;
     private javax.swing.JComboBox<String> ShopSelect;
