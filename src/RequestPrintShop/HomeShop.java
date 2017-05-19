@@ -312,7 +312,7 @@ public class HomeShop extends javax.swing.JFrame {
         updateTable.getColumnModel().getColumn(1).setPreferredWidth(120);
         updateTable.getColumnModel().getColumn(2).setPreferredWidth(30);
         updateTable.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
-        
+
         Image logout = new ImageIcon(this.getClass().getResource("../icon/logout.png")).getImage();
         logoutIcon.setIcon(new ImageIcon(logout.getScaledInstance(logoutIcon.getWidth(), logoutIcon.getHeight(), 0)));
     }//GEN-LAST:event_formComponentShown
@@ -365,31 +365,30 @@ public class HomeShop extends javax.swing.JFrame {
                 model.addRow(v);
                 pstmUser.close();
             }
-                //Sort Top 3 Hit
-                PreparedStatement pstmProduct = con.prepareStatement("SELECT productName FROM Product "
-                        + "WHERE ShopProfile_shopID = " + login.getShopId() + " AND NOT productName = 'link product shop" + login.getShopId() +
-                        "' ORDER BY TotalOfPrint LIMIT 3");
-                ResultSet rsProduct = pstmProduct.executeQuery();
+            //Sort Top 3 Hit
+            PreparedStatement pstmProduct = con.prepareStatement("SELECT productName FROM Product "
+                    + "WHERE ShopProfile_shopID = " + login.getShopId() + " AND NOT productName = 'link product shop" + login.getShopId()
+                    + "' ORDER BY TotalOfPrint LIMIT 3");
+            ResultSet rsProduct = pstmProduct.executeQuery();
+            if (rsProduct.next()) {
+                topOne.setText(rsProduct.getString("productName"));
                 if (rsProduct.next()) {
-                    topOne.setText(rsProduct.getString("productName"));
+                    topTwo.setText(rsProduct.getString("productName"));
                     if (rsProduct.next()) {
-                        topTwo.setText(rsProduct.getString("productName"));
-                        if (rsProduct.next()) {
-                            topThree.setText(rsProduct.getString("productName"));
-                        } else {
-                            topThree.setText("No Data");
-                        }
+                        topThree.setText(rsProduct.getString("productName"));
                     } else {
-                        topTwo.setText("No Data");
                         topThree.setText("No Data");
                     }
                 } else {
-                    topOne.setText("No Data");
                     topTwo.setText("No Data");
                     topThree.setText("No Data");
                 }
-                pstmProduct.close();
-            
+            } else {
+                topOne.setText("No Data");
+                topTwo.setText("No Data");
+                topThree.setText("No Data");
+            }
+            pstmProduct.close();
             pstmOrder.close();
             con.close();
         } catch (SQLException ex) {
