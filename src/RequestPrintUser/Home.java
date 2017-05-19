@@ -241,7 +241,7 @@ public class Home extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
         jLabel1.setText("Your document to see status.");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, -1, -1));
 
         Header.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         getContentPane().add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 380, 40));
