@@ -415,7 +415,7 @@ public class UserRequest extends javax.swing.JFrame {
     private void RequestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestMouseClicked
         // TODO add your handling code here:
         int DocCopies = (int)NumberofCopies.getValue();
-        RequestPrintUser.SelectShop select = new RequestPrintUser.SelectShop();
+        RequestPrintUser.SelectShop2 select = new RequestPrintUser.SelectShop2();
         select.setDocCopies(DocCopies);
         select.setUsername(Username);
         select.setUserId(UserId);

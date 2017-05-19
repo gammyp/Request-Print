@@ -8,30 +8,27 @@ package RequestPrintUser;
 import RequestPrintDatabase.ConnectionBuilder;
 import RequestPrintLogin.LoginEPrinting;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JList;
-import java.lang.String;
-import java.sql.Date;
-import java.sql.Statement;
-import java.text.SimpleDateFormat;
 
 /**
  *
  * @author Game
  */
-public class SelectShop extends javax.swing.JFrame {
+public class SelectShop2 extends javax.swing.JFrame {
 
-    private String Username;
-    private int UserId;
-    private String Link;
-    private int DocCopies;
-    private int ShopId;
-    private String Message;
-    private int OrderID;
+    private String Username = "Game";
+    private int UserId = 4;
+    private String Link = "poiuhgyuiopikjhg";
+    private int DocCopies = 4;
+    private int ShopId = 2;
+    private String Message ="euw9dojifpeklj";
+    //private int OrderID;
 
     public void setUsername(String Username) {
         this.Username = Username;
@@ -62,9 +59,9 @@ public class SelectShop extends javax.swing.JFrame {
     }
 
     /**
-     * Creates new form SelectShop
+     * Creates new form SelectShop2
      */
-    public SelectShop() {
+    public SelectShop2() {
         initComponents();
     }
 
@@ -77,9 +74,9 @@ public class SelectShop extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        CancleButton = new javax.swing.JButton();
-        RequestButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        CancelButton = new javax.swing.JButton();
+        Request = new javax.swing.JButton();
         ShopList = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -88,63 +85,72 @@ public class SelectShop extends javax.swing.JFrame {
                 formWindowActivated(evt);
             }
         });
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        CancleButton.setText("Cancel");
-        CancleButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CancleButtonMouseClicked(evt);
-            }
-        });
-        CancleButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancleButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(CancleButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
-
-        RequestButton.setText("Request");
-        RequestButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RequestButtonMouseClicked(evt);
-            }
-        });
-        RequestButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RequestButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(RequestButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Select shop to request.");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 19, -1, -1));
+        jLabel1.setText("Select Shop to Request.");
 
-        ShopList.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ShopListActionPerformed(evt);
+        CancelButton.setText("Cancel");
+        CancelButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CancelButtonMouseClicked(evt);
             }
         });
-        getContentPane().add(ShopList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 360, 20));
+        CancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelButtonActionPerformed(evt);
+            }
+        });
+
+        Request.setText("Request");
+        Request.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RequestMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(CancelButton)
+                        .addGap(93, 93, 93)
+                        .addComponent(Request))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 35, Short.MAX_VALUE)
+                .addComponent(ShopList, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(ShopList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CancelButton)
+                    .addComponent(Request))
+                .addGap(31, 31, 31))
+        );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CancleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancleButtonActionPerformed
+    private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CancleButtonActionPerformed
-
-    private void CancleButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancleButtonMouseClicked
-        // TODO add your handling code here:
-        UserRequest usrreq = new UserRequest();
-        usrreq.setUserId(UserId);
-        usrreq.setUsername(Username);
-        setVisible(false);
-        usrreq.setVisible(true);
-    }//GEN-LAST:event_CancleButtonMouseClicked
+    }//GEN-LAST:event_CancelButtonActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
         try {
             // TODO add your handling code here:
             Connection con = ConnectionBuilder.getConnection();
@@ -157,21 +163,24 @@ public class SelectShop extends javax.swing.JFrame {
             con.close();
             pstm.close();
         } catch (SQLException ex) {
-            Logger.getLogger(SelectShop.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
     }//GEN-LAST:event_formWindowActivated
 
-    private void ShopListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShopListActionPerformed
+    private void CancelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelButtonMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_ShopListActionPerformed
+        UserRequest usrreq = new UserRequest();
+        usrreq.setUserId(UserId);
+        usrreq.setUsername(Username);
+        setVisible(false);
+        usrreq.setVisible(true);
+    }//GEN-LAST:event_CancelButtonMouseClicked
 
-    private void RequestButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestButtonMouseClicked
-    }//GEN-LAST:event_RequestButtonMouseClicked
-
-    private void RequestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RequestButtonActionPerformed
+    private void RequestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestMouseClicked
+        // TODO add your handling code here:
         try {
             System.out.println("Click");
-            //int OrderID = -1;
+            int orderId = -1;
             int productID = -5;
             int shopID = -1;
             // TODO add your handling code here:
@@ -181,18 +190,18 @@ public class SelectShop extends javax.swing.JFrame {
             String datestr = sdf.format(date);
             LoginEPrinting login = new LoginEPrinting();
             Connection con = ConnectionBuilder.getConnection();
-            PreparedStatement pstmShopId = con.prepareStatement("SELECT shopID FROM ShopProfile WHERE shopName = '"+ ShopList.getSelectedItem().toString()+"'");
+            PreparedStatement pstmShopId = con.prepareStatement("SELECT shopID FROM ShopProfile WHERE shopName = '" + ShopList.getSelectedItem().toString() + "'");
             ResultSet rs = pstmShopId.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 shopID = rs.getInt("shopID");
             }
-            System.out.println("shopID "+shopID);
+            System.out.println("shopID " + shopID);
             PreparedStatement pstm = con.prepareStatement("INSERT INTO Orders VALUES (null,?,?,?,?,?,?,?)");
             System.out.println("DocCopies : " + DocCopies);
             System.out.println("datestr : " + datestr);
             System.out.println("Message : " + Message);
             System.out.println("Link : " + Link);
-            System.out.println("getUserId : " + login.getUserId());
+            System.out.println("getUserId : " + UserId);
             pstm.setInt(1, DocCopies);
             if (DocCopies > 0) {
                 pstm.setString(2, "Pending Responding");
@@ -202,29 +211,33 @@ public class SelectShop extends javax.swing.JFrame {
             pstm.setString(3, datestr);
             pstm.setString(4, Message);
             pstm.setString(5, Link);
-            pstm.setInt(6, login.getUserId());
+            pstm.setInt(6, UserId);
             pstm.setInt(7, shopID);
             pstm.executeUpdate();
             //SELECT ProductID
-            PreparedStatement pstm2 = con.prepareStatement("SELECT productID FROM Product WHERE ShopProfile_shopID = "+shopID);
+            PreparedStatement pstm2 = con.prepareStatement("SELECT productID FROM Product WHERE ShopProfile_shopID = " + shopID);
             ResultSet rs2 = pstm2.executeQuery();
-            while(rs2.next()){
+            while (rs2.next()) {
                 productID = rs2.getInt("productID");
-                System.out.println(productID);
-            }
-            //SELECT OrderID
-            PreparedStatement pstm3 = con.prepareStatement("SELECT orderID FROM Orders ORDER BY orderID DESC LIMIT 0,1");
-            ResultSet rstest = pstm3.executeQuery();
-            while(rs.next()){
-                OrderID = rstest.getInt("orderID");
+                System.out.println("prodId"+productID);
             }
             
+            //SELECT OrderID
+            System.out.println("Start");
+            PreparedStatement pstm3 = con.prepareStatement("SELECT MAX(orderID) FROM Orders");
+            ResultSet rstest = pstm3.executeQuery();
+            System.out.println(rstest.toString());
+            while (rstest.next()) {
+                System.out.println(rstest.getInt("MAX(orderID)"));
+                orderId = rstest.getInt("MAX(orderID)");
+            }
+            System.out.println("End");
             //INSERT SheetOrder
-            PreparedStatement pstm4 = con.prepareStatement("INSERT INTO SheetOrder (productAmount , Order_orderid , Product_productID) VALUES (? , ? , ?)");
+            PreparedStatement pstm4 = con.prepareStatement("INSERT INTO SheetOrder (productAmount, Order_orderID, Product_productID) VALUES (?, ?, ?)");
             pstm4.setInt(1, DocCopies);
-            System.out.println("OrderID : "+OrderID);
-            System.out.println("productID : "+productID);
-            pstm4.setInt(2, OrderID);
+            System.out.println("OrderID : " + orderId);
+            System.out.println("productID : " + productID);
+            pstm4.setInt(2, orderId);
             pstm4.setInt(3, productID);
             pstm4.executeUpdate();
             con.close();
@@ -233,9 +246,9 @@ public class SelectShop extends javax.swing.JFrame {
             pstm3.close();
             pstm4.close();
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            System.err.println(ex);
         }
-    }//GEN-LAST:event_RequestButtonActionPerformed
+    }//GEN-LAST:event_RequestMouseClicked
 
     /**
      * @param args the command line arguments
@@ -254,27 +267,27 @@ public class SelectShop extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SelectShop.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SelectShop2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SelectShop.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SelectShop2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SelectShop.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SelectShop2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SelectShop.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SelectShop2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SelectShop().setVisible(true);
+                new SelectShop2().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CancleButton;
-    private javax.swing.JButton RequestButton;
+    private javax.swing.JButton CancelButton;
+    private javax.swing.JButton Request;
     private javax.swing.JComboBox<String> ShopList;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

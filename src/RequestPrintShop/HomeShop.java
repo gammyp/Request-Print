@@ -348,7 +348,7 @@ public class HomeShop extends javax.swing.JFrame {
         try {
             con = ConnectionBuilder.getConnection();
             LoginEPrinting login = new LoginEPrinting();
-            PreparedStatement pstmOrder = con.prepareStatement("SELECT * FROM mydb.Order "
+            PreparedStatement pstmOrder = con.prepareStatement("SELECT * FROM Orders "
                     + "WHERE ShopProfile_shopID = " + login.getShopId() + " AND status = 'Pending Responding'");
             ResultSet rsOrder = pstmOrder.executeQuery();
 
