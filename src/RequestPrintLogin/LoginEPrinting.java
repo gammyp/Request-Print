@@ -204,7 +204,7 @@ public class LoginEPrinting extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void signin() {
+    public void signin() {
         Connection con = null;
         if (userNameField.getText().equals("") && passwordField.getText().equals("")) {
             errorText.setText("Please enter your username and password!");

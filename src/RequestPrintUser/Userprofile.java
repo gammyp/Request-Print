@@ -423,12 +423,12 @@ public class Userprofile extends javax.swing.JFrame {
         LogoutBox.setBackground(null);
         fetchProfile();
         YourProfileLabel.setForeground(Color.white);
-        YourProfileBox.setBackground(Color.black);
+        YourProfileBox.setBackground(new java.awt.Color(56, 51, 57));
     }//GEN-LAST:event_formWindowActivated
 
     private void HomeBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseEntered
         // TODO add your handling code here:
-        HomeBox.setBackground(Color.black);
+        HomeBox.setBackground(new java.awt.Color(56, 51, 57));
         HomeLabel.setForeground(Color.white);
     }//GEN-LAST:event_HomeBoxMouseEntered
 
@@ -440,7 +440,7 @@ public class Userprofile extends javax.swing.JFrame {
 
     private void RequestBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseEntered
         // TODO add your handling code here:
-        RequestBox.setBackground(Color.black);
+        RequestBox.setBackground(new java.awt.Color(56, 51, 57));
         RequestLabel.setForeground(Color.white);
     }//GEN-LAST:event_RequestBoxMouseEntered
 
@@ -453,7 +453,7 @@ public class Userprofile extends javax.swing.JFrame {
     private void BookListBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseEntered
         // TODO add your handling code here:
         BookListLabel.setForeground(Color.white);
-        BookListBox.setBackground(Color.black);
+        BookListBox.setBackground(new java.awt.Color(56, 51, 57));
     }//GEN-LAST:event_BookListBoxMouseEntered
 
     private void BookListBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseExited
@@ -464,7 +464,7 @@ public class Userprofile extends javax.swing.JFrame {
 
     private void LogoutBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseEntered
         // TODO add your handling code here:
-        LogoutBox.setBackground(Color.BLACK);
+        LogoutBox.setBackground(new java.awt.Color(56, 51, 57));
         LogoutLabel.setForeground(Color.white);
     }//GEN-LAST:event_LogoutBoxMouseEntered
 

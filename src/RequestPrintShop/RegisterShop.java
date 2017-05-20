@@ -277,7 +277,7 @@ public class RegisterShop extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     
-    private void emailLost(){
+    public void emailLost(){
         Image trueIcon = new ImageIcon(this.getClass().getResource("../icon/correct.png")).getImage();
         Image wrongIcon = new ImageIcon(this.getClass().getResource("../icon/wrong.png")).getImage();
         if (emailField.getText().indexOf("@") > 0) {
@@ -289,7 +289,7 @@ public class RegisterShop extends javax.swing.JFrame {
         }
     }
     
-    private void userNameLost(){
+    public void userNameLost(){
         try {
             Connection con = ConnectionBuilder.getConnection();
             Image trueIcon = new ImageIcon(this.getClass().getResource("../icon/correct.png")).getImage();
@@ -316,7 +316,7 @@ public class RegisterShop extends javax.swing.JFrame {
         }
     }
     
-    private void passwordLost(){
+    public void passwordLost(){
         if (passField.getText().length() >= 0 & passField.getText().length() <= 5) {
             errorPassText.setText("Password weak");
             passField.setBackground(Color.PINK);
@@ -332,7 +332,7 @@ public class RegisterShop extends javax.swing.JFrame {
         }
     }
     
-    private void confirmPassLost(){
+    public void confirmPassLost(){
         Image trueIcon = new ImageIcon(this.getClass().getResource("../icon/correct.png")).getImage();
         Image wrongIcon = new ImageIcon(this.getClass().getResource("../icon/wrong.png")).getImage();
         if (passField.getText().length() <= 5 || passField.getText().length() > 45) {
@@ -347,7 +347,7 @@ public class RegisterShop extends javax.swing.JFrame {
         }
     }
     
-    private void submitRegister(){
+    public void submitRegister(){
         try {
             Connection con = ConnectionBuilder.getConnection();
             if ((passField.getText().length() > 5) & (userNameField.getText().length() > 0) & (emailField.getText().indexOf("@") > 0)) {
@@ -400,6 +400,7 @@ public class RegisterShop extends javax.swing.JFrame {
             Logger.getLogger(RegisterShop.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
     private void emailFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailFieldFocusLost
         emailLost();
     }//GEN-LAST:event_emailFieldFocusLost

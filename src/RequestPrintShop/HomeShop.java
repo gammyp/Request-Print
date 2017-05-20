@@ -303,7 +303,7 @@ public class HomeShop extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void showTableActivated() {
+    private void showTableUpdate() {
         model = (DefaultTableModel) updateTable.getModel();
         model.setRowCount(0);
         Connection con = null;
@@ -327,7 +327,18 @@ public class HomeShop extends javax.swing.JFrame {
                 model.addRow(v);
                 pstmUser.close();
             }
-            //Sort Top 3 Hit
+            pstmOrder.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(HomeShop.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void topHit(){
+        Connection con = null;
+        try {
+            con = ConnectionBuilder.getConnection();
+            LoginEPrinting login = new LoginEPrinting();
             PreparedStatement pstmProduct = con.prepareStatement("SELECT productName FROM Product "
                     + "WHERE ShopProfile_shopID = " + login.getShopId() + " AND NOT productName = 'link product shop" + login.getShopId()
                     + "' ORDER BY TotalOfPrint LIMIT 3");
@@ -351,13 +362,12 @@ public class HomeShop extends javax.swing.JFrame {
                 topThree.setText("No Data");
             }
             pstmProduct.close();
-            pstmOrder.close();
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(HomeShop.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         bgMenu.setBackground(new java.awt.Color(234, 234, 234));
         home.setBackground(new java.awt.Color(234, 234, 234));
@@ -397,7 +407,8 @@ public class HomeShop extends javax.swing.JFrame {
     }//GEN-LAST:event_respondPrintMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        showTableActivated();
+        showTableUpdate();
+        topHit();
     }//GEN-LAST:event_formWindowActivated
 
     private void logoutIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutIconMouseClicked

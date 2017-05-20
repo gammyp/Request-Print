@@ -164,7 +164,7 @@ public class EditShopProfile extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void showdataProfile() {
+    public void showDataProfile() {
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
@@ -186,7 +186,7 @@ public class EditShopProfile extends javax.swing.JFrame {
         }
     }
 
-    private void saveUpdateProfile() {
+    public void saveUpdateProfile() {
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
@@ -212,7 +212,7 @@ public class EditShopProfile extends javax.swing.JFrame {
     }
     
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        showdataProfile();
+        showDataProfile();
     }//GEN-LAST:event_formComponentShown
 
     private void saveLabelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveLabelButtonMouseClicked

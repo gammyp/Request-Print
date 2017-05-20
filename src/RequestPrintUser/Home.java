@@ -336,7 +336,7 @@ public class Home extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         HomeLabel.setForeground(Color.white);
-        HomeBox.setBackground(Color.black);
+        HomeBox.setBackground(new java.awt.Color(56, 51, 57));
         RequestBox.setBackground(null);
         LogoutBox.setBackground(null);
         BookListBox.setBackground(null);
@@ -363,19 +363,19 @@ public class Home extends javax.swing.JFrame {
     private void RequestBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseEntered
         // TODO add your handling code here:
         RequestPrint.setForeground(Color.white);
-        RequestBox.setBackground(Color.black);
+        RequestBox.setBackground(new java.awt.Color(56, 51, 57));
     }//GEN-LAST:event_RequestBoxMouseEntered
 
     private void RequestBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseExited
         // TODO add your handling code here:
-        RequestPrint.setForeground(Color.black);
+        RequestPrint.setForeground(new java.awt.Color(56, 51, 57));
         RequestBox.setBackground(null);
     }//GEN-LAST:event_RequestBoxMouseExited
 
     private void LogoutBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseEntered
         // TODO add your handling code here:
         Logout.setForeground(Color.white);
-        LogoutBox.setBackground(Color.black);
+        LogoutBox.setBackground(new java.awt.Color(56, 51, 57));
     }//GEN-LAST:event_LogoutBoxMouseEntered
 
     private void LogoutBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseExited
@@ -405,7 +405,7 @@ public class Home extends javax.swing.JFrame {
     private void YourProfileBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseEntered
         // TODO add your handling code here:
         YourProfile.setForeground(Color.white);
-        YourProfileBox.setBackground(Color.BLACK);
+        YourProfileBox.setBackground(new java.awt.Color(56, 51, 57));
     }//GEN-LAST:event_YourProfileBoxMouseEntered
 
     private void YourProfileBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseExited
@@ -426,7 +426,7 @@ public class Home extends javax.swing.JFrame {
     private void BookListBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseEntered
         // TODO add your handling code here:
         BookList.setForeground(Color.white);
-        BookListBox.setBackground(Color.black);
+        BookListBox.setBackground(new java.awt.Color(56, 51, 57));
     }//GEN-LAST:event_BookListBoxMouseEntered
 
     private void BookListBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseExited
