@@ -7,6 +7,7 @@ package RequestPrintUser;
 
 import RequestPrintDatabase.ConnectionBuilder;
 import RequestPrintLogin.LoginEPrinting;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -154,9 +155,11 @@ public class SelectShop2 extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        CancelButton = new javax.swing.JButton();
-        Request = new javax.swing.JButton();
         ShopList = new javax.swing.JComboBox<>();
+        CancelBox = new javax.swing.JPanel();
+        Cancel = new javax.swing.JLabel();
+        RequestBox = new javax.swing.JPanel();
+        Request = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -168,83 +171,124 @@ public class SelectShop2 extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("supermarket", 0, 24)); // NOI18N
         jLabel1.setText("Select Shop to Request.");
 
-        CancelButton.setText("Cancel");
-        CancelButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CancelButtonMouseClicked(evt);
-            }
-        });
-        CancelButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelButtonActionPerformed(evt);
-            }
-        });
-
-        Request.setText("Request");
-        Request.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RequestMouseClicked(evt);
-            }
-        });
-
         ShopList.setFont(new java.awt.Font("supermarket", 0, 14)); // NOI18N
+
+        CancelBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CancelBoxMouseClicked(evt);
+            }
+        });
+
+        Cancel.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        Cancel.setText("Cancel");
+
+        javax.swing.GroupLayout CancelBoxLayout = new javax.swing.GroupLayout(CancelBox);
+        CancelBox.setLayout(CancelBoxLayout);
+        CancelBoxLayout.setHorizontalGroup(
+            CancelBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CancelBoxLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(Cancel)
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+        CancelBoxLayout.setVerticalGroup(
+            CancelBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CancelBoxLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Cancel)
+                .addContainerGap(7, Short.MAX_VALUE))
+        );
+
+        RequestBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RequestBoxMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                RequestBoxMouseEntered(evt);
+            }
+        });
+
+        Request.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        Request.setText("Request");
+
+        javax.swing.GroupLayout RequestBoxLayout = new javax.swing.GroupLayout(RequestBox);
+        RequestBox.setLayout(RequestBoxLayout);
+        RequestBoxLayout.setHorizontalGroup(
+            RequestBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RequestBoxLayout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(Request)
+                .addGap(20, 20, 20))
+        );
+        RequestBoxLayout.setVerticalGroup(
+            RequestBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RequestBoxLayout.createSequentialGroup()
+                .addContainerGap(7, Short.MAX_VALUE)
+                .addComponent(Request)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 76, Short.MAX_VALUE)
+                .addComponent(ShopList, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addComponent(CancelButton)
-                        .addGap(93, 93, 93)
-                        .addComponent(Request))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1)))
-                .addContainerGap(98, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(ShopList, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(111, Short.MAX_VALUE)
+                        .addComponent(CancelBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(80, 80, 80)
+                        .addComponent(RequestBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(93, 93, 93))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(ShopList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CancelButton)
-                    .addComponent(Request))
-                .addGap(31, 31, 31))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ShopList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(CancelBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(RequestBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(71, 71, 71))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CancelButtonActionPerformed
-
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
         fetchShopList();
+        getContentPane().setBackground(new java.awt.Color(138, 204, 203));
+        RequestBox.setBackground(new java.awt.Color(88,153,152));
+        Request.setForeground(Color.white);
+        CancelBox.setBackground(new java.awt.Color(88,153,152));
+        Cancel.setForeground(Color.white);
     }//GEN-LAST:event_formWindowActivated
 
-    private void CancelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelButtonMouseClicked
+    private void RequestBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseEntered
         // TODO add your handling code here:
-        Back();
-    }//GEN-LAST:event_CancelButtonMouseClicked
+    }//GEN-LAST:event_RequestBoxMouseEntered
 
-    private void RequestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestMouseClicked
+    private void RequestBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseClicked
         // TODO add your handling code here:
         RequestBook();
-    }//GEN-LAST:event_RequestMouseClicked
+    }//GEN-LAST:event_RequestBoxMouseClicked
+
+    private void CancelBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelBoxMouseClicked
+        Back();
+    }//GEN-LAST:event_CancelBoxMouseClicked
 
     /**
      * @param args the command line arguments
@@ -282,8 +326,10 @@ public class SelectShop2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CancelButton;
-    private javax.swing.JButton Request;
+    private javax.swing.JLabel Cancel;
+    private javax.swing.JPanel CancelBox;
+    private javax.swing.JLabel Request;
+    private javax.swing.JPanel RequestBox;
     private javax.swing.JComboBox<String> ShopList;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

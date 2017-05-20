@@ -114,7 +114,6 @@ public class UserRequest extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(720, 503));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -211,15 +210,16 @@ public class UserRequest extends javax.swing.JFrame {
         YourProfileBoxLayout.setHorizontalGroup(
             YourProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(YourProfileBoxLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(42, 42, 42)
                 .addComponent(YourProfile)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         YourProfileBoxLayout.setVerticalGroup(
             YourProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(YourProfileBoxLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(YourProfile)
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         BookListBox.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -350,21 +350,23 @@ public class UserRequest extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        RequestPrintBox.setBackground(new java.awt.Color(56, 51, 57));
+        getContentPane().setBackground(new java.awt.Color(138, 204, 203));
         RequestPrint.setForeground(Color.white);
-        Navbar.setBackground(Color.LIGHT_GRAY);
-        YourProfileBox.setBackground(null);
-        HomeBox.setBackground(null);
-        BookListBox.setBackground(null);
-        LogoutBox.setBackground(null);
+        jLabel1.setForeground(Color.white);
+        HomeBox.setBackground(new java.awt.Color(22, 85, 101));
+        RequestBox.setBackground(new java.awt.Color(88,153,152));
+        RequestPrintBox.setBackground(new java.awt.Color(138, 204, 203));
+        LogoutBox.setBackground(new java.awt.Color(22, 85, 101));
+        BookListBox.setBackground(new java.awt.Color(22, 85, 101));
+        YourProfileBox.setBackground(new java.awt.Color(22, 85, 101));
+        Navbar.setBackground(new java.awt.Color(22, 85, 101));
         NumberofCopies.setValue(1);
-        RequestBox.setBackground(new java.awt.Color(161,255,151));
     }//GEN-LAST:event_formWindowActivated
 
     private void YourProfileBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseEntered
         // TODO add your handling code here:
         YourProfile.setForeground(Color.white);
-        YourProfileBox.setBackground(new java.awt.Color(56, 51, 57));
+        YourProfileBox.setBackground(new java.awt.Color(138, 204, 203));
     }//GEN-LAST:event_YourProfileBoxMouseEntered
 
     private void YourProfileBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseExited
@@ -381,7 +383,7 @@ public class UserRequest extends javax.swing.JFrame {
     private void HomeBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseEntered
         // TODO add your handling code here:
         Home.setForeground(Color.white);
-        HomeBox.setBackground(new java.awt.Color(56, 51, 57));
+        HomeBox.setBackground(new java.awt.Color(138, 204, 203));
     }//GEN-LAST:event_HomeBoxMouseEntered
 
     private void HomeBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseExited
@@ -398,7 +400,7 @@ public class UserRequest extends javax.swing.JFrame {
     private void BookListBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseEntered
         // TODO add your handling code here:
         BookList.setForeground(Color.white);
-        BookListBox.setBackground(new java.awt.Color(56, 51, 57));
+        BookListBox.setBackground(new java.awt.Color(138, 204, 203));
     }//GEN-LAST:event_BookListBoxMouseEntered
 
     private void BookListBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseExited
@@ -415,7 +417,7 @@ public class UserRequest extends javax.swing.JFrame {
     private void LogoutBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseEntered
         // TODO add your handling code here:
         Logout.setForeground(Color.white);
-        LogoutBox.setBackground(new java.awt.Color(56, 51, 57));
+        LogoutBox.setBackground(new java.awt.Color(138, 204, 203));
     }//GEN-LAST:event_LogoutBoxMouseEntered
 
     private void LogoutBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseExited
@@ -431,18 +433,18 @@ public class UserRequest extends javax.swing.JFrame {
 
     private void RequestBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseClicked
         // TODO add your handling code here:
-        RequestBox.setBackground(new java.awt.Color(78,255,58));
+        
         selectShoptoPrint();
     }//GEN-LAST:event_RequestBoxMouseClicked
 
     private void RequestBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseEntered
         // TODO add your handling code here:
-        RequestBox.setBackground(new java.awt.Color(108,255,91));
+       
     }//GEN-LAST:event_RequestBoxMouseEntered
 
     private void RequestBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseExited
         // TODO add your handling code here:
-        RequestBox.setBackground(new java.awt.Color(161,255,151));
+       
     }//GEN-LAST:event_RequestBoxMouseExited
 
     /**

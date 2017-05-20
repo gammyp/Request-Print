@@ -7,6 +7,7 @@ package RequestPrintUser;
 
 import RequestPrintDatabase.ConnectionBuilder;
 import RequestPrintLogin.LoginEPrinting;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -82,11 +83,12 @@ public class EditUserProfile extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         phone = new javax.swing.JLabel();
-        saveButton = new javax.swing.JButton();
         nameField = new javax.swing.JTextField();
         surnameField = new javax.swing.JTextField();
         emailField = new javax.swing.JTextField();
         phoneField = new javax.swing.JTextField();
+        SaveBox = new javax.swing.JPanel();
+        Save = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(470, 300));
@@ -107,45 +109,59 @@ public class EditUserProfile extends javax.swing.JFrame {
 
         phone.setText("Telephone : ");
 
-        saveButton.setText("Save");
-        saveButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        SaveBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                saveButtonMouseClicked(evt);
+                SaveBoxMouseClicked(evt);
             }
         });
-        saveButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveButtonActionPerformed(evt);
-            }
-        });
+
+        Save.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        Save.setText("Save");
+
+        javax.swing.GroupLayout SaveBoxLayout = new javax.swing.GroupLayout(SaveBox);
+        SaveBox.setLayout(SaveBoxLayout);
+        SaveBoxLayout.setHorizontalGroup(
+            SaveBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SaveBoxLayout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(Save)
+                .addContainerGap(96, Short.MAX_VALUE))
+        );
+        SaveBoxLayout.setVerticalGroup(
+            SaveBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SaveBoxLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Save)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(18, 18, 18)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel4)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel2)
-                        .addComponent(phone))
-                    .addGap(26, 26, 26)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(surnameField, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(13, Short.MAX_VALUE))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel1)
-                    .addGap(136, 136, 136)))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(saveButton)
-                .addGap(170, 170, 170))
+                .addComponent(jLabel1)
+                .addGap(136, 136, 136))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addComponent(SaveBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(phone))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(surnameField, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,22 +184,26 @@ public class EditUserProfile extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(phone)
                     .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(saveButton)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(SaveBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 28, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        UpdateProfile();
-    }//GEN-LAST:event_saveButtonActionPerformed
-
-    private void saveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveButtonMouseClicked
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
-        Connection con = null;
+        getContentPane().setBackground(new java.awt.Color(138, 204, 203));
+        SaveBox.setBackground(new java.awt.Color(88,153,152));
+        Save.setForeground(Color.white);
+        callOldProfile();
+    }//GEN-LAST:event_formComponentShown
+
+    private void SaveBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveBoxMouseClicked
+        // TODO add your handling code here:
+         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
             LoginEPrinting login = new LoginEPrinting();
@@ -204,12 +224,7 @@ public class EditUserProfile extends javax.swing.JFrame {
             Logger.getLogger(EditUserProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-    }//GEN-LAST:event_saveButtonMouseClicked
-
-    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        // TODO add your handling code here:
-        callOldProfile();
-    }//GEN-LAST:event_formComponentShown
+    }//GEN-LAST:event_SaveBoxMouseClicked
    
 
     /**
@@ -248,6 +263,8 @@ public class EditUserProfile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Save;
+    private javax.swing.JPanel SaveBox;
     private javax.swing.JTextField emailField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -256,7 +273,6 @@ public class EditUserProfile extends javax.swing.JFrame {
     private javax.swing.JTextField nameField;
     private javax.swing.JLabel phone;
     private javax.swing.JTextField phoneField;
-    private javax.swing.JButton saveButton;
     private javax.swing.JTextField surnameField;
     // End of variables declaration//GEN-END:variables
 }

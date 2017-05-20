@@ -111,12 +111,14 @@ public class RegisterUser extends javax.swing.JFrame {
         userNameLabel = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
         passwordLabel1 = new javax.swing.JLabel();
-        submitButton = new javax.swing.JButton();
-        backButton = new javax.swing.JButton();
         userNameCheck = new javax.swing.JLabel();
         passwordCheck = new javax.swing.JLabel();
         error = new javax.swing.JLabel();
         emailCheck = new javax.swing.JLabel();
+        BackBox = new javax.swing.JPanel();
+        Back = new javax.swing.JLabel();
+        SubmitBox = new javax.swing.JPanel();
+        Submit = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -209,24 +211,6 @@ public class RegisterUser extends javax.swing.JFrame {
         passwordLabel1.setText("Confirm password :");
         getContentPane().add(passwordLabel1);
         passwordLabel1.setBounds(77, 398, 180, 33);
-
-        submitButton.setText("Submit");
-        submitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(submitButton);
-        submitButton.setBounds(390, 450, 100, 36);
-
-        backButton.setText("Back");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(backButton);
-        backButton.setBounds(270, 450, 100, 36);
         getContentPane().add(userNameCheck);
         userNameCheck.setBounds(500, 290, 50, 40);
         getContentPane().add(passwordCheck);
@@ -236,11 +220,106 @@ public class RegisterUser extends javax.swing.JFrame {
         getContentPane().add(emailCheck);
         emailCheck.setBounds(505, 186, 40, 30);
 
+        BackBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BackBoxMouseClicked(evt);
+            }
+        });
+
+        Back.setText("Back");
+
+        javax.swing.GroupLayout BackBoxLayout = new javax.swing.GroupLayout(BackBox);
+        BackBox.setLayout(BackBoxLayout);
+        BackBoxLayout.setHorizontalGroup(
+            BackBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackBoxLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(Back)
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+        BackBoxLayout.setVerticalGroup(
+            BackBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackBoxLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Back)
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(BackBox);
+        BackBox.setBounds(260, 450, 100, 30);
+
+        SubmitBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SubmitBoxMouseClicked(evt);
+            }
+        });
+
+        Submit.setText("Submit");
+
+        javax.swing.GroupLayout SubmitBoxLayout = new javax.swing.GroupLayout(SubmitBox);
+        SubmitBox.setLayout(SubmitBoxLayout);
+        SubmitBoxLayout.setHorizontalGroup(
+            SubmitBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SubmitBoxLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(Submit)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+        SubmitBoxLayout.setVerticalGroup(
+            SubmitBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SubmitBoxLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Submit)
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(SubmitBox);
+        SubmitBox.setBounds(380, 450, 100, 30);
+
         setSize(new java.awt.Dimension(656, 546));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        LoginEPrinting login = new LoginEPrinting();
+        login.setVisible(false);
+        getContentPane().setBackground(new java.awt.Color(138, 204, 203));
+        SubmitBox.setBackground(new java.awt.Color(88,153,152));
+        Submit.setForeground(Color.white);
+        BackBox.setBackground(new java.awt.Color(88,153,152));
+        Back.setForeground(Color.white);
+    }//GEN-LAST:event_formWindowActivated
+
+    private void formFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusLost
+
+    }//GEN-LAST:event_formFocusLost
+
+    private void userNameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userNameFieldFocusLost
+        try {
+            System.out.println("Username Lost");
+            checkUsername();
+        } catch (Exception ex) {
+            Logger.getLogger(RegisterUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_userNameFieldFocusLost
+
+    private void passwordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusLost
+        System.out.println("password lost");
+        PassFocusLost();
+    }//GEN-LAST:event_passwordFocusLost
+
+    private void CreatePasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CreatePasswordFocusLost
+        System.out.println("password same");
+        checkRetypePass();
+    }//GEN-LAST:event_CreatePasswordFocusLost
+
+    private void EmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EmailFocusLost
+        System.out.println("email lost");
+        EmailLost();
+    }//GEN-LAST:event_EmailFocusLost
+
+    private void SubmitBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmitBoxMouseClicked
         try {
             System.out.println(name.getText());
 
@@ -278,48 +357,15 @@ public class RegisterUser extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(RegisterUser.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_submitButtonActionPerformed
+    }//GEN-LAST:event_SubmitBoxMouseClicked
 
-
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+    private void BackBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackBoxMouseClicked
         LoginEPrinting login = new LoginEPrinting();
         login.setVisible(true);
         setVisible(false);
-    }//GEN-LAST:event_backButtonActionPerformed
+    }//GEN-LAST:event_BackBoxMouseClicked
 
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        LoginEPrinting login = new LoginEPrinting();
-        login.setVisible(false);
-    }//GEN-LAST:event_formWindowActivated
-
-    private void formFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusLost
-
-    }//GEN-LAST:event_formFocusLost
-
-    private void userNameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userNameFieldFocusLost
-        try {
-            System.out.println("Username Lost");
-            checkUsername();
-        } catch (Exception ex) {
-            Logger.getLogger(RegisterUser.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_userNameFieldFocusLost
-
-    private void passwordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusLost
-        System.out.println("password lost");
-        PassFocusLost();
-    }//GEN-LAST:event_passwordFocusLost
-
-    private void CreatePasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CreatePasswordFocusLost
-        System.out.println("password same");
-        checkRetypePass();
-    }//GEN-LAST:event_CreatePasswordFocusLost
-
-    private void EmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EmailFocusLost
-        System.out.println("email lost");
-        EmailLost();
-    }//GEN-LAST:event_EmailFocusLost
-
+    
     
     
     public static void main(String args[]) {
@@ -356,10 +402,13 @@ public class RegisterUser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Back;
+    private javax.swing.JPanel BackBox;
     private javax.swing.JTextField CreatePassword;
     private javax.swing.JTextField Email;
     private javax.swing.JLabel Register;
-    private javax.swing.JButton backButton;
+    private javax.swing.JLabel Submit;
+    private javax.swing.JPanel SubmitBox;
     private javax.swing.JLabel emailCheck;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel error;
@@ -370,7 +419,6 @@ public class RegisterUser extends javax.swing.JFrame {
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JLabel passwordLabel1;
     private javax.swing.JTextField phone;
-    private javax.swing.JButton submitButton;
     private javax.swing.JTextField surname;
     private javax.swing.JLabel surnameLabel;
     private javax.swing.JLabel telephoneLabel;

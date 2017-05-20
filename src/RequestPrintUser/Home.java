@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -102,6 +103,7 @@ public class Home extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(138, 204, 203));
         setMinimumSize(new java.awt.Dimension(720, 503));
         setPreferredSize(new java.awt.Dimension(640, 480));
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -134,9 +136,9 @@ public class Home extends javax.swing.JFrame {
         RequestBoxLayout.setHorizontalGroup(
             RequestBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RequestBoxLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(14, 14, 14)
                 .addComponent(RequestPrint)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         RequestBoxLayout.setVerticalGroup(
             RequestBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,7 +148,7 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        NavBar.add(RequestBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 220, -1));
+        NavBar.add(RequestBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 220, -1));
 
         BookListBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -180,7 +182,7 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        NavBar.add(BookListBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 220, -1));
+        NavBar.add(BookListBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 220, -1));
 
         YourProfileBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -214,7 +216,7 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        NavBar.add(YourProfileBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 102, 220, 40));
+        NavBar.add(YourProfileBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 220, 40));
 
         LogoutBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -236,18 +238,18 @@ public class Home extends javax.swing.JFrame {
         LogoutBoxLayout.setHorizontalGroup(
             LogoutBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LogoutBoxLayout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addGap(63, 63, 63)
                 .addComponent(Logout)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         LogoutBoxLayout.setVerticalGroup(
             LogoutBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LogoutBoxLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LogoutBoxLayout.createSequentialGroup()
                 .addComponent(Logout)
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        NavBar.add(LogoutBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 220, 50));
+        NavBar.add(LogoutBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 220, 30));
 
         HomeLabel.setFont(new java.awt.Font("Moon", 0, 24)); // NOI18N
         HomeLabel.setText("Home");
@@ -266,10 +268,10 @@ public class Home extends javax.swing.JFrame {
             .addGroup(HomeBoxLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(HomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        NavBar.add(HomeBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 220, 50));
+        NavBar.add(HomeBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 220, 40));
 
         getContentPane().add(NavBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 480));
 
@@ -316,13 +318,14 @@ public class Home extends javax.swing.JFrame {
         Header.setText("Welcome , "+Username);
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
-        HomeLabel.setForeground(Color.white);
-        HomeBox.setBackground(new java.awt.Color(56, 51, 57));
-        RequestBox.setBackground(null);
-        LogoutBox.setBackground(null);
-        BookListBox.setBackground(null);
-        YourProfileBox.setBackground(null);
-        NavBar.setBackground(Color.LIGHT_GRAY);
+        getContentPane().setBackground(new java.awt.Color(138, 204, 203));
+        HomeLabel.setForeground(Color.black);
+        HomeBox.setBackground(new java.awt.Color(138, 204, 203));
+        RequestBox.setBackground(new java.awt.Color(22, 85, 101));
+        LogoutBox.setBackground(new java.awt.Color(22, 85, 101));
+        BookListBox.setBackground(new java.awt.Color(22, 85, 101));
+        YourProfileBox.setBackground(new java.awt.Color(22, 85, 101));
+        NavBar.setBackground(new java.awt.Color(22, 85, 101));
         try {
             con = ConnectionBuilder.getConnection();
             LoginEPrinting login = new LoginEPrinting();
@@ -344,19 +347,19 @@ public class Home extends javax.swing.JFrame {
     private void RequestBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseEntered
         // TODO add your handling code here:
         RequestPrint.setForeground(Color.white);
-        RequestBox.setBackground(new java.awt.Color(22, 85, 101));
+        RequestBox.setBackground(new java.awt.Color(138, 204, 203));
     }//GEN-LAST:event_RequestBoxMouseEntered
 
     private void RequestBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseExited
         // TODO add your handling code here:
-        RequestPrint.setForeground(new java.awt.Color(22, 85, 101));
+        RequestPrint.setForeground(Color.black);
         RequestBox.setBackground(null);
     }//GEN-LAST:event_RequestBoxMouseExited
 
     private void LogoutBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseEntered
         // TODO add your handling code here:
         Logout.setForeground(Color.white);
-        LogoutBox.setBackground(new java.awt.Color(22, 85, 101));
+        LogoutBox.setBackground(new java.awt.Color(138, 204, 203));
     }//GEN-LAST:event_LogoutBoxMouseEntered
 
     private void LogoutBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseExited
@@ -386,7 +389,7 @@ public class Home extends javax.swing.JFrame {
     private void YourProfileBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseEntered
         // TODO add your handling code here:
         YourProfile.setForeground(Color.white);
-        YourProfileBox.setBackground(new java.awt.Color(56, 51, 57));
+        YourProfileBox.setBackground(new java.awt.Color(138, 204, 203));
     }//GEN-LAST:event_YourProfileBoxMouseEntered
 
     private void YourProfileBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseExited
@@ -407,7 +410,7 @@ public class Home extends javax.swing.JFrame {
     private void BookListBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseEntered
         // TODO add your handling code here:
         BookList.setForeground(Color.white);
-        BookListBox.setBackground(new java.awt.Color(56, 51, 57));
+        BookListBox.setBackground(new java.awt.Color(138, 204, 203));
     }//GEN-LAST:event_BookListBoxMouseEntered
 
     private void BookListBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseExited

@@ -107,7 +107,6 @@ public class Userprofile extends javax.swing.JFrame {
         SurnameLabel = new javax.swing.JLabel();
         EmailLabel = new javax.swing.JLabel();
         PhoneLabel = new javax.swing.JLabel();
-        Edit = new javax.swing.JButton();
         Navbar = new javax.swing.JPanel();
         HomeBox = new javax.swing.JPanel();
         HomeLabel = new javax.swing.JLabel();
@@ -119,6 +118,8 @@ public class Userprofile extends javax.swing.JFrame {
         BookListLabel = new javax.swing.JLabel();
         LogoutBox = new javax.swing.JPanel();
         LogoutLabel = new javax.swing.JLabel();
+        EditBox = new javax.swing.JPanel();
+        Edit = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -150,13 +151,6 @@ public class Userprofile extends javax.swing.JFrame {
         EmailLabel.setFont(new java.awt.Font("supermarket", 0, 14)); // NOI18N
 
         PhoneLabel.setFont(new java.awt.Font("supermarket", 0, 14)); // NOI18N
-
-        Edit.setText("Edit");
-        Edit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EditActionPerformed(evt);
-            }
-        });
 
         HomeBox.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         HomeBox.setPreferredSize(new java.awt.Dimension(210, 51));
@@ -313,14 +307,14 @@ public class Userprofile extends javax.swing.JFrame {
         NavbarLayout.setHorizontalGroup(
             NavbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(HomeBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
-            .addComponent(YourProfileBox, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
             .addComponent(RequestBox, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
             .addGroup(NavbarLayout.createSequentialGroup()
                 .addGroup(NavbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LogoutBox, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
                     .addGroup(NavbarLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(BookListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(BookListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(YourProfileBox, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
                 .addContainerGap())
         );
         NavbarLayout.setVerticalGroup(
@@ -339,6 +333,32 @@ public class Userprofile extends javax.swing.JFrame {
                 .addGap(144, 144, 144))
         );
 
+        EditBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EditBoxMouseClicked(evt);
+            }
+        });
+
+        Edit.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        Edit.setText("Edit");
+
+        javax.swing.GroupLayout EditBoxLayout = new javax.swing.GroupLayout(EditBox);
+        EditBox.setLayout(EditBoxLayout);
+        EditBoxLayout.setHorizontalGroup(
+            EditBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EditBoxLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(Edit)
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+        EditBoxLayout.setVerticalGroup(
+            EditBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EditBoxLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(Edit)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -347,29 +367,32 @@ public class Userprofile extends javax.swing.JFrame {
                 .addComponent(Navbar, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(Email)
-                                    .addComponent(Surname)
-                                    .addComponent(Name))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(SurnameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
-                                    .addComponent(NameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(EmailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(Phone)
-                                .addGap(26, 26, 26)
-                                .addComponent(PhoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(183, 183, 183)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(370, 370, 370)
-                        .addComponent(Edit)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(Email)
+                                            .addComponent(Surname)
+                                            .addComponent(Name))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(SurnameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
+                                            .addComponent(NameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(EmailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(Phone)
+                                        .addGap(26, 26, 26)
+                                        .addComponent(PhoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(183, 183, 183)
+                                .addComponent(jLabel1)))
+                        .addContainerGap(35, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(EditBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(72, 72, 72))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -399,36 +422,34 @@ public class Userprofile extends javax.swing.JFrame {
                         .addGap(21, 21, 21)))
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Phone, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(Phone, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                     .addComponent(PhoneLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(80, 80, 80)
-                .addComponent(Edit)
-                .addGap(59, 59, 59))
+                .addGap(18, 18, 18)
+                .addComponent(EditBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(103, 103, 103))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
-        EditProfile();
-    }//GEN-LAST:event_EditActionPerformed
-
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        Navbar.setBackground(Color.LIGHT_GRAY);
-        HomeBox.setBackground(null);
-        YourProfileBox.setBackground(null);
-        RequestBox.setBackground(null);
-        BookListBox.setBackground(null);
-        LogoutBox.setBackground(null);
-        fetchProfile();
+        Edit.setForeground(Color.white);
+        EditBox.setBackground(new java.awt.Color(88,153,152));
         YourProfileLabel.setForeground(Color.white);
-        YourProfileBox.setBackground(new java.awt.Color(56, 51, 57));
+        YourProfileBox.setBackground(new java.awt.Color(138, 204, 203));
+        RequestBox.setBackground(new java.awt.Color(22, 85, 101));
+        LogoutBox.setBackground(new java.awt.Color(22, 85, 101));
+        BookListBox.setBackground(new java.awt.Color(22, 85, 101));
+        HomeBox.setBackground(new java.awt.Color(22, 85, 101));
+        Navbar.setBackground(new java.awt.Color(22, 85, 101));
+        getContentPane().setBackground(new java.awt.Color(138, 204, 203));
+        fetchProfile();
     }//GEN-LAST:event_formWindowActivated
 
     private void HomeBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseEntered
         // TODO add your handling code here:
-        HomeBox.setBackground(new java.awt.Color(56, 51, 57));
+        HomeBox.setBackground(new java.awt.Color(138, 204, 203));
         HomeLabel.setForeground(Color.white);
     }//GEN-LAST:event_HomeBoxMouseEntered
 
@@ -440,7 +461,7 @@ public class Userprofile extends javax.swing.JFrame {
 
     private void RequestBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseEntered
         // TODO add your handling code here:
-        RequestBox.setBackground(new java.awt.Color(56, 51, 57));
+        RequestBox.setBackground(new java.awt.Color(138, 204, 203));
         RequestLabel.setForeground(Color.white);
     }//GEN-LAST:event_RequestBoxMouseEntered
 
@@ -453,7 +474,7 @@ public class Userprofile extends javax.swing.JFrame {
     private void BookListBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseEntered
         // TODO add your handling code here:
         BookListLabel.setForeground(Color.white);
-        BookListBox.setBackground(new java.awt.Color(56, 51, 57));
+        BookListBox.setBackground(new java.awt.Color(138, 204, 203));
     }//GEN-LAST:event_BookListBoxMouseEntered
 
     private void BookListBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseExited
@@ -464,7 +485,7 @@ public class Userprofile extends javax.swing.JFrame {
 
     private void LogoutBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseEntered
         // TODO add your handling code here:
-        LogoutBox.setBackground(new java.awt.Color(56, 51, 57));
+        LogoutBox.setBackground(new java.awt.Color(138, 204, 203));
         LogoutLabel.setForeground(Color.white);
     }//GEN-LAST:event_LogoutBoxMouseEntered
 
@@ -493,6 +514,10 @@ public class Userprofile extends javax.swing.JFrame {
         // TODO add your handling code here:
         callRequestPage();
     }//GEN-LAST:event_RequestBoxMouseClicked
+
+    private void EditBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditBoxMouseClicked
+       EditProfile();
+    }//GEN-LAST:event_EditBoxMouseClicked
 
     
 
@@ -531,7 +556,8 @@ public class Userprofile extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BookListBox;
     private javax.swing.JLabel BookListLabel;
-    private javax.swing.JButton Edit;
+    private javax.swing.JLabel Edit;
+    private javax.swing.JPanel EditBox;
     private javax.swing.JLabel Email;
     private javax.swing.JLabel EmailLabel;
     private javax.swing.JPanel HomeBox;

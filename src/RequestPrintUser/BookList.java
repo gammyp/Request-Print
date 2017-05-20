@@ -224,7 +224,6 @@ public class BookList extends javax.swing.JFrame {
         BookSelect = new javax.swing.JComboBox<>();
         PrintBox = new javax.swing.JPanel();
         Print = new javax.swing.JLabel();
-        Header = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -494,25 +493,7 @@ public class BookList extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("supermarket", 0, 36)); // NOI18N
         jLabel7.setText("Book List");
-
-        javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
-        Header.setLayout(HeaderLayout);
-        HeaderLayout.setHorizontalGroup(
-            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HeaderLayout.createSequentialGroup()
-                .addContainerGap(143, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addGap(170, 170, 170))
-        );
-        HeaderLayout.setVerticalGroup(
-            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HeaderLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 470, 60));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -520,15 +501,16 @@ public class BookList extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         callList();
+        getContentPane().setBackground(new java.awt.Color(138, 204, 203));
         BookList.setForeground(Color.white);
-        BookListBox.setBackground(new java.awt.Color(56, 51, 57));
-        PrintBox.setBackground(new java.awt.Color(153, 255, 153));
-        NavBar.setBackground(Color.LIGHT_GRAY);
-        HomeBox.setBackground(null);
-        YourProfileBox.setBackground(null);
-        RequestPrintBox.setBackground(null);
-        LogoutBox.setBackground(null);
-        Header.setBackground((new java.awt.Color(255, 244, 139)));
+        HomeBox.setBackground(new java.awt.Color(22, 85, 101));
+        RequestPrintBox.setBackground(new java.awt.Color(88,153,152));
+        BookListBox.setBackground(new java.awt.Color(138, 204, 203));
+        LogoutBox.setBackground(new java.awt.Color(22, 85, 101));
+        YourProfileBox.setBackground(new java.awt.Color(22, 85, 101));
+        NavBar.setBackground(new java.awt.Color(22, 85, 101));
+        PrintBox.setBackground(new java.awt.Color(22, 85, 101));
+        Print.setForeground(Color.white);
     }//GEN-LAST:event_formWindowActivated
 
     private void HomeBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseClicked
@@ -539,7 +521,7 @@ public class BookList extends javax.swing.JFrame {
     private void HomeBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseEntered
         // TODO add your handling code here:
         Home.setForeground(Color.WHITE);
-        HomeBox.setBackground(new java.awt.Color(56, 51, 57));
+        HomeBox.setBackground(new java.awt.Color(138, 204, 203));
     }//GEN-LAST:event_HomeBoxMouseEntered
 
     private void HomeBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseExited
@@ -550,7 +532,7 @@ public class BookList extends javax.swing.JFrame {
 
     private void YourProfileBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseEntered
         // TODO add your handling code here:
-        YourProfileBox.setBackground(new java.awt.Color(56, 51, 57));
+        YourProfileBox.setBackground(new java.awt.Color(138, 204, 203));
         YourProfile.setForeground(Color.WHITE);
     }//GEN-LAST:event_YourProfileBoxMouseEntered
 
@@ -572,7 +554,7 @@ public class BookList extends javax.swing.JFrame {
 
     private void RequestPrintBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestPrintBoxMouseEntered
         // TODO add your handling code here:
-        RequestPrintBox.setBackground(new java.awt.Color(56, 51, 57));
+        RequestPrintBox.setBackground(new java.awt.Color(138, 204, 203));
         RequestPrint.setForeground(Color.WHITE);
     }//GEN-LAST:event_RequestPrintBoxMouseEntered
 
@@ -590,7 +572,7 @@ public class BookList extends javax.swing.JFrame {
     private void LogoutBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseEntered
         // TODO add your handling code here:
         Logout.setForeground(Color.white);
-        LogoutBox.setBackground(new java.awt.Color(56, 51, 57));
+        LogoutBox.setBackground(new java.awt.Color(138, 204, 203));
     }//GEN-LAST:event_LogoutBoxMouseEntered
 
     private void LogoutBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseExited
@@ -626,12 +608,12 @@ public class BookList extends javax.swing.JFrame {
 
     private void PrintBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrintBoxMouseEntered
         // TODO add your handling code here:
-        PrintBox.setBackground(new java.awt.Color(102, 255, 102));
+        PrintBox.setBackground(new java.awt.Color(22, 85, 101));
     }//GEN-LAST:event_PrintBoxMouseEntered
 
     private void PrintBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrintBoxMouseExited
         // TODO add your handling code here:
-        PrintBox.setBackground(new java.awt.Color(153, 255, 153));
+        PrintBox.setBackground(new java.awt.Color(22, 85, 101));
     }//GEN-LAST:event_PrintBoxMouseExited
 
     public static int getOrderID(){
@@ -687,7 +669,6 @@ public class BookList extends javax.swing.JFrame {
     private javax.swing.JPanel BookListBox;
     private javax.swing.JComboBox<String> BookSelect;
     private javax.swing.JSpinner Copies;
-    private javax.swing.JPanel Header;
     private javax.swing.JLabel Home;
     private javax.swing.JPanel HomeBox;
     private javax.swing.JLabel Logout;
