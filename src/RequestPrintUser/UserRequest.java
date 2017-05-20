@@ -90,7 +90,6 @@ public class UserRequest extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Request = new javax.swing.JButton();
         DocumentLink = new javax.swing.JTextField();
         LocationLink = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -111,8 +110,8 @@ public class UserRequest extends javax.swing.JFrame {
         BookList = new javax.swing.JLabel();
         LogoutBox = new javax.swing.JPanel();
         Logout = new javax.swing.JLabel();
-        HeaderBox = new javax.swing.JPanel();
-        Headder = new javax.swing.JLabel();
+        RequestBox = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -122,44 +121,34 @@ public class UserRequest extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(DocumentLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 410, -1));
 
-        Request.setText("Request");
-        Request.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RequestMouseClicked(evt);
-            }
-        });
-        Request.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RequestActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Request, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, -1, -1));
-        getContentPane().add(DocumentLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 410, -1));
-
-        LocationLink.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        LocationLink.setFont(new java.awt.Font("supermarket", 0, 18)); // NOI18N
         LocationLink.setText("Location link");
-        getContentPane().add(LocationLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, -1, -1));
+        getContentPane().add(LocationLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("supermarket", 0, 14)); // NOI18N
         jLabel3.setText("Require cloud service (Google Drive , Onedrive , etc.)");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, -1, -1));
 
-        RequestHaed.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        RequestHaed.setFont(new java.awt.Font("supermarket", 0, 24)); // NOI18N
         RequestHaed.setText("Request to print your document");
-        getContentPane().add(RequestHaed, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, -1, -1));
-        getContentPane().add(NumberofCopies, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, -1, -1));
+        getContentPane().add(RequestHaed, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, -1, -1));
+        getContentPane().add(NumberofCopies, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, -1, -1));
 
+        Copies.setFont(new java.awt.Font("supermarket", 0, 14)); // NOI18N
         Copies.setText("Copies");
-        getContentPane().add(Copies, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, -1, -1));
+        getContentPane().add(Copies, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, -1, -1));
 
         Message.setColumns(20);
         Message.setRows(5);
         jScrollPane1.setViewportView(Message);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 520, 170));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 520, 170));
 
+        MessageLabel.setFont(new java.awt.Font("supermarket", 0, 14)); // NOI18N
         MessageLabel.setText("Message to shop.");
-        getContentPane().add(MessageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, -1, -1));
+        getContentPane().add(MessageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, -1, -1));
 
         Navbar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -175,7 +164,7 @@ public class UserRequest extends javax.swing.JFrame {
             }
         });
 
-        Home.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        Home.setFont(new java.awt.Font("Moon", 0, 24)); // NOI18N
         Home.setText("Home");
 
         javax.swing.GroupLayout HomeBoxLayout = new javax.swing.GroupLayout(HomeBox);
@@ -197,9 +186,9 @@ public class UserRequest extends javax.swing.JFrame {
 
         RequestPrintBox.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        RequestPrint.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        RequestPrint.setFont(new java.awt.Font("Moon", 0, 24)); // NOI18N
         RequestPrint.setText("Request to Print");
-        RequestPrintBox.add(RequestPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 179, 27));
+        RequestPrintBox.add(RequestPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 220, 27));
 
         YourProfileBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -213,17 +202,17 @@ public class UserRequest extends javax.swing.JFrame {
             }
         });
 
-        YourProfile.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        YourProfile.setFont(new java.awt.Font("Moon", 0, 24)); // NOI18N
         YourProfile.setText("Your Profile");
 
         javax.swing.GroupLayout YourProfileBoxLayout = new javax.swing.GroupLayout(YourProfileBox);
         YourProfileBox.setLayout(YourProfileBoxLayout);
         YourProfileBoxLayout.setHorizontalGroup(
             YourProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(YourProfileBoxLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, YourProfileBoxLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(YourProfile)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
         );
         YourProfileBoxLayout.setVerticalGroup(
             YourProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,7 +234,7 @@ public class UserRequest extends javax.swing.JFrame {
             }
         });
 
-        BookList.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        BookList.setFont(new java.awt.Font("Moon", 0, 24)); // NOI18N
         BookList.setText("Book List");
 
         javax.swing.GroupLayout BookListBoxLayout = new javax.swing.GroupLayout(BookListBox);
@@ -253,7 +242,7 @@ public class UserRequest extends javax.swing.JFrame {
         BookListBoxLayout.setHorizontalGroup(
             BookListBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BookListBoxLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
+                .addGap(43, 43, 43)
                 .addComponent(BookList)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -277,7 +266,7 @@ public class UserRequest extends javax.swing.JFrame {
             }
         });
 
-        Logout.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        Logout.setFont(new java.awt.Font("Moon", 0, 24)); // NOI18N
         Logout.setText("Logout");
 
         javax.swing.GroupLayout LogoutBoxLayout = new javax.swing.GroupLayout(LogoutBox);
@@ -302,7 +291,7 @@ public class UserRequest extends javax.swing.JFrame {
         NavbarLayout.setHorizontalGroup(
             NavbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(HomeBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(RequestPrintBox, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+            .addComponent(RequestPrintBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(YourProfileBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(BookListBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(LogoutBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -310,65 +299,66 @@ public class UserRequest extends javax.swing.JFrame {
         NavbarLayout.setVerticalGroup(
             NavbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(NavbarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(35, 35, 35)
                 .addComponent(HomeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(33, 33, 33)
                 .addComponent(YourProfileBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(42, 42, 42)
                 .addComponent(RequestPrintBox, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(41, 41, 41)
                 .addComponent(BookListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addComponent(LogoutBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(180, 180, 180))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
 
-        getContentPane().add(Navbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 210, 510));
+        getContentPane().add(Navbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 570));
 
-        Headder.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        RequestBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RequestBoxMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                RequestBoxMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                RequestBoxMouseExited(evt);
+            }
+        });
 
-        javax.swing.GroupLayout HeaderBoxLayout = new javax.swing.GroupLayout(HeaderBox);
-        HeaderBox.setLayout(HeaderBoxLayout);
-        HeaderBoxLayout.setHorizontalGroup(
-            HeaderBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HeaderBoxLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Headder, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(280, Short.MAX_VALUE))
+        jLabel1.setFont(new java.awt.Font("Cloud Light", 0, 18)); // NOI18N
+        jLabel1.setText("Request");
+
+        javax.swing.GroupLayout RequestBoxLayout = new javax.swing.GroupLayout(RequestBox);
+        RequestBox.setLayout(RequestBoxLayout);
+        RequestBoxLayout.setHorizontalGroup(
+            RequestBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RequestBoxLayout.createSequentialGroup()
+                .addContainerGap(128, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(117, 117, 117))
         );
-        HeaderBoxLayout.setVerticalGroup(
-            HeaderBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HeaderBoxLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Headder, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+        RequestBoxLayout.setVerticalGroup(
+            RequestBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        getContentPane().add(HeaderBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 60));
+        getContentPane().add(RequestBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 420, 310, 40));
 
         setSize(new java.awt.Dimension(793, 526));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void RequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RequestActionPerformed
-        // TODO add your handling code here:
-        /*DocURL = DocumentLink.getText();
-        SelectShop selc = new SelectShop();
-        setVisible(false);
-        selc.setVisible(true);*/
-    }//GEN-LAST:event_RequestActionPerformed
-
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         RequestPrintBox.setBackground(Color.black);
         RequestPrint.setForeground(Color.white);
-        Headder.setText("Welcome , "+Username);
-        HeaderBox.setBackground(Color.green.brighter());
         Navbar.setBackground(Color.LIGHT_GRAY);
         YourProfileBox.setBackground(null);
         HomeBox.setBackground(null);
         BookListBox.setBackground(null);
         LogoutBox.setBackground(null);
         NumberofCopies.setValue(1);
+        RequestBox.setBackground(new java.awt.Color(161,255,151));
     }//GEN-LAST:event_formWindowActivated
 
     private void YourProfileBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseEntered
@@ -439,10 +429,21 @@ public class UserRequest extends javax.swing.JFrame {
         Logout();
     }//GEN-LAST:event_LogoutBoxMouseClicked
 
-    private void RequestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestMouseClicked
+    private void RequestBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseClicked
         // TODO add your handling code here:
+        RequestBox.setBackground(new java.awt.Color(78,255,58));
         selectShoptoPrint();
-    }//GEN-LAST:event_RequestMouseClicked
+    }//GEN-LAST:event_RequestBoxMouseClicked
+
+    private void RequestBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseEntered
+        // TODO add your handling code here:
+        RequestBox.setBackground(new java.awt.Color(108,255,91));
+    }//GEN-LAST:event_RequestBoxMouseEntered
+
+    private void RequestBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseExited
+        // TODO add your handling code here:
+        RequestBox.setBackground(new java.awt.Color(161,255,151));
+    }//GEN-LAST:event_RequestBoxMouseExited
 
     /**
      * @param args the command line arguments
@@ -485,8 +486,6 @@ public class UserRequest extends javax.swing.JFrame {
     private javax.swing.JPanel BookListBox;
     private javax.swing.JLabel Copies;
     private javax.swing.JTextField DocumentLink;
-    private javax.swing.JLabel Headder;
-    private javax.swing.JPanel HeaderBox;
     private javax.swing.JLabel Home;
     private javax.swing.JPanel HomeBox;
     private javax.swing.JLabel LocationLink;
@@ -496,12 +495,13 @@ public class UserRequest extends javax.swing.JFrame {
     private javax.swing.JLabel MessageLabel;
     private javax.swing.JPanel Navbar;
     private javax.swing.JSpinner NumberofCopies;
-    private javax.swing.JButton Request;
+    private javax.swing.JPanel RequestBox;
     private javax.swing.JLabel RequestHaed;
     private javax.swing.JLabel RequestPrint;
     private javax.swing.JPanel RequestPrintBox;
     private javax.swing.JLabel YourProfile;
     private javax.swing.JPanel YourProfileBox;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

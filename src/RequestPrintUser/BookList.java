@@ -202,7 +202,7 @@ public class BookList extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        NavBar = new javax.swing.JPanel();
         YourProfileBox = new javax.swing.JPanel();
         YourProfile = new javax.swing.JLabel();
         RequestPrintBox = new javax.swing.JPanel();
@@ -213,7 +213,6 @@ public class BookList extends javax.swing.JFrame {
         Logout = new javax.swing.JLabel();
         BookListBox = new javax.swing.JPanel();
         BookList = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -223,29 +222,35 @@ public class BookList extends javax.swing.JFrame {
         description = new javax.swing.JTextArea();
         ShopSelect = new javax.swing.JComboBox<>();
         BookSelect = new javax.swing.JComboBox<>();
-        Request = new javax.swing.JButton();
+        PrintBox = new javax.swing.JPanel();
+        Print = new javax.swing.JLabel();
+        Header = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(769, 750));
+        setMinimumSize(new java.awt.Dimension(721, 503));
+        setPreferredSize(new java.awt.Dimension(721, 503));
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
         });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         YourProfileBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 YourProfileBoxMouseClicked(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                YourProfileBoxMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 YourProfileBoxMouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                YourProfileBoxMouseExited(evt);
+            }
         });
 
-        YourProfile.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        YourProfile.setFont(new java.awt.Font("Moon", 0, 24)); // NOI18N
         YourProfile.setText("Your Profile");
 
         javax.swing.GroupLayout YourProfileBoxLayout = new javax.swing.GroupLayout(YourProfileBox);
@@ -253,62 +258,64 @@ public class BookList extends javax.swing.JFrame {
         YourProfileBoxLayout.setHorizontalGroup(
             YourProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(YourProfileBoxLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(39, 39, 39)
                 .addComponent(YourProfile)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         YourProfileBoxLayout.setVerticalGroup(
             YourProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, YourProfileBoxLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(YourProfileBoxLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(YourProfile)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         RequestPrintBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 RequestPrintBoxMouseClicked(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                RequestPrintBoxMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 RequestPrintBoxMouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                RequestPrintBoxMouseExited(evt);
+            }
         });
 
-        RequestPrint.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        RequestPrint.setText("Request to print");
+        RequestPrint.setFont(new java.awt.Font("Moon", 0, 24)); // NOI18N
+        RequestPrint.setText("Request to Print");
 
         javax.swing.GroupLayout RequestPrintBoxLayout = new javax.swing.GroupLayout(RequestPrintBox);
         RequestPrintBox.setLayout(RequestPrintBoxLayout);
         RequestPrintBoxLayout.setHorizontalGroup(
             RequestPrintBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RequestPrintBoxLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(18, 18, 18)
                 .addComponent(RequestPrint)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         RequestPrintBoxLayout.setVerticalGroup(
             RequestPrintBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RequestPrintBoxLayout.createSequentialGroup()
-                .addComponent(RequestPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(RequestPrint, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
+        HomeBox.setPreferredSize(new java.awt.Dimension(210, 51));
         HomeBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 HomeBoxMouseClicked(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                HomeBoxMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 HomeBoxMouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                HomeBoxMouseExited(evt);
+            }
         });
 
-        Home.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        Home.setFont(new java.awt.Font("Moon", 0, 24)); // NOI18N
         Home.setText("Home");
 
         javax.swing.GroupLayout HomeBoxLayout = new javax.swing.GroupLayout(HomeBox);
@@ -316,7 +323,7 @@ public class BookList extends javax.swing.JFrame {
         HomeBoxLayout.setHorizontalGroup(
             HomeBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HomeBoxLayout.createSequentialGroup()
-                .addGap(77, 77, 77)
+                .addGap(84, 84, 84)
                 .addComponent(Home)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -332,25 +339,25 @@ public class BookList extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 LogoutBoxMouseClicked(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                LogoutBoxMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 LogoutBoxMouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                LogoutBoxMouseExited(evt);
+            }
         });
 
-        Logout.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        Logout.setFont(new java.awt.Font("Moon", 0, 24)); // NOI18N
         Logout.setText("Log out");
 
         javax.swing.GroupLayout LogoutBoxLayout = new javax.swing.GroupLayout(LogoutBox);
         LogoutBox.setLayout(LogoutBoxLayout);
         LogoutBoxLayout.setHorizontalGroup(
             LogoutBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LogoutBoxLayout.createSequentialGroup()
-                .addGap(69, 69, 69)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LogoutBoxLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Logout)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(72, 72, 72))
         );
         LogoutBoxLayout.setVerticalGroup(
             LogoutBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -364,15 +371,15 @@ public class BookList extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BookListBoxMouseClicked(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                BookListBoxMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 BookListBoxMouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BookListBoxMouseExited(evt);
+            }
         });
 
-        BookList.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        BookList.setFont(new java.awt.Font("Moon", 0, 24)); // NOI18N
         BookList.setText("Book List");
 
         javax.swing.GroupLayout BookListBoxLayout = new javax.swing.GroupLayout(BookListBox);
@@ -380,7 +387,7 @@ public class BookList extends javax.swing.JFrame {
         BookListBoxLayout.setHorizontalGroup(
             BookListBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BookListBoxLayout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addGap(61, 61, 61)
                 .addComponent(BookList)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -392,152 +399,136 @@ public class BookList extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(RequestPrintBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 14, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(HomeBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LogoutBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(YourProfileBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(BookListBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+        javax.swing.GroupLayout NavBarLayout = new javax.swing.GroupLayout(NavBar);
+        NavBar.setLayout(NavBarLayout);
+        NavBarLayout.setHorizontalGroup(
+            NavBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NavBarLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(RequestPrintBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(YourProfileBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(HomeBox, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+            .addComponent(BookListBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(LogoutBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(77, 77, 77)
+        NavBarLayout.setVerticalGroup(
+            NavBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(NavBarLayout.createSequentialGroup()
+                .addGap(42, 42, 42)
                 .addComponent(HomeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
+                .addGap(26, 26, 26)
                 .addComponent(YourProfileBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addGap(36, 36, 36)
                 .addComponent(RequestPrintBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
                 .addComponent(BookListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(40, 40, 40)
                 .addComponent(LogoutBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
-        jLabel7.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
-        jLabel7.setText("Book List");
+        getContentPane().add(NavBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 500));
 
-        jLabel8.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("supermarket", 0, 18)); // NOI18N
         jLabel8.setText("Select Shop");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(301, 90, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("supermarket", 0, 18)); // NOI18N
         jLabel9.setText("Book List");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(301, 175, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("supermarket", 0, 18)); // NOI18N
         jLabel10.setText("Copies");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(301, 248, -1, -1));
 
         Copies.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        getContentPane().add(Copies, new org.netbeans.lib.awtextra.AbsoluteConstraints(326, 283, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel11.setText("Message");
+        jLabel11.setFont(new java.awt.Font("supermarket", 0, 18)); // NOI18N
+        jLabel11.setText("Message to Shop");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, -1, -1));
 
         description.setColumns(20);
         description.setRows(5);
         jScrollPane1.setViewportView(description);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, 290, 110));
+
+        ShopSelect.setFont(new java.awt.Font("supermarket", 0, 14)); // NOI18N
         ShopSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
         ShopSelect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ShopSelectActionPerformed(evt);
             }
         });
+        getContentPane().add(ShopSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(301, 120, 402, 30));
 
+        BookSelect.setFont(new java.awt.Font("supermarket", 0, 14)); // NOI18N
         BookSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { }));
+        BookSelect.setToolTipText("");
         BookSelect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BookSelectActionPerformed(evt);
             }
         });
+        getContentPane().add(BookSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(301, 200, 402, 30));
 
-        Request.setText("RequestPrint");
-        Request.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RequestActionPerformed(evt);
+        PrintBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PrintBoxMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PrintBoxMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PrintBoxMouseExited(evt);
             }
         });
+        PrintBox.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(178, 178, 178)
-                        .addComponent(jLabel7)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(BookSelect, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(ShopSelect, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel9)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(Copies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel10))
-                            .addComponent(jLabel11))
-                        .addGap(0, 87, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jScrollPane1)
-                        .addGap(32, 32, 32)
-                        .addComponent(Request)
-                        .addGap(49, 49, 49))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+        Print.setFont(new java.awt.Font("Cloud Light", 0, 18)); // NOI18N
+        Print.setText("Request");
+        PrintBox.add(Print, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, -1));
+
+        getContentPane().add(PrintBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 380, 110, 40));
+
+        jLabel7.setFont(new java.awt.Font("supermarket", 0, 36)); // NOI18N
+        jLabel7.setText("Book List");
+
+        javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
+        Header.setLayout(HeaderLayout);
+        HeaderLayout.setHorizontalGroup(
+            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HeaderLayout.createSequentialGroup()
+                .addContainerGap(182, Short.MAX_VALUE)
                 .addComponent(jLabel7)
-                .addGap(26, 26, 26)
-                .addComponent(jLabel8)
-                .addGap(18, 18, 18)
-                .addComponent(ShopSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BookSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Copies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(28, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Request)
-                        .addGap(55, 55, 55))))
+                .addGap(170, 170, 170))
         );
+        HeaderLayout.setVerticalGroup(
+            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HeaderLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 470, 60));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         callList();
         BookList.setForeground(Color.white);
         BookListBox.setBackground(Color.black);
-
+        PrintBox.setBackground(new java.awt.Color(153, 255, 153));
+        NavBar.setBackground(Color.LIGHT_GRAY);
+        HomeBox.setBackground(null);
+        YourProfileBox.setBackground(null);
+        RequestPrintBox.setBackground(null);
+        LogoutBox.setBackground(null);
+        Header.setBackground((new java.awt.Color(255, 244, 139)));
     }//GEN-LAST:event_formWindowActivated
 
     private void HomeBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseClicked
@@ -628,9 +619,20 @@ public class BookList extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BookListBoxMouseClicked
 
-    private void RequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RequestActionPerformed
+    private void PrintBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrintBoxMouseClicked
+        // TODO add your handling code here:
         RequestBook();
-    }//GEN-LAST:event_RequestActionPerformed
+    }//GEN-LAST:event_PrintBoxMouseClicked
+
+    private void PrintBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrintBoxMouseEntered
+        // TODO add your handling code here:
+        PrintBox.setBackground(new java.awt.Color(102, 255, 102));
+    }//GEN-LAST:event_PrintBoxMouseEntered
+
+    private void PrintBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrintBoxMouseExited
+        // TODO add your handling code here:
+        PrintBox.setBackground(new java.awt.Color(153, 255, 153));
+    }//GEN-LAST:event_PrintBoxMouseExited
 
     public static int getOrderID(){
         try {
@@ -685,11 +687,14 @@ public class BookList extends javax.swing.JFrame {
     private javax.swing.JPanel BookListBox;
     private javax.swing.JComboBox<String> BookSelect;
     private javax.swing.JSpinner Copies;
+    private javax.swing.JPanel Header;
     private javax.swing.JLabel Home;
     private javax.swing.JPanel HomeBox;
     private javax.swing.JLabel Logout;
     private javax.swing.JPanel LogoutBox;
-    private javax.swing.JButton Request;
+    private javax.swing.JPanel NavBar;
+    private javax.swing.JLabel Print;
+    private javax.swing.JPanel PrintBox;
     private javax.swing.JLabel RequestPrint;
     private javax.swing.JPanel RequestPrintBox;
     private javax.swing.JComboBox<String> ShopSelect;
@@ -701,7 +706,6 @@ public class BookList extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
