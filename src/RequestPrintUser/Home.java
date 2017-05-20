@@ -44,25 +44,6 @@ public class Home extends javax.swing.JFrame {
         this.UserId = UserId;
     }
     
-    public void fetchDocStatus() {
-        try {
-            con = ConnectionBuilder.getConnection();
-            LoginEPrinting login = new LoginEPrinting();
-
-            PreparedStatement pstm = con.prepareStatement(" SELECT orderID, status FROM Orders WHERE UserProfile_id = "+ login.getUserId());     
-
-            ResultSet rs = pstm.executeQuery();
-            while(rs.next()){
-                Vector v = new Vector();
-                v.add(rs.getString("orderID"));
-                v.add(rs.getString("status"));
-                model.addRow(v);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
     public void Logout() throws SQLException {
         System.exit(0);
         con.close();
@@ -363,19 +344,19 @@ public class Home extends javax.swing.JFrame {
     private void RequestBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseEntered
         // TODO add your handling code here:
         RequestPrint.setForeground(Color.white);
-        RequestBox.setBackground(new java.awt.Color(56, 51, 57));
+        RequestBox.setBackground(new java.awt.Color(22, 85, 101));
     }//GEN-LAST:event_RequestBoxMouseEntered
 
     private void RequestBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseExited
         // TODO add your handling code here:
-        RequestPrint.setForeground(new java.awt.Color(56, 51, 57));
+        RequestPrint.setForeground(new java.awt.Color(22, 85, 101));
         RequestBox.setBackground(null);
     }//GEN-LAST:event_RequestBoxMouseExited
 
     private void LogoutBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseEntered
         // TODO add your handling code here:
         Logout.setForeground(Color.white);
-        LogoutBox.setBackground(new java.awt.Color(56, 51, 57));
+        LogoutBox.setBackground(new java.awt.Color(22, 85, 101));
     }//GEN-LAST:event_LogoutBoxMouseEntered
 
     private void LogoutBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseExited
