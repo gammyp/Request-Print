@@ -194,8 +194,27 @@ public class Userprofile extends javax.swing.JFrame {
         HomeBox.add(HomeLabel);
         HomeLabel.setBounds(0, 0, 220, 40);
 
+<<<<<<< HEAD
         Navbar.add(HomeBox);
         HomeBox.setBounds(0, 80, 220, 40);
+=======
+        javax.swing.GroupLayout HomeBoxLayout = new javax.swing.GroupLayout(HomeBox);
+        HomeBox.setLayout(HomeBoxLayout);
+        HomeBoxLayout.setHorizontalGroup(
+            HomeBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HomeBoxLayout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addComponent(HomeLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        HomeBoxLayout.setVerticalGroup(
+            HomeBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HomeBoxLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(HomeLabel)
+                .addContainerGap())
+        );
+>>>>>>> 46ac26fc301b8b985724c436ebb3fef8dce39ff1
 
         YourProfileBox.setPreferredSize(new java.awt.Dimension(210, 51));
         YourProfileBox.setLayout(null);
@@ -206,8 +225,27 @@ public class Userprofile extends javax.swing.JFrame {
         YourProfileBox.add(YourProfileLabel);
         YourProfileLabel.setBounds(0, 0, 220, 40);
 
+<<<<<<< HEAD
         Navbar.add(YourProfileBox);
         YourProfileBox.setBounds(0, 140, 220, 40);
+=======
+        javax.swing.GroupLayout YourProfileBoxLayout = new javax.swing.GroupLayout(YourProfileBox);
+        YourProfileBox.setLayout(YourProfileBoxLayout);
+        YourProfileBoxLayout.setHorizontalGroup(
+            YourProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(YourProfileBoxLayout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(YourProfileLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        YourProfileBoxLayout.setVerticalGroup(
+            YourProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, YourProfileBoxLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(YourProfileLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+>>>>>>> 46ac26fc301b8b985724c436ebb3fef8dce39ff1
 
         RequestBox.setPreferredSize(new java.awt.Dimension(210, 51));
         RequestBox.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -229,8 +267,27 @@ public class Userprofile extends javax.swing.JFrame {
         RequestBox.add(RequestLabel);
         RequestLabel.setBounds(0, 0, 220, 40);
 
+<<<<<<< HEAD
         Navbar.add(RequestBox);
         RequestBox.setBounds(0, 200, 220, 40);
+=======
+        javax.swing.GroupLayout RequestBoxLayout = new javax.swing.GroupLayout(RequestBox);
+        RequestBox.setLayout(RequestBoxLayout);
+        RequestBoxLayout.setHorizontalGroup(
+            RequestBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RequestBoxLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(RequestLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        RequestBoxLayout.setVerticalGroup(
+            RequestBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RequestBoxLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(RequestLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+>>>>>>> 46ac26fc301b8b985724c436ebb3fef8dce39ff1
 
         BookListBox.setPreferredSize(new java.awt.Dimension(210, 51));
         BookListBox.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -252,8 +309,27 @@ public class Userprofile extends javax.swing.JFrame {
         BookListBox.add(BookListLabel);
         BookListLabel.setBounds(0, 0, 220, 40);
 
+<<<<<<< HEAD
         Navbar.add(BookListBox);
         BookListBox.setBounds(0, 260, 220, 40);
+=======
+        javax.swing.GroupLayout BookListBoxLayout = new javax.swing.GroupLayout(BookListBox);
+        BookListBox.setLayout(BookListBoxLayout);
+        BookListBoxLayout.setHorizontalGroup(
+            BookListBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BookListBoxLayout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addComponent(BookListLabel)
+                .addContainerGap(74, Short.MAX_VALUE))
+        );
+        BookListBoxLayout.setVerticalGroup(
+            BookListBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BookListBoxLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BookListLabel)
+                .addContainerGap())
+        );
+>>>>>>> 46ac26fc301b8b985724c436ebb3fef8dce39ff1
 
         LogoutBox.setPreferredSize(new java.awt.Dimension(210, 51));
         LogoutBox.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -278,8 +354,41 @@ public class Userprofile extends javax.swing.JFrame {
         Navbar.add(LogoutBox);
         LogoutBox.setBounds(0, 320, 220, 40);
 
+<<<<<<< HEAD
         getContentPane().add(Navbar);
         Navbar.setBounds(0, 0, 220, 500);
+=======
+        javax.swing.GroupLayout NavbarLayout = new javax.swing.GroupLayout(Navbar);
+        Navbar.setLayout(NavbarLayout);
+        NavbarLayout.setHorizontalGroup(
+            NavbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(HomeBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+            .addComponent(RequestBox, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+            .addGroup(NavbarLayout.createSequentialGroup()
+                .addGroup(NavbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LogoutBox, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                    .addGroup(NavbarLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(BookListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(YourProfileBox, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        NavbarLayout.setVerticalGroup(
+            NavbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(NavbarLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(HomeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(YourProfileBox, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(RequestBox, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(BookListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(LogoutBox, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(144, 144, 144))
+        );
+>>>>>>> 46ac26fc301b8b985724c436ebb3fef8dce39ff1
 
         EditBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -315,65 +424,69 @@ public class Userprofile extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        Edit.setForeground(Color.white);
-        EditBox.setBackground(new java.awt.Color(88,153,152));
-        YourProfileLabel.setForeground(Color.white);
-        YourProfileBox.setBackground(new java.awt.Color(138, 204, 203));
-        RequestBox.setBackground(new java.awt.Color(22, 85, 101));
-        LogoutBox.setBackground(new java.awt.Color(22, 85, 101));
-        BookListBox.setBackground(new java.awt.Color(22, 85, 101));
-        HomeBox.setBackground(new java.awt.Color(22, 85, 101));
-        Navbar.setBackground(new java.awt.Color(22, 85, 101));
-        getContentPane().setBackground(new java.awt.Color(138, 204, 203));
+        Edit.setForeground(Color.black);
+        EditBox.setBackground(new java.awt.Color(153,255,153));
+        YourProfileLabel.setForeground(Color.black);
+        YourProfileBox.setBackground(new java.awt.Color(228,228,228));
+        RequestBox.setBackground(new java.awt.Color(102,102,102));
+        LogoutBox.setBackground(new java.awt.Color(102,102,102));
+        BookListBox.setBackground(new java.awt.Color(102,102,102));
+        HomeBox.setBackground(new java.awt.Color(102,102,102));
+        Navbar.setBackground(new java.awt.Color(102,102,102));
+        getContentPane().setBackground(new java.awt.Color(228,228,228));
+        HomeLabel.setForeground(Color.white);
+        BookListLabel.setForeground(Color.white);
+        RequestLabel.setForeground(Color.white);
+        LogoutLabel.setForeground(Color.white);
         fetchProfile();
     }//GEN-LAST:event_formWindowActivated
 
     private void HomeBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseEntered
         // TODO add your handling code here:
-        HomeBox.setBackground(new java.awt.Color(138, 204, 203));
-        HomeLabel.setForeground(Color.white);
+        HomeBox.setBackground(new java.awt.Color(228,228,228));
+        HomeLabel.setForeground(Color.black);
     }//GEN-LAST:event_HomeBoxMouseEntered
 
     private void HomeBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseExited
         // TODO add your handling code here:
         HomeBox.setBackground(null);
-        HomeLabel.setForeground(Color.black);
+        HomeLabel.setForeground(Color.white);
     }//GEN-LAST:event_HomeBoxMouseExited
 
     private void RequestBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseEntered
         // TODO add your handling code here:
-        RequestBox.setBackground(new java.awt.Color(138, 204, 203));
-        RequestLabel.setForeground(Color.white);
+        RequestBox.setBackground(new java.awt.Color(228,228,228));
+        RequestLabel.setForeground(Color.black);
     }//GEN-LAST:event_RequestBoxMouseEntered
 
     private void RequestBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseExited
         // TODO add your handling code here:
         RequestBox.setBackground(null);
-        RequestLabel.setForeground(Color.black);
+        RequestLabel.setForeground(Color.white);
     }//GEN-LAST:event_RequestBoxMouseExited
 
     private void BookListBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseEntered
         // TODO add your handling code here:
-        BookListLabel.setForeground(Color.white);
-        BookListBox.setBackground(new java.awt.Color(138, 204, 203));
+        BookListLabel.setForeground(Color.black);
+        BookListBox.setBackground(new java.awt.Color(228,228,228));
     }//GEN-LAST:event_BookListBoxMouseEntered
 
     private void BookListBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseExited
         // TODO add your handling code here:
-        BookListLabel.setForeground(Color.black);
+        BookListLabel.setForeground(Color.white);
         BookListBox.setBackground(null);
     }//GEN-LAST:event_BookListBoxMouseExited
 
     private void LogoutBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseEntered
         // TODO add your handling code here:
-        LogoutBox.setBackground(new java.awt.Color(138, 204, 203));
-        LogoutLabel.setForeground(Color.white);
+        LogoutBox.setBackground(new java.awt.Color(228,228,228));
+        LogoutLabel.setForeground(Color.black);
     }//GEN-LAST:event_LogoutBoxMouseEntered
 
     private void LogoutBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseExited
         // TODO add your handling code here:
         LogoutBox.setBackground(null);
-        LogoutLabel.setForeground(Color.black);
+        LogoutLabel.setForeground(Color.white);
     }//GEN-LAST:event_LogoutBoxMouseExited
 
     private void LogoutBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseClicked

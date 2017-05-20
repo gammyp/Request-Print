@@ -105,7 +105,10 @@ public class Home extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(138, 204, 203));
         setMinimumSize(new java.awt.Dimension(720, 503));
+<<<<<<< HEAD
         setResizable(false);
+=======
+>>>>>>> 46ac26fc301b8b985724c436ebb3fef8dce39ff1
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -255,14 +258,19 @@ public class Home extends javax.swing.JFrame {
         Header.setText("Welcome , "+Username);
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
-        getContentPane().setBackground(new java.awt.Color(138, 204, 203));
-        HomeLabel.setForeground(Color.white);
-        HomeBox.setBackground(new java.awt.Color(138, 204, 203));
-        RequestBox.setBackground(new java.awt.Color(22, 85, 101));
-        LogoutBox.setBackground(new java.awt.Color(22, 85, 101));
-        BookListBox.setBackground(new java.awt.Color(22, 85, 101));
-        YourProfileBox.setBackground(new java.awt.Color(22, 85, 101));
-        NavBar.setBackground(new java.awt.Color(22, 85, 101));
+        getContentPane().setBackground(new java.awt.Color(228,228,228));
+        HomeLabel.setForeground(Color.black);
+        RequestPrint.setForeground(Color.white);
+        BookList.setForeground(Color.white);
+        YourProfile.setForeground(Color.white);
+        Logout.setForeground(Color.white);
+        HomeBox.setBackground(new java.awt.Color(228,228,228));
+        RequestBox.setBackground(new java.awt.Color(102,102,102));
+        LogoutBox.setBackground(new java.awt.Color(102,102,102));
+        BookListBox.setBackground(new java.awt.Color(102,102,102));
+        YourProfileBox.setBackground(new java.awt.Color(102,102,102));
+        NavBar.setBackground(new java.awt.Color(102,102,102));
+       
         try {
             con = ConnectionBuilder.getConnection();
             LoginEPrinting login = new LoginEPrinting();
@@ -283,25 +291,25 @@ public class Home extends javax.swing.JFrame {
 
     private void RequestBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseEntered
         // TODO add your handling code here:
-        RequestPrint.setForeground(Color.white);
-        RequestBox.setBackground(new java.awt.Color(138, 204, 203));
+        RequestPrint.setForeground(Color.black);
+        RequestBox.setBackground(new java.awt.Color(228,228,228));
     }//GEN-LAST:event_RequestBoxMouseEntered
 
     private void RequestBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseExited
         // TODO add your handling code here:
-        RequestPrint.setForeground(Color.black);
+        RequestPrint.setForeground(Color.white);
         RequestBox.setBackground(null);
     }//GEN-LAST:event_RequestBoxMouseExited
 
     private void LogoutBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseEntered
         // TODO add your handling code here:
-        Logout.setForeground(Color.white);
-        LogoutBox.setBackground(new java.awt.Color(138, 204, 203));
+        Logout.setForeground(Color.black);
+        LogoutBox.setBackground(new java.awt.Color(228,228,228));
     }//GEN-LAST:event_LogoutBoxMouseEntered
 
     private void LogoutBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseExited
         // TODO add your handling code here:
-        Logout.setForeground(Color.black);
+        Logout.setForeground(Color.white);
         LogoutBox.setBackground(null);
     }//GEN-LAST:event_LogoutBoxMouseExited
 
@@ -325,13 +333,13 @@ public class Home extends javax.swing.JFrame {
 
     private void YourProfileBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseEntered
         // TODO add your handling code here:
-        YourProfile.setForeground(Color.white);
-        YourProfileBox.setBackground(new java.awt.Color(138, 204, 203));
+        YourProfile.setForeground(Color.black);
+        YourProfileBox.setBackground(new java.awt.Color(228,228,228));
     }//GEN-LAST:event_YourProfileBoxMouseEntered
 
     private void YourProfileBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseExited
         // TODO add your handling code here:
-        YourProfile.setForeground(Color.BLACK);
+        YourProfile.setForeground(Color.white);
         YourProfileBox.setBackground(null);
     }//GEN-LAST:event_YourProfileBoxMouseExited
 
@@ -346,13 +354,13 @@ public class Home extends javax.swing.JFrame {
 
     private void BookListBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseEntered
         // TODO add your handling code here:
-        BookList.setForeground(Color.white);
-        BookListBox.setBackground(new java.awt.Color(138, 204, 203));
+        BookList.setForeground(Color.black);
+        BookListBox.setBackground(new java.awt.Color(228,228,228));
     }//GEN-LAST:event_BookListBoxMouseEntered
 
     private void BookListBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseExited
         // TODO add your handling code here:
-        BookList.setForeground(Color.black);
+        BookList.setForeground(Color.white);
         BookListBox.setBackground(null);
     }//GEN-LAST:event_BookListBoxMouseExited
 
