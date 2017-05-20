@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
  *
  * @author Game
  */
-public class SelectShop2 extends javax.swing.JFrame {
+public class SelectShop extends javax.swing.JFrame {
 
     private String Username;
     private int UserId;
@@ -141,7 +141,7 @@ public class SelectShop2 extends javax.swing.JFrame {
     /**
      * Creates new form SelectShop2
      */
-    public SelectShop2() {
+    public SelectShop() {
         initComponents();
     }
 
@@ -307,20 +307,21 @@ public class SelectShop2 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SelectShop2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SelectShop.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SelectShop2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SelectShop.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SelectShop2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SelectShop.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SelectShop2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SelectShop.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SelectShop2().setVisible(true);
+                new SelectShop().setVisible(true);
             }
         });
     }
