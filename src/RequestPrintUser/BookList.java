@@ -504,12 +504,12 @@ public class BookList extends javax.swing.JFrame {
         getContentPane().setBackground(new java.awt.Color(138, 204, 203));
         BookList.setForeground(Color.white);
         HomeBox.setBackground(new java.awt.Color(22, 85, 101));
-        RequestPrintBox.setBackground(new java.awt.Color(88,153,152));
+        RequestPrintBox.setBackground(new java.awt.Color(22, 85,101));
         BookListBox.setBackground(new java.awt.Color(138, 204, 203));
         LogoutBox.setBackground(new java.awt.Color(22, 85, 101));
         YourProfileBox.setBackground(new java.awt.Color(22, 85, 101));
         NavBar.setBackground(new java.awt.Color(22, 85, 101));
-        PrintBox.setBackground(new java.awt.Color(22, 85, 101));
+        PrintBox.setBackground(new java.awt.Color(88,153,152));
         Print.setForeground(Color.white);
     }//GEN-LAST:event_formWindowActivated
 

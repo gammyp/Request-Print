@@ -319,7 +319,7 @@ public class Home extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         getContentPane().setBackground(new java.awt.Color(138, 204, 203));
-        HomeLabel.setForeground(Color.black);
+        HomeLabel.setForeground(Color.white);
         HomeBox.setBackground(new java.awt.Color(138, 204, 203));
         RequestBox.setBackground(new java.awt.Color(22, 85, 101));
         LogoutBox.setBackground(new java.awt.Color(22, 85, 101));
