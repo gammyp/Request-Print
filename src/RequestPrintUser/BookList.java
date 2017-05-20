@@ -501,16 +501,20 @@ public class BookList extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         callList();
-        getContentPane().setBackground(new java.awt.Color(138, 204, 203));
-        BookList.setForeground(Color.white);
-        HomeBox.setBackground(new java.awt.Color(22, 85, 101));
-        RequestPrintBox.setBackground(new java.awt.Color(22, 85,101));
-        BookListBox.setBackground(new java.awt.Color(138, 204, 203));
-        LogoutBox.setBackground(new java.awt.Color(22, 85, 101));
-        YourProfileBox.setBackground(new java.awt.Color(22, 85, 101));
-        NavBar.setBackground(new java.awt.Color(22, 85, 101));
-        PrintBox.setBackground(new java.awt.Color(88,153,152));
-        Print.setForeground(Color.white);
+        getContentPane().setBackground(new java.awt.Color(228,228,228));
+        BookList.setForeground(Color.black);
+        HomeBox.setBackground(new java.awt.Color(102,102,102));
+        RequestPrintBox.setBackground(new java.awt.Color(102,102,102));
+        BookListBox.setBackground(new java.awt.Color(228,228,228));
+        LogoutBox.setBackground(new java.awt.Color(102,102,102));
+        YourProfileBox.setBackground(new java.awt.Color(102,102,102));
+        NavBar.setBackground(new java.awt.Color(102,102,102));
+        PrintBox.setBackground(new java.awt.Color(153,255,153));
+        Print.setForeground(Color.black);
+        Home.setForeground(Color.white);
+        YourProfile.setForeground(Color.white);
+        RequestPrint.setForeground(Color.white);
+        Logout.setForeground(Color.white);
     }//GEN-LAST:event_formWindowActivated
 
     private void HomeBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseClicked
@@ -520,20 +524,20 @@ public class BookList extends javax.swing.JFrame {
 
     private void HomeBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseEntered
         // TODO add your handling code here:
-        Home.setForeground(Color.WHITE);
-        HomeBox.setBackground(new java.awt.Color(138, 204, 203));
+        Home.setForeground(Color.black);
+        HomeBox.setBackground(new java.awt.Color(228,228,228));
     }//GEN-LAST:event_HomeBoxMouseEntered
 
     private void HomeBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseExited
         // TODO add your handling code here:
         HomeBox.setBackground(null);
-        Home.setForeground(Color.BLACK);
+        Home.setForeground(Color.white);
     }//GEN-LAST:event_HomeBoxMouseExited
 
     private void YourProfileBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseEntered
         // TODO add your handling code here:
-        YourProfileBox.setBackground(new java.awt.Color(138, 204, 203));
-        YourProfile.setForeground(Color.WHITE);
+        YourProfileBox.setBackground(new java.awt.Color(228,228,228));
+        YourProfile.setForeground(Color.black);
     }//GEN-LAST:event_YourProfileBoxMouseEntered
 
     private void YourProfileBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseClicked
@@ -544,7 +548,7 @@ public class BookList extends javax.swing.JFrame {
     private void YourProfileBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseExited
         // TODO add your handling code here:
         YourProfileBox.setBackground(null);
-        YourProfile.setForeground(Color.BLACK);
+        YourProfile.setForeground(Color.white);
     }//GEN-LAST:event_YourProfileBoxMouseExited
 
     private void RequestPrintBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestPrintBoxMouseClicked
@@ -554,13 +558,13 @@ public class BookList extends javax.swing.JFrame {
 
     private void RequestPrintBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestPrintBoxMouseEntered
         // TODO add your handling code here:
-        RequestPrintBox.setBackground(new java.awt.Color(138, 204, 203));
-        RequestPrint.setForeground(Color.WHITE);
+        RequestPrintBox.setBackground(new java.awt.Color(228,228,228));
+        RequestPrint.setForeground(Color.black);
     }//GEN-LAST:event_RequestPrintBoxMouseEntered
 
     private void RequestPrintBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestPrintBoxMouseExited
         // TODO add your handling code here:
-        RequestPrint.setForeground(Color.black);
+        RequestPrint.setForeground(Color.white);
         RequestPrintBox.setBackground(null);
     }//GEN-LAST:event_RequestPrintBoxMouseExited
 
@@ -571,13 +575,13 @@ public class BookList extends javax.swing.JFrame {
 
     private void LogoutBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseEntered
         // TODO add your handling code here:
-        Logout.setForeground(Color.white);
-        LogoutBox.setBackground(new java.awt.Color(138, 204, 203));
+        Logout.setForeground(Color.black);
+        LogoutBox.setBackground(new java.awt.Color(228,228,228));
     }//GEN-LAST:event_LogoutBoxMouseEntered
 
     private void LogoutBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseExited
         // TODO add your handling code here:
-        Logout.setForeground(Color.black);
+        Logout.setForeground(Color.white);
         LogoutBox.setBackground(null);
     }//GEN-LAST:event_LogoutBoxMouseExited
 
@@ -608,12 +612,12 @@ public class BookList extends javax.swing.JFrame {
 
     private void PrintBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrintBoxMouseEntered
         // TODO add your handling code here:
-        PrintBox.setBackground(new java.awt.Color(22, 85, 101));
+       
     }//GEN-LAST:event_PrintBoxMouseEntered
 
     private void PrintBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrintBoxMouseExited
         // TODO add your handling code here:
-        PrintBox.setBackground(new java.awt.Color(22, 85, 101));
+       
     }//GEN-LAST:event_PrintBoxMouseExited
 
     public static int getOrderID(){

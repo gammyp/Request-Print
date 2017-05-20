@@ -76,6 +76,11 @@ public class RegisterUser extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Moon", 1, 24)); // NOI18N
@@ -196,7 +201,7 @@ public class RegisterUser extends javax.swing.JFrame {
         confirmPass.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         confirmPass.setText("Confirm Password :");
         BG.add(confirmPass);
-        confirmPass.setBounds(20, 260, 181, 30);
+        confirmPass.setBounds(20, 260, 160, 30);
 
         confirmField.setFont(new java.awt.Font("Cloud Light", 0, 14)); // NOI18N
         confirmField.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -261,11 +266,11 @@ public class RegisterUser extends javax.swing.JFrame {
     }//GEN-LAST:event_submitButtonMouseClicked
 
     private void submitButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitButtonMouseEntered
-        submitBG.setBackground(new java.awt.Color(102, 255, 102));
+        
     }//GEN-LAST:event_submitButtonMouseEntered
 
     private void submitButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitButtonMouseExited
-        submitBG.setBackground(new java.awt.Color(153, 255, 153));
+        
     }//GEN-LAST:event_submitButtonMouseExited
 
     private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
@@ -275,11 +280,11 @@ public class RegisterUser extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonMouseClicked
 
     private void backButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseEntered
-        backBG.setBackground(new java.awt.Color(255, 255, 102));
+        
     }//GEN-LAST:event_backButtonMouseEntered
 
     private void backButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseExited
-        backBG.setBackground(new java.awt.Color(255, 255, 153));
+        
     }//GEN-LAST:event_backButtonMouseExited
 
     private void emailFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailFieldFocusLost
@@ -298,6 +303,15 @@ public class RegisterUser extends javax.swing.JFrame {
         checkConfirmPass();
     }//GEN-LAST:event_confirmFieldFocusLost
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        getContentPane().setBackground(new java.awt.Color(138, 204, 203));
+        submitButton.setBackground(new java.awt.Color(88,153,152));
+        backButton.setBackground(new java.awt.Color(88,153,152));
+        submitBG.setForeground(Color.white);
+        backBG.setForeground(Color.white);
+        
+    }//GEN-LAST:event_formWindowActivated
+
     public void checkEmail() {
         Image trueIcon = new ImageIcon(this.getClass().getResource("../icon/correct.png")).getImage();
         Image wrongIcon = new ImageIcon(this.getClass().getResource("../icon/wrong.png")).getImage();
@@ -315,7 +329,7 @@ public class RegisterUser extends javax.swing.JFrame {
             Connection con = ConnectionBuilder.getConnection();
             Image trueIcon = new ImageIcon(this.getClass().getResource("../icon/correct.png")).getImage();
             Image wrongIcon = new ImageIcon(this.getClass().getResource("../icon/wrong.png")).getImage();
-            PreparedStatement pstm = con.prepareStatement("SELECT username FROM ShopProfile WHERE username = ?");
+            PreparedStatement pstm = con.prepareStatement("SELECT username FROM UserProfile WHERE username = ?");
             pstm.setString(1, userNameField.getText());
             ResultSet rs = pstm.executeQuery();
             if (userNameField.getText().length() > 0) {

@@ -181,8 +181,9 @@ public class Userprofile extends javax.swing.JFrame {
         HomeBoxLayout.setVerticalGroup(
             HomeBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HomeBoxLayout.createSequentialGroup()
-                .addGap(0, 2, Short.MAX_VALUE)
-                .addComponent(HomeLabel))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(HomeLabel)
+                .addContainerGap())
         );
 
         YourProfileBox.setPreferredSize(new java.awt.Dimension(210, 51));
@@ -202,8 +203,9 @@ public class Userprofile extends javax.swing.JFrame {
         YourProfileBoxLayout.setVerticalGroup(
             YourProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, YourProfileBoxLayout.createSequentialGroup()
-                .addGap(0, 1, Short.MAX_VALUE)
-                .addComponent(YourProfileLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(YourProfileLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         RequestBox.setPreferredSize(new java.awt.Dimension(210, 51));
@@ -227,15 +229,16 @@ public class Userprofile extends javax.swing.JFrame {
         RequestBoxLayout.setHorizontalGroup(
             RequestBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RequestBoxLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(27, 27, 27)
                 .addComponent(RequestLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         RequestBoxLayout.setVerticalGroup(
             RequestBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RequestBoxLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(RequestLabel))
+            .addGroup(RequestBoxLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(RequestLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         BookListBox.setPreferredSize(new java.awt.Dimension(210, 51));
@@ -259,15 +262,16 @@ public class Userprofile extends javax.swing.JFrame {
         BookListBoxLayout.setHorizontalGroup(
             BookListBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BookListBoxLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addGap(67, 67, 67)
                 .addComponent(BookListLabel)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         BookListBoxLayout.setVerticalGroup(
             BookListBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BookListBoxLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BookListLabel)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         LogoutBox.setPreferredSize(new java.awt.Dimension(210, 51));
@@ -321,14 +325,14 @@ public class Userprofile extends javax.swing.JFrame {
             NavbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(NavbarLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(HomeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(YourProfileBox, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(RequestBox, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(BookListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addComponent(HomeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(YourProfileBox, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(RequestBox, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(BookListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(LogoutBox, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(144, 144, 144))
         );
@@ -434,65 +438,69 @@ public class Userprofile extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        Edit.setForeground(Color.white);
-        EditBox.setBackground(new java.awt.Color(88,153,152));
-        YourProfileLabel.setForeground(Color.white);
-        YourProfileBox.setBackground(new java.awt.Color(138, 204, 203));
-        RequestBox.setBackground(new java.awt.Color(22, 85, 101));
-        LogoutBox.setBackground(new java.awt.Color(22, 85, 101));
-        BookListBox.setBackground(new java.awt.Color(22, 85, 101));
-        HomeBox.setBackground(new java.awt.Color(22, 85, 101));
-        Navbar.setBackground(new java.awt.Color(22, 85, 101));
-        getContentPane().setBackground(new java.awt.Color(138, 204, 203));
+        Edit.setForeground(Color.black);
+        EditBox.setBackground(new java.awt.Color(153,255,153));
+        YourProfileLabel.setForeground(Color.black);
+        YourProfileBox.setBackground(new java.awt.Color(228,228,228));
+        RequestBox.setBackground(new java.awt.Color(102,102,102));
+        LogoutBox.setBackground(new java.awt.Color(102,102,102));
+        BookListBox.setBackground(new java.awt.Color(102,102,102));
+        HomeBox.setBackground(new java.awt.Color(102,102,102));
+        Navbar.setBackground(new java.awt.Color(102,102,102));
+        getContentPane().setBackground(new java.awt.Color(228,228,228));
+        HomeLabel.setForeground(Color.white);
+        BookListLabel.setForeground(Color.white);
+        RequestLabel.setForeground(Color.white);
+        LogoutLabel.setForeground(Color.white);
         fetchProfile();
     }//GEN-LAST:event_formWindowActivated
 
     private void HomeBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseEntered
         // TODO add your handling code here:
-        HomeBox.setBackground(new java.awt.Color(138, 204, 203));
-        HomeLabel.setForeground(Color.white);
+        HomeBox.setBackground(new java.awt.Color(228,228,228));
+        HomeLabel.setForeground(Color.black);
     }//GEN-LAST:event_HomeBoxMouseEntered
 
     private void HomeBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseExited
         // TODO add your handling code here:
         HomeBox.setBackground(null);
-        HomeLabel.setForeground(Color.black);
+        HomeLabel.setForeground(Color.white);
     }//GEN-LAST:event_HomeBoxMouseExited
 
     private void RequestBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseEntered
         // TODO add your handling code here:
-        RequestBox.setBackground(new java.awt.Color(138, 204, 203));
-        RequestLabel.setForeground(Color.white);
+        RequestBox.setBackground(new java.awt.Color(228,228,228));
+        RequestLabel.setForeground(Color.black);
     }//GEN-LAST:event_RequestBoxMouseEntered
 
     private void RequestBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseExited
         // TODO add your handling code here:
         RequestBox.setBackground(null);
-        RequestLabel.setForeground(Color.black);
+        RequestLabel.setForeground(Color.white);
     }//GEN-LAST:event_RequestBoxMouseExited
 
     private void BookListBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseEntered
         // TODO add your handling code here:
-        BookListLabel.setForeground(Color.white);
-        BookListBox.setBackground(new java.awt.Color(138, 204, 203));
+        BookListLabel.setForeground(Color.black);
+        BookListBox.setBackground(new java.awt.Color(228,228,228));
     }//GEN-LAST:event_BookListBoxMouseEntered
 
     private void BookListBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookListBoxMouseExited
         // TODO add your handling code here:
-        BookListLabel.setForeground(Color.black);
+        BookListLabel.setForeground(Color.white);
         BookListBox.setBackground(null);
     }//GEN-LAST:event_BookListBoxMouseExited
 
     private void LogoutBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseEntered
         // TODO add your handling code here:
-        LogoutBox.setBackground(new java.awt.Color(138, 204, 203));
-        LogoutLabel.setForeground(Color.white);
+        LogoutBox.setBackground(new java.awt.Color(228,228,228));
+        LogoutLabel.setForeground(Color.black);
     }//GEN-LAST:event_LogoutBoxMouseEntered
 
     private void LogoutBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseExited
         // TODO add your handling code here:
         LogoutBox.setBackground(null);
-        LogoutLabel.setForeground(Color.black);
+        LogoutLabel.setForeground(Color.white);
     }//GEN-LAST:event_LogoutBoxMouseExited
 
     private void LogoutBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseClicked

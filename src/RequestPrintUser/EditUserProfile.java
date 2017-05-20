@@ -195,9 +195,9 @@ public class EditUserProfile extends javax.swing.JFrame {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
-        getContentPane().setBackground(new java.awt.Color(138, 204, 203));
-        SaveBox.setBackground(new java.awt.Color(88,153,152));
-        Save.setForeground(Color.white);
+        getContentPane().setBackground(new java.awt.Color(228,228,228));
+        SaveBox.setBackground(new java.awt.Color(153,255,153));
+        Save.setForeground(Color.black);
         callOldProfile();
     }//GEN-LAST:event_formComponentShown
 

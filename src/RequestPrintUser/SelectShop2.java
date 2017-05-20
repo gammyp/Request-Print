@@ -233,7 +233,7 @@ public class SelectShop2 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 76, Short.MAX_VALUE)
+                .addGap(0, 70, Short.MAX_VALUE)
                 .addComponent(ShopList, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
             .addGroup(layout.createSequentialGroup()
@@ -242,7 +242,7 @@ public class SelectShop2 extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(111, Short.MAX_VALUE)
+                        .addContainerGap(105, Short.MAX_VALUE)
                         .addComponent(CancelBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(80, 80, 80)
                         .addComponent(RequestBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -253,14 +253,13 @@ public class SelectShop2 extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
+                .addComponent(ShopList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ShopList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(CancelBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CancelBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(RequestBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(71, 71, 71))
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -270,11 +269,11 @@ public class SelectShop2 extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
         fetchShopList();
-        getContentPane().setBackground(new java.awt.Color(138, 204, 203));
-        RequestBox.setBackground(new java.awt.Color(88,153,152));
-        Request.setForeground(Color.white);
-        CancelBox.setBackground(new java.awt.Color(88,153,152));
-        Cancel.setForeground(Color.white);
+        getContentPane().setBackground(new java.awt.Color(228,228,228));
+        RequestBox.setBackground(new java.awt.Color(152,255,153));
+        Request.setForeground(Color.black);
+        CancelBox.setBackground(new java.awt.Color(255,204,204));
+        Cancel.setForeground(Color.black);
     }//GEN-LAST:event_formWindowActivated
 
     private void RequestBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseEntered
