@@ -400,7 +400,7 @@ public class RegisterUser extends javax.swing.JFrame {
                             JOptionPane.QUESTION_MESSAGE, null, null, null);
                     if (confirm == JOptionPane.YES_OPTION) {
                         Connection con = ConnectionBuilder.getConnection();
-                        String sql = "INSERT INTO UserProfile(id,username,password,name,surname,address,phone,email) VALUES (null,?,?,?,?,null,?,?)";
+                        String sql = "INSERT INTO UserProfile(id,username,password,name,surname,phone,email) VALUES (null,?,?,?,?,?,?)";
                         PreparedStatement pstm = con.prepareStatement(sql);
                         pstm.setString(3, nameField.getText());
                         pstm.setString(4, surnameField.getText());
