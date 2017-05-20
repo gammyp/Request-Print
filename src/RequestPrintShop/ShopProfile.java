@@ -24,10 +24,6 @@ import javax.swing.JLabel;
  */
 public class ShopProfile extends javax.swing.JFrame {
 
-    public JLabel getProfile() {
-        return profile;
-    }
-
     /**
      * Creates new form ShopProfile
      */
@@ -258,8 +254,8 @@ public class ShopProfile extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(725, 509));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    
-    private void showDataProfile(){
+
+    public void showDataProfile() {
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
@@ -284,7 +280,7 @@ public class ShopProfile extends javax.swing.JFrame {
             Logger.getLogger(ShopProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         profile.setForeground(new java.awt.Color(30, 30, 30));
         profile.setBackground(new java.awt.Color(234, 234, 234));
@@ -333,11 +329,11 @@ public class ShopProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutIconMouseClicked
 
     private void editLabelButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editLabelButtonMouseEntered
-        editBG.setBackground(new java.awt.Color(222,163,52));
+        editBG.setBackground(new java.awt.Color(222, 163, 52));
     }//GEN-LAST:event_editLabelButtonMouseEntered
 
     private void editLabelButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editLabelButtonMouseExited
-        editBG.setBackground(new java.awt.Color(222,173,75));
+        editBG.setBackground(new java.awt.Color(222, 173, 75));
     }//GEN-LAST:event_editLabelButtonMouseExited
 
     /**

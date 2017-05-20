@@ -160,7 +160,7 @@ public class AddBookToManageBook extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void submitAddBook() {
+    public void submitAddBook() {
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
@@ -195,6 +195,7 @@ public class AddBookToManageBook extends javax.swing.JFrame {
             Logger.getLogger(AddBookToManageBook.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
     private void bookNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookNameFieldActionPerformed
         bookNameField.setBackground(null);
     }//GEN-LAST:event_bookNameFieldActionPerformed

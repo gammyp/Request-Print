@@ -372,7 +372,7 @@ public class ManageListBook extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void searchListBook() {
+    public void searchListBook() {
         this.model = (DefaultTableModel) manageTable.getModel();
         model.setRowCount(0);
         Connection con = null;
@@ -398,7 +398,7 @@ public class ManageListBook extends javax.swing.JFrame {
         }
     }
 
-    private void showTableListBook() {
+    public void showTableListBook() {
         model = (DefaultTableModel) manageTable.getModel();
         model.setRowCount(0);
         Connection con = null;
@@ -422,7 +422,7 @@ public class ManageListBook extends javax.swing.JFrame {
         }
     }
 
-    private void showDataBook() {
+    public void showDataBook() {
         Connection con = null;
         showProductID.setText((manageTable.getValueAt(manageTable.getSelectedRow(), 0)) + "");
         showBookName.setText((manageTable.getValueAt(manageTable.getSelectedRow(), 1)) + "");
@@ -458,7 +458,7 @@ public class ManageListBook extends javax.swing.JFrame {
         }
     }
 
-    private void deleteBookList() {
+    public void deleteBookList() {
         int row = manageTable.getSelectedRow();
         Connection con = null;
         try {

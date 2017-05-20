@@ -140,7 +140,7 @@ public class ChangeStatus extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void showTableActivated() {
+    public void showTableRespond() {
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
@@ -174,7 +174,7 @@ public class ChangeStatus extends javax.swing.JFrame {
         }
     }
 
-    private void updateStatus() {
+    public void updateStatus() {
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
@@ -205,8 +205,9 @@ public class ChangeStatus extends javax.swing.JFrame {
             Logger.getLogger(ChangeStatus.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        showTableActivated();
+        showTableRespond();
     }//GEN-LAST:event_formWindowActivated
 
     private void updateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseClicked

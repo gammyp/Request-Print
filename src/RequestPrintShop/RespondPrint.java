@@ -346,7 +346,8 @@ public class RespondPrint extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1034, 611));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    private void showTableRespondCustomer(){
+    
+    public void showTableRespondCustomer(){
         model = (DefaultTableModel) orderTable.getModel();
         model.setRowCount(0);
         Connection con = null;
@@ -380,7 +381,7 @@ public class RespondPrint extends javax.swing.JFrame {
         }
     }
     
-    private void showData(){
+    public void showData(){
         Connection con = null;
         try {
             con = ConnectionBuilder.getConnection();
