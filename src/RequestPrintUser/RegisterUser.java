@@ -152,7 +152,7 @@ public class RegisterUser extends javax.swing.JFrame {
         Register.setFont(new java.awt.Font("supermarket", 0, 24)); // NOI18N
         Register.setText("Register");
         getContentPane().add(Register);
-        Register.setBounds(253, 13, 89, 43);
+        Register.setBounds(253, 13, 94, 43);
         getContentPane().add(surname);
         surname.setBounds(262, 135, 228, 33);
         getContentPane().add(name);
@@ -210,7 +210,7 @@ public class RegisterUser extends javax.swing.JFrame {
             }
         });
         getContentPane().add(submitButton);
-        submitButton.setBounds(325, 451, 100, 36);
+        submitButton.setBounds(390, 450, 100, 36);
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -219,7 +219,7 @@ public class RegisterUser extends javax.swing.JFrame {
             }
         });
         getContentPane().add(backButton);
-        backButton.setBounds(184, 451, 100, 36);
+        backButton.setBounds(270, 450, 100, 36);
         getContentPane().add(checkUsername);
         checkUsername.setBounds(500, 300, 80, 30);
         getContentPane().add(checkPassword);

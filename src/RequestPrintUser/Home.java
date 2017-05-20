@@ -121,7 +121,7 @@ public class Home extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(640, 480));
+        setMinimumSize(new java.awt.Dimension(720, 503));
         setPreferredSize(new java.awt.Dimension(640, 480));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -152,9 +152,10 @@ public class Home extends javax.swing.JFrame {
         RequestBox.setLayout(RequestBoxLayout);
         RequestBoxLayout.setHorizontalGroup(
             RequestBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RequestBoxLayout.createSequentialGroup()
-                .addGap(0, 4, Short.MAX_VALUE)
-                .addComponent(RequestPrint))
+            .addGroup(RequestBoxLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(RequestPrint)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         RequestBoxLayout.setVerticalGroup(
             RequestBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,10 +186,10 @@ public class Home extends javax.swing.JFrame {
         BookListBox.setLayout(BookListBoxLayout);
         BookListBoxLayout.setHorizontalGroup(
             BookListBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BookListBoxLayout.createSequentialGroup()
-                .addContainerGap(51, Short.MAX_VALUE)
+            .addGroup(BookListBoxLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
                 .addComponent(BookList)
-                .addGap(48, 48, 48))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         BookListBoxLayout.setVerticalGroup(
             BookListBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,19 +221,19 @@ public class Home extends javax.swing.JFrame {
         YourProfileBoxLayout.setHorizontalGroup(
             YourProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(YourProfileBoxLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(37, 37, 37)
                 .addComponent(YourProfile)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         YourProfileBoxLayout.setVerticalGroup(
             YourProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, YourProfileBoxLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(YourProfileBoxLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(YourProfile)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        NavBar.add(YourProfileBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 220, -1));
+        NavBar.add(YourProfileBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 102, 220, 40));
 
         LogoutBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -254,16 +255,15 @@ public class Home extends javax.swing.JFrame {
         LogoutBoxLayout.setHorizontalGroup(
             LogoutBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LogoutBoxLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
+                .addGap(66, 66, 66)
                 .addComponent(Logout)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         LogoutBoxLayout.setVerticalGroup(
             LogoutBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LogoutBoxLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(LogoutBoxLayout.createSequentialGroup()
                 .addComponent(Logout)
-                .addContainerGap())
+                .addGap(0, 20, Short.MAX_VALUE))
         );
 
         NavBar.add(LogoutBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 220, 50));
@@ -275,17 +275,17 @@ public class Home extends javax.swing.JFrame {
         HomeBox.setLayout(HomeBoxLayout);
         HomeBoxLayout.setHorizontalGroup(
             HomeBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HomeBoxLayout.createSequentialGroup()
-                .addContainerGap(80, Short.MAX_VALUE)
+            .addGroup(HomeBoxLayout.createSequentialGroup()
+                .addGap(65, 65, 65)
                 .addComponent(HomeLabel)
-                .addGap(69, 69, 69))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         HomeBoxLayout.setVerticalGroup(
             HomeBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HomeBoxLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(HomeLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(HomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         NavBar.add(HomeBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 220, 50));
@@ -294,7 +294,7 @@ public class Home extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("supermarket", 0, 22)); // NOI18N
         jLabel1.setText("This is your document status.");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, -1, -1));
 
         Header.setFont(new java.awt.Font("supermarket", 0, 24)); // NOI18N
         getContentPane().add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 380, 40));
@@ -325,7 +325,7 @@ public class Home extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 380, 290));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 440, 310));
 
         pack();
         setLocationRelativeTo(null);
@@ -342,7 +342,22 @@ public class Home extends javax.swing.JFrame {
         BookListBox.setBackground(null);
         YourProfileBox.setBackground(null);
         NavBar.setBackground(Color.LIGHT_GRAY);
-        fetchDocStatus();
+        try {
+            con = ConnectionBuilder.getConnection();
+            LoginEPrinting login = new LoginEPrinting();
+
+            PreparedStatement pstm = con.prepareStatement(" SELECT orderID, status FROM Orders WHERE UserProfile_id = "+ login.getUserId());     
+
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()){
+                Vector v = new Vector();
+                v.add(rs.getString("orderID"));
+                v.add(rs.getString("status"));
+                model.addRow(v);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_formWindowActivated
 
     private void RequestBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestBoxMouseEntered

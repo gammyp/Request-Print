@@ -128,7 +128,7 @@ public class Userprofile extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Nithan", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Nithan", 0, 28)); // NOI18N
         jLabel1.setText("Your Profile");
 
         Name.setFont(new java.awt.Font("supermarket", 0, 14)); // NOI18N
@@ -180,16 +180,15 @@ public class Userprofile extends javax.swing.JFrame {
         HomeBoxLayout.setHorizontalGroup(
             HomeBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HomeBoxLayout.createSequentialGroup()
-                .addGap(88, 88, 88)
+                .addGap(79, 79, 79)
                 .addComponent(HomeLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         HomeBoxLayout.setVerticalGroup(
             HomeBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HomeBoxLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(HomeLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HomeBoxLayout.createSequentialGroup()
+                .addGap(0, 2, Short.MAX_VALUE)
+                .addComponent(HomeLabel))
         );
 
         YourProfileBox.setPreferredSize(new java.awt.Dimension(210, 51));
@@ -202,16 +201,15 @@ public class Userprofile extends javax.swing.JFrame {
         YourProfileBoxLayout.setHorizontalGroup(
             YourProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(YourProfileBoxLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(48, 48, 48)
                 .addComponent(YourProfileLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         YourProfileBoxLayout.setVerticalGroup(
             YourProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(YourProfileBoxLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(YourProfileLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, YourProfileBoxLayout.createSequentialGroup()
+                .addGap(0, 1, Short.MAX_VALUE)
+                .addComponent(YourProfileLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         RequestBox.setPreferredSize(new java.awt.Dimension(210, 51));
@@ -235,16 +233,15 @@ public class Userprofile extends javax.swing.JFrame {
         RequestBoxLayout.setHorizontalGroup(
             RequestBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RequestBoxLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(24, 24, 24)
                 .addComponent(RequestLabel)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         RequestBoxLayout.setVerticalGroup(
             RequestBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(RequestBoxLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(RequestLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RequestBoxLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(RequestLabel))
         );
 
         BookListBox.setPreferredSize(new java.awt.Dimension(210, 51));
@@ -268,16 +265,15 @@ public class Userprofile extends javax.swing.JFrame {
         BookListBoxLayout.setHorizontalGroup(
             BookListBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BookListBoxLayout.createSequentialGroup()
-                .addGap(62, 62, 62)
+                .addGap(52, 52, 52)
                 .addComponent(BookListLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         BookListBoxLayout.setVerticalGroup(
             BookListBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BookListBoxLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BookListBoxLayout.createSequentialGroup()
                 .addComponent(BookListLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         LogoutBox.setPreferredSize(new java.awt.Dimension(210, 51));
@@ -300,43 +296,47 @@ public class Userprofile extends javax.swing.JFrame {
         LogoutBox.setLayout(LogoutBoxLayout);
         LogoutBoxLayout.setHorizontalGroup(
             LogoutBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LogoutBoxLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(LogoutBoxLayout.createSequentialGroup()
+                .addGap(71, 71, 71)
                 .addComponent(LogoutLabel)
-                .addGap(72, 72, 72))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         LogoutBoxLayout.setVerticalGroup(
             LogoutBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LogoutBoxLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(LogoutLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 1, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout NavbarLayout = new javax.swing.GroupLayout(Navbar);
         Navbar.setLayout(NavbarLayout);
         NavbarLayout.setHorizontalGroup(
             NavbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(HomeBox, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-            .addComponent(YourProfileBox, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-            .addComponent(RequestBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-            .addComponent(BookListBox, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-            .addComponent(LogoutBox, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+            .addComponent(HomeBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+            .addComponent(YourProfileBox, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+            .addComponent(RequestBox, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+            .addGroup(NavbarLayout.createSequentialGroup()
+                .addGroup(NavbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LogoutBox, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                    .addGroup(NavbarLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(BookListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         NavbarLayout.setVerticalGroup(
             NavbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(NavbarLayout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
-                .addComponent(HomeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(YourProfileBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(RequestBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(BookListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(LogoutBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(HomeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(YourProfileBox, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(RequestBox, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(BookListBox, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(LogoutBox, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(144, 144, 144))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -344,66 +344,66 @@ public class Userprofile extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(Navbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Navbar, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(Name)
-                                    .addComponent(Phone)
+                                    .addComponent(Email)
                                     .addComponent(Surname)
-                                    .addComponent(Email))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(EmailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(PhoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(NameLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
-                                                .addComponent(SurnameLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 193, Short.MAX_VALUE)
-                                .addComponent(Edit)
-                                .addGap(176, 176, 176))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(138, 138, 138))))
+                                    .addComponent(Name))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(SurnameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
+                                    .addComponent(NameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(EmailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(Phone)
+                                .addGap(26, 26, 26)
+                                .addComponent(PhoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(183, 183, 183)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(370, 370, 370)
+                        .addComponent(Edit)))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Navbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(30, 30, 30)
                 .addComponent(jLabel1)
-                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Surname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(37, 37, 37)
+                        .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Email, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(30, 30, 30))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(NameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59)
-                        .addComponent(SurnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54)
-                        .addComponent(EmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(NameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(PhoneLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Phone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(46, 46, 46)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Surname, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(SurnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(EmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21)))
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Phone, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(PhoneLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(80, 80, 80)
                 .addComponent(Edit)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(59, 59, 59))
         );
 
         pack();

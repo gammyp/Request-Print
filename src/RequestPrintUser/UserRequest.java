@@ -114,6 +114,7 @@ public class UserRequest extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(720, 503));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -121,7 +122,7 @@ public class UserRequest extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(DocumentLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 410, -1));
+        getContentPane().add(DocumentLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 340, -1));
 
         LocationLink.setFont(new java.awt.Font("supermarket", 0, 18)); // NOI18N
         LocationLink.setText("Location link");
@@ -129,7 +130,7 @@ public class UserRequest extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("supermarket", 0, 14)); // NOI18N
         jLabel3.setText("Require cloud service (Google Drive , Onedrive , etc.)");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, -1, -1));
 
         RequestHaed.setFont(new java.awt.Font("supermarket", 0, 24)); // NOI18N
         RequestHaed.setText("Request to print your document");
@@ -144,7 +145,7 @@ public class UserRequest extends javax.swing.JFrame {
         Message.setRows(5);
         jScrollPane1.setViewportView(Message);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 520, 170));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 440, 170));
 
         MessageLabel.setFont(new java.awt.Font("supermarket", 0, 14)); // NOI18N
         MessageLabel.setText("Message to shop.");
@@ -188,7 +189,7 @@ public class UserRequest extends javax.swing.JFrame {
 
         RequestPrint.setFont(new java.awt.Font("Moon", 0, 24)); // NOI18N
         RequestPrint.setText("Request to Print");
-        RequestPrintBox.add(RequestPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 220, 27));
+        RequestPrintBox.add(RequestPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 200, 27));
 
         YourProfileBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -209,17 +210,16 @@ public class UserRequest extends javax.swing.JFrame {
         YourProfileBox.setLayout(YourProfileBoxLayout);
         YourProfileBoxLayout.setHorizontalGroup(
             YourProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, YourProfileBoxLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(YourProfileBoxLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
                 .addComponent(YourProfile)
-                .addGap(23, 23, 23))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         YourProfileBoxLayout.setVerticalGroup(
             YourProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(YourProfileBoxLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(YourProfile)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         BookListBox.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -273,10 +273,10 @@ public class UserRequest extends javax.swing.JFrame {
         LogoutBox.setLayout(LogoutBoxLayout);
         LogoutBoxLayout.setHorizontalGroup(
             LogoutBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LogoutBoxLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(LogoutBoxLayout.createSequentialGroup()
+                .addGap(61, 61, 61)
                 .addComponent(Logout)
-                .addGap(67, 67, 67))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         LogoutBoxLayout.setVerticalGroup(
             LogoutBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,7 +291,7 @@ public class UserRequest extends javax.swing.JFrame {
         NavbarLayout.setHorizontalGroup(
             NavbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(HomeBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(RequestPrintBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(RequestPrintBox, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
             .addComponent(YourProfileBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(BookListBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(LogoutBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -303,13 +303,13 @@ public class UserRequest extends javax.swing.JFrame {
                 .addComponent(HomeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(YourProfileBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addGap(35, 35, 35)
                 .addComponent(RequestPrintBox, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addGap(39, 39, 39)
                 .addComponent(BookListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(LogoutBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addContainerGap(186, Short.MAX_VALUE))
         );
 
         getContentPane().add(Navbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 570));
@@ -334,7 +334,7 @@ public class UserRequest extends javax.swing.JFrame {
         RequestBoxLayout.setHorizontalGroup(
             RequestBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RequestBoxLayout.createSequentialGroup()
-                .addContainerGap(128, Short.MAX_VALUE)
+                .addContainerGap(124, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(117, 117, 117))
         );
@@ -345,7 +345,7 @@ public class UserRequest extends javax.swing.JFrame {
 
         getContentPane().add(RequestBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 420, 310, 40));
 
-        setSize(new java.awt.Dimension(793, 526));
+        setSize(new java.awt.Dimension(720, 525));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

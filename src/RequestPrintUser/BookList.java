@@ -258,7 +258,7 @@ public class BookList extends javax.swing.JFrame {
         YourProfileBoxLayout.setHorizontalGroup(
             YourProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(YourProfileBoxLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(52, 52, 52)
                 .addComponent(YourProfile)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -289,10 +289,10 @@ public class BookList extends javax.swing.JFrame {
         RequestPrintBox.setLayout(RequestPrintBoxLayout);
         RequestPrintBoxLayout.setHorizontalGroup(
             RequestPrintBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(RequestPrintBoxLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(RequestPrint)
-                .addContainerGap(18, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RequestPrintBoxLayout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(RequestPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         RequestPrintBoxLayout.setVerticalGroup(
             RequestPrintBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -331,7 +331,7 @@ public class BookList extends javax.swing.JFrame {
             HomeBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HomeBoxLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Home, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Home, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -354,17 +354,16 @@ public class BookList extends javax.swing.JFrame {
         LogoutBox.setLayout(LogoutBoxLayout);
         LogoutBoxLayout.setHorizontalGroup(
             LogoutBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LogoutBoxLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(LogoutBoxLayout.createSequentialGroup()
+                .addGap(75, 75, 75)
                 .addComponent(Logout)
-                .addGap(72, 72, 72))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         LogoutBoxLayout.setVerticalGroup(
             LogoutBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LogoutBoxLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(Logout)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         BookListBox.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -403,28 +402,28 @@ public class BookList extends javax.swing.JFrame {
         NavBar.setLayout(NavBarLayout);
         NavBarLayout.setHorizontalGroup(
             NavBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NavBarLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(RequestPrintBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(YourProfileBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(HomeBox, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+            .addComponent(HomeBox, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
             .addComponent(BookListBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(LogoutBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(NavBarLayout.createSequentialGroup()
+                .addComponent(RequestPrintBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 23, Short.MAX_VALUE))
         );
         NavBarLayout.setVerticalGroup(
             NavBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(NavBarLayout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(HomeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(30, 30, 30)
                 .addComponent(YourProfileBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(35, 35, 35)
                 .addComponent(RequestPrintBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(30, 30, 30)
                 .addComponent(BookListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(LogoutBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
 
         getContentPane().add(NavBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 500));
@@ -500,7 +499,7 @@ public class BookList extends javax.swing.JFrame {
         HeaderLayout.setHorizontalGroup(
             HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HeaderLayout.createSequentialGroup()
-                .addContainerGap(182, Short.MAX_VALUE)
+                .addContainerGap(143, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addGap(170, 170, 170))
         );
