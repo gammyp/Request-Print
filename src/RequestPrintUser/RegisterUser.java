@@ -16,6 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.PasswordField;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -103,6 +104,7 @@ public class RegisterUser extends javax.swing.JFrame {
         backButton.setFont(new java.awt.Font("Cloud Light", 0, 18)); // NOI18N
         backButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         backButton.setText("Back");
+        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         backButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backButtonMouseClicked(evt);
@@ -201,7 +203,7 @@ public class RegisterUser extends javax.swing.JFrame {
         confirmPass.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         confirmPass.setText("Confirm Password :");
         BG.add(confirmPass);
-        confirmPass.setBounds(20, 260, 160, 30);
+        confirmPass.setBounds(20, 260, 181, 30);
 
         confirmField.setFont(new java.awt.Font("Cloud Light", 0, 14)); // NOI18N
         confirmField.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -237,6 +239,7 @@ public class RegisterUser extends javax.swing.JFrame {
         submitButton.setFont(new java.awt.Font("Cloud Light", 0, 18)); // NOI18N
         submitButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         submitButton.setText("Submit");
+        submitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         submitButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 submitButtonMouseClicked(evt);
@@ -263,6 +266,9 @@ public class RegisterUser extends javax.swing.JFrame {
 
     private void submitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitButtonMouseClicked
         regis();
+        this.setVisible(false);
+        LoginEPrinting login = new LoginEPrinting();
+        login.setVisible(true);
     }//GEN-LAST:event_submitButtonMouseClicked
 
     private void submitButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitButtonMouseEntered
@@ -401,15 +407,15 @@ public class RegisterUser extends javax.swing.JFrame {
                         pstm.setString(6, emailField.getText());
                         pstm.setString(5, telephoneField.getText());
                         pstm.setString(1, userNameField.getText());
-                        pstm.setString(2, password.getText());
+                        pstm.setString(2, passField.getText());
                         pstm.executeUpdate();
                         JOptionPane.showMessageDialog(null, "Registered Successfully.");
-                        name.setText("");
-                        surname.setText("");
+                        nameField.setText("");
+                        surnameField.setText("");
                         emailField.setText("");
                         telephoneField.setText("");
                         userNameField.setText("");
-                        password.setText("");
+                        passField.setText("");
                         errorPassText.setText("");
                         userNameCheck.setIcon(null);
                         con.close();

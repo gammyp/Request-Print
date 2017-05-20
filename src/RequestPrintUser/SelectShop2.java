@@ -161,7 +161,7 @@ public class SelectShop2 extends javax.swing.JFrame {
         RequestBox = new javax.swing.JPanel();
         Request = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -190,6 +190,7 @@ public class SelectShop2 extends javax.swing.JFrame {
         Cancel.setFont(new java.awt.Font("Cloud Light", 0, 18)); // NOI18N
         Cancel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Cancel.setText("Cancel");
+        Cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CancelBox.add(Cancel);
         Cancel.setBounds(0, 0, 190, 40);
 
@@ -209,6 +210,7 @@ public class SelectShop2 extends javax.swing.JFrame {
         Request.setFont(new java.awt.Font("Cloud Light", 0, 18)); // NOI18N
         Request.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Request.setText("Request");
+        Request.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         RequestBox.add(Request);
         Request.setBounds(0, 0, 190, 40);
 

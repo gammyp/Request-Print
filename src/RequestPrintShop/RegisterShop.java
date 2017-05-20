@@ -424,6 +424,9 @@ public class RegisterShop extends javax.swing.JFrame {
 
     private void submitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitButtonMouseClicked
         submitRegister();
+        this.setVisible(false);
+        LoginEPrinting login = new LoginEPrinting();
+        login.setVisible(true);
     }//GEN-LAST:event_submitButtonMouseClicked
 
     private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked

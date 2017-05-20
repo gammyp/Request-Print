@@ -90,7 +90,7 @@ public class EditUserProfile extends javax.swing.JFrame {
         SaveBox = new javax.swing.JPanel();
         Save = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         setSize(new java.awt.Dimension(470, 300));
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -148,6 +148,7 @@ public class EditUserProfile extends javax.swing.JFrame {
         Save.setFont(new java.awt.Font("Cloud Light", 0, 18)); // NOI18N
         Save.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Save.setText("Save");
+        Save.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         SaveBox.add(Save);
         Save.setBounds(0, 0, 410, 40);
 

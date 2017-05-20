@@ -48,11 +48,14 @@ public class Userprofile extends javax.swing.JFrame {
             ResultSet rs = pstm.executeQuery();
             System.out.println(login.getUserId());
             while(rs.next()) {
-                System.out.println("a");
                 NameLabel.setText(rs.getString("name"));
+                NameLabel.setEditable(false);
                 SurnameLabel.setText(rs.getString("surname"));
+                SurnameLabel.setEditable(false);
                 EmailLabel.setText(rs.getString("email"));
+                EmailLabel.setEditable(false);
                 PhoneLabel.setText(rs.getString("phone"));
+                PhoneLabel.setEditable(false);
             }
             con.close();
             pstm.close();
@@ -103,10 +106,6 @@ public class Userprofile extends javax.swing.JFrame {
         Surname = new javax.swing.JLabel();
         Email = new javax.swing.JLabel();
         Phone = new javax.swing.JLabel();
-        NameLabel = new javax.swing.JLabel();
-        SurnameLabel = new javax.swing.JLabel();
-        EmailLabel = new javax.swing.JLabel();
-        PhoneLabel = new javax.swing.JLabel();
         Navbar = new javax.swing.JPanel();
         HomeBox = new javax.swing.JPanel();
         HomeLabel = new javax.swing.JLabel();
@@ -120,6 +119,10 @@ public class Userprofile extends javax.swing.JFrame {
         LogoutLabel = new javax.swing.JLabel();
         EditBox = new javax.swing.JPanel();
         Edit = new javax.swing.JLabel();
+        EmailLabel = new javax.swing.JTextField();
+        PhoneLabel = new javax.swing.JTextField();
+        SurnameLabel = new javax.swing.JTextField();
+        NameLabel = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -130,50 +133,35 @@ public class Userprofile extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Nithan", 0, 28)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Moon", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Your Profile");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(419, 30, 143, 37);
+        jLabel1.setBounds(220, 20, 390, 40);
 
         Name.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
         Name.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Name.setText("Name : ");
         getContentPane().add(Name);
-        Name.setBounds(230, 130, 130, 40);
+        Name.setBounds(220, 100, 130, 30);
 
         Surname.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
         Surname.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Surname.setText("Surname : ");
         getContentPane().add(Surname);
-        Surname.setBounds(230, 170, 130, 40);
+        Surname.setBounds(220, 140, 130, 30);
 
         Email.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
         Email.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Email.setText("Email : ");
         getContentPane().add(Email);
-        Email.setBounds(230, 210, 130, 40);
+        Email.setBounds(220, 180, 130, 30);
 
         Phone.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
         Phone.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Phone.setText("Telephone : ");
         getContentPane().add(Phone);
-        Phone.setBounds(230, 250, 130, 40);
-
-        NameLabel.setFont(new java.awt.Font("supermarket", 0, 14)); // NOI18N
-        getContentPane().add(NameLabel);
-        NameLabel.setBounds(370, 130, 300, 40);
-
-        SurnameLabel.setFont(new java.awt.Font("supermarket", 0, 14)); // NOI18N
-        getContentPane().add(SurnameLabel);
-        SurnameLabel.setBounds(370, 170, 300, 40);
-
-        EmailLabel.setFont(new java.awt.Font("supermarket", 0, 14)); // NOI18N
-        getContentPane().add(EmailLabel);
-        EmailLabel.setBounds(370, 210, 300, 40);
-
-        PhoneLabel.setFont(new java.awt.Font("supermarket", 0, 14)); // NOI18N
-        getContentPane().add(PhoneLabel);
-        PhoneLabel.setBounds(370, 250, 300, 40);
+        Phone.setBounds(220, 220, 130, 30);
 
         Navbar.setLayout(null);
 
@@ -195,6 +183,7 @@ public class Userprofile extends javax.swing.JFrame {
         HomeLabel.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
         HomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         HomeLabel.setText("Home");
+        HomeLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         HomeBox.add(HomeLabel);
         HomeLabel.setBounds(0, 0, 220, 40);
 
@@ -207,6 +196,7 @@ public class Userprofile extends javax.swing.JFrame {
         YourProfileLabel.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
         YourProfileLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         YourProfileLabel.setText("Your Profile");
+        YourProfileLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         YourProfileBox.add(YourProfileLabel);
         YourProfileLabel.setBounds(0, 0, 220, 40);
 
@@ -230,6 +220,7 @@ public class Userprofile extends javax.swing.JFrame {
         RequestLabel.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
         RequestLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         RequestLabel.setText("Request to Print");
+        RequestLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         RequestBox.add(RequestLabel);
         RequestLabel.setBounds(0, 0, 220, 40);
 
@@ -253,6 +244,7 @@ public class Userprofile extends javax.swing.JFrame {
         BookListLabel.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
         BookListLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         BookListLabel.setText("Book List");
+        BookListLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BookListBox.add(BookListLabel);
         BookListLabel.setBounds(0, 0, 220, 40);
 
@@ -276,6 +268,7 @@ public class Userprofile extends javax.swing.JFrame {
         LogoutLabel.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
         LogoutLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LogoutLabel.setText("Logout");
+        LogoutLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         LogoutBox.add(LogoutLabel);
         LogoutLabel.setBounds(0, 0, 220, 40);
 
@@ -295,13 +288,30 @@ public class Userprofile extends javax.swing.JFrame {
         Edit.setFont(new java.awt.Font("Cloud Light", 0, 18)); // NOI18N
         Edit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Edit.setText("Edit");
+        Edit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         EditBox.add(Edit);
-        Edit.setBounds(0, 0, 420, 40);
+        Edit.setBounds(0, 0, 340, 40);
 
         getContentPane().add(EditBox);
-        EditBox.setBounds(250, 300, 420, 40);
+        EditBox.setBounds(240, 300, 340, 40);
 
-        setSize(new java.awt.Dimension(700, 399));
+        EmailLabel.setFont(new java.awt.Font("Cloud Light", 0, 16)); // NOI18N
+        getContentPane().add(EmailLabel);
+        EmailLabel.setBounds(360, 180, 210, 30);
+
+        PhoneLabel.setFont(new java.awt.Font("Cloud Light", 0, 16)); // NOI18N
+        getContentPane().add(PhoneLabel);
+        PhoneLabel.setBounds(360, 220, 210, 30);
+
+        SurnameLabel.setFont(new java.awt.Font("Cloud Light", 0, 16)); // NOI18N
+        getContentPane().add(SurnameLabel);
+        SurnameLabel.setBounds(360, 140, 210, 30);
+
+        NameLabel.setFont(new java.awt.Font("Cloud Light", 0, 16)); // NOI18N
+        getContentPane().add(NameLabel);
+        NameLabel.setBounds(360, 100, 210, 30);
+
+        setSize(new java.awt.Dimension(616, 399));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -435,20 +445,20 @@ public class Userprofile extends javax.swing.JFrame {
     private javax.swing.JLabel Edit;
     private javax.swing.JPanel EditBox;
     private javax.swing.JLabel Email;
-    private javax.swing.JLabel EmailLabel;
+    private javax.swing.JTextField EmailLabel;
     private javax.swing.JPanel HomeBox;
     private javax.swing.JLabel HomeLabel;
     private javax.swing.JPanel LogoutBox;
     private javax.swing.JLabel LogoutLabel;
     private javax.swing.JLabel Name;
-    private javax.swing.JLabel NameLabel;
+    private javax.swing.JTextField NameLabel;
     private javax.swing.JPanel Navbar;
     private javax.swing.JLabel Phone;
-    private javax.swing.JLabel PhoneLabel;
+    private javax.swing.JTextField PhoneLabel;
     private javax.swing.JPanel RequestBox;
     private javax.swing.JLabel RequestLabel;
     private javax.swing.JLabel Surname;
-    private javax.swing.JLabel SurnameLabel;
+    private javax.swing.JTextField SurnameLabel;
     private javax.swing.JPanel YourProfileBox;
     private javax.swing.JLabel YourProfileLabel;
     private javax.swing.JLabel jLabel1;

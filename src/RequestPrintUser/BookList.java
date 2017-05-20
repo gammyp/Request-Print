@@ -254,6 +254,7 @@ public class BookList extends javax.swing.JFrame {
         YourProfile.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
         YourProfile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         YourProfile.setText("Your Profile");
+        YourProfile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         YourProfileBox.add(YourProfile);
         YourProfile.setBounds(0, 0, 220, 40);
 
@@ -276,6 +277,7 @@ public class BookList extends javax.swing.JFrame {
         RequestPrint.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
         RequestPrint.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         RequestPrint.setText("Request to Print");
+        RequestPrint.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         RequestPrintBox.add(RequestPrint);
         RequestPrint.setBounds(0, 0, 220, 40);
 
@@ -299,6 +301,7 @@ public class BookList extends javax.swing.JFrame {
         Home.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
         Home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Home.setText("Home");
+        Home.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         HomeBox.add(Home);
         Home.setBounds(0, 0, 220, 40);
 
@@ -321,6 +324,7 @@ public class BookList extends javax.swing.JFrame {
         Logout.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
         Logout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Logout.setText("Log out");
+        Logout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         LogoutBox.add(Logout);
         Logout.setBounds(0, 0, 220, 40);
 
@@ -343,6 +347,7 @@ public class BookList extends javax.swing.JFrame {
         BookList.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
         BookList.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         BookList.setText("Book List");
+        BookList.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BookListBox.add(BookList);
         BookList.setBounds(0, 0, 220, 40);
 
@@ -411,6 +416,7 @@ public class BookList extends javax.swing.JFrame {
         Print.setFont(new java.awt.Font("Cloud Light", 0, 18)); // NOI18N
         Print.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Print.setText("Request");
+        Print.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         PrintBox.add(Print, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 40));
 
         getContentPane().add(PrintBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 400, 40));

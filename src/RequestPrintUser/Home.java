@@ -132,6 +132,7 @@ public class Home extends javax.swing.JFrame {
         RequestPrint.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
         RequestPrint.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         RequestPrint.setText("Request to Print");
+        RequestPrint.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         RequestBox.add(RequestPrint);
         RequestPrint.setBounds(0, 0, 220, 40);
 
@@ -154,6 +155,7 @@ public class Home extends javax.swing.JFrame {
         BookList.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
         BookList.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         BookList.setText("Book List");
+        BookList.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BookListBox.add(BookList);
         BookList.setBounds(0, 0, 220, 40);
 
@@ -176,6 +178,7 @@ public class Home extends javax.swing.JFrame {
         YourProfile.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
         YourProfile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         YourProfile.setText("Your Profile");
+        YourProfile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         YourProfileBox.add(YourProfile);
         YourProfile.setBounds(0, 0, 220, 40);
 
@@ -198,6 +201,7 @@ public class Home extends javax.swing.JFrame {
         Logout.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
         Logout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Logout.setText("Logout");
+        Logout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         LogoutBox.add(Logout);
         Logout.setBounds(0, 0, 220, 40);
 
@@ -209,6 +213,7 @@ public class Home extends javax.swing.JFrame {
         HomeLabel.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
         HomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         HomeLabel.setText("Home");
+        HomeLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         HomeBox.add(HomeLabel);
         HomeLabel.setBounds(0, 0, 220, 40);
 
