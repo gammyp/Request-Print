@@ -72,7 +72,7 @@ public class UserRequest extends javax.swing.JFrame {
     
     public void selectShoptoPrint() {
         int DocCopies = (int)NumberofCopies.getValue();
-        RequestPrintUser.SelectShop select = new RequestPrintUser.SelectShop();
+        RequestPrintUser.SelectShop2 select = new RequestPrintUser.SelectShop2();
         select.setDocCopies(DocCopies);
         select.setUsername(Username);
         select.setUserId(UserId);
