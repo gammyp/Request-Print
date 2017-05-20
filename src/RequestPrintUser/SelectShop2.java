@@ -162,42 +162,39 @@ public class SelectShop2 extends javax.swing.JFrame {
         Request = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
         });
+        getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("supermarket", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Moon", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Select Shop to Request.");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(2, 13, 480, 29);
 
-        ShopList.setFont(new java.awt.Font("supermarket", 0, 14)); // NOI18N
+        ShopList.setFont(new java.awt.Font("Cloud Light", 0, 14)); // NOI18N
+        getContentPane().add(ShopList);
+        ShopList.setBounds(30, 60, 400, 30);
 
         CancelBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 CancelBoxMouseClicked(evt);
             }
         });
+        CancelBox.setLayout(null);
 
-        Cancel.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        Cancel.setFont(new java.awt.Font("Cloud Light", 0, 18)); // NOI18N
+        Cancel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Cancel.setText("Cancel");
+        CancelBox.add(Cancel);
+        Cancel.setBounds(0, 0, 190, 40);
 
-        javax.swing.GroupLayout CancelBoxLayout = new javax.swing.GroupLayout(CancelBox);
-        CancelBox.setLayout(CancelBoxLayout);
-        CancelBoxLayout.setHorizontalGroup(
-            CancelBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CancelBoxLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(Cancel)
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-        CancelBoxLayout.setVerticalGroup(
-            CancelBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CancelBoxLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Cancel)
-                .addContainerGap(7, Short.MAX_VALUE))
-        );
+        getContentPane().add(CancelBox);
+        CancelBox.setBounds(30, 110, 190, 40);
 
         RequestBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -207,62 +204,18 @@ public class SelectShop2 extends javax.swing.JFrame {
                 RequestBoxMouseEntered(evt);
             }
         });
+        RequestBox.setLayout(null);
 
-        Request.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        Request.setFont(new java.awt.Font("Cloud Light", 0, 18)); // NOI18N
+        Request.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Request.setText("Request");
+        RequestBox.add(Request);
+        Request.setBounds(0, 0, 190, 40);
 
-        javax.swing.GroupLayout RequestBoxLayout = new javax.swing.GroupLayout(RequestBox);
-        RequestBox.setLayout(RequestBoxLayout);
-        RequestBoxLayout.setHorizontalGroup(
-            RequestBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RequestBoxLayout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
-                .addComponent(Request)
-                .addGap(20, 20, 20))
-        );
-        RequestBoxLayout.setVerticalGroup(
-            RequestBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RequestBoxLayout.createSequentialGroup()
-                .addContainerGap(7, Short.MAX_VALUE)
-                .addComponent(Request)
-                .addContainerGap())
-        );
+        getContentPane().add(RequestBox);
+        RequestBox.setBounds(240, 110, 190, 40);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 70, Short.MAX_VALUE)
-                .addComponent(ShopList, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(105, Short.MAX_VALUE)
-                        .addComponent(CancelBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(80, 80, 80)
-                        .addComponent(RequestBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(93, 93, 93))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(26, 26, 26)
-                .addComponent(ShopList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(CancelBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(RequestBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21))
-        );
-
-        pack();
+        setSize(new java.awt.Dimension(465, 209));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

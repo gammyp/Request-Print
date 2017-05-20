@@ -105,6 +105,7 @@ public class Home extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(138, 204, 203));
         setMinimumSize(new java.awt.Dimension(720, 503));
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -113,7 +114,7 @@ public class Home extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         NavBar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        NavBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        NavBar.setLayout(null);
 
         RequestBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -126,28 +127,16 @@ public class Home extends javax.swing.JFrame {
                 RequestBoxMouseExited(evt);
             }
         });
+        RequestBox.setLayout(null);
 
-        RequestPrint.setFont(new java.awt.Font("Moon", 0, 24)); // NOI18N
+        RequestPrint.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
+        RequestPrint.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         RequestPrint.setText("Request to Print");
+        RequestBox.add(RequestPrint);
+        RequestPrint.setBounds(0, 0, 220, 40);
 
-        javax.swing.GroupLayout RequestBoxLayout = new javax.swing.GroupLayout(RequestBox);
-        RequestBox.setLayout(RequestBoxLayout);
-        RequestBoxLayout.setHorizontalGroup(
-            RequestBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(RequestBoxLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(RequestPrint)
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
-        RequestBoxLayout.setVerticalGroup(
-            RequestBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(RequestBoxLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(RequestPrint, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        NavBar.add(RequestBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 220, -1));
+        NavBar.add(RequestBox);
+        RequestBox.setBounds(0, 200, 220, 40);
 
         BookListBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -160,28 +149,16 @@ public class Home extends javax.swing.JFrame {
                 BookListBoxMouseExited(evt);
             }
         });
+        BookListBox.setLayout(null);
 
-        BookList.setFont(new java.awt.Font("Moon", 0, 24)); // NOI18N
+        BookList.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
+        BookList.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         BookList.setText("Book List");
+        BookListBox.add(BookList);
+        BookList.setBounds(0, 0, 220, 40);
 
-        javax.swing.GroupLayout BookListBoxLayout = new javax.swing.GroupLayout(BookListBox);
-        BookListBox.setLayout(BookListBoxLayout);
-        BookListBoxLayout.setHorizontalGroup(
-            BookListBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BookListBoxLayout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(BookList)
-                .addContainerGap(59, Short.MAX_VALUE))
-        );
-        BookListBoxLayout.setVerticalGroup(
-            BookListBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BookListBoxLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BookList)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        NavBar.add(BookListBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 220, -1));
+        NavBar.add(BookListBox);
+        BookListBox.setBounds(0, 250, 220, 40);
 
         YourProfileBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -194,28 +171,16 @@ public class Home extends javax.swing.JFrame {
                 YourProfileBoxMouseExited(evt);
             }
         });
+        YourProfileBox.setLayout(null);
 
-        YourProfile.setFont(new java.awt.Font("Moon", 0, 24)); // NOI18N
+        YourProfile.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
+        YourProfile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         YourProfile.setText("Your Profile");
+        YourProfileBox.add(YourProfile);
+        YourProfile.setBounds(0, 0, 220, 40);
 
-        javax.swing.GroupLayout YourProfileBoxLayout = new javax.swing.GroupLayout(YourProfileBox);
-        YourProfileBox.setLayout(YourProfileBoxLayout);
-        YourProfileBoxLayout.setHorizontalGroup(
-            YourProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(YourProfileBoxLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(YourProfile)
-                .addContainerGap(46, Short.MAX_VALUE))
-        );
-        YourProfileBoxLayout.setVerticalGroup(
-            YourProfileBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(YourProfileBoxLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(YourProfile)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        NavBar.add(YourProfileBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 220, 40));
+        NavBar.add(YourProfileBox);
+        YourProfileBox.setBounds(0, 150, 220, 40);
 
         LogoutBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -228,58 +193,36 @@ public class Home extends javax.swing.JFrame {
                 LogoutBoxMouseExited(evt);
             }
         });
+        LogoutBox.setLayout(null);
 
-        Logout.setFont(new java.awt.Font("Moon", 0, 24)); // NOI18N
+        Logout.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
+        Logout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Logout.setText("Logout");
+        LogoutBox.add(Logout);
+        Logout.setBounds(0, 0, 220, 40);
 
-        javax.swing.GroupLayout LogoutBoxLayout = new javax.swing.GroupLayout(LogoutBox);
-        LogoutBox.setLayout(LogoutBoxLayout);
-        LogoutBoxLayout.setHorizontalGroup(
-            LogoutBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LogoutBoxLayout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(Logout)
-                .addContainerGap(75, Short.MAX_VALUE))
-        );
-        LogoutBoxLayout.setVerticalGroup(
-            LogoutBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LogoutBoxLayout.createSequentialGroup()
-                .addComponent(Logout)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        NavBar.add(LogoutBox);
+        LogoutBox.setBounds(0, 300, 220, 40);
 
-        NavBar.add(LogoutBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 220, 30));
+        HomeBox.setLayout(null);
 
-        HomeLabel.setFont(new java.awt.Font("Moon", 0, 24)); // NOI18N
+        HomeLabel.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
+        HomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         HomeLabel.setText("Home");
+        HomeBox.add(HomeLabel);
+        HomeLabel.setBounds(0, 0, 220, 40);
 
-        javax.swing.GroupLayout HomeBoxLayout = new javax.swing.GroupLayout(HomeBox);
-        HomeBox.setLayout(HomeBoxLayout);
-        HomeBoxLayout.setHorizontalGroup(
-            HomeBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HomeBoxLayout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(HomeLabel)
-                .addContainerGap(87, Short.MAX_VALUE))
-        );
-        HomeBoxLayout.setVerticalGroup(
-            HomeBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HomeBoxLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(HomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        NavBar.add(HomeBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 220, 40));
+        NavBar.add(HomeBox);
+        HomeBox.setBounds(0, 100, 220, 40);
 
         getContentPane().add(NavBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 480));
 
-        jLabel1.setFont(new java.awt.Font("supermarket", 0, 22)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Moon", 1, 24)); // NOI18N
         jLabel1.setText("This is your document status.");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 450, 30));
 
-        Header.setFont(new java.awt.Font("supermarket", 0, 24)); // NOI18N
-        getContentPane().add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 380, 40));
+        Header.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
+        getContentPane().add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 380, 40));
 
         jTable1.setFont(new java.awt.Font("Cloud Light", 0, 11)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -309,7 +252,7 @@ public class Home extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 440, 310));
 
-        pack();
+        setSize(new java.awt.Dimension(706, 468));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

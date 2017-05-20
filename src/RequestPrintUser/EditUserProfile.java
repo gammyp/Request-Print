@@ -91,105 +91,70 @@ public class EditUserProfile extends javax.swing.JFrame {
         Save = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         setSize(new java.awt.Dimension(470, 300));
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
             }
         });
+        getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Moon", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Edit Profile");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 10, 470, 40);
 
+        jLabel2.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Name : ");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(50, 60, 90, 30);
 
+        jLabel3.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Surname : ");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(30, 100, 110, 30);
 
+        jLabel4.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Email : ");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(50, 140, 90, 30);
 
+        phone.setFont(new java.awt.Font("Moon", 1, 16)); // NOI18N
+        phone.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         phone.setText("Telephone : ");
+        getContentPane().add(phone);
+        phone.setBounds(20, 180, 120, 30);
+        getContentPane().add(nameField);
+        nameField.setBounds(140, 60, 300, 30);
+        getContentPane().add(surnameField);
+        surnameField.setBounds(140, 100, 300, 30);
+        getContentPane().add(emailField);
+        emailField.setBounds(140, 140, 300, 30);
+        getContentPane().add(phoneField);
+        phoneField.setBounds(140, 180, 300, 30);
 
         SaveBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 SaveBoxMouseClicked(evt);
             }
         });
+        SaveBox.setLayout(null);
 
-        Save.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        Save.setFont(new java.awt.Font("Cloud Light", 0, 18)); // NOI18N
+        Save.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Save.setText("Save");
+        SaveBox.add(Save);
+        Save.setBounds(0, 0, 410, 40);
 
-        javax.swing.GroupLayout SaveBoxLayout = new javax.swing.GroupLayout(SaveBox);
-        SaveBox.setLayout(SaveBoxLayout);
-        SaveBoxLayout.setHorizontalGroup(
-            SaveBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SaveBoxLayout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(Save)
-                .addContainerGap(96, Short.MAX_VALUE))
-        );
-        SaveBoxLayout.setVerticalGroup(
-            SaveBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SaveBoxLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Save)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        getContentPane().add(SaveBox);
+        SaveBox.setBounds(30, 230, 410, 40);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(136, 136, 136))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(SaveBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(phone))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(surnameField, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(66, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(surnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(phone)
-                    .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(SaveBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 28, Short.MAX_VALUE))
-        );
-
-        pack();
+        setSize(new java.awt.Dimension(473, 325));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
