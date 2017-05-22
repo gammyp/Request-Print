@@ -318,6 +318,8 @@ public class UserRequest extends javax.swing.JFrame {
         BookList.setForeground(Color.white);
         Logout.setForeground(Color.white);
         NumberofCopies.setValue(1);
+        Message.setText("");
+        DocumentLink.setText("");
     }//GEN-LAST:event_formWindowActivated
 
     private void YourProfileBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseEntered
@@ -444,13 +446,13 @@ public class UserRequest extends javax.swing.JFrame {
     private javax.swing.JLabel BookList;
     private javax.swing.JPanel BookListBox;
     private javax.swing.JLabel Copies;
-    private javax.swing.JTextField DocumentLink;
+    public javax.swing.JTextField DocumentLink;
     private javax.swing.JLabel Home;
     private javax.swing.JPanel HomeBox;
     private javax.swing.JLabel LocationLink;
     private javax.swing.JLabel Logout;
     private javax.swing.JPanel LogoutBox;
-    private javax.swing.JTextArea Message;
+    public javax.swing.JTextArea Message;
     private javax.swing.JLabel MessageLabel;
     private javax.swing.JPanel Navbar;
     private javax.swing.JSpinner NumberofCopies;

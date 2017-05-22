@@ -51,7 +51,7 @@ public class SelectShop2 extends javax.swing.JFrame {
     public void setMessage(String Message) {
         this.Message = Message;
     }
-    
+
     public void fetchShopList() {
         try {
             // TODO add your handling code here:
@@ -68,15 +68,16 @@ public class SelectShop2 extends javax.swing.JFrame {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     public void Back() {
         UserRequest usrreq = new UserRequest();
         usrreq.setUserId(UserId);
         usrreq.setUsername(Username);
+        Link = "";
+        Message = "";
         setVisible(false);
-        usrreq.setVisible(true);
     }
-    
+
     public void RequestBook() {
         try {
             int orderId = -1;
@@ -113,7 +114,7 @@ public class SelectShop2 extends javax.swing.JFrame {
             while (rs2.next()) {
                 productID = rs2.getInt("productID");
             }
-            
+
             //SELECT OrderID
             PreparedStatement pstm3 = con.prepareStatement("SELECT MAX(orderID) FROM Orders");
             ResultSet rstest = pstm3.executeQuery();
@@ -132,12 +133,12 @@ public class SelectShop2 extends javax.swing.JFrame {
             pstm3.close();
             pstm4.close();
             JOptionPane.showMessageDialog(null, "Thank you for chosing our shop.");
-            setVisible(false);
             Back();
         } catch (SQLException ex) {
             System.err.println(ex);
         }
     }
+
     /**
      * Creates new form SelectShop2
      */
@@ -224,10 +225,10 @@ public class SelectShop2 extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
         fetchShopList();
-        getContentPane().setBackground(new java.awt.Color(228,228,228));
-        RequestBox.setBackground(new java.awt.Color(152,255,153));
+        getContentPane().setBackground(new java.awt.Color(228, 228, 228));
+        RequestBox.setBackground(new java.awt.Color(152, 255, 153));
         Request.setForeground(Color.black);
-        CancelBox.setBackground(new java.awt.Color(255,204,204));
+        CancelBox.setBackground(new java.awt.Color(255, 204, 204));
         Cancel.setForeground(Color.black);
     }//GEN-LAST:event_formWindowActivated
 

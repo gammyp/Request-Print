@@ -37,7 +37,6 @@ public class BookList extends javax.swing.JFrame {
 
     }
 
-
     public void setUserId(int UserId) {
         this.UserId = UserId;
     }
@@ -46,7 +45,7 @@ public class BookList extends javax.swing.JFrame {
         this.Username = Username;
     }
     //Method for call from GUI
-    
+
     public void callList() {
         ShopSelect.removeAllItems();
         BookSelect.removeAllItems();
@@ -63,7 +62,7 @@ public class BookList extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         try {
             Connection con = ConnectionBuilder.getConnection();
 
@@ -74,25 +73,25 @@ public class BookList extends javax.swing.JFrame {
             if (rsShopId.next()) {
                 shopID = rsShopId.getInt("shopID");
             }
-            
+
             con.close();
             pstmSelectShopId.close();
             //executeQuery Product Table to use ProductName
-            
+
             con = ConnectionBuilder.getConnection();
             PreparedStatement pstmSelectProduct = con.prepareStatement("SELECT productName,productID FROM Product WHERE ShopProfile_shopID = " + shopID);
             ResultSet rsProductName = pstmSelectProduct.executeQuery();
-            if(rsProductName.next()){
+            if (rsProductName.next()) {
                 productID = rsProductName.getInt("productID");
             }
-            
+
             //Add intitial text
             BookSelect.addItem("");
         } catch (SQLException ex) {
             Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void callHome() {
         Home h = new Home();
         h.setUserId(UserId);
@@ -100,6 +99,7 @@ public class BookList extends javax.swing.JFrame {
         h.setVisible(true);
         this.setVisible(false);
     }
+
     public void callUserProfile() {
         Userprofile userpro = new Userprofile();
         userpro.setUserId(UserId);
@@ -107,7 +107,7 @@ public class BookList extends javax.swing.JFrame {
         userpro.setVisible(true);
         setVisible(false);
     }
-    
+
     public void callRequestPage() {
         UserRequest userreq = new UserRequest();
         userreq.setUserId(UserId);
@@ -115,7 +115,7 @@ public class BookList extends javax.swing.JFrame {
         userreq.setVisible(true);
         setVisible(false);
     }
-    
+
     public void PrintBook() {
         BookSelect.removeAllItems();
         try {
@@ -125,14 +125,13 @@ public class BookList extends javax.swing.JFrame {
             PreparedStatement pstmSelectShopId = con.prepareStatement("SELECT shopID FROM ShopProfile WHERE "
                     + "shopName = '" + ShopSelect.getSelectedItem() + "'");
             ResultSet rsShopId = pstmSelectShopId.executeQuery();
-            if(rsShopId.next()){
+            if (rsShopId.next()) {
                 LastShopID = rsShopId.getInt("shopID");
             }
-              
 
             //executeQuery Product Table to use ProductName
             PreparedStatement pstmSelectProduct = con.prepareStatement("SELECT productName FROM Product WHERE "
-                    + "ShopProfile_shopID = "+ LastShopID);
+                    + "ShopProfile_shopID = " + LastShopID);
             ResultSet rsProductName = pstmSelectProduct.executeQuery();
 
             //Add intitial text
@@ -146,18 +145,18 @@ public class BookList extends javax.swing.JFrame {
         }
 
     }
-    
+
     public void Logout() {
         System.exit(0);
     }
-    
+
     public void RequestBook() {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Date date = new Date(System.currentTimeMillis());
             String datestr = sdf.format(date);
             Connection con = ConnectionBuilder.getConnection();
-            
+
             PreparedStatement pstmInsert1 = con.prepareStatement("INSERT INTO Orders(orderID,priceOrder,status,datetime,description,url,UserProfile_id,ShopProfile_shopID)"
                     + "VALUES (null,?,?,?,?,null,?,?)");
             pstmInsert1.setInt(1, productID);
@@ -185,13 +184,15 @@ public class BookList extends javax.swing.JFrame {
             pstmInsert2.setInt(2, orderID);
             pstmInsert2.setInt(3, productID);
             pstmInsert2.executeUpdate();
-            
+            description.setText("");
+
             JOptionPane.showMessageDialog(null, "Success");
-                    } catch (SQLException ex) {
+            
+        } catch (SQLException ex) {
             Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     //End Method for call
     /**
      * This method is called from within the constructor to initialize the form.
@@ -432,15 +433,15 @@ public class BookList extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         callList();
-        getContentPane().setBackground(new java.awt.Color(228,228,228));
+        getContentPane().setBackground(new java.awt.Color(228, 228, 228));
         BookList.setForeground(Color.black);
-        HomeBox.setBackground(new java.awt.Color(102,102,102));
-        RequestPrintBox.setBackground(new java.awt.Color(102,102,102));
-        BookListBox.setBackground(new java.awt.Color(228,228,228));
-        LogoutBox.setBackground(new java.awt.Color(102,102,102));
-        YourProfileBox.setBackground(new java.awt.Color(102,102,102));
-        NavBar.setBackground(new java.awt.Color(102,102,102));
-        PrintBox.setBackground(new java.awt.Color(153,255,153));
+        HomeBox.setBackground(new java.awt.Color(102, 102, 102));
+        RequestPrintBox.setBackground(new java.awt.Color(102, 102, 102));
+        BookListBox.setBackground(new java.awt.Color(228, 228, 228));
+        LogoutBox.setBackground(new java.awt.Color(102, 102, 102));
+        YourProfileBox.setBackground(new java.awt.Color(102, 102, 102));
+        NavBar.setBackground(new java.awt.Color(102, 102, 102));
+        PrintBox.setBackground(new java.awt.Color(153, 255, 153));
         Print.setForeground(Color.black);
         Home.setForeground(Color.white);
         YourProfile.setForeground(Color.white);
@@ -456,7 +457,7 @@ public class BookList extends javax.swing.JFrame {
     private void HomeBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseEntered
         // TODO add your handling code here:
         Home.setForeground(Color.black);
-        HomeBox.setBackground(new java.awt.Color(228,228,228));
+        HomeBox.setBackground(new java.awt.Color(228, 228, 228));
     }//GEN-LAST:event_HomeBoxMouseEntered
 
     private void HomeBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBoxMouseExited
@@ -467,7 +468,7 @@ public class BookList extends javax.swing.JFrame {
 
     private void YourProfileBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourProfileBoxMouseEntered
         // TODO add your handling code here:
-        YourProfileBox.setBackground(new java.awt.Color(228,228,228));
+        YourProfileBox.setBackground(new java.awt.Color(228, 228, 228));
         YourProfile.setForeground(Color.black);
     }//GEN-LAST:event_YourProfileBoxMouseEntered
 
@@ -489,7 +490,7 @@ public class BookList extends javax.swing.JFrame {
 
     private void RequestPrintBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RequestPrintBoxMouseEntered
         // TODO add your handling code here:
-        RequestPrintBox.setBackground(new java.awt.Color(228,228,228));
+        RequestPrintBox.setBackground(new java.awt.Color(228, 228, 228));
         RequestPrint.setForeground(Color.black);
     }//GEN-LAST:event_RequestPrintBoxMouseEntered
 
@@ -507,7 +508,7 @@ public class BookList extends javax.swing.JFrame {
     private void LogoutBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseEntered
         // TODO add your handling code here:
         Logout.setForeground(Color.black);
-        LogoutBox.setBackground(new java.awt.Color(228,228,228));
+        LogoutBox.setBackground(new java.awt.Color(228, 228, 228));
     }//GEN-LAST:event_LogoutBoxMouseEntered
 
     private void LogoutBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutBoxMouseExited
@@ -543,24 +544,24 @@ public class BookList extends javax.swing.JFrame {
 
     private void PrintBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrintBoxMouseEntered
         // TODO add your handling code here:
-       
+
     }//GEN-LAST:event_PrintBoxMouseEntered
 
     private void PrintBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PrintBoxMouseExited
         // TODO add your handling code here:
-       
+
     }//GEN-LAST:event_PrintBoxMouseExited
 
-    public static int getOrderID(){
+    public static int getOrderID() {
         try {
             Connection con = ConnectionBuilder.getConnection();
             PreparedStatement pstmSel = con.prepareStatement("SELECT orderID FROM Orders;");
             ResultSet rs = pstmSel.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 LastOrderID = rs.getInt("orderID");
             }
-            
-            System.out.println("LastOrderId"+LastOrderID);
+
+            System.out.println("LastOrderId" + LastOrderID);
         } catch (SQLException ex) {
             Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
         }
