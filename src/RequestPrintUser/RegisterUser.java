@@ -266,17 +266,14 @@ public class RegisterUser extends javax.swing.JFrame {
 
     private void submitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitButtonMouseClicked
         regis();
-        this.setVisible(false);
-        LoginEPrinting login = new LoginEPrinting();
-        login.setVisible(true);
     }//GEN-LAST:event_submitButtonMouseClicked
 
     private void submitButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitButtonMouseEntered
-        
+
     }//GEN-LAST:event_submitButtonMouseEntered
 
     private void submitButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitButtonMouseExited
-        
+
     }//GEN-LAST:event_submitButtonMouseExited
 
     private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
@@ -286,11 +283,11 @@ public class RegisterUser extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonMouseClicked
 
     private void backButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseEntered
-        
+
     }//GEN-LAST:event_backButtonMouseEntered
 
     private void backButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseExited
-        
+
     }//GEN-LAST:event_backButtonMouseExited
 
     private void emailFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailFieldFocusLost
@@ -311,11 +308,11 @@ public class RegisterUser extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         getContentPane().setBackground(new java.awt.Color(138, 204, 203));
-        submitButton.setBackground(new java.awt.Color(88,153,152));
-        backButton.setBackground(new java.awt.Color(88,153,152));
+        submitButton.setBackground(new java.awt.Color(88, 153, 152));
+        backButton.setBackground(new java.awt.Color(88, 153, 152));
         submitBG.setForeground(Color.white);
         backBG.setForeground(Color.white);
-        
+
     }//GEN-LAST:event_formWindowActivated
 
     public void checkEmail() {
@@ -390,37 +387,38 @@ public class RegisterUser extends javax.swing.JFrame {
 
     public void regis() {
         try {
-            System.out.println(name.getText());
-
-            if (name.getText() != "" && surname.getText() != "" && userNameField.getText() != ""
-                    && password.getText() != "" && emailField.getText() != "" && telephoneField.getText() != "") {
-                if (checkall) {
-                    //   JOptionPane.showConfirmDialog(null, "Do you confirm?", "Message", JOptionPane.YES_NO_OPTION);
-                    int confirm = JOptionPane.showOptionDialog(this, "Are You confirm?", "CONFIRM", JOptionPane.YES_NO_OPTION,
-                            JOptionPane.QUESTION_MESSAGE, null, null, null);
-                    if (confirm == JOptionPane.YES_OPTION) {
-                        Connection con = ConnectionBuilder.getConnection();
-                        String sql = "INSERT INTO UserProfile(id,username,password,name,surname,phone,email) VALUES (null,?,?,?,?,?,?)";
-                        PreparedStatement pstm = con.prepareStatement(sql);
-                        pstm.setString(3, nameField.getText());
-                        pstm.setString(4, surnameField.getText());
-                        pstm.setString(6, emailField.getText());
-                        pstm.setString(5, telephoneField.getText());
-                        pstm.setString(1, userNameField.getText());
-                        pstm.setString(2, passField.getText());
-                        pstm.executeUpdate();
-                        JOptionPane.showMessageDialog(null, "Registered Successfully.");
-                        nameField.setText("");
-                        surnameField.setText("");
-                        emailField.setText("");
-                        telephoneField.setText("");
-                        userNameField.setText("");
-                        passField.setText("");
-                        errorPassText.setText("");
-                        userNameCheck.setIcon(null);
-                        con.close();
-                        pstm.close();
-                    }
+            if (nameField.getText().trim().equals("") && surnameField.getText().trim().equals("") && userNameField.getText().trim().equals("")
+                    && passField.getText().trim().equals("") && emailField.getText().trim().equals("") && telephoneField.getText().trim().equals("")) {
+                this.setVisible(true);
+            } else {
+                //   JOptionPane.showConfirmDialog(null, "Do you confirm?", "Message", JOptionPane.YES_NO_OPTION);
+                int confirm = JOptionPane.showOptionDialog(this, "Are You confirm?", "CONFIRM", JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE, null, null, null);
+                if (confirm == JOptionPane.YES_OPTION) {
+                    Connection con = ConnectionBuilder.getConnection();
+                    String sql = "INSERT INTO UserProfile(id,username,password,name,surname,phone,email) VALUES (null,?,?,?,?,?,?)";
+                    PreparedStatement pstm = con.prepareStatement(sql);
+                    pstm.setString(3, nameField.getText());
+                    pstm.setString(4, surnameField.getText());
+                    pstm.setString(6, emailField.getText());
+                    pstm.setString(5, telephoneField.getText());
+                    pstm.setString(1, userNameField.getText());
+                    pstm.setString(2, passField.getText());
+                    pstm.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Registered Successfully.");
+                    nameField.setText("");
+                    surnameField.setText("");
+                    emailField.setText("");
+                    telephoneField.setText("");
+                    userNameField.setText("");
+                    passField.setText("");
+                    errorPassText.setText("");
+                    userNameCheck.setIcon(null);
+                    con.close();
+                    pstm.close();
+                    this.setVisible(false);
+                    LoginEPrinting login = new LoginEPrinting();
+                    login.setVisible(true);
                 }
             }
         } catch (SQLException ex) {
